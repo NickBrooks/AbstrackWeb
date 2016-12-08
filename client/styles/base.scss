@@ -1,0 +1,40 @@
+/*
+ * Base structure
+ */
+
+/* Move down content because we have a fixed navbar that is 50px tall */
+body {
+  background: $off-white;
+  font-family: $font-family;
+  letter-spacing: .01rem;
+  font-size: $font-size;
+  line-height: 1.75em;
+  color: $font-color;
+  font-weight: $font-weight;
+}
+
+p {
+  line-height: 2em;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: $font-family-fancy;
+}
+
+h4 {
+  font-weight: $font-weight-bold;
+  text-transform: uppercase;
+}
+
+/*
+ * Text styles
+ */
+
+a, a:hover, a.focus, a.active {
+  color: $link-color;
+}
+
+.light {
+  color: $font-color-light;
+  font-weight: $font-weight-light;
+}

@@ -2,6 +2,7 @@ import React from 'react';
 import { render } from 'react-dom';
 
 // Import CSS
+import Style from './styles/app.scss';
 
 // Import Components
 import App from './components/App';
