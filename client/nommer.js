@@ -7,7 +7,7 @@ import Style from './styles/app.scss';
 // Import Components
 import App from './components/App';
 import ListNoms from './components/ListNoms';
-import Nom from './components/Nom';
+import Nom from './components/Nom/Nom';
 
 // Import Router
 import { Router, Route, IndexRoute, browserHistory } from 'react-router';
