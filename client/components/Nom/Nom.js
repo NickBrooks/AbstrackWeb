@@ -1,5 +1,9 @@
 import React from 'react';
 import NomDescription from './NomDescription';
+import SidebarSubMenu from '../Reusable/SidebarSubMenu';
+
+//dummy data
+import DummyNom from '../../dummydata/DummyNom';
 
 const Nom = React.createClass({
     render() {
@@ -13,7 +17,7 @@ const Nom = React.createClass({
                 <div className="col-sm-10">
                     <div className="row">
                         <div className="col-sm-12">
-                            <NomDescription />
+                            <NomDescription body={DummyNom.body} />
                         </div>
                         <div className="col-sm-3">
                             <div className="ibox"><img src="https://avatars2.githubusercontent.com/u/4286755?v=3&s=460"
@@ -32,26 +36,9 @@ const Nom = React.createClass({
                 </div>
 
                 <div className="col-sm-2 sub-bar">
-                    <ul className="nav nav-sidebar sub-menu project">
-                        <li>
-                            <h5><i className="fa fa-bookmark"></i> Project</h5>
-                        </li>
-                        <li><a href="#">Ticket System</a></li>
-                    </ul>
-                    <ul className="nav nav-sidebar sub-menu milestone">
-                        <li>
-                            <h5><i className="fa fa-calendar-o"></i> Milestone</h5>
-                        </li>
-                        <li><a href="#">Project delivery</a></li>
-                    </ul>
-                    <ul className="nav nav-sidebar sub-menu tags">
-                        <li>
-                            <h5><i className="fa fa-hashtag"></i> Tags</h5>
-                        </li>
-                        <li><a href="">#NavItem</a></li>
-                        <li><a href="">#NavItemAgain</a></li>
-                        <li><a href="">#OneMoreNav</a></li>
-                    </ul>
+                    <SidebarSubMenu menuItems={DummyNom.hashtags} icon="bookmark" title="Project" />
+                    <SidebarSubMenu menuItems={DummyNom.hashtags} icon="calendar-o" title="Milestone" />
+                    <SidebarSubMenu menuItems={DummyNom.hashtags} icon="hashtag" title="Hashtags" />
                 </div>
             </div>
         )
