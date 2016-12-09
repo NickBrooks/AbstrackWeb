@@ -6,6 +6,9 @@ import SidebarSubMenu from '../Reusable/SidebarSubMenu';
 import DummyNom from '../../dummydata/DummyNom';
 
 const Nom = React.createClass({
+    renderMenuItemArray(menuItem) {
+        return [menuItem];
+    },
     render() {
         const { nomId } = this.props.params;
 
@@ -36,9 +39,9 @@ const Nom = React.createClass({
                 </div>
 
                 <div className="col-sm-2 sub-bar">
-                    <SidebarSubMenu menuItems={DummyNom.hashtags} icon="bookmark" title="Project" />
-                    <SidebarSubMenu menuItems={DummyNom.hashtags} icon="calendar-o" title="Milestone" />
-                    <SidebarSubMenu menuItems={DummyNom.hashtags} icon="hashtag" title="Hashtags" />
+                    <SidebarSubMenu menuItems={this.renderMenuItemArray(DummyNom.project)} textKey="title" linkKey="id" icon="bookmark" title="Project" />
+                    <SidebarSubMenu menuItems={this.renderMenuItemArray(DummyNom.milestone)} textKey="title" linkKey="id" icon="calendar-o" title="Milestone" />
+                    <SidebarSubMenu menuItems={DummyNom.hashtags} textKey="tag" linkKey="tag" icon="hashtag" title="Hashtags" />
                 </div>
             </div>
         )

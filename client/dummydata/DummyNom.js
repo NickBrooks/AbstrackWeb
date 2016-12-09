@@ -10,15 +10,15 @@ const DummyNom = {
     },
     hashtags: [
         {
-            tag: "#nuggets",
-            count: 99
+            tag: "nuggets",
+            count: 99,
         },
         {
-            tag: "#workitem",
+            tag: "workitem",
             count: 23
         },
         {
-            tag: "#urgent",
+            tag: "urgent",
             count: 8
         }
     ]
