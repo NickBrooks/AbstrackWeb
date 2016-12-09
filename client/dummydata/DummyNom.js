@@ -1,4 +1,6 @@
 const DummyNom = {
+    id: "579hgwunkf",
+    title: "Daniel Ricciardo",
     body: "# This is a header\n\nAnd this is a paragraph\n\n![alt text](https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png \"Logo Title Text 1\")\n\nInline `code` has `back-ticks around` it.",
     project: {
         title: "Ticket system",

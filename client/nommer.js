@@ -6,7 +6,7 @@ import Style from './styles/app.scss';
 
 // Import Components
 import App from './components/App';
-import ListNoms from './components/ListNoms';
+import ListNoms from './components/ListNoms/ListNoms';
 import Nom from './components/Nom/Nom';
 
 // Import Router
