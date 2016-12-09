@@ -1,12 +1,17 @@
 import React from 'react';
+import { Link } from 'react-router';
 
 const NomNode = React.createClass({
     render() {
         const { title, id } = this.props;
+        const link = "/n/" + id;
+
         return (
-            <div id={id} className="nom-node">
-                <p>{title}</p>
-            </div>
+            <Link to={link}>
+                <li>
+                    <span>{title}</span>
+                </li>
+            </Link>
         )
     }
 })
