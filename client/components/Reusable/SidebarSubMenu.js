@@ -23,7 +23,7 @@ const SidebarSubMenu = React.createClass({
     },
     render() {
         return (
-            <ul className="nav nav-sidebar sub-menu">
+            <ul className="nav sub-menu">
                 <li>
                     <h5><FontAwesome name={this.props.icon} /> {this.props.title}</h5>
                 </li>

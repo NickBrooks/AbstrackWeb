@@ -3,6 +3,7 @@ import NomBody from './NomBody';
 import NomTitle from './NomTitle';
 import HashtagSpan from './HashtagSpan';
 import SidebarSubMenu from '../Reusable/SidebarSubMenu';
+import UserBadge from '../Reusable/UserBadge';
 
 //dummy data
 import DummyNom from '../../dummydata/DummyNom';
@@ -30,6 +31,7 @@ const Nom = React.createClass({
                 </div>
 
                 <div className="col-sm-2 sub-bar">
+                    <UserBadge user={DummyNom.created_by} />
                     <SidebarSubMenu menuItems={this.renderMenuItemArray(DummyNom.project)} textKey="title" linkKey="id" icon="bookmark" title="Project" />
                     <SidebarSubMenu menuItems={this.renderMenuItemArray(DummyNom.milestone)} textKey="title" linkKey="id" icon="calendar-o" title="Milestone" />
                 </div>

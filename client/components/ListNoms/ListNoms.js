@@ -7,9 +7,26 @@ import DummyListOfNoms from '../../dummydata/DummyListOfNoms';
 const ListNoms = React.createClass({
     render() {
         return (
-            <ul className="nom-list">
-                {DummyListOfNoms.noms.map((nom) => <NomNode {...nom} key={nom.id} id={nom.id} />)}
-            </ul>
+          <div className="nom-list">
+            <div className="time-node">
+              <h6>Today</h6>
+              <ul>
+                  {DummyListOfNoms.noms.map((nom) => <NomNode {...nom} key={nom.id} id={nom.id} />)}
+              </ul>
+            </div>
+            <div className="time-node">
+              <h6>This month</h6>
+              <ul>
+                  {DummyListOfNoms.noms.map((nom) => <NomNode {...nom} key={nom.id} id={nom.id} />)}
+              </ul>
+            </div>
+            <div className="time-node">
+              <h6>Older</h6>
+              <ul>
+                  {DummyListOfNoms.noms.map((nom) => <NomNode {...nom} key={nom.id} id={nom.id} />)}
+              </ul>
+            </div>
+          </div>
         )
     }
 })

@@ -23,7 +23,11 @@ const DummyNom = {
             tag: "urgent",
             count: 8
         }
-    ]
+    ],
+    created_by: {
+      name: "Nick Brooks",
+      user_avatar: "http://i.imgur.com/e6iDLs6.jpg"
+    }
 }
 
 export default DummyNom;
