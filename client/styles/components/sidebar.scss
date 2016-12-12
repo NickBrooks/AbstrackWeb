@@ -29,17 +29,9 @@
 .nav-sidebar h5 {
   font-weight: $font-weight-bold;
   text-transform: uppercase;
-  margin: 5px 0 5px;
+  margin: 0;
 }
 
-.nav-sidebar h4 i {
-  margin-right: 3px;
-}
-
-// Sidebar menu
-.menu h4 {
-  color: $off-white;
-}
 .menu .nav-sidebar > li > a {
   color: $font-color-light;
 }
@@ -48,11 +40,8 @@
 .menu .nav-sidebar > .active > a {
   background-color: $bg-blue-active;
 }
-.menu h1 {
+.menu h6 {
   color: $off-white;
-  font-weight: $font-weight-bold;
-  margin: 0 0 $box-margin;
+  margin: 0 0 0 20px;
   padding: 0;
 }
-
-// Sidebar submenu

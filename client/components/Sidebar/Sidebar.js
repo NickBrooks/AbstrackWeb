@@ -1,17 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router';
+import FontAwesome from 'react-fontawesome';
 
 const Sidebar = React.createClass({
     render() {
         return (
             <div id="sidebar" className="col-sm-3 col-md-2 sidebar menu">
-                <Link to="/"><h1>Conquest Solutions <i className="fa fa-caret-down"></i></h1></Link>
+                <Link to="/"><h6>Conquest Solutions <FontAwesome name="caret-down" /></h6></Link>
                 <ul className="nav nav-sidebar">
-                    <li>
-                        <a href="#">
-                            <h5>Projects (39)</h5>
-                        </a>
-                    </li>
+                    <li><a href="#"><h6>Projects (39)</h6></a></li>
                     <li className="active"><a href="#">#selected <span className="sr-only">(current)</span></a></li>
                     <li><a href="#">#ticketsystem</a></li>
                     <li><a href="#">#invoicing</a></li>
@@ -20,7 +17,7 @@ const Sidebar = React.createClass({
                 <ul className="nav nav-sidebar">
                     <li>
                         <a href="#">
-                            <h5>Views (3)</h5>
+                            <h6>Views (3)</h6>
                         </a>
                     </li>
                     <li><a href="">+NavItem</a></li>
