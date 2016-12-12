@@ -4,9 +4,19 @@ a.btn-circle {
 	height: 25px;
     padding: 0;
     color: $white;
-	
+
     i {
         font-size: 0.9em;
         margin: 6px 0 0 -1px;
     }
+}
+
+span.tag {
+	margin-right: 5px;
+	background: #EEEEEE;
+
+	a {
+		font-weight: normal;
+		font-size: 1.2em;
+	}
 }

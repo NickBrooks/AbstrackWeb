@@ -1,5 +1,5 @@
 .header {
-  background: #8BC34A;
+  background: $header-color-primary;
   position: fixed;
   top: 0;
   left: 16.666667%;;
@@ -22,16 +22,16 @@ input[type="text"]#search-bar
 }
 
 input[type="text"]#search-bar::-webkit-input-placeholder { /* Chrome/Opera/Safari */
-  color: #DCEDC8;
+  color: $header-color-secondary;
 }
 input[type="text"]#search-bar::-moz-placeholder { /* Firefox 19+ */
-  color: #DCEDC8;
+  color: $header-color-secondary;
 }
 input[type="text"]#search-bar:-ms-input-placeholder { /* IE 10+ */
-  color: #DCEDC8;
+  color: $header-color-secondary;
 }
 input[type="text"]#search-bar:-moz-placeholder { /* Firefox 18- */
-  color: #DCEDC8;
+  color: $header-color-secondary;
 }
 
 .nom-header h3 {

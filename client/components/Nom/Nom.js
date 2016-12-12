@@ -1,6 +1,7 @@
 import React from 'react';
 import NomBody from './NomBody';
 import NomTitle from './NomTitle';
+import HashtagSpan from './HashtagSpan';
 import SidebarSubMenu from '../Reusable/SidebarSubMenu';
 
 //dummy data
@@ -18,6 +19,9 @@ const Nom = React.createClass({
                         <div className="col-sm-12">
                             <div className="ibox">
                                 <NomTitle title={DummyNom.title} />
+                                <div class="nom-hashtags">
+                                  {DummyNom.hashtags.map((hashtag, i) => <HashtagSpan {...this.props} hashtag={hashtag.tag} customClass="default" key={i} i={i} />)}
+                                </div>
                                 <hr />
                                 <NomBody body={DummyNom.body} />
                             </div>
@@ -28,7 +32,6 @@ const Nom = React.createClass({
                 <div className="col-sm-2 sub-bar">
                     <SidebarSubMenu menuItems={this.renderMenuItemArray(DummyNom.project)} textKey="title" linkKey="id" icon="bookmark" title="Project" />
                     <SidebarSubMenu menuItems={this.renderMenuItemArray(DummyNom.milestone)} textKey="title" linkKey="id" icon="calendar-o" title="Milestone" />
-                    <SidebarSubMenu menuItems={DummyNom.hashtags} textKey="tag" linkKey="tag" icon="hashtag" title="Hashtags" />
                 </div>
             </div>
         )
