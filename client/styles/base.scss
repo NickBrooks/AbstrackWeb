@@ -10,20 +10,16 @@ body {
   line-height: 1.75em;
   color: $font-color;
   font-weight: $font-weight;
+  margin-top: 70px;
   @include scrollbars(.5em, slategray);
-}
-
-p {
-  line-height: 2em;
 }
 
 h1, h2, h3, h4, h5, h6 {
   font-family: $font-family-fancy;
 }
 
-h4 {
-  font-weight: $font-weight-bold;
-  text-transform: uppercase;
+hr {
+  border-top: 1px solid #f2f2f2;
 }
 
 /*

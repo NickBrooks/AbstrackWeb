@@ -4,11 +4,9 @@ import ReactMarkdown from 'react-markdown';
 const NomDescription = React.createClass({
     render() {
         return (
-            <div className="ibox">
-                <div className="nom-description">
+                <div className="nom-body">
                     <ReactMarkdown source={this.props.body} />
                 </div>
-            </div>
         )
     }
 })

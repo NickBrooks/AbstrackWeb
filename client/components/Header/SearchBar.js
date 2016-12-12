@@ -4,7 +4,7 @@ const SearchBar = React.createClass({
     render() {
         return (
             <div className="input-group">
-                <input id="search-bar" type="text" className="form-control" placeholder="Search..." />
+                <input id="search-bar" type="text" className="form-control" placeholder="Search #noms" />
             </div>
         )
     }

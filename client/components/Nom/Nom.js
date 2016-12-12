@@ -1,5 +1,6 @@
 import React from 'react';
-import NomDescription from './NomDescription';
+import NomBody from './NomBody';
+import NomTitle from './NomTitle';
 import SidebarSubMenu from '../Reusable/SidebarSubMenu';
 
 //dummy data
@@ -12,13 +13,14 @@ const Nom = React.createClass({
     render() {
         return (
             <div className="row core-body">
-                <div className="col-sm-12">
-                    <h3 className="view-header">{DummyNom.title} <span className="light">#12 <i className="fa fa-caret-down"></i></span></h3>
-                </div>
                 <div className="col-sm-10">
                     <div className="row">
                         <div className="col-sm-12">
-                            <NomDescription body={DummyNom.body} />
+                            <div className="ibox">
+                                <NomTitle title={DummyNom.title} />
+                                <hr />
+                                <NomBody body={DummyNom.body} />
+                            </div>
                         </div>
                     </div>
                 </div>
