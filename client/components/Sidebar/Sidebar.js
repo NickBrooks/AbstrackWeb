@@ -8,23 +8,26 @@ const Sidebar = React.createClass({
             <div className="sidebar menu">
                 <Link to="/"><h6>Conquest Solutions <FontAwesome name="caret-down" /></h6></Link>
                 <ul className="nav nav-sidebar">
-                    <li><a href="#"><h6>Projects (39)</h6></a></li>
-                    <li className="active"><a href="#">#selected <span className="sr-only">(current)</span></a></li>
-                    <li><a href="#">#ticketsystem</a></li>
-                    <li><a href="#">#invoicing</a></li>
-                    <li><a href="#">#forum</a></li>
+                    <li><Link to="#"><h6>Projects (39)</h6></Link></li>
+                    <li className="active"><Link to="#">#selected <span className="sr-only">(current)</span></Link></li>
+                    <li><Link to="#">#ticketsystem</Link></li>
+                    <li><Link to="#">#invoicing</Link></li>
+                    <li><Link to="#">#forum</Link></li>
                 </ul>
                 <ul className="nav nav-sidebar">
                     <li>
-                        <a href="#">
+                        <Link to="#">
                             <h6>Views (3)</h6>
-                        </a>
+                        </Link>
                     </li>
-                    <li><a href="">+NavItem</a></li>
-                    <li><a href="">+NavItemAgain</a></li>
-                    <li><a href="">+OneMoreNav</a></li>
-                    <li><a href="">+AnotherItem</a></li>
-                    <li><a href="">+Chimpanzee</a></li>
+                    <li><Link to="">+NavItem</Link></li>
+                    <li><Link to="">+NavItemAgain</Link></li>
+                    <li><Link to="">+OneMoreNav</Link></li>
+                    <li><Link to="">+AnotherItem</Link></li>
+                    <li><Link to="">+Chimpanzee</Link></li>
+                </ul>
+                <ul className="nav nav-sidebar">
+                    <li className="starred"><Link to="/starred"><FontAwesome name="star" /> Favorites</Link></li>
                 </ul>
             </div>
         )
