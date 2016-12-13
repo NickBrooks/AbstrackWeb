@@ -5,7 +5,7 @@ import FontAwesome from 'react-fontawesome';
 const Sidebar = React.createClass({
     render() {
         return (
-            <div id="sidebar" className="col-sm-3 col-md-2 sidebar menu">
+            <div className="sidebar menu">
                 <Link to="/"><h6>Conquest Solutions <FontAwesome name="caret-down" /></h6></Link>
                 <ul className="nav nav-sidebar">
                     <li><a href="#"><h6>Projects (39)</h6></a></li>

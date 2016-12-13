@@ -3,12 +3,13 @@
  */
 
 .main {
-  padding: $box-padding;;
+  padding: $box-padding;
 }
 @media (min-width: 768px) {
   .main {
     padding-right: 40px;
     padding-left: 40px;
+    margin-left: $sidebar-width;
   }
 }
 .main .page-header {

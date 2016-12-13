@@ -5,16 +5,18 @@ import Header from './Header/Header';
 const Main = React.createClass({
     render() {
         return (
-            <div className="container-fluid">
-                <div className="row">
-                    <Sidebar />
-                    <div className="col-sm-9 offset-sm-3 col-md-10 offset-md-2 header">
-                        <Header />
-                    </div>
-                    <div className="col-sm-9 offset-sm-3 col-md-10 offset-md-2 main">
-                        {React.cloneElement(this.props.children, this.props)}
-                    </div>
-                </div>
+            <div className="app">
+              <Sidebar />
+              <div className="container-fluid main">
+                  <div className="row">
+                      <div className="col-sm-12 header">
+                          <Header />
+                      </div>
+                      <div className="col-sm-12 body">
+                          {React.cloneElement(this.props.children, this.props)}
+                      </div>
+                  </div>
+              </div>
             </div>
         )
     }

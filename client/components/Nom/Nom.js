@@ -1,7 +1,6 @@
 import React from 'react';
 import NomBody from './NomBody';
-import NomTitle from './NomTitle';
-import HashtagSpan from './HashtagSpan';
+import NomHeader from './NomHeader';
 import SidebarSubMenu from '../Reusable/SidebarSubMenu';
 import UserBadge from '../Reusable/UserBadge';
 
@@ -19,10 +18,7 @@ const Nom = React.createClass({
                     <div className="row">
                         <div className="col-sm-12">
                             <div className="ibox">
-                                <NomTitle title={DummyNom.title} />
-                                <div class="nom-hashtags">
-                                  {DummyNom.hashtags.map((hashtag, i) => <HashtagSpan {...this.props} hashtag={hashtag.tag} customClass="default" key={i} i={i} />)}
-                                </div>
+                                <NomHeader title={DummyNom.title} hashtags={DummyNom.hashtags} />
                                 <hr />
                                 <NomBody body={DummyNom.body} />
                             </div>
