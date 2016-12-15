@@ -1,5 +1,4 @@
-const DummyListOfNoms = {
-    count: 8,
+const ListOfNoms = {
     noms: [
         {
             id: "1adb22aa-7634-4000-ab23-caa441c99345",
@@ -8,8 +7,8 @@ const DummyListOfNoms = {
             orgId: "",
             createdById: "",
             assignedToId: "",
-            isArchived: "0",
-            isCompleted: "0",
+            isArchived: false,
+            isCompleted: false,
             title: "This is the first item",
             body: "How does this look?",
             project: {
@@ -174,4 +173,4 @@ const DummyListOfNoms = {
     ]
 };
 
-export default DummyListOfNoms;
+export default ListOfNoms;

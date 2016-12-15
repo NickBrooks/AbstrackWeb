@@ -5,7 +5,7 @@ import SidebarSubMenu from '../Reusable/SidebarSubMenu';
 import UserBadge from '../Reusable/UserBadge';
 
 //dummy data
-import DummyNom from '../../dummydata/DummyNom';
+import Noms from '../../dummydata/Noms';
 
 const Nom = React.createClass({
     renderMenuItemArray(menuItem) {
@@ -18,18 +18,18 @@ const Nom = React.createClass({
                     <div className="row">
                         <div className="col-sm-12">
                             <div className="ibox">
-                                <NomHeader title={DummyNom.title} hashtags={DummyNom.hashtags} />
+                                <NomHeader title={Noms.title} hashtags={Noms.hashtags} />
                                 <hr />
-                                <NomBody body={DummyNom.body} />
+                                <NomBody body={Noms.body} />
                             </div>
                         </div>
                     </div>
                 </div>
 
                 <div className="col-sm-2 sub-bar">
-                    <UserBadge user={DummyNom.created_by} />
-                    <SidebarSubMenu menuItems={this.renderMenuItemArray(DummyNom.project)} textKey="title" linkKey="id" icon="bookmark" title="Project" />
-                    <SidebarSubMenu menuItems={this.renderMenuItemArray(DummyNom.milestone)} textKey="title" linkKey="id" icon="calendar-o" title="Milestone" />
+                    <UserBadge user={Noms.created_by} />
+                    <SidebarSubMenu menuItems={this.renderMenuItemArray(Noms.project)} textKey="title" linkKey="id" icon="bookmark" title="Project" />
+                    <SidebarSubMenu menuItems={this.renderMenuItemArray(Noms.milestone)} textKey="title" linkKey="id" icon="calendar-o" title="Milestone" />
                 </div>
             </div>
         )
