@@ -10,6 +10,9 @@ const Noms = {
       id: "dcb09dbb-227a-478e-aab5-c51a9d37c318",
       title: "Nommer UI"
     },
+    starred: true,
+    completed: false,
+    inbox: false,
     hashtags: [
         {
             tag: "nommer",
