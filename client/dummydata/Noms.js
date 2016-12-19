@@ -25,8 +25,16 @@ const Noms = {
         }
     ],
     created_by: {
-      name: "Nick Brooks",
-      user_avatar: "http://i.imgur.com/e6iDLs6.jpg"
+      id: "5a72fcdb-c6aa-4534-9b57-15fe16691bfb",
+      username: "NickBrooks",
+      email: "nbrooks@thirtyseven.com.au",
+      first_name: "Nick",
+      last_name: "Brooks",
+      display_name: "Nick Brooks",
+      avatar: {
+        full: "http://i.imgur.com/bqNgxDp.jpg",
+        thumb: "http://i.imgur.com/7U5SXvV.jpg"
+      }
     }
 }
 

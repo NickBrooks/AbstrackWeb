@@ -7,6 +7,10 @@ const Milestones = {
     {
       id: "dcb09dbb-227a-478e-aab5-c51a9d37c318",
       title: "Nommer UI"
+    },
+    {
+      id: "70283df7-1b04-49c6-94e4-273e8239d24b",
+      title: "Nommer Backend"
     }
   ]
 }
