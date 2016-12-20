@@ -1,15 +1,26 @@
-.nom-list .time-node {
-  margin-bottom: 25px;
+.nom-list {
+    .time-node {
+        margin-bottom: 25px;
 
-  ul {
-      list-style-type: none;
-      padding: 0;
-      margin: 0;
+        ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
 
-      li {
-          padding: 5px 10px;
-          background: white;
-          border: 1px solid #eee;
-      }
-  }
+            li {
+                padding: 8px 13px;
+                background: white;
+                border: 1px solid #eee;
+                color: $font-color;
+            }
+        }
+
+        .title {
+            margin-left: 5px;
+        }
+
+        .comment-count {
+            color: $font-color-secondary;
+        }
+    }
 }

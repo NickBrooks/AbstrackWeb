@@ -28,7 +28,7 @@ const Nom = React.createClass({
         const { nomId } = this.props.params;
         const i = Noms.findIndex((nom) => nom.id === nomId);
         const nom = Noms[i];
-        const created_time = moment.unix(nom.created_time).format("MM/DD/YYYY");
+        const created_time = moment(nom.created_time, "MM/DD/YYYY");
         return (
             <div className="row core-body">
                 <div className="col-sm-10">

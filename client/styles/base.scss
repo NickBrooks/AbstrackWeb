@@ -1,36 +1,41 @@
 /*
  * Base structure
  */
-
 body {
-  background: $off-white;
-  font-family: $font-family;
-  letter-spacing: .01rem;
-  font-size: $font-size;
-  line-height: 1.75em;
-  color: $font-color;
-  font-weight: $font-weight;
-  margin-top: 60px;
-  @include scrollbars(.5em, slategray);
+    background: $off-white;
+    font-family: $font-family;
+    letter-spacing: 0.01rem;
+    font-size: $font-size;
+    line-height: 1.75em;
+    color: $font-color;
+    font-weight: $font-weight;
+    margin-top: 60px;
+    @include scrollbars(.5em, slategray);
 }
 
-h1, h2, h3, h4, h5, h6 {
-  font-family: $font-family-fancy;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: $font-family-fancy;
 }
 
 hr {
-  border-top: 1px solid #f2f2f2;
+    border-top: 1px solid #f2f2f2;
 }
-
 /*
  * Text styles
  */
-
-a, a:hover, a.focus, a.active {
-  color: $link-color;
+a,
+a.active,
+a.focus,
+a:hover {
+    color: $link-color;
 }
 
 .light {
-  color: $font-color-light;
-  font-weight: $font-weight-light;
+    color: $font-color-light;
+    font-weight: $font-weight-light;
 }

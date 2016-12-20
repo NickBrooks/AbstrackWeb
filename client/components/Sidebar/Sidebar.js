@@ -11,12 +11,12 @@ const Sidebar = React.createClass({
         return (
             <div className="sidebar menu">
                 <Link to="/"><h6><Avatar user={UserProfile} size="30" customClass="pull-left" /> {UserProfile.display_name} <FontAwesome name="caret-down" /></h6></Link>
+                <div className="clearfix"></div>
                 <ul className="nav nav-sidebar">
-                    <li><Link to="#"><h6>Projects (39)</h6></Link></li>
-                    <li className="active"><Link to="#">#selected <span className="sr-only">(current)</span></Link></li>
-                    <li><Link to="#">#ticketsystem</Link></li>
-                    <li><Link to="#">#invoicing</Link></li>
-                    <li><Link to="#">#forum</Link></li>
+                    <li><Link to="/t/travel">#travel</Link></li>
+                    <li><Link to="/t/nommer">#nommer</Link></li>
+                    <li><Link to="/t/idea">#idea</Link></li>
+                    <li><Link to="/t/food">#food</Link></li>
                 </ul>
                 <ul className="nav nav-sidebar">
                     <li>

@@ -1,20 +1,18 @@
 .header {
-  background: $header-color-primary;
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 999;
+    background: $header-color-primary;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 999;
 }
-
 @media (min-width: 768px) {
-  .header {
-    left: $sidebar-width;
-  }
+    .header {
+        left: $sidebar-width;
+    }
 }
 
-input[type="text"]#search-bar
-{
+input[type="text"]#search-bar {
     background: rgba(0, 0, 0, 0);
     border: none;
     outline: none;
@@ -23,21 +21,28 @@ input[type="text"]#search-bar
     padding: 15px;
     width: 100%;
     max-width: 100%;
-    display:block;
+    display: block;
     color: #fff;
 }
 
-input[type="text"]#search-bar::-webkit-input-placeholder { /* Chrome/Opera/Safari */
-  color: $header-color-secondary;
+input[type="text"]#search-bar::-webkit-input-placeholder {
+    /* Chrome/Opera/Safari */
+    color: $header-color-secondary;
 }
-input[type="text"]#search-bar::-moz-placeholder { /* Firefox 19+ */
-  color: $header-color-secondary;
+
+input[type="text"]#search-bar::-moz-placeholder {
+    /* Firefox 19+ */
+    color: $header-color-secondary;
 }
-input[type="text"]#search-bar:-ms-input-placeholder { /* IE 10+ */
-  color: $header-color-secondary;
+
+input[type="text"]#search-bar:-ms-input-placeholder {
+    /* IE 10+ */
+    color: $header-color-secondary;
 }
-input[type="text"]#search-bar:-moz-placeholder { /* Firefox 18- */
-  color: $header-color-secondary;
+
+input[type="text"]#search-bar:-moz-placeholder {
+    /* Firefox 18- */
+    color: $header-color-secondary;
 }
 
 .nom-header h3 {

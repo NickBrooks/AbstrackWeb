@@ -15,6 +15,7 @@ const Noms = [
       pinned: false,
       completed: false,
       inbox: true,
+      commentCount: 12,
       hashtags: [
           "nommer",
           "idea"
@@ -49,6 +50,7 @@ const Noms = [
       pinned: true,
       completed: false,
       inbox: true,
+      commentCount: 12,
       hashtags: [
           "nommer",
           "idea"
@@ -83,6 +85,7 @@ const Noms = [
       pinned: true,
       completed: false,
       inbox: true,
+      commentCount: 4,
       hashtags: [
           "nommer",
           "idea",
@@ -118,6 +121,7 @@ const Noms = [
       pinned: true,
       completed: false,
       inbox: true,
+      commentCount: 0,
       hashtags: [
           "nommer",
           "idea"
@@ -152,6 +156,7 @@ const Noms = [
       pinned: false,
       completed: false,
       inbox: true,
+      commentCount: 8,
       hashtags: [
           "nommer",
           "idea",
@@ -187,6 +192,7 @@ const Noms = [
       pinned: false,
       completed: false,
       inbox: true,
+      commentCount: 9,
       hashtags: [
           "nommer",
           "idea",
@@ -214,6 +220,7 @@ const Noms = [
       pinned: true,
       completed: false,
       inbox: true,
+      commentCount: 31,
       hashtags: [
           "roadtrip",
           "japan",
@@ -241,6 +248,7 @@ const Noms = [
       pinned: false,
       completed: false,
       inbox: true,
+      commentCount: 6,
       hashtags: [
           "travel",
           "japan",
@@ -268,6 +276,7 @@ const Noms = [
       pinned: true,
       completed: false,
       inbox: true,
+      commentCount: 74,
       hashtags: [
           "recipe",
           "food"
@@ -294,6 +303,7 @@ const Noms = [
       pinned: false,
       completed: false,
       inbox: true,
+      commentCount: 0,
       hashtags: [
           "tobuy",
           "vinyl",
