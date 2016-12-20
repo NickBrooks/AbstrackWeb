@@ -1,4 +1,5 @@
 import React from 'react';
+import moment from 'moment';
 import NomBody from './NomBody';
 import NomHeader from './NomHeader';
 import SidebarSubMenu from '../Reusable/SidebarSubMenu';
@@ -27,6 +28,7 @@ const Nom = React.createClass({
         const { nomId } = this.props.params;
         const i = Noms.findIndex((nom) => nom.id === nomId);
         const nom = Noms[i];
+        const created_time = moment.unix(nom.created_time).format("MM/DD/YYYY");
         return (
             <div className="row core-body">
                 <div className="col-sm-10">
@@ -45,6 +47,7 @@ const Nom = React.createClass({
                     <UserBadge user={nom.created_by} />
                     {this.renderProjectSubMenu(nom.project)}
                     {this.renderMilestoneSubMenu(nom.milestone)}
+                    Created: {created_time}
                 </div>
             </div>
         )

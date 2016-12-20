@@ -6,11 +6,17 @@ const Avatar = React.createClass({
       let avatarSrc = user.avatar.thumb;
       let pixelSize = String(size) + "px";
 
+      //handle customClasses
+      let className = "avatar ";
+      if (customClass) {
+        className = className + customClass;
+      }
+
       if (size > 160) {
         avatarSrc = user.avatar.full;
       }
         return (
-                <img className="avatar" alt={user.display_name} src={avatarSrc} user={user.display_name} height={pixelSize} width={pixelSize} customClass={customClass} />
+                <img className={className} alt={user.display_name} src={avatarSrc} height={pixelSize} width={pixelSize} />
         )
     }
 })
