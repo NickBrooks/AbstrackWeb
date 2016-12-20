@@ -5,7 +5,7 @@ const UserBadge = React.createClass({
     render() {
         const { user } = this.props;
         return (
-            <div class="user-badge">
+            <div className="user-badge">
                 <Avatar user={user} size="50px" customClass="pull-left" />
             </div>
         )

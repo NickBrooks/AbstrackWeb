@@ -13,7 +13,6 @@ const SidebarSubMenu = React.createClass({
             delete menuItems[i].textKey;
             delete menuItems[i].linkKey;
         }
-        console.log(menuItems);
         return menuItems;
     },
     renderMenuItem(menuItem, i) {
