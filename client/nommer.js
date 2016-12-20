@@ -8,6 +8,7 @@ import Style from './styles/app.scss';
 import App from './components/App';
 import NomViewInbox from './components/NomViews/Inbox';
 import NomViewPinned from './components/NomViews/Pinned';
+import NomViewTag from './components/NomViews/Tag';
 import Nom from './components/Nom/Nom';
 
 // Import Router
@@ -22,6 +23,7 @@ const router = (
                 <IndexRoute component={NomViewInbox}></IndexRoute>
                 <Route path="/pinned" component={NomViewPinned}></Route>
                 <Route path="/n/:nomId" component={Nom}></Route>
+                <Route path="/t/:tag" component={NomViewTag}></Route>
             </Route>
         </Router>
     </Provider>

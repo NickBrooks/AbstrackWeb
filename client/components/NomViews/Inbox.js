@@ -7,7 +7,7 @@ import Noms from '../../dummydata/Noms';
 const NomViewInbox = React.createClass({
     render() {
         return (
-          <div className="inbox">
+          <div className="view-inbox">
             <ListNoms noms={Noms} />
           </div>
         )

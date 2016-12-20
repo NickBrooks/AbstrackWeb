@@ -8,7 +8,7 @@ const NomHeader = React.createClass({
                 <div className="nom-header">
                     <h3>{this.props.title} <span className="light"> <FontAwesome name="caret-down" /></span></h3>
                     <div className="hashtags">
-                      {this.props.hashtags.map((hashtag, i) => <HashtagSpan {...this.props} hashtag={hashtag.tag} customClass="default" key={i} i={i} />)}
+                      {this.props.hashtags.map((hashtag, i) => <HashtagSpan {...this.props} hashtag={hashtag} customClass="default" key={i} i={i} />)}
                     </div>
                 </div>
         )

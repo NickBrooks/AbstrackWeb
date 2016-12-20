@@ -15,13 +15,10 @@ const Noms = [
       pinned: false,
       completed: false,
       inbox: true,
-      hashtags: [{
-          tag: "nommer",
-          count: 33
-      }, {
-          tag: "idea",
-          count: 29
-      }],
+      hashtags: [
+          "nommer",
+          "idea"
+        ],
       created_time: "2016-12-20T12:46:36.611Z",
       created_by: {
           id: "5a72fcdb-c6aa-4534-9b57-15fe16691bfb",
@@ -52,11 +49,10 @@ const Noms = [
       pinned: true,
       completed: false,
       inbox: true,
-      hashtags: [{
-          tag: "nommer"
-      }, {
-          tag: "idea"
-      }],
+      hashtags: [
+          "nommer",
+          "idea"
+        ],
       created_time: "2016-12-20T12:46:36.611Z",
       created_by: {
           id: "5a72fcdb-c6aa-4534-9b57-15fe16691bfb",
@@ -87,13 +83,11 @@ const Noms = [
       pinned: true,
       completed: false,
       inbox: true,
-      hashtags: [{
-          tag: "nommer"
-      }, {
-          tag: "idea"
-      }, {
-          tag: " notifications"
-      }],
+      hashtags: [
+          "nommer",
+          "idea",
+          "notifications"
+        ],
       created_time: "2016-12-20T12:46:36.611Z",
       created_by: {
           id: "5a72fcdb-c6aa-4534-9b57-15fe16691bfb",
@@ -124,11 +118,10 @@ const Noms = [
       pinned: true,
       completed: false,
       inbox: true,
-      hashtags: [{
-          tag: "nommer"
-      }, {
-          tag: "idea"
-      }],
+      hashtags: [
+          "nommer",
+          "idea"
+        ],
       created_time: "2016-12-20T12:46:36.611Z",
       created_by: {
           id: "5a72fcdb-c6aa-4534-9b57-15fe16691bfb",
@@ -159,14 +152,11 @@ const Noms = [
       pinned: false,
       completed: false,
       inbox: true,
-      hashtags: [{
-          tag: "nommer"
-      }, {
-          tag: "idea"
-      },
-      {
-        tag: "sharing"
-      }],
+      hashtags: [
+          "nommer",
+          "idea",
+          "sharing"
+      ],
       created_time: "2016-12-18T12:46:36.611Z",
       created_by: {
           id: "5a72fcdb-c6aa-4534-9b57-15fe16691bfb",
@@ -197,13 +187,11 @@ const Noms = [
       pinned: false,
       completed: false,
       inbox: true,
-      hashtags: [{
-          tag: "nommer"
-      }, {
-          tag: "idea"
-      }, {
-          tag: "documentdb"
-      }],
+      hashtags: [
+          "nommer",
+          "idea",
+          "documentdb"
+      ],
       created_time: "2016-11-30T12:46:36.611Z",
       created_by: {
           id: "5a72fcdb-c6aa-4534-9b57-15fe16691bfb",
@@ -226,13 +214,11 @@ const Noms = [
       pinned: true,
       completed: false,
       inbox: true,
-      hashtags: [{
-          tag: "roadtrip"
-      }, {
-          tag: "japan"
-      }, {
-          tag: "travel"
-      }],
+      hashtags: [
+          "roadtrip",
+          "japan",
+          "travel"
+      ],
       created_time: "2016-12-20T12:46:36.611Z",
       created_by: {
           id: "5a72fcdb-c6aa-4534-9b57-15fe16691bfb",
@@ -255,13 +241,11 @@ const Noms = [
       pinned: false,
       completed: false,
       inbox: true,
-      hashtags: [{
-          tag: "travel"
-      }, {
-          tag: "japan"
-      }, {
-          tag: "food"
-      }],
+      hashtags: [
+          "travel",
+          "japan",
+          "food"
+      ],
       created_time: "2016-12-20T12:46:36.611Z",
       created_by: {
           id: "5a72fcdb-c6aa-4534-9b57-15fe16691bfb",
@@ -284,11 +268,10 @@ const Noms = [
       pinned: true,
       completed: false,
       inbox: true,
-      hashtags: [{
-          tag: "recipe"
-      }, {
-          tag: "food"
-      }],
+      hashtags: [
+          "recipe",
+          "food"
+        ],
       created_time: "2016-12-20T12:46:36.611Z",
       created_by: {
           id: "5a72fcdb-c6aa-4534-9b57-15fe16691bfb",
@@ -311,15 +294,12 @@ const Noms = [
       pinned: false,
       completed: false,
       inbox: true,
-      hashtags: [{
-          tag: "tobuy"
-      }, {
-          tag: "vinyl"
-      }, {
-          tag: "music"
-      }, {
-          tag: "list"
-      }],
+      hashtags: [
+          "tobuy",
+          "vinyl",
+          "music",
+          "list"
+      ],
       created_time: "2016-12-20T12:46:36.611Z",
       created_by: {
           id: "5a72fcdb-c6aa-4534-9b57-15fe16691bfb",

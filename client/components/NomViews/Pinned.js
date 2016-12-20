@@ -12,7 +12,7 @@ const NomViewPinned = React.createClass({
     render() {
         let pinnedNoms = Noms.filter(filterPinnedNoms)
         return (
-          <div className="pinned">
+          <div className="view-pinned">
             <ListNoms noms={pinnedNoms} />
           </div>
         )
