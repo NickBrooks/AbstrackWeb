@@ -3,7 +3,6 @@ import { Link } from 'react-router';
 
 const HashtagSpan = React.createClass({
     render() {
-      console.log(this.props);
         const { hashtag, customClass } = this.props;
         const link = "/t/" + hashtag;
         const tag = "#" + hashtag;

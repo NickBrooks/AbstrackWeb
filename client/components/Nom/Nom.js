@@ -11,6 +11,18 @@ const Nom = React.createClass({
     renderMenuItemArray(menuItem) {
         return [menuItem];
     },
+    renderProjectSubMenu(project) {
+      if (project) {
+        return <SidebarSubMenu menuItems={this.renderMenuItemArray(project)} textKey="title" linkKey="id" icon="bookmark" title="Project" />
+      }
+      return ;
+    },
+    renderMilestoneSubMenu(milestone) {
+      if (milestone) {
+        return <SidebarSubMenu menuItems={this.renderMenuItemArray(milestone)} textKey="title" linkKey="id" icon="calendar-o" title="Milestone" />;
+      }
+      return ;
+    },
     render() {
         const { nomId } = this.props.params;
         const i = Noms.findIndex((nom) => nom.id === nomId);
@@ -31,8 +43,8 @@ const Nom = React.createClass({
 
                 <div className="col-sm-2 sub-bar">
                     <UserBadge user={nom.created_by} />
-                    <SidebarSubMenu menuItems={this.renderMenuItemArray(nom.project)} textKey="title" linkKey="id" icon="bookmark" title="Project" />
-                    <SidebarSubMenu menuItems={this.renderMenuItemArray(nom.milestone)} textKey="title" linkKey="id" icon="calendar-o" title="Milestone" />
+                    {this.renderProjectSubMenu(nom.project)}
+                    {this.renderMilestoneSubMenu(nom.milestone)}
                 </div>
             </div>
         )
