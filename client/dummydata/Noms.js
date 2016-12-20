@@ -12,7 +12,7 @@ const Noms = [
           title: "Nommer UI"
       },
       type: "markdown",
-      starred: false,
+      pinned: false,
       completed: false,
       inbox: true,
       hashtags: [{
@@ -22,7 +22,7 @@ const Noms = [
           tag: "idea",
           count: 29
       }],
-      created_time: 1482209527,
+      created_time: "2016-12-20T12:46:36.611Z",
       created_by: {
           id: "5a72fcdb-c6aa-4534-9b57-15fe16691bfb",
           username: "NickBrooks",
@@ -49,7 +49,7 @@ const Noms = [
           title: "Nommer UI"
       },
       type: "markdown",
-      starred: true,
+      pinned: true,
       completed: false,
       inbox: true,
       hashtags: [{
@@ -57,7 +57,7 @@ const Noms = [
       }, {
           tag: "idea"
       }],
-      created_time: 1482209527,
+      created_time: "2016-12-20T12:46:36.611Z",
       created_by: {
           id: "5a72fcdb-c6aa-4534-9b57-15fe16691bfb",
           username: "NickBrooks",
@@ -84,7 +84,7 @@ const Noms = [
           title: "Nommer UI"
       },
       type: "markdown",
-      starred: true,
+      pinned: true,
       completed: false,
       inbox: true,
       hashtags: [{
@@ -94,7 +94,7 @@ const Noms = [
       }, {
           tag: " notifications"
       }],
-      created_time: 1482209527,
+      created_time: "2016-12-20T12:46:36.611Z",
       created_by: {
           id: "5a72fcdb-c6aa-4534-9b57-15fe16691bfb",
           username: "NickBrooks",
@@ -121,7 +121,7 @@ const Noms = [
           title: "Nommer UI"
       },
       type: "markdown",
-      starred: true,
+      pinned: true,
       completed: false,
       inbox: true,
       hashtags: [{
@@ -129,7 +129,7 @@ const Noms = [
       }, {
           tag: "idea"
       }],
-      created_time: 1482209527,
+      created_time: "2016-12-20T12:46:36.611Z",
       created_by: {
           id: "5a72fcdb-c6aa-4534-9b57-15fe16691bfb",
           username: "NickBrooks",
@@ -156,7 +156,7 @@ const Noms = [
           title: "Nommer UI"
       },
       type: "markdown",
-      starred: false,
+      pinned: false,
       completed: false,
       inbox: true,
       hashtags: [{
@@ -167,7 +167,7 @@ const Noms = [
       {
         tag: "sharing"
       }],
-      created_time: 1482209527,
+      created_time: "2016-12-18T12:46:36.611Z",
       created_by: {
           id: "5a72fcdb-c6aa-4534-9b57-15fe16691bfb",
           username: "NickBrooks",
@@ -194,7 +194,7 @@ const Noms = [
           title: "Nommer UI"
       },
       type: "markdown",
-      starred: false,
+      pinned: false,
       completed: false,
       inbox: true,
       hashtags: [{
@@ -204,7 +204,7 @@ const Noms = [
       }, {
           tag: "documentdb"
       }],
-      created_time: 1482209527,
+      created_time: "2016-11-30T12:46:36.611Z",
       created_by: {
           id: "5a72fcdb-c6aa-4534-9b57-15fe16691bfb",
           username: "NickBrooks",
@@ -223,7 +223,7 @@ const Noms = [
       title: "Road Trip Locations",
       body: "To be worked on",
       type: "markdown",
-      starred: true,
+      pinned: true,
       completed: false,
       inbox: true,
       hashtags: [{
@@ -233,7 +233,7 @@ const Noms = [
       }, {
           tag: "travel"
       }],
-      created_time: 1482209527,
+      created_time: "2016-12-20T12:46:36.611Z",
       created_by: {
           id: "5a72fcdb-c6aa-4534-9b57-15fe16691bfb",
           username: "NickBrooks",
@@ -252,7 +252,7 @@ const Noms = [
       title: "Food to eat in Japan",
       body: "To be worked on - list of nice food: \n - Sushi \n - Ramen",
       type: "markdown",
-      starred: false,
+      pinned: false,
       completed: false,
       inbox: true,
       hashtags: [{
@@ -262,7 +262,7 @@ const Noms = [
       }, {
           tag: "food"
       }],
-      created_time: 1482209527,
+      created_time: "2016-12-20T12:46:36.611Z",
       created_by: {
           id: "5a72fcdb-c6aa-4534-9b57-15fe16691bfb",
           username: "NickBrooks",
@@ -281,7 +281,7 @@ const Noms = [
       title: "Nick's Pasta Recipe",
       body: "Lots of tomatos and chilli of course",
       type: "markdown",
-      starred: true,
+      pinned: true,
       completed: false,
       inbox: true,
       hashtags: [{
@@ -289,7 +289,7 @@ const Noms = [
       }, {
           tag: "food"
       }],
-      created_time: 1482209527,
+      created_time: "2016-12-20T12:46:36.611Z",
       created_by: {
           id: "5a72fcdb-c6aa-4534-9b57-15fe16691bfb",
           username: "NickBrooks",
@@ -308,7 +308,7 @@ const Noms = [
       title: "Puchases for record collection",
       body: "Here's a list of things I need to buy for my record collection",
       type: "markdown",
-      starred: false,
+      pinned: false,
       completed: false,
       inbox: true,
       hashtags: [{
@@ -320,7 +320,7 @@ const Noms = [
       }, {
           tag: "list"
       }],
-      created_time: 1482209527,
+      created_time: "2016-12-20T12:46:36.611Z",
       created_by: {
           id: "5a72fcdb-c6aa-4534-9b57-15fe16691bfb",
           username: "NickBrooks",

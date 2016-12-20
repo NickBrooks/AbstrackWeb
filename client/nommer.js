@@ -6,7 +6,8 @@ import Style from './styles/app.scss';
 
 // Import Components
 import App from './components/App';
-import ListNoms from './components/ListNoms/ListNoms';
+import NomViewInbox from './components/NomViews/Inbox';
+import NomViewPinned from './components/NomViews/Pinned';
 import Nom from './components/Nom/Nom';
 
 // Import Router
@@ -18,7 +19,8 @@ const router = (
     <Provider store={store}>
         <Router history={history}>
             <Route path="/" component={App}>
-                <IndexRoute component={ListNoms}></IndexRoute>
+                <IndexRoute component={NomViewInbox}></IndexRoute>
+                <Route path="/pinned" component={NomViewPinned}></Route>
                 <Route path="/n/:nomId" component={Nom}></Route>
             </Route>
         </Router>

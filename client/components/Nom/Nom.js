@@ -16,13 +16,13 @@ const Nom = React.createClass({
       if (project) {
         return <SidebarSubMenu menuItems={this.renderMenuItemArray(project)} textKey="title" linkKey="id" icon="bookmark" title="Project" />
       }
-      return ;
+      return;
     },
     renderMilestoneSubMenu(milestone) {
       if (milestone) {
         return <SidebarSubMenu menuItems={this.renderMenuItemArray(milestone)} textKey="title" linkKey="id" icon="calendar-o" title="Milestone" />;
       }
-      return ;
+      return;
     },
     render() {
         const { nomId } = this.props.params;

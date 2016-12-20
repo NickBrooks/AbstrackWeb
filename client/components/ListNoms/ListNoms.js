@@ -1,31 +1,95 @@
 import React from 'react';
-import NomNode from './NomNode';
+import moment from 'moment';
+import TimeNode from './TimeNode';
 
-// Dummy Data
-import Noms from '../../dummydata/Noms';
+var now = moment();
+
+//filters noms actioned today
+function isToday(n) {
+  var nomTime = moment(n.created_time);
+  var timeDiff = now.diff(nomTime, 'days');
+
+  return timeDiff == 0;
+}
+
+//filters noms actioned this week
+function isThisWeek(n) {
+  var nomTime = moment(n.created_time);
+  var timeDiff = now.diff(nomTime, 'days');
+
+  return (timeDiff > 0) && (timeDiff <= 7);
+}
+
+//filters noms actioned this month
+function isThisMonth(n) {
+  var nomTime = moment(n.created_time);
+  var timeDiff = now.diff(nomTime, 'days');
+
+  return (timeDiff > 7) && (timeDiff <= 30);
+}
+
+//filters noms actioned a few months ago
+function isAFewMonths(n) {
+  var nomTime = moment(n.created_time);
+  var timeDiff = now.diff(nomTime, 'days');
+
+  return (timeDiff > 30) && (timeDiff <= 365);
+}
+
+//filters noms actioned over year ago
+function isAYear(n) {
+  var nomTime = moment(n.created_time);
+  var timeDiff = now.diff(nomTime, 'days');
+
+  return (timeDiff > 365);
+}
 
 const ListNoms = React.createClass({
+    renderTodaysNoms(noms) {
+      let filteredNoms = noms.filter(isToday);
+      if (filteredNoms.length > 0) {
+        return <TimeNode noms={filteredNoms} title="Today" />
+      }
+      return;
+    },
+    renderThisWeeksNoms(noms) {
+      let filteredNoms = noms.filter(isThisWeek);
+      if (filteredNoms.length > 0) {
+        return <TimeNode noms={filteredNoms} title="This week" />
+      }
+      return;
+    },
+    renderThisMonthsNoms(noms) {
+      let filteredNoms = noms.filter(isThisMonth);
+      if (filteredNoms.length > 0) {
+        return <TimeNode noms={filteredNoms} title="This month" />
+      }
+      return;
+    },
+    renderAFewMonthsNoms(noms) {
+      let filteredNoms = noms.filter(isAFewMonths);
+      if (filteredNoms.length > 0) {
+        return <TimeNode noms={filteredNoms} title="A few months ago" />
+      }
+      return;
+    },
+    renderAYearsNoms(noms) {
+      let filteredNoms = noms.filter(isAYear);
+      if (filteredNoms.length > 0) {
+        return <TimeNode noms={filteredNoms} title="A year ago" />
+      }
+      return;
+    },
     render() {
+        // Dummy Data
+        const {noms} = this.props;
         return (
           <div className="nom-list">
-            <div className="time-node">
-              <h6>Today</h6>
-              <ul>
-                  {Noms.map((nom) => <NomNode {...nom} key={nom.id} id={nom.id} />)}
-              </ul>
-            </div>
-            <div className="time-node">
-              <h6>This month</h6>
-              <ul>
-                  {Noms.map((nom) => <NomNode {...nom} key={nom.id} id={nom.id} />)}
-              </ul>
-            </div>
-            <div className="time-node">
-              <h6>Older</h6>
-              <ul>
-                  {Noms.map((nom) => <NomNode {...nom} key={nom.id} id={nom.id} />)}
-              </ul>
-            </div>
+            {this.renderTodaysNoms(noms)}
+            {this.renderThisWeeksNoms(noms)}
+            {this.renderThisMonthsNoms(noms)}
+            {this.renderAFewMonthsNoms(noms)}
+            {this.renderAYearsNoms(noms)}
           </div>
         )
     }
