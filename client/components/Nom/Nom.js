@@ -28,7 +28,6 @@ const Nom = React.createClass({
         const { nomId } = this.props.params;
         const i = Noms.findIndex((nom) => nom.id === nomId);
         const nom = Noms[i];
-        const created_time = moment(nom.created_time, "MM/DD/YYYY");
         return (
             <div className="row core-body">
                 <div className="col-sm-10">
@@ -47,7 +46,7 @@ const Nom = React.createClass({
                     <UserBadge user={nom.created_by} />
                     {this.renderProjectSubMenu(nom.project)}
                     {this.renderMilestoneSubMenu(nom.milestone)}
-                    Created: {created_time}
+                    Created: {nom.created_time}
                 </div>
             </div>
         )

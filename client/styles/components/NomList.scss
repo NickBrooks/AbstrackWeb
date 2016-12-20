@@ -13,6 +13,16 @@
                 border: 1px solid #eee;
                 color: $font-color;
             }
+
+            li:hover {
+                background: #eee;
+            }
+
+            a:active,
+            a:focus,
+            a:hover {
+                text-decoration: none;
+            }
         }
 
         .title {
