@@ -28,6 +28,9 @@ const tags = {
       tag: "tech"
     },
     {
+      tag: "food"
+    },
+    {
       tag: "japan"
     },
     {
@@ -35,6 +38,27 @@ const tags = {
     },
     {
       tag: "roadtrip"
+    },
+    {
+      tag: "notifications"
+    },
+    {
+      tag: "sharing"
+    },
+    {
+      tag: "documentdb"
+    },
+    {
+      tag: "vinyl"
+    },
+    {
+      tag: "music"
+    },
+    {
+      tag: "tobuy"
+    },
+    {
+      tag: "list"
     }
   ]
 }
