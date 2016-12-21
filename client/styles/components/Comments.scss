@@ -3,17 +3,22 @@ ul.comments {
     margin: 0;
     padding: 0;
 
-    li .comment-body {
-        margin-left: 60px;
-        border-top: solid 2px $nom-blue;
+    li {
+        .user {
+            .username {
+                font-size: 0.9em;
+                color: $font-color-secondary;
+            }
+        }
+
+        .ibox {
+            border-top: solid 2px $header-color-secondary;
+            margin-left: 60px;
+        }
 
         img {
             max-width: 100%;
             margin: 15px 0;
-        }
-
-        li .comment-body.user {
-            border-top: solid 2px $nom-green;
         }
     }
 }
