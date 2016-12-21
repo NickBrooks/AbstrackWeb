@@ -1,10 +1,11 @@
 import React from 'react';
+import { Link } from 'react-router';
 import moment from 'moment';
+import FontAwesome from 'react-fontawesome';
 import NomBody from './NomBody';
 import NomHeader from './NomHeader';
 import Avatar from '../Reusable/Avatar';
 import Comments from '../Comments/Comments'
-import SidebarSubMenu from '../Reusable/SidebarSubMenu';
 
 //dummy data
 import Noms from '../../dummydata/Noms';
@@ -15,13 +16,25 @@ const Nom = React.createClass({
     },
     renderProjectSubMenu(project) {
       if (project) {
-        return <SidebarSubMenu menuItems={this.renderMenuItemArray(project)} textKey="title" linkKey="id" icon="bookmark" title="Project" />
+        const link = "/p/" + project.id;
+        return (
+          <ul className="nav sub-menu">
+              <li><h6><FontAwesome name="bookmark" /> Project</h6></li>
+              <li><Link to={link}>{project.name}</Link></li>
+          </ul>
+        )
       }
       return;
     },
     renderMilestoneSubMenu(milestone) {
       if (milestone) {
-        return <SidebarSubMenu menuItems={this.renderMenuItemArray(milestone)} textKey="title" linkKey="id" icon="calendar-o" title="Milestone" />;
+        const link = "/m/" + milestone.id;
+        return (
+          <ul className="nav sub-menu">
+              <li><h6><FontAwesome name="calendar-o" /> Milestone</h6></li>
+              <li><Link to={link}>{milestone.name}</Link></li>
+          </ul>
+        )
       }
       return;
     },
@@ -48,7 +61,6 @@ const Nom = React.createClass({
                 <div className="col-sm-2 sub-bar">
                     {this.renderProjectSubMenu(nom.project)}
                     {this.renderMilestoneSubMenu(nom.milestone)}
-                    Created: {nom.created_time}
                 </div>
             </div>
         )

@@ -5,11 +5,11 @@ const Noms = [
       body: "Is there a better word for archiving?",
       project: {
           id: "73172577-74fc-43e7-9683-2782a6bc655f",
-          title: "Nommer"
+          name: "Nommer"
       },
       milestone: {
           id: "dcb09dbb-227a-478e-aab5-c51a9d37c318",
-          title: "Nommer UI"
+          name: "Nommer UI"
       },
       type: "markdown",
       pinned: false,
@@ -40,11 +40,11 @@ const Noms = [
       body: "Allows you to save public Noms that aren't shared with you \n- Actual version? \n- Or Original?",
       project: {
           id: "73172577-74fc-43e7-9683-2782a6bc655f",
-          title: "Nommer"
+          name: "Nommer"
       },
       milestone: {
           id: "dcb09dbb-227a-478e-aab5-c51a9d37c318",
-          title: "Nommer UI"
+          name: "Nommer UI"
       },
       type: "markdown",
       pinned: true,
@@ -75,11 +75,11 @@ const Noms = [
       body: "Create a place to view all your notifications.",
       project: {
           id: "73172577-74fc-43e7-9683-2782a6bc655f",
-          title: "Nommer"
+          name: "Nommer"
       },
       milestone: {
           id: "dcb09dbb-227a-478e-aab5-c51a9d37c318",
-          title: "Nommer UI"
+          name: "Nommer UI"
       },
       type: "markdown",
       pinned: true,
@@ -111,11 +111,11 @@ const Noms = [
       body: "Be able to `@tag` fellow users in comments",
       project: {
           id: "73172577-74fc-43e7-9683-2782a6bc655f",
-          title: "Nommer"
+          name: "Nommer"
       },
       milestone: {
           id: "dcb09dbb-227a-478e-aab5-c51a9d37c318",
-          title: "Nommer UI"
+          name: "Nommer UI"
       },
       type: "markdown",
       pinned: true,
@@ -146,11 +146,11 @@ const Noms = [
       body: "Set the various sharing permissions on Noms.",
       project: {
           id: "73172577-74fc-43e7-9683-2782a6bc655f",
-          title: "Nommer"
+          name: "Nommer"
       },
       milestone: {
           id: "dcb09dbb-227a-478e-aab5-c51a9d37c318",
-          title: "Nommer UI"
+          name: "Nommer UI"
       },
       type: "markdown",
       pinned: false,
@@ -182,11 +182,11 @@ const Noms = [
       body: "More of the fine grained stuff like amount of issues, etc etc etc... Just extra meta about user!",
       project: {
           id: "73172577-74fc-43e7-9683-2782a6bc655f",
-          title: "Nommer"
+          name: "Nommer"
       },
       milestone: {
           id: "dcb09dbb-227a-478e-aab5-c51a9d37c318",
-          title: "Nommer UI"
+          name: "Nommer UI"
       },
       type: "markdown",
       pinned: false,
