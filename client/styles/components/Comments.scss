@@ -1,0 +1,14 @@
+ul.comments {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+
+    li .comment-body {
+        margin-left: 60px;
+
+        img {
+            max-width: 100%;
+            margin: 15px 0;
+        }
+    }
+}
