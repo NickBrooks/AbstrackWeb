@@ -1,4 +1,5 @@
 import React from 'react';
+import FontAwesome from 'react-fontawesome';
 import ListNoms from '../ListNoms/ListNoms';
 
 //dummydata//dummy data
@@ -22,7 +23,7 @@ const NomViewProject = React.createClass({
 
         return (
           <div className="view-project">
-            <h3>{project.name}</h3>
+            <h3><FontAwesome name="bookmark" style={{color: "#638495"}}/> {project.name}</h3>
             <hr />
             <ListNoms noms={projectNoms} />
           </div>

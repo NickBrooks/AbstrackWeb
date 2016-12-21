@@ -9,6 +9,7 @@ import App from './components/App';
 import NomViewInbox from './components/NomViews/Inbox';
 import NomViewPinned from './components/NomViews/Pinned';
 import NomViewProject from './components/NomViews/Project';
+import NomViewMilestone from './components/NomViews/Milestone';
 import NomViewTag from './components/NomViews/Tag';
 import Nom from './components/Nom/Nom';
 
@@ -24,6 +25,7 @@ const router = (
                 <IndexRoute component={NomViewInbox}></IndexRoute>
                 <Route path="/pinned" component={NomViewPinned}></Route>
                 <Route path="/p/:projectId" component={NomViewProject}></Route>
+                <Route path="/m/:milestoneId" component={NomViewMilestone}></Route>
                 <Route path="/n/:nomId" component={Nom}></Route>
                 <Route path="/t/:tag" component={NomViewTag}></Route>
             </Route>
