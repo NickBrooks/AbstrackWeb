@@ -5,10 +5,15 @@ ul.comments {
 
     li .comment-body {
         margin-left: 60px;
+        border-top: solid 2px $nom-blue;
 
         img {
             max-width: 100%;
             margin: 15px 0;
+        }
+
+        li .comment-body.user {
+            border-top: solid 2px $nom-green;
         }
     }
 }
