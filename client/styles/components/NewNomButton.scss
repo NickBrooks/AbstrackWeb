@@ -27,4 +27,8 @@
         position: relative;
         width: 56px;
     }
+
+    .btn:hover {
+        background-color: $nom-green-light;
+    }
 }
