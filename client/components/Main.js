@@ -1,6 +1,7 @@
 import React from 'react';
 import Sidebar from './Sidebar/Sidebar';
 import Header from './Header/Header';
+import NewNomButton from './General/NewNomButton';
 
 const Main = React.createClass({
     render() {
@@ -17,6 +18,7 @@ const Main = React.createClass({
                       </div>
                   </div>
               </div>
+              <NewNomButton />
             </div>
         )
     }
