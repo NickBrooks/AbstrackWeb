@@ -1,5 +1,5 @@
 import React from 'react';
-import HashtagSpan from './HashtagSpan';
+import HashtagSpan from '../Reusable/HashtagSpan';
 import FontAwesome from 'react-fontawesome';
 
 const NomHeader = React.createClass({

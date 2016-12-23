@@ -5,6 +5,7 @@ import ListNoms from '../ListNoms/ListNoms';
 //dummydata//dummy data
 import Noms from '../../dummydata/Noms';
 import Milestones from '../../dummydata/Milestones';
+import Projects from '../../dummydata/Projects';
 
 const NomViewMilestone = React.createClass({
     filterMilestoneNoms: function(n) {
@@ -16,14 +17,19 @@ const NomViewMilestone = React.createClass({
     },
     render() {
         const { milestoneId } = this.props.params;
-        const i = Milestones.findIndex((milestone) => milestone.id === milestoneId);
-        const milestone = Milestones[i];
+        const milestoneIndex = Milestones.findIndex((milestone) => milestone.id === milestoneId);
+        const milestone = Milestones[milestoneIndex];
+        const projectIndex = Projects.findIndex((project) => project.id === milestone.project.id);
+        const project = Projects[projectIndex];
 
         let milestoneNoms = Noms.filter(this.filterMilestoneNoms);
 
         return (
           <div className="view-milestone">
-            <h3><FontAwesome name="calendar-o" style={{color: "#638495"}}/> {milestone.name}</h3>
+            <h3><FontAwesome name="calendar-o" /> {milestone.name}</h3>
+            <p>{milestone.description}</p>
+            <div className="text-xs-center">{milestone.percent_complete}%</div>
+            <progress className="progress progress-success" value={milestone.percent_complete} max="100"></progress>
             <hr />
             <ListNoms noms={milestoneNoms} />
           </div>

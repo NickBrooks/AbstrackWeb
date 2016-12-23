@@ -24,6 +24,7 @@ const NomViewProject = React.createClass({
         return (
           <div className="view-project">
             <h3><FontAwesome name="bookmark" style={{color: "#638495"}}/> {project.name}</h3>
+            <h6><span className="tag tag-success"><FontAwesome name="lock" /> {project.visibility}</span></h6>
             <hr />
             <ListNoms noms={projectNoms} />
           </div>
