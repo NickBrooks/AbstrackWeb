@@ -5,8 +5,15 @@ import Main from './Main';
 
 function mapStateToProps(state) {
     return {
-        posts: state.posts,
-        comments: state.comments
+        Comments: state.Comments,
+        Hashtags: state.Hashtags,
+        Milestones: state.Milestones,
+        Noms: state.Noms,
+        Projects: state.Projects,
+        Settings: state.Settings,
+        UI: state.UI,
+        UserProfile: state.UserProfile,
+        Users: state.Users
     }
 }
 
