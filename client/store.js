@@ -6,27 +6,27 @@ import { browserHistory } from 'react-router';
 import rootReducer from './reducers/index';
 
 // import dummydata
-import Comments from './dummydata/Comments';
-import Hashtags from './dummydata/Hashtags';
-import Milestones from './dummydata/Milestones';
-import Noms from './dummydata/Noms';
-import Projects from './dummydata/Projects';
-import Settings from './dummydata/Settings';
-import UI from './dummydata/UI';
-import UserProfile from './dummydata/UserProfile';
-import Users from './dummydata/Users';
+import comments from './dummydata/Comments';
+import hashtags from './dummydata/Hashtags';
+import milestones from './dummydata/Milestones';
+import noms from './dummydata/Noms';
+import projects from './dummydata/Projects';
+import settings from './dummydata/Settings';
+import ui from './dummydata/UI';
+import userProfile from './dummydata/UserProfile';
+import users from './dummydata/Users';
 
 // create an object for the default state
 const defaultState = {
-  Comments,
-  Hashtags,
-  Milestones,
-  Noms,
-  Projects,
-  Settings,
-  UI,
-  UserProfile,
-  Users
+  comments,
+  hashtags,
+  milestones,
+  noms,
+  projects,
+  settings,
+  ui,
+  userProfile,
+  users
 };
 
 const store = createStore(rootReducer, defaultState);
