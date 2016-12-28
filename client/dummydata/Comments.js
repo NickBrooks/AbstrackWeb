@@ -1,4 +1,4 @@
-const Comments = {
+const comments = {
   "6646b12c-f79d-4a88-b254-0bf9abd6c894": [{
     id: "69049b93-8ccd-49a6-8226-99b52cc07c4c",
     body: "It's very easy to make some words **bold** and other words *italic* with Markdown. You can even [link to Google!](http://google.com)",
@@ -86,4 +86,4 @@ const Comments = {
   }]
 }
 
-export default Comments;
+export default comments;

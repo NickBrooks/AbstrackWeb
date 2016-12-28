@@ -1,4 +1,4 @@
-const UserProfile = {
+const userProfile = {
   id: "5a72fcdb-c6aa-4534-9b57-15fe16691bfb",
   username: "NickBrooks",
   email: "nbrooks@thirtyseven.com.au",
@@ -15,4 +15,4 @@ const UserProfile = {
   }
 }
 
-export default UserProfile;
+export default userProfile;

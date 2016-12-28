@@ -13,7 +13,7 @@ const NewNomModal = React.createClass({
     render() {
         return (
             <div>
-                <Modal show={true} onHide={this.closeModal} aria-labelledby="ModalHeader">
+                <Modal show={this.props.open} onHide={this.closeModal} aria-labelledby="ModalHeader">
                     <Modal.Header closeButton>
                         <Modal.Title id='ModalHeader'>A Title Goes here</Modal.Title>
                     </Modal.Header>

@@ -1,7 +1,7 @@
-const UI = {
+const ui = {
   newNomModal: {
     open: false
   }
 }
 
-export default UI;
+export default ui;

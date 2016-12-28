@@ -1,4 +1,4 @@
-const tags = [
+const hashtags = [
   {
     tag: "nommer"
   },
@@ -61,4 +61,4 @@ const tags = [
   }
 ]
 
-export default tags;
+export default hashtags;

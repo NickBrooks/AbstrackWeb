@@ -1,4 +1,4 @@
-const Users = [
+const users = [
   {
     id: "5a72fcdb-c6aa-4534-9b57-15fe16691bfb",
     username: "NickBrooks",
@@ -61,4 +61,4 @@ const Users = [
   }
 ]
 
-export default Users;
+export default users;

@@ -1,7 +1,7 @@
-const Settings = {
+const settings = {
   searchbar: {
     text: "Search #noms"
   }
 }
 
-export default Settings;
+export default settings;
