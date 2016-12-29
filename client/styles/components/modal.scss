@@ -89,20 +89,43 @@
     animation-name: shake
 }
 .modal {
-    display: block
+    display: block;
+    min-height: calc(100% - 20px);
 }
-.modal-content>.close {
-    position: absolute;
-    top: 10px;
-    right: 10px
+.modal-dialog {
+    height: calc(100% - 20px);
+    box-sizing: border-box;
+    padding: 0;
 }
-@media (min-width: 768px) {
-    .modal-sm>.modal-dialog {
-        width: 300px
+.modal-content {
+    width: 100%;
+    min-height: 100%;
+    overflow: hidden;
+
+    .close {
+        position: absolute;
+        top: 10px;
+        right: 10px
     }
 }
-@media (min-width: 992px) {
-    .modal-lg>.modal-dialog {
-        width: 90%
+
+@media (min-width: 576px) {
+    .modal {
+        min-height: calc(100% - 60px);
+    }
+    .modal-dialog {
+        height: calc(100% - 60px);
+    }
+}
+
+@media (min-width: 576px) and (max-width: 1400px) {
+    .modal-dialog {
+        max-width: 90%;
+    }
+}
+
+@media (min-width: 1400px) {
+    .modal-dialog {
+        max-width: 1260px;
     }
 }
