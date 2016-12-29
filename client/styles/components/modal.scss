@@ -109,6 +109,18 @@
     }
 }
 
+.modal-header {
+    border-bottom: $hr-border;
+}
+
+.modal-body {
+    height: calc(100vh - 198px);
+}
+
+.modal-footer {
+    border-top: $hr-border;
+}
+
 @media (min-width: 576px) {
     .modal {
         min-height: calc(100% - 60px);
