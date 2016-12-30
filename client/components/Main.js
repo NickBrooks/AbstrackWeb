@@ -19,7 +19,7 @@ const Main = React.createClass({
                         </div>
                     </div>
                 </div>
-                <NewNomButton {...this.props} />
+                {this.props.ui.newNomModal.open ? null : (<NewNomButton {...this.props} />)}
                 <NewNomModal open={this.props.ui.newNomModal.open} {...this.props} />
             </div>
         )
