@@ -3,17 +3,10 @@ import FontAwesome from 'react-fontawesome';
 import Modal from 'react-bootstrap-modal';
 
 const NewNomModal = React.createClass({
-    closeModal() {
-        this.setState(
-            {
-                open: false
-            }
-        )
-    },
     render() {
         return (
             <div>
-                <Modal show={this.props.open} onHide={this.closeModal} aria-labelledby="ModalHeader">
+                <Modal show={this.props.open} onHide={this.props.toggleNewNomModal.bind(null, false)} aria-labelledby="ModalHeader">
                     <Modal.Header closeButton>
                         <Modal.Title id='ModalHeader'>A Title Goes here</Modal.Title>
                     </Modal.Header>
