@@ -14,7 +14,7 @@ const NewNomModal = React.createClass({
                         <p>Some Content here</p>
                     </Modal.Body>
                     <Modal.Footer>
-                        <button className='btn btn-primary' onClick={this.closeModal}>Save</button>
+                        <button className='btn btn-success' onClick={this.closeModal}>Publish</button>
                     </Modal.Footer>
                 </Modal>
             </div>
