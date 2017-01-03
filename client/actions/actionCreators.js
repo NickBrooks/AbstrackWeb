@@ -6,6 +6,16 @@ export function toggleNewNomModal(value) {
     }
 }
 
+// add comment
+export function addComment(nomId, author, comment) {
+    return {
+        type: 'ADD_COMMENT',
+        nomId,
+        author,
+        comment
+    }
+}
+
 export function insertNom(index) {
     return {
         type: 'INSERT_NOM',
