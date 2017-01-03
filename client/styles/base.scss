@@ -64,6 +64,10 @@ blockquote p {
     font-style: italic;
 }
 
+button {
+    font-family: $font-family-fancy;
+}
+
 textarea {
     width: 100%;
     box-sizing: border-box;
