@@ -1,16 +1,14 @@
 import React from 'react';
 import ListNoms from '../ListNoms/ListNoms';
 
-//dummydata//dummy data
-import Noms from '../../dummydata/Noms';
-
 function filterPinnedNoms(n) {
   return n.pinned == true;
 }
 
-const NomViewPinned = React.createClass({
+const NomViewPinned = React.createClass({  
     render() {
-        let pinnedNoms = Noms.filter(filterPinnedNoms)
+        let {noms} = this.props;
+        let pinnedNoms = noms.filter(filterPinnedNoms)
         return (
           <div className="view-pinned">
             <ListNoms noms={pinnedNoms} />

@@ -2,10 +2,6 @@ import React from 'react';
 import FontAwesome from 'react-fontawesome';
 import ListNoms from '../ListNoms/ListNoms';
 
-//dummydata//dummy data
-import Noms from '../../dummydata/Noms';
-import Projects from '../../dummydata/Projects';
-
 const NomViewProject = React.createClass({
     filterProjectNoms: function(n) {
       if(typeof n.project != "undefined") {
@@ -16,10 +12,11 @@ const NomViewProject = React.createClass({
     },
     render() {
         const { projectId } = this.props.params;
-        const i = Projects.findIndex((project) => project.id === projectId);
-        const project = Projects[i];
+        const { noms, projects } = this.props;
+        const i = projects.findIndex((project) => project.id === projectId);
+        const project = projects[i];
 
-        let projectNoms = Noms.filter(this.filterProjectNoms);
+        let projectNoms = noms.filter(this.filterProjectNoms);
 
         return (
           <div className="view-project">

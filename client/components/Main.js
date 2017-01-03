@@ -8,11 +8,11 @@ const Main = React.createClass({
     render() {
         return (
             <div className="app">
-                <Sidebar />
+                <Sidebar {...this.props} />
                 <div className="container-fluid main">
                     <div className="row">
                         <div className="col-sm-12 header">
-                            <Header />
+                            <Header {...this.props} />
                         </div>
                         <div className="col-sm-12 body">
                             {React.cloneElement(this.props.children, this.props)}

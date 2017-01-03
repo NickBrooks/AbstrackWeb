@@ -7,9 +7,6 @@ import NomHeader from './NomHeader';
 import Avatar from '../Reusable/Avatar';
 import Comments from '../Comments/Comments'
 
-//dummy data
-import Noms from '../../dummydata/Noms';
-
 const Nom = React.createClass({
     renderMenuItemArray(menuItem) {
         return [menuItem];
@@ -40,8 +37,9 @@ const Nom = React.createClass({
     },
     render() {
         const { nomId } = this.props.params;
-        const i = Noms.findIndex((nom) => nom.id === nomId);
-        const nom = Noms[i];
+        const { noms } = this.props;
+        const i = noms.findIndex((nom) => nom.id === nomId);
+        const nom = noms[i];
         return (
             <div className="row core-body">
                 <div className="col-sm-10">
@@ -53,7 +51,7 @@ const Nom = React.createClass({
                                 <hr />
                                 <NomBody body={nom.body} />
                             </div>
-                            <Comments nomId={nom.id} />
+                            <Comments nomId={nom.id} {...this.props} />
                         </div>
                     </div>
                 </div>

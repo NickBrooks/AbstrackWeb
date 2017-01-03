@@ -7,7 +7,7 @@ const Header = React.createClass({
             <div className="header">
                 <div className="row">
                     <div className="col-sm-12">
-                        <SearchBar />
+                        <SearchBar defaultValue={this.props.settings.searchbar.text} />
                     </div>
                 </div>
             </div>

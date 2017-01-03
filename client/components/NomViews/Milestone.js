@@ -2,11 +2,6 @@ import React from 'react';
 import FontAwesome from 'react-fontawesome';
 import ListNoms from '../ListNoms/ListNoms';
 
-//dummydata//dummy data
-import Noms from '../../dummydata/Noms';
-import Milestones from '../../dummydata/Milestones';
-import Projects from '../../dummydata/Projects';
-
 const NomViewMilestone = React.createClass({
     filterMilestoneNoms: function(n) {
       if(typeof n.milestone != "undefined") {
@@ -17,12 +12,13 @@ const NomViewMilestone = React.createClass({
     },
     render() {
         const { milestoneId } = this.props.params;
-        const milestoneIndex = Milestones.findIndex((milestone) => milestone.id === milestoneId);
-        const milestone = Milestones[milestoneIndex];
-        const projectIndex = Projects.findIndex((project) => project.id === milestone.project.id);
-        const project = Projects[projectIndex];
+        const {milestones, projects, noms} = this.props;
+        const milestoneIndex = milestones.findIndex((milestone) => milestone.id === milestoneId);
+        const milestone = milestones[milestoneIndex];
+        const projectIndex = projects.findIndex((project) => project.id === milestone.project.id);
+        const project = projects[projectIndex];
 
-        let milestoneNoms = Noms.filter(this.filterMilestoneNoms);
+        let milestoneNoms = noms.filter(this.filterMilestoneNoms);
 
         return (
           <div className="view-milestone">

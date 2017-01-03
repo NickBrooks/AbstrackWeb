@@ -3,14 +3,12 @@ import { Link } from 'react-router';
 import FontAwesome from 'react-fontawesome';
 import Avatar from '../Reusable/Avatar';
 
-//dummy data
-import UserProfile from '../../dummydata/UserProfile';
-
 const Sidebar = React.createClass({
     render() {
+        let { userProfile } = this.props;
         return (
             <div className="sidebar menu">
-                <Link to="/"><h6><Avatar user={UserProfile} size="30" customClass="pull-left" /> {UserProfile.display_name} <FontAwesome name="caret-down" /></h6></Link>
+                <Link to="/"><h6><Avatar user={userProfile} size="30" customClass="pull-left" /> {userProfile.display_name} <FontAwesome name="caret-down" /></h6></Link>
                 <div className="clearfix"></div>
                 <ul className="nav nav-sidebar">
                     <li><Link to="/t/travel">#travel</Link></li>
