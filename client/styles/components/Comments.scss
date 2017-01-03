@@ -1,9 +1,11 @@
-ul.comments {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
+.comments {
+    ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+    }
 
-    li {
+    li, .add-comment {
         .user {
             .username {
                 font-size: 0.9em;

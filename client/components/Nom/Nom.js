@@ -5,7 +5,7 @@ import FontAwesome from 'react-fontawesome';
 import NomBody from './NomBody';
 import NomHeader from './NomHeader';
 import Avatar from '../Reusable/Avatar';
-import Comments from '../Comments/Comments'
+import Comments from '../Comments/Comments';
 
 const Nom = React.createClass({
     renderMenuItemArray(menuItem) {
