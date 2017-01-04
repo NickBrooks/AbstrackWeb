@@ -3,11 +3,16 @@ import moment from 'moment';
 function postComments(state = [], action) {
     switch (action.type) {
         case 'ADD_COMMENT':
+            //handle empty comment
+            if (body === '') {
+                //handle 
+                return state;
+            }
+            
             // return the new state with the new comment
-            const created_time = moment.utc().format();
             return [...state, {
                 id: guid(),
-                created_time: created_time,
+                created_time: moment.utc().format(),
                 user: action.user,
                 body: action.body
             }];

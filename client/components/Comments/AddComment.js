@@ -6,9 +6,10 @@ import Avatar from '../Reusable/Avatar';
 const AddComment = React.createClass({
   handleCommentSubmit(e) {
     e.preventDefault();
-    const { nomId, userProfile } = this.props;
-    const comment = this.refs.comment.value;
+    let { nomId, userProfile } = this.props;
+    var comment = this.refs.comment.value;
 
+    //post the comment
     this.props.addComment(nomId, userProfile, comment);
     this.refs.commentForm.reset();
   },
@@ -22,6 +23,7 @@ const AddComment = React.createClass({
         <div className="ibox">
           <textarea ref="comment" />
           <hr />
+          <span className="error">Snap! Write a message</span>
           <button type="submit" className="btn btn-success pull-right"><FontAwesome name="paper-plane" /> Reply</button>
           <div className="clearfix"></div>
         </div>
