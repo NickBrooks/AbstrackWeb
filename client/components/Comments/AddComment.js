@@ -7,22 +7,43 @@ import ErrorSpan from '../Reusable/ErrorSpan';
 const AddComment = React.createClass({
     handleCommentSubmit(e) {
         e.preventDefault();
-        let { nomId, userProfile } = this.props;
+        let {
+            nomId,
+            userProfile,
+            addComment,
+            addCommentError
+        } = this.props;
+
         var comment = this.refs.comment.value;
 
         if (comment == '') {
-            this.props.addCommentError('Write a comment yo!');
+            addCommentError('Write a comment yo!');
         } else {
             //post the comment
-            this.props.addComment(nomId, userProfile, comment);
-            this.props.addCommentError('');
+            addComment(nomId, userProfile, comment);
+            addCommentError('');
             this.refs.commentForm.reset();
         }
     },
+    componentWillMount() {
+        //ensure error message is null when loading the AddComment component
+        let {
+            ui,
+            addCommentError
+        } = this.props;
+
+        if (ui.addComment.error != '')
+            addCommentError('');
+    },
     render() {
-        let {userProfile, ui} = this.props;
+        let {
+            userProfile,
+            ui
+        } = this.props;
+
         const userProfileLink = "/u/" + userProfile.id;
         const username = "@" + userProfile.username;
+
         return (
             <form ref="commentForm" className="add-comment" onSubmit={this.handleCommentSubmit}>
                 <Link to={userProfileLink}><Avatar user={userProfile} size="50" customClass="pull-left timeline" /></Link>
