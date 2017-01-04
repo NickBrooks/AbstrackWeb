@@ -7,12 +7,12 @@ export function toggleNewNomModal(value) {
 }
 
 // add comment
-export function addComment(nomId, author, comment) {
+export function addComment(nomId, user, body) {
     return {
         type: 'ADD_COMMENT',
         nomId,
-        author,
-        comment
+        user,
+        body
     }
 }
 

@@ -1,10 +1,15 @@
+import moment from 'moment';
+
 function postComments(state = [], action) {
     switch (action.type) {
         case 'ADD_COMMENT':
             // return the new state with the new comment
+            const created_time = moment.utc().format();
             return [...state, {
-                user: action.author,
-                text: action.comment
+                id: guid(),
+                created_time: created_time,
+                user: action.user,
+                body: action.body
             }];
         default:
             return state;
@@ -29,7 +34,7 @@ function comments(state = [], action) {
             // take the current state
             ...state,
             // overwrite this post with a new one
-            [action.postId]: postComments(state[action.nomId], action)
+            [action.nomId]: postComments(state[action.nomId], action)
         }
     }
     return state;

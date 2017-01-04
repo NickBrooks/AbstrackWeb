@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router';
-import ReactMarkdown from 'react-markdown';
+import FontAwesome from 'react-fontawesome';
 import Avatar from '../Reusable/Avatar';
 
 const AddComment = React.createClass({
@@ -22,7 +22,7 @@ const AddComment = React.createClass({
         <div className="ibox">
           <textarea ref="comment" />
           <hr />
-          <button type="submit" className="btn btn-success pull-right">Reply</button>
+          <button type="submit" className="btn btn-success pull-right"><FontAwesome name="paper-plane" /> Reply</button>
           <div className="clearfix"></div>
         </div>
       </form>
