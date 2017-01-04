@@ -16,6 +16,14 @@ export function addComment(nomId, user, body) {
     }
 }
 
+// toggle which comment is being edited, or empty for none
+export function toggleEditCommentMode(value) {
+    return {
+        type: 'TOGGLE_EDIT_COMMENT_MODE',
+        value
+    }
+}
+
 // add comment error
 export function addCommentError(error) {
     return {

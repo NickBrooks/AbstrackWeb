@@ -51,7 +51,7 @@ const AddComment = React.createClass({
                     <textarea ref="comment" />
                     <hr />
                     {ui.addComment.error ? (<ErrorSpan error={ui.addComment.error} />) : null}
-                    <button type="submit" className="btn btn-success pull-right"><FontAwesome name="paper-plane" /> Reply</button>
+                    <button type="submit" className="btn btn-sm btn-success pull-right"><FontAwesome name="paper-plane" /> Reply</button>
                     <div className="clearfix"></div>
                 </div>
             </form>
