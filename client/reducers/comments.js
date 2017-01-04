@@ -3,12 +3,6 @@ import moment from 'moment';
 function postComments(state = [], action) {
     switch (action.type) {
         case 'ADD_COMMENT':
-            //handle empty comment
-            if (body === '') {
-                //handle 
-                return state;
-            }
-            
             // return the new state with the new comment
             return [...state, {
                 id: guid(),

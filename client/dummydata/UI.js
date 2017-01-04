@@ -1,6 +1,9 @@
 const ui = {
   newNomModal: {
     open: false
+  },
+  addComment: {
+    error: ''
   }
 }
 

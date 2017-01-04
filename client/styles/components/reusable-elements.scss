@@ -21,6 +21,15 @@ span.hashtag {
 	}
 }
 
+span.error {
+    color: $white;
+    background: $error-red;
+    padding: 3px 8px;
+    border-radius: 3px;
+	font-family: $font-family-fancy;
+	font-size: 0.9em;
+}
+
 .avatar {
 	border-radius: 50%;
 }

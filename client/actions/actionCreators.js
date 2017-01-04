@@ -16,6 +16,14 @@ export function addComment(nomId, user, body) {
     }
 }
 
+// add comment error
+export function addCommentError(error) {
+    return {
+        type: 'ADD_COMMENT_ERROR',
+        error
+    }
+}
+
 export function insertNom(index) {
     return {
         type: 'INSERT_NOM',

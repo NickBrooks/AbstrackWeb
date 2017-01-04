@@ -6,6 +6,12 @@ function ui(state = [], action) {
                     open: action.value
                 }
             });
+        case 'ADD_COMMENT_ERROR':
+            return Object.assign({}, state, {
+                addComment: {
+                    error: action.error
+                }
+            });
         default:
             return state;
     }
