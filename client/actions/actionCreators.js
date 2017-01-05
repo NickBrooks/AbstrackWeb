@@ -26,6 +26,15 @@ export function updateComment(nomId, commentId, updatedBody) {
     }
 }
 
+// delete comment
+export function deleteComment(nomId, commentId) {
+    return {
+        type: 'DELETE_COMMENT',
+        nomId,
+        commentId
+    }
+}
+
 // toggle which comment (by id) is being edited, or empty for none
 export function toggleEditCommentMode(value) {
     return {

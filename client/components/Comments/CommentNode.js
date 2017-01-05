@@ -10,7 +10,6 @@ const CommentNode = React.createClass({
     let {
       nomId,
       commentId,
-      userProfile,
       updateComment,
       toggleEditCommentMode
     } = this.props;
@@ -24,6 +23,26 @@ const CommentNode = React.createClass({
       updateComment(nomId, commentId, updatedBody);
       toggleEditCommentMode('');
     }
+  },
+  handleCommentDelete(e) {
+    e.preventDefault();
+    let {
+      nomId,
+      commentId,
+      deleteComment
+    } = this.props;
+
+    deleteComment(nomId, commentId);
+  },
+  renderActionButtons() {
+    let {commentId, toggleEditCommentMode} = this.props;
+
+    return (
+      <div className="btn-group pull-right" role="group" aria-label="Basic example">
+        <button className="btn btn-toolbar btn-sm" onClick={() => toggleEditCommentMode(commentId)}><FontAwesome name="pencil" /></button>
+        <button className="btn btn-toolbar btn-sm" onClick={this.handleCommentDelete}><FontAwesome name="close" /></button>
+      </div>
+    );
   },
   renderReadOnlyMode(body) {
     return (
@@ -41,7 +60,7 @@ const CommentNode = React.createClass({
     );
   },
   render() {
-    let {commentId, user, body, currentUser, ui, toggleEditCommentMode} = this.props;
+    let {commentId, user, body, currentUser, ui} = this.props;
     let userProfileLink = "/u/" + user.id;
     let username = "@" + user.username;
 
@@ -54,7 +73,7 @@ const CommentNode = React.createClass({
               <Link to={userProfileLink}><h6 className="user">{user.display_name} <span className="username">{username}</span></h6></Link>
             </div>
             <div className="col-xs-2">
-              {user.id === currentUser.id ? (<button className="btn btn-secondary btn-sm pull-right" onClick={() => toggleEditCommentMode(commentId)}><FontAwesome name="edit" /></button>) : null}
+              {user.id === currentUser.id ? this.renderActionButtons() : null}
             </div>
           </div>
           <hr />

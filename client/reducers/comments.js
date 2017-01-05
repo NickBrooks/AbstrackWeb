@@ -17,6 +17,13 @@ function postComments(state = [], action) {
                 // otherwise return original comment
                 comment
             );
+        case 'DELETE_COMMENT':
+            //only return if id is not nomId
+            function dontDelete(commentId, commentIdCompare) {
+                return commentId !== commentIdCompare.id;
+            }
+
+            return state.filter(dontDelete.bind(null, action.commentId));
         default:
             return state;
     }

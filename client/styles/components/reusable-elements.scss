@@ -11,6 +11,17 @@ a.btn-circle {
 	}
 }
 
+.btn-toolbar {
+    color: #757575;
+    background-color: #FAFAFA;
+    border-color: #eee;
+
+	&:hover, &:active, &:focus {
+		background-color: #eee;
+		outline: none !important;
+	}
+}
+
 span.hashtag {
 	margin-right: 5px;
 	background: #EEEEEE;
