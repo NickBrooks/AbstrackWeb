@@ -2,8 +2,9 @@ const ui = {
   newNomModal: {
     open: false
   },
-  addComment: {
-    error: ''
+  comments: {
+    newCommentError: '',
+    editComment: ''
   }
 }
 

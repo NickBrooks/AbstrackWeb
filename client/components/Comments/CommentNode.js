@@ -5,9 +5,6 @@ import ReactMarkdown from 'react-markdown';
 import Avatar from '../Reusable/Avatar';
 
 const CommentNode = React.createClass({
-  toggleEdit(body) {
-    console.log(body);
-  },
   renderReadOnlyMode(body) {
     return (
       <ReactMarkdown source={body} />
@@ -24,7 +21,7 @@ const CommentNode = React.createClass({
     );
   },
   render() {
-    let {id, user, body, currentUser, editMode} = this.props;
+    let {id, user, body, currentUser, ui, toggleEditCommentMode} = this.props;
     let userProfileLink = "/u/" + user.id;
     let username = "@" + user.username;
 
@@ -37,11 +34,11 @@ const CommentNode = React.createClass({
               <Link to={userProfileLink}><h6 className="user">{user.display_name} <span className="username">{username}</span></h6></Link>
             </div>
             <div className="col-xs-2">
-              {user.id === currentUser.id ? (<button className="btn btn-secondary btn-sm pull-right" onClick={this.toggleEdit(body)}><FontAwesome name="edit" /></button>) : null}
+              {user.id === currentUser.id ? (<button className="btn btn-secondary btn-sm pull-right" onClick={() => toggleEditCommentMode(id)}><FontAwesome name="edit" /></button>) : null}
             </div>
           </div>
           <hr />
-          {editMode === id ? this.renderEditMode(body) : this.renderReadOnlyMode(body)}
+          {ui.comments.editComment === id ? this.renderEditMode(body) : this.renderReadOnlyMode(body)}
         </div>
       </li>
     )

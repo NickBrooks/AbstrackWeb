@@ -32,7 +32,7 @@ const AddComment = React.createClass({
             addCommentError
         } = this.props;
 
-        if (ui.addComment.error != '')
+        if (ui.comments.addCommentError != '')
             addCommentError('');
     },
     render() {
@@ -50,7 +50,7 @@ const AddComment = React.createClass({
                 <div className="ibox">
                     <textarea ref="comment" />
                     <hr />
-                    {ui.addComment.error ? (<ErrorSpan error={ui.addComment.error} />) : null}
+                    {ui.comments.addCommentError ? (<ErrorSpan error={ui.comments.addCommentError} />) : null}
                     <button type="submit" className="btn btn-sm btn-success pull-right"><FontAwesome name="paper-plane" /> Reply</button>
                     <div className="clearfix"></div>
                 </div>
