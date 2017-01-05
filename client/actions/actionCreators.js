@@ -16,6 +16,16 @@ export function addComment(nomId, user, body) {
     }
 }
 
+// update comment
+export function updateComment(nomId, commentId, updatedBody) {
+    return {
+        type: 'UPDATE_COMMENT',
+        nomId,
+        commentId,
+        updatedBody
+    }
+}
+
 // toggle which comment (by id) is being edited, or empty for none
 export function toggleEditCommentMode(value) {
     return {

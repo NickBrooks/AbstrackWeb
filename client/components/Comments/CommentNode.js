@@ -5,6 +5,26 @@ import ReactMarkdown from 'react-markdown';
 import Avatar from '../Reusable/Avatar';
 
 const CommentNode = React.createClass({
+  handleCommentSave(e) {
+    e.preventDefault();
+    let {
+      nomId,
+      commentId,
+      userProfile,
+      updateComment,
+      toggleEditCommentMode
+    } = this.props;
+
+    var updatedBody = this.refs.updatedBody.value;
+
+    if (updatedBody == '') {
+      toggleEditCommentMode('');
+    } else {
+      //post the comment
+      updateComment(nomId, commentId, updatedBody);
+      toggleEditCommentMode('');
+    }
+  },
   renderReadOnlyMode(body) {
     return (
       <ReactMarkdown source={body} />
@@ -12,16 +32,16 @@ const CommentNode = React.createClass({
   },
   renderEditMode(body) {
     return (
-      <div className="edit-comment">
-        <textarea value={body} />
+      <form ref="editCommentForm" className="edit-comment" onSubmit={this.handleCommentSave}>
+        <textarea ref="updatedBody" defaultValue={body} />
         <hr />
         <button type="submit" className="btn btn-sm btn-success pull-right"><FontAwesome name="save" /> Save</button>
         <div className="clearfix"></div>
-      </div>
+      </form>
     );
   },
   render() {
-    let {id, user, body, currentUser, ui, toggleEditCommentMode} = this.props;
+    let {commentId, user, body, currentUser, ui, toggleEditCommentMode} = this.props;
     let userProfileLink = "/u/" + user.id;
     let username = "@" + user.username;
 
@@ -34,11 +54,11 @@ const CommentNode = React.createClass({
               <Link to={userProfileLink}><h6 className="user">{user.display_name} <span className="username">{username}</span></h6></Link>
             </div>
             <div className="col-xs-2">
-              {user.id === currentUser.id ? (<button className="btn btn-secondary btn-sm pull-right" onClick={() => toggleEditCommentMode(id)}><FontAwesome name="edit" /></button>) : null}
+              {user.id === currentUser.id ? (<button className="btn btn-secondary btn-sm pull-right" onClick={() => toggleEditCommentMode(commentId)}><FontAwesome name="edit" /></button>) : null}
             </div>
           </div>
           <hr />
-          {ui.comments.editComment === id ? this.renderEditMode(body) : this.renderReadOnlyMode(body)}
+          {ui.comments.editComment === commentId ? this.renderEditMode(body) : this.renderReadOnlyMode(body)}
         </div>
       </li>
     )

@@ -14,15 +14,15 @@ const AddComment = React.createClass({
             addCommentError
         } = this.props;
 
-        var comment = this.refs.comment.value;
+        var body = this.refs.body.value;
 
-        if (comment == '') {
+        if (body == '') {
             addCommentError('Write a comment yo!');
         } else {
             //post the comment
-            addComment(nomId, userProfile, comment);
+            addComment(nomId, userProfile, body);
             addCommentError('');
-            this.refs.commentForm.reset();
+            this.refs.addCommentForm.reset();
         }
     },
     componentWillMount() {
@@ -45,10 +45,10 @@ const AddComment = React.createClass({
         const username = "@" + userProfile.username;
 
         return (
-            <form ref="commentForm" className="add-comment" onSubmit={this.handleCommentSubmit}>
+            <form ref="addCommentForm" className="add-comment" onSubmit={this.handleCommentSubmit}>
                 <Link to={userProfileLink}><Avatar user={userProfile} size="50" customClass="pull-left timeline" /></Link>
                 <div className="ibox">
-                    <textarea ref="comment" />
+                    <textarea ref="body" />
                     <hr />
                     {ui.comments.addCommentError ? (<ErrorSpan error={ui.comments.addCommentError} />) : null}
                     <button type="submit" className="btn btn-sm btn-success pull-right"><FontAwesome name="paper-plane" /> Reply</button>

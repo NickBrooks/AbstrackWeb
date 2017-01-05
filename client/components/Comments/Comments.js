@@ -4,9 +4,9 @@ import AddComment from './AddComment';
 
 const Comments = React.createClass({
   renderComments(nomComments) {
-    let {ui} = this.props;
+    let {nomId, ui} = this.props;
     return (
-      nomComments.map((comment) => <CommentNode {...comment} currentUser={this.props.userProfile} key={comment.id} id={comment.id} {...this.props} />)
+      nomComments.map((comment) => <CommentNode {...comment} currentUser={this.props.userProfile} key={comment.id} nomId={nomId} commentId={comment.id} {...this.props} />)
     )
   },
   render() {

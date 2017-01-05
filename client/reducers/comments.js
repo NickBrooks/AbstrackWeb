@@ -3,13 +3,19 @@ import moment from 'moment';
 function postComments(state = [], action) {
     switch (action.type) {
         case 'ADD_COMMENT':
-            // return the new state with the new comment
             return [...state, {
                 id: guid(),
                 created_time: moment.utc().format(),
                 user: action.user,
                 body: action.body
             }];
+        case 'UPDATE_COMMENT':
+            return state.map(comment => comment.id === action.commentId ?
+                // update the comment with a matching id
+                { ...comment, body: action.updatedBody } :
+                // otherwise return original comment
+                comment
+            );
         default:
             return state;
     }
