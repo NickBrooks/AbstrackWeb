@@ -10,8 +10,14 @@ const UserProfile = React.createClass({
 
         return (
             <div className="user-profile">
-                <h1>{user.display_name}</h1>
-                <Avatar user={user} size="250" />
+                <div className="row">
+                    <div className="col-md-3">
+                        <Avatar user={user} size="250" />
+                    </div>
+                    <div className="col-md-9">
+                        <h3>{user.display_name}</h3>
+                    </div>
+                </div>
             </div>
         )
     }
