@@ -1,9 +1,15 @@
 .view-nom {
     margin-left: 60px;
-    border-top: solid 2px $nom-blue;
+    border-top: solid 2px $nom-faded-blue;
 }
 
 .nom-header {
+    h3 {
+        font-size: 1.5em;
+        margin: 0;
+        padding: 0;
+    }
+
     div.hashtags {
         margin-top: 5px;
     }

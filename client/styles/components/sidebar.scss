@@ -17,7 +17,7 @@
         overflow-x: hidden;
         overflow-y: auto;
         /* Scrollable contents if viewport is shorter than content. */
-        background-color: $bg-blue;
+        background-color: $nom-dark-blue;
     }
 }
 
@@ -39,13 +39,13 @@
 }
 
 .menu .nav-sidebar > li > a {
-    color: $font-color-light;
+    color: $nom-gray-dark;
 }
 
 .menu .nav-sidebar > .active > a,
 .menu .nav-sidebar > li > a:focus,
 .menu .nav-sidebar > li > a:hover {
-    background-color: $bg-blue-active;
+    background-color: $nom-dark-blue-active;
 }
 
 .menu h6 {

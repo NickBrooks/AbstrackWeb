@@ -11,10 +11,20 @@ a.btn-circle {
 	}
 }
 
+.btn-success {
+	background-color: $nom-green-light;
+	border: 1px solid $nom-green-light;
+
+	&:hover {
+		background-color: $nom-green;
+		border: 1px solid $nom-green;
+	}
+}
+
 .btn-toolbar {
-    color: #757575;
+    color: #7f8c8d;
     background-color: #FAFAFA;
-    border-color: #eee;
+    nom-gray: #eee;
 
 	&:hover, &:active, &:focus {
 		background-color: #eee;
@@ -24,17 +34,28 @@ a.btn-circle {
 
 span.hashtag {
 	margin-right: 5px;
-	background: #EEEEEE;
+	background: #95a5a6;
+	padding: 3px 5px;
+
+	&:hover {
+		background: #7f8c8d;
+	}
 
 	a {
+		color: $white;
 		font-weight: normal;
-		font-size: 1.2em;
+		font-size: 1.1em;
+
+		&:hover {
+			color: $white;
+			text-decoration: none;
+		}
 	}
 }
 
 span.error {
     color: $white;
-    background: $error-red;
+    background: $nom-red-light;
     padding: 3px 8px;
     border-radius: 3px;
 	font-family: $font-family-fancy;

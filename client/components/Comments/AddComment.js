@@ -37,8 +37,9 @@ const AddComment = React.createClass({
     },
     render() {
         let {
+            settings,
             userProfile,
-            ui
+            ui,
         } = this.props;
 
         const userProfileLink = "/u/" + userProfile.id;
@@ -48,7 +49,7 @@ const AddComment = React.createClass({
             <form ref="addCommentForm" className="add-comment" onSubmit={this.handleCommentSubmit}>
                 <Link to={userProfileLink}><Avatar user={userProfile} size="50" customClass="pull-left timeline" /></Link>
                 <div className="ibox">
-                    <textarea ref="body" />
+                    <textarea ref="body" placeholder={settings.comments.addCommentPlaceholder} />
                     <hr />
                     {ui.comments.addCommentError ? (<ErrorSpan error={ui.comments.addCommentError} />) : null}
                     <button type="submit" className="btn btn-sm btn-success pull-right"><FontAwesome name="paper-plane" /> Reply</button>
