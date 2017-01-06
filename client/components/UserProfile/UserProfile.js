@@ -16,12 +16,14 @@ const UserProfile = React.createClass({
 
         return (
             <div className="user-profile" >
-                <div className="row profile-header">
-                    <div className="col-md-3">
-                        <Avatar user={user} />
-                    </div>
-                    <div className="col-md-9">
-                        <h3>{user.display_name}</h3>
+                <div className="profile-header">
+                    <div className="row">
+                        <div className="col-md-3">
+                            <Avatar user={user} />
+                        </div>
+                        <div className="col-md-9">
+                            <h3>{user.display_name}</h3>
+                        </div>
                     </div>
                 </div>
                 <div class="row">
