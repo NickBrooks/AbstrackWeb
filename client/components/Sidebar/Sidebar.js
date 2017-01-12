@@ -29,7 +29,7 @@ const Sidebar = React.createClass({
                     <li><Link to="">+Chimpanzee</Link></li>
                 </ul>
                 <ul className="nav nav-sidebar">
-                    <li className="pinned"><Link to="/pinned"><FontAwesome name="star" /> Pinned</Link></li>
+                    <li className="pinned"><Link to="/pinned"><FontAwesome name="thumb-tack" /> Pinned</Link></li>
                 </ul>
             </div>
         )
