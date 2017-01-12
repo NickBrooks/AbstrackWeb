@@ -51,9 +51,10 @@ export function addCommentError(error) {
     }
 }
 
-export function insertNom(index) {
+//add a new nom
+export function addNom(nom) {
     return {
-        type: 'INSERT_NOM',
-        index
+        type: 'ADD_NOM',
+        nom
     }
 }
