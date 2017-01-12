@@ -1,0 +1,19 @@
+.nom-editor {
+    .modal-header {
+        background: $header-color-primary;
+        color: #fff;
+
+        .modal-title {
+            line-height: 1;
+            font-size: 1em;
+        }
+    }
+
+    .form-control {
+        margin: 0 0 10px;
+    }
+
+    .editor-title {
+        font-weight: bold;
+    }
+}
