@@ -4,7 +4,7 @@ import FontAwesome from 'react-fontawesome';
 import ReactMarkdown from 'react-markdown';
 import Avatar from '../Reusable/Avatar';
 
-const CommentNode = React.createClass({
+class CommentNode extends React.Component {
   handleCommentSave(e) {
     e.preventDefault();
     let {
@@ -23,7 +23,8 @@ const CommentNode = React.createClass({
       updateComment(nomId, commentId, updatedBody);
       toggleEditCommentMode('');
     }
-  },
+  }
+
   handleCommentDelete(e) {
     e.preventDefault();
     let {
@@ -33,7 +34,8 @@ const CommentNode = React.createClass({
     } = this.props;
 
     deleteComment(nomId, commentId);
-  },
+  }
+
   renderActionButtons() {
     let {commentId, toggleEditCommentMode} = this.props;
 
@@ -43,12 +45,14 @@ const CommentNode = React.createClass({
         <button className="btn btn-toolbar btn-sm" onClick={this.handleCommentDelete}><FontAwesome name="close" /></button>
       </div>
     );
-  },
+  }
+
   renderReadOnlyMode(body) {
     return (
       <ReactMarkdown source={body} />
     );
-  },
+  }
+
   renderEditMode(body) {
     return (
       <form ref="editCommentForm" className="edit-comment" onSubmit={this.handleCommentSave}>
@@ -58,7 +62,8 @@ const CommentNode = React.createClass({
         <div className="clearfix"></div>
       </form>
     );
-  },
+  }
+
   render() {
     let {commentId, user, body, currentUser, ui} = this.props;
     let userProfileLink = "/u/" + user.id;
@@ -82,6 +87,6 @@ const CommentNode = React.createClass({
       </li>
     )
   }
-})
+}
 
 export default CommentNode;

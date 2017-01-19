@@ -3,66 +3,73 @@ import FontAwesome from 'react-fontawesome';
 import Modal from 'react-bootstrap-modal';
 import { conformHashtags } from '../../../functions/functions';
 
-const NewNomModal = React.createClass({
+class NewNomModal extends React.Component {
+    constructor(props) {
+        super(props);
+        this.handleNomSubmit = this.handleNomSubmit.bind(this);
+    }
+
     handleNomSubmit(e) {
         e.preventDefault();
-        let { userProfile } = this.props;
-        let { formValues } = this.refs;
+        let {
+            userProfile,
+            addNom,
+            toggleNewNomModal
+        } = this.props;
 
         var nom = {
-            title: formValues.title.value,
-            body: formValues.body.value,
-            project: {
-                id: formValues.projects.value,
-                name: formValues.projects.text
-            },
-            milestone: {
-                id: formValues.milestones.value,
-                name: formValues.milestones.text
-            },
+            title: this.refs.title.value,
+            body: this.refs.body.value,
+            project: {},
+            milestone: {},
             type: "markdown",
             pinned: false,
             completed: false,
             inbox: true,
-            hashtags: conformHashtags(formValues.hashtags.value),
+            hashtags: conformHashtags(this.refs.hashtags.value),
             created_by: userProfile
         };
 
         //NOMVALIDATOR
         console.log(nom);
 
+        //addNom(nom);
         addNom(nom);
-        formValues.nomEditor.reset();
-    },
+        this.refs.nomEditor.reset();
+        toggleNewNomModal.bind(null, false);
+    }
+
     renderProjects() {
         let { projects } = this.props;
         return (
-            <select ref="projects" className="form-control">
+            <select ref="project" className="form-control">
                 <option>Project</option>
-                {projects.map((project) => <option value={project.id}>{project.name}</option>)}
+                {projects.map((project) => <option key={project.id} value={project.id}>{project.name}</option>)}
             </select>
         )
-    },
+    }
+
     renderMilestones() {
         let { milestones } = this.props;
         return (
-            <select className="form-control">
+            <select ref="milestone" className="form-control">
                 <option>Milestone</option>
-                {milestones.map((milestone) => <option value={milestone.id}>{milestone.name}</option>)}
+                {milestones.map((milestone) => <option key={milestone.id} value={milestone.id}>{milestone.name}</option>)}
             </select>
         )
-    },
+    }
+
     render() {
         return (
             <div>
                 <Modal show={this.props.open} onHide={this.props.toggleNewNomModal.bind(null, false)} aria-labelledby="ModalHeader" className="nom-editor">
-                    <Modal.Header>
-                        <Modal.Title id='ModalHeader'>
-                            <FontAwesome name="pencil" />
-                        </Modal.Title>
-                    </Modal.Header>
-                    <Modal.Body>
-                        <form ref="nomEditor" onSubmit={this.handleNomSubmit}>
+                    <form ref="nomEditor" onSubmit={this.handleNomSubmit}>
+                        <Modal.Header>
+                            <Modal.Title id='ModalHeader'>
+                                <FontAwesome name="pencil" />
+                            </Modal.Title>
+                        </Modal.Header>
+                        <Modal.Body>
                             <div className="form-group row">
                                 <div className="col-xs-12">
                                     <input ref="title" className="form-control editor-title" type="text" placeholder="Title" />
@@ -80,15 +87,15 @@ const NewNomModal = React.createClass({
                                     <textarea ref="body" className="form-control editor-body" placeholder="Say something" />
                                 </div>
                             </div>
-                        </form>
-                    </Modal.Body>
-                    <Modal.Footer>
-                        <button type="submit" className='btn btn-success'><FontAwesome name="thumbs-up" /> Publish</button>
-                    </Modal.Footer>
+                        </Modal.Body>
+                        <Modal.Footer>
+                            <button type="submit" className='btn btn-success'><FontAwesome name="thumbs-up" /> Publish</button>
+                        </Modal.Footer>
+                    </form>
                 </Modal>
             </div>
         )
     }
-})
+}
 
 export default NewNomModal;
