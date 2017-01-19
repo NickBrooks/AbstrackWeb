@@ -17,6 +17,7 @@ class NomViewPinned extends React.Component {
     return (
       <div className="view-pinned">
         <h3><FontAwesome name="thumb-tack" /> Pinned</h3>
+        <hr />
         <ListNoms noms={pinnedNoms} />
       </div>
     )

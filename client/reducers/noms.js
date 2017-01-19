@@ -8,6 +8,8 @@ function noms(state = [], action) {
             action.nom.created_time = moment.utc().format();
             
             return [...state, action.nom];
+        case 'PIN_NOM':
+            return [...state, action.nom];
     }
     return state;
 }

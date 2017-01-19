@@ -58,3 +58,12 @@ export function addNom(nom) {
         nom
     }
 }
+
+//pin or unpin a nom
+export function pinNom(nomId, value) {
+    return {
+        type: 'PIN_NOM',
+        nomId,
+        value
+    }
+}

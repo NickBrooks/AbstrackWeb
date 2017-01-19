@@ -55,7 +55,7 @@ class Nom extends React.Component {
                         <div className="col-sm-12">
                             <Link to={userProfileLink}><Avatar user={nom.created_by} size="50" customClass="pull-left timeline" /></Link>
                             <div className="ibox view-nom">
-                                <NomHeader title={nom.title} hashtags={nom.hashtags} />
+                                <NomHeader nom={nom} {...this.props} />
                                 <hr />
                                 <NomBody body={nom.body} />
                             </div>
