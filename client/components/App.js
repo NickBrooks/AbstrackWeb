@@ -13,7 +13,8 @@ function mapStateToProps(state) {
         settings: state.settings,
         ui: state.ui,
         userProfile: state.userProfile,
-        users: state.users
+        users: state.users,
+        views: state.views
     }
 }
 

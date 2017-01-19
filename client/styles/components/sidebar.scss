@@ -13,17 +13,34 @@
         width: $sidebar-width;
         max-width: $sidebar-width;
         display: block;
-        padding: $box-padding;
+        padding: 15px $box-padding;
         overflow-x: hidden;
         overflow-y: auto;
         /* Scrollable contents if viewport is shorter than content. */
         background-color: $nom-dark-blue;
     }
+
+    .user-profile {
+        margin: 0 0 25px;
+
+        a {
+            &:hover {
+                text-decoration: none;
+                color: green;
+            }
+        }
+
+        span {
+            margin: 0 0 0 5px;
+            color: #fff;
+            font-weight: $font-weight-bold;            
+        }
+    }
 }
 
 .nav-sidebar {
     margin-right: -$box-margin;
-    margin-bottom: $box-margin;
+    margin-bottom: ($box-margin / 2);
     margin-left: -$box-margin;
 }
 
@@ -32,14 +49,14 @@
     padding: 4px $box-margin;
 }
 
-.nav-sidebar h5 {
+.nav-sidebar .nav-sidebar-header span {
     font-weight: $font-weight-bold;
     text-transform: uppercase;
-    margin: 0;
+    color: $white;
 }
 
 .menu .nav-sidebar > li > a {
-    color: $nom-gray-dark;
+    color: $nom-gray-medium;
 }
 
 .menu .nav-sidebar > .active > a,
@@ -50,12 +67,18 @@
 
 .menu h6 {
     color: $off-white;
-    margin: 0 0 0 20px;
+    margin: 0   ;
     padding: 0;
+}
+
+.inbox {
+    .fa {
+        color: $nom-faded-blue;
+    }
 }
 
 .pinned {
     .fa {
-        color: #FFEE58;
+        color: $nom-yellow;
     }
 }

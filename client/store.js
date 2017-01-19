@@ -17,6 +17,7 @@ import settings from './dummydata/Settings';
 import ui from './dummydata/UI';
 import userProfile from './dummydata/UserProfile';
 import users from './dummydata/Users';
+import views from './dummydata/Views';
 
 // create an object for the default state
 const defaultState = {
@@ -28,7 +29,8 @@ const defaultState = {
   settings,
   ui,
   userProfile,
-  users
+  users,
+  views
 };
 
 const logger = createLogger();
@@ -40,4 +42,4 @@ const store = createStore(
 
 export const history = syncHistoryWithStore(browserHistory, store);
 
-export default store
+export default store;

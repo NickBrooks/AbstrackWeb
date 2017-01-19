@@ -1,5 +1,6 @@
 import React from 'react';
 import ListNoms from '../ListNoms/ListNoms';
+import FontAwesome from 'react-fontawesome';
 
 function filterPinnedNoms(n) {
   return n.pinned == true;
@@ -15,6 +16,7 @@ class NomViewPinned extends React.Component {
     let pinnedNoms = noms.filter(filterPinnedNoms)
     return (
       <div className="view-pinned">
+        <h3><FontAwesome name="thumb-tack" /> Pinned</h3>
         <ListNoms noms={pinnedNoms} />
       </div>
     )

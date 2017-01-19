@@ -9,6 +9,20 @@ class Sidebar extends React.Component {
         super(props);
     }
 
+    renderUserAvatar() {
+        let { userProfile } = this.props;
+        var link = "/u/" + userProfile.id;
+
+        return (
+            <div className="user-profile">
+                <Link to={link}>
+                        <Avatar user={userProfile} size="25" customClass="pull-left" /> <span>{userProfile.display_name}</span>
+                </Link>
+                <div className="clearfix"></div>
+            </div>
+        )
+    }
+
     renderProjectsMenu(projects) {
         if (projects == undefined) {
             return null;
@@ -18,38 +32,47 @@ class Sidebar extends React.Component {
 
         for (let project of projects) {
             links.push({
-                link: "p/" + project.id,
+                link: "/p/" + project.id,
                 title: project.name
             });
-            console.log(links);
         }
 
-        return (<SidebarMenu header="Projects" headerTo="/projects" links={links} />)
+        var header = "Projects (" + links.length + ")";
+
+        return (<SidebarMenu header={header} headerTo="/projects" links={links} />)
+    }
+
+    renderViewsMenu(views) {
+        if (views == undefined) {
+            return null;
+        }
+
+        var links = [];
+
+        for (let view of views) {
+            links.push({
+                link: "/v/" + view.id,
+                title: view.name
+            });
+        }
+
+        var header = "Views (" + links.length + ")";
+
+        return (<SidebarMenu header={header} headerTo="/views" links={links} />)
     }
 
     render() {
-        let { userProfile, projects } = this.props;
+        let { userProfile, projects, views } = this.props;
 
         return (
             <div className="sidebar menu">
-                <Link to="/"><h6><Avatar user={userProfile} size="30" customClass="pull-left" /> {userProfile.display_name} <FontAwesome name="caret-down" /></h6></Link>
-                <div className="clearfix"></div>
-                {this.renderProjectsMenu(projects)}
+                {this.renderUserAvatar()}
                 <ul className="nav nav-sidebar">
-                    <li>
-                        <Link to="#">
-                            <h6>Views (3)</h6>
-                        </Link>
-                    </li>
-                    <li><Link to="">+NavItem</Link></li>
-                    <li><Link to="">+NavItemAgain</Link></li>
-                    <li><Link to="">+OneMoreNav</Link></li>
-                    <li><Link to="">+AnotherItem</Link></li>
-                    <li><Link to="">+Chimpanzee</Link></li>
-                </ul>
-                <ul className="nav nav-sidebar">
+                    <li className="inbox"><Link to="/"><FontAwesome name="envelope-open" /> Inbox</Link></li>
                     <li className="pinned"><Link to="/pinned"><FontAwesome name="thumb-tack" /> Pinned</Link></li>
                 </ul>
+                {this.renderProjectsMenu(projects)}
+                {this.renderViewsMenu(views)}
             </div>
         )
     }

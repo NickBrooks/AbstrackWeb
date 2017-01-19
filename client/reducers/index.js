@@ -11,6 +11,7 @@ import settings from './settings';
 import ui from './ui';
 import userProfile from './userProfile';
 import users from './users';
+import views from './views';
 
 const rootReducer = combineReducers({
     comments,
@@ -22,6 +23,7 @@ const rootReducer = combineReducers({
     ui,
     userProfile,
     users,
+    views,
     routing: routerReducer
 });
 

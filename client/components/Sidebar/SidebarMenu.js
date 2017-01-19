@@ -8,10 +8,8 @@ class SidebarMenu extends React.Component {
 
     renderHeader(title, link) {
         return (
-            <li>
-                <Link to={link}>
-                    <h6>{title}</h6>
-                </Link>
+            <li className="nav-sidebar-header">
+                <Link to={link}><span>{title}</span></Link>
             </li>)
     }
 
