@@ -8,3 +8,8 @@ export function guid() {
     return s4() + s4() + '-' + s4() + '-' + s4() + '-' +
         s4() + '-' + s4() + s4() + s4();
 }
+
+export function conformHashtags(hashtags) {
+    hashtags = hashtags.replace(/\s/g,'');
+    return hashtags.split(',');
+}
