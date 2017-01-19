@@ -4,9 +4,13 @@ import ListNoms from '../ListNoms/ListNoms';
 
 function filterUserNoms(userId, nom) {
     return nom.created_by.id == userId;
-};
+}
 
-const UserProfile = React.createClass({
+class UserProfile extends React.Component {
+    constructor(props) {
+        super(props);
+    }
+
     render() {
         let {userId } = this.props.params;
         let { noms, users } = this.props;
@@ -34,6 +38,6 @@ const UserProfile = React.createClass({
             </div >
         );
     }
-});
+}
 
 export default UserProfile;

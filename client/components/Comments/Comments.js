@@ -2,13 +2,18 @@ import React from 'react';
 import CommentNode from './CommentNode';
 import AddComment from './AddComment';
 
-const Comments = React.createClass({
+class Comments extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+
   renderComments(nomComments) {
     let {nomId, ui} = this.props;
     return (
       nomComments.map((comment) => <CommentNode {...comment} currentUser={this.props.userProfile} key={comment.id} nomId={nomId} commentId={comment.id} {...this.props} />)
     )
-  },
+  }
+
   render() {
     const { nomId, comments } = this.props;
     const nomComments = comments[nomId];
@@ -22,6 +27,6 @@ const Comments = React.createClass({
       </div>
     )
   }
-})
+}
 
 export default Comments;

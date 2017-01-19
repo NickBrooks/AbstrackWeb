@@ -44,55 +44,64 @@ function isAYear(n) {
   return (timeDiff > 365);
 }
 
-const ListNoms = React.createClass({
-    renderTodaysNoms(noms) {
-      let filteredNoms = noms.filter(isToday);
-      if (filteredNoms.length > 0) {
-        return <TimeNode noms={filteredNoms} title="Today" />
-      }
-      return;
-    },
-    renderThisWeeksNoms(noms) {
-      let filteredNoms = noms.filter(isThisWeek);
-      if (filteredNoms.length > 0) {
-        return <TimeNode noms={filteredNoms} title="This week" />
-      }
-      return;
-    },
-    renderThisMonthsNoms(noms) {
-      let filteredNoms = noms.filter(isThisMonth);
-      if (filteredNoms.length > 0) {
-        return <TimeNode noms={filteredNoms} title="This month" />
-      }
-      return;
-    },
-    renderAFewMonthsNoms(noms) {
-      let filteredNoms = noms.filter(isAFewMonths);
-      if (filteredNoms.length > 0) {
-        return <TimeNode noms={filteredNoms} title="A few months ago" />
-      }
-      return;
-    },
-    renderAYearsNoms(noms) {
-      let filteredNoms = noms.filter(isAYear);
-      if (filteredNoms.length > 0) {
-        return <TimeNode noms={filteredNoms} title="A year ago" />
-      }
-      return;
-    },
-    render() {
-        // Dummy Data
-        const {noms} = this.props;
-        return (
-          <div className="nom-list">
-            {this.renderTodaysNoms(noms)}
-            {this.renderThisWeeksNoms(noms)}
-            {this.renderThisMonthsNoms(noms)}
-            {this.renderAFewMonthsNoms(noms)}
-            {this.renderAYearsNoms(noms)}
-          </div>
-        )
+class ListNoms extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+
+  renderTodaysNoms(noms) {
+    let filteredNoms = noms.filter(isToday);
+    if (filteredNoms.length > 0) {
+      return <TimeNode noms={filteredNoms} title="Today" />
     }
-})
+    return;
+  }
+
+  renderThisWeeksNoms(noms) {
+    let filteredNoms = noms.filter(isThisWeek);
+    if (filteredNoms.length > 0) {
+      return <TimeNode noms={filteredNoms} title="This week" />
+    }
+    return;
+  }
+
+  renderThisMonthsNoms(noms) {
+    let filteredNoms = noms.filter(isThisMonth);
+    if (filteredNoms.length > 0) {
+      return <TimeNode noms={filteredNoms} title="This month" />
+    }
+    return;
+  }
+
+  renderAFewMonthsNoms(noms) {
+    let filteredNoms = noms.filter(isAFewMonths);
+    if (filteredNoms.length > 0) {
+      return <TimeNode noms={filteredNoms} title="A few months ago" />
+    }
+    return;
+  }
+
+  renderAYearsNoms(noms) {
+    let filteredNoms = noms.filter(isAYear);
+    if (filteredNoms.length > 0) {
+      return <TimeNode noms={filteredNoms} title="A year ago" />
+    }
+    return;
+  }
+
+  render() {
+    // Dummy Data
+    const {noms} = this.props;
+    return (
+      <div className="nom-list">
+        {this.renderTodaysNoms(noms)}
+        {this.renderThisWeeksNoms(noms)}
+        {this.renderThisMonthsNoms(noms)}
+        {this.renderAFewMonthsNoms(noms)}
+        {this.renderAYearsNoms(noms)}
+      </div>
+    )
+  }
+}
 
 export default ListNoms;

@@ -5,6 +5,12 @@ import ReactMarkdown from 'react-markdown';
 import Avatar from '../Reusable/Avatar';
 
 class CommentNode extends React.Component {
+  constructor(props) {
+    super(props);
+    this.handleCommentSave = this.handleCommentSave.bind(this);
+    this.handleCommentDelete = this.handleCommentDelete.bind(this);
+  }
+
   handleCommentSave(e) {
     e.preventDefault();
     let {

@@ -3,7 +3,11 @@ import { Link } from 'react-router';
 import FontAwesome from 'react-fontawesome';
 import Avatar from '../Reusable/Avatar';
 
-const Sidebar = React.createClass({
+class Sidebar extends React.Component {
+    constructor(props) {
+        super(props);
+    }
+
     render() {
         let { userProfile } = this.props;
         return (
@@ -34,6 +38,6 @@ const Sidebar = React.createClass({
             </div>
         )
     }
-})
+}
 
 export default Sidebar;

@@ -1,7 +1,11 @@
 import React from 'react';
 import FontAwesome from 'react-fontawesome';
 
-const NewNomButton = React.createClass({
+class NewNomButton extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+
   render() {
     return (
       <div className="new-nom-button">
@@ -11,6 +15,6 @@ const NewNomButton = React.createClass({
       </div>
     )
   }
-})
+}
 
 export default NewNomButton;

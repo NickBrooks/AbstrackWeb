@@ -3,7 +3,11 @@ import HashtagSpan from '../Reusable/HashtagSpan';
 import { Link } from 'react-router';
 import Avatar from '../Reusable/Avatar';
 
-const NomNode = React.createClass({
+class NomNode extends React.Component {
+    constructor(props) {
+        super(props);
+    }
+
     render() {
         const nom = this.props;
         const link = "/n/" + nom.id;
@@ -16,6 +20,6 @@ const NomNode = React.createClass({
             </Link>
         )
     }
-})
+}
 
 export default NomNode;

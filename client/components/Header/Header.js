@@ -1,7 +1,11 @@
 import React from 'react';
 import SearchBar from './SearchBar';
 
-const Header = React.createClass({
+class Header extends React.Component {
+    constructor(props) {
+        super(props);
+    }
+
     render() {
         return (
             <div className="header">
@@ -13,6 +17,6 @@ const Header = React.createClass({
             </div>
         )
     }
-})
+}
 
 export default Header;

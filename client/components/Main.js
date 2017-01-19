@@ -4,7 +4,11 @@ import Header from './Header/Header';
 import NewNomButton from './General/NewNomButton';
 import NewNomModal from './General/NewNomModal/NewNomModal';
 
-const Main = React.createClass({
+class Main extends React.Component {
+    constructor(props) {
+        super(props);
+    }
+
     render() {
         return (
             <div className="app">
@@ -24,6 +28,6 @@ const Main = React.createClass({
             </div>
         )
     }
-})
+}
 
 export default Main;

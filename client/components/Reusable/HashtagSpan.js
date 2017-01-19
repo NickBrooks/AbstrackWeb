@@ -1,7 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router';
 
-const HashtagSpan = React.createClass({
+class HashtagSpan extends React.Component {
+    constructor(props) {
+        super(props);
+    }
+
     render() {
         const { hashtag, customClass } = this.props;
         const link = "/t/" + hashtag;
@@ -9,9 +13,9 @@ const HashtagSpan = React.createClass({
         const className = "tag hashtag tag-" + customClass;
 
         return (
-          <span className={className}><Link to={link}>{tag}</Link></span>
+            <span className={className}><Link to={link}>{tag}</Link></span>
         )
     }
-})
+}
 
 export default HashtagSpan;

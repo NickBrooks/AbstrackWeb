@@ -7,34 +7,41 @@ import NomHeader from './NomHeader';
 import Avatar from '../Reusable/Avatar';
 import Comments from '../Comments/Comments';
 
-const Nom = React.createClass({
+class Nom extends React.Component {
+    constructor(props) {
+        super(props);
+    }
+
     renderMenuItemArray(menuItem) {
         return [menuItem];
-    },
+    }
+
     renderProjectSubMenu(project) {
-      if (project) {
-        const link = "/p/" + project.id;
-        return (
-          <ul className="nav sub-menu">
-              <li><h6><FontAwesome name="bookmark" /> Project</h6></li>
-              <li><Link to={link}>{project.name}</Link></li>
-          </ul>
-        )
-      }
-      return;
-    },
+        if (project) {
+            const link = "/p/" + project.id;
+            return (
+                <ul className="nav sub-menu">
+                    <li><h6><FontAwesome name="bookmark" /> Project</h6></li>
+                    <li><Link to={link}>{project.name}</Link></li>
+                </ul>
+            )
+        }
+        return;
+    }
+
     renderMilestoneSubMenu(milestone) {
-      if (milestone) {
-        const link = "/m/" + milestone.id;
-        return (
-          <ul className="nav sub-menu">
-              <li><h6><FontAwesome name="calendar-o" /> Milestone</h6></li>
-              <li><Link to={link}>{milestone.name}</Link></li>
-          </ul>
-        )
-      }
-      return;
-    },
+        if (milestone) {
+            const link = "/m/" + milestone.id;
+            return (
+                <ul className="nav sub-menu">
+                    <li><h6><FontAwesome name="calendar-o" /> Milestone</h6></li>
+                    <li><Link to={link}>{milestone.name}</Link></li>
+                </ul>
+            )
+        }
+        return;
+    }
+
     render() {
         const { nomId } = this.props.params;
         const { noms } = this.props;
@@ -64,6 +71,6 @@ const Nom = React.createClass({
             </div>
         )
     }
-});
+}
 
 export default Nom;

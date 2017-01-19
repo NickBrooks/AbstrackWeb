@@ -4,7 +4,11 @@ import FontAwesome from 'react-fontawesome';
 import Avatar from '../Reusable/Avatar';
 import ErrorSpan from '../Reusable/ErrorSpan';
 
-const AddComment = React.createClass({
+class AddComment extends React.Component {
+    constructor(props) {
+        super(props);
+    }
+
     handleCommentSubmit(e) {
         e.preventDefault();
         let {
@@ -24,7 +28,8 @@ const AddComment = React.createClass({
             addCommentError('');
             this.refs.addCommentForm.reset();
         }
-    },
+    }
+
     componentWillMount() {
         //ensure error message is null when loading the AddComment component
         let {
@@ -34,7 +39,8 @@ const AddComment = React.createClass({
 
         if (ui.comments.addCommentError != '')
             addCommentError('');
-    },
+    }
+
     render() {
         let {
             settings,
@@ -58,6 +64,6 @@ const AddComment = React.createClass({
             </form>
         )
     }
-})
+}
 
 export default AddComment;

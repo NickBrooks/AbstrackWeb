@@ -1,6 +1,10 @@
 import React from 'react';
 
-const SearchBar = React.createClass({
+class SearchBar extends React.Component {
+    constructor(props) {
+        super(props);
+    }
+
     render() {
         const { settings } = this.props;
         return (
@@ -9,6 +13,6 @@ const SearchBar = React.createClass({
             </div>
         )
     }
-})
+}
 
 export default SearchBar;
