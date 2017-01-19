@@ -5,7 +5,7 @@ function noms(state = [], action) {
     switch (action.type) {
         case 'ADD_NOM':
             action.nom.id = guid();
-            action.nom.created_by = moment.utc().format();
+            action.nom.created_time = moment.utc().format();
             
             return [...state, action.nom];
     }

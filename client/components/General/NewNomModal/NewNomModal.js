@@ -30,9 +30,6 @@ class NewNomModal extends React.Component {
             created_by: userProfile
         };
 
-        //NOMVALIDATOR
-        console.log(nom);
-
         //addNom(nom);
         addNom(nom);
         this.refs.nomEditor.reset();
