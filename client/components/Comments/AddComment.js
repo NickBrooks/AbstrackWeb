@@ -7,6 +7,7 @@ import ErrorSpan from '../Reusable/ErrorSpan';
 class AddComment extends React.Component {
     constructor(props) {
         super(props);
+        this.handleCommentSubmit = this.handleCommentSubmit.bind(this);
     }
 
     handleCommentSubmit(e) {
