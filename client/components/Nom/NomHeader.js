@@ -11,7 +11,7 @@ class NomHeader extends React.Component {
 
     handlePinNom(value, e) {
         e.preventDefault();
-        let { pinNom } = this.props;
+        let { nom, pinNom } = this.props;
 
         //pin it!
         pinNom(nom.id, value);
