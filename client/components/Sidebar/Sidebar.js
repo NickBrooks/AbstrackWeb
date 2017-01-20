@@ -73,6 +73,9 @@ class Sidebar extends React.Component {
                 </ul>
                 {this.renderProjectsMenu(projects)}
                 {this.renderViewsMenu(views)}
+                <ul className="nav nav-sidebar">
+                    <li className="trash"><Link to="/"><FontAwesome name="trash" /> Trash</Link></li>
+                </ul>
             </div>
         )
     }
