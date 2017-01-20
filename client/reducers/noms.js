@@ -9,7 +9,12 @@ function noms(state = [], action) {
             
             return [...state, action.nom];
         case 'PIN_NOM':
-            return [...state, action.nom];
+            return state.map(nom => nom.id === action.nomId ?
+                // update the nom with a matching id
+                { ...nom, pinned: action.value } :
+                // otherwise return original nom
+                nom
+            );
     }
     return state;
 }
