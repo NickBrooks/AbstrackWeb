@@ -9,12 +9,12 @@ class Sidebar extends React.Component {
         super(props);
     }
 
-    renderUserAvatar() {
+    renderUserBadge() {
         let { userProfile } = this.props;
         var link = "/u/" + userProfile.id;
 
         return (
-            <div className="user-profile">
+            <div className="user-badge">
                 <Link to={link}>
                         <Avatar user={userProfile} size="25" customClass="pull-left" /> <span>{userProfile.display_name}</span>
                 </Link>
@@ -66,7 +66,7 @@ class Sidebar extends React.Component {
 
         return (
             <div className="sidebar menu">
-                {this.renderUserAvatar()}
+                {this.renderUserBadge()}
                 <ul className="nav nav-sidebar">
                     <li className="inbox"><Link to="/"><FontAwesome name="envelope-open" /> Inbox</Link></li>
                     <li className="pinned"><Link to="/pinned"><FontAwesome name="thumb-tack" /> Pinned</Link></li>
