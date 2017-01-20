@@ -7,9 +7,11 @@ class NomViewInbox extends React.Component {
   }
 
   render() {
+    let { settings } = this.props;
+    
     return (
       <div className="view-inbox">
-        <ListNoms noms={this.props.noms} />
+        <ListNoms noms={this.props.noms} emptyNoms={settings.emptyNoms.inbox} />
       </div>
     )
   }

@@ -4,6 +4,25 @@ const settings = {
   },
   comments: {
     addCommentPlaceholder: "Add a reply"
+  },
+  emptyNoms: {
+    inbox: {
+      img: "https://i.imgur.com/r2NAHyD.png",
+      text: "Your inbox is super, super clean!"
+    },
+    milestone: {
+      img: "https://i.imgur.com/r2NAHyD.png"
+    },
+    pinned: {
+      img: "https://i.imgur.com/r2NAHyD.png",
+      text: "You have nothing pinned!"
+    },
+    project: {
+      img: "https://i.imgur.com/r2NAHyD.png"
+    },
+    tag: {
+      img: "https://i.imgur.com/r2NAHyD.png"
+    }
   }
 }
 

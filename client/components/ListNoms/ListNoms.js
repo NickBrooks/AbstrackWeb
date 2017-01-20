@@ -1,6 +1,7 @@
 import React from 'react';
 import moment from 'moment';
 import TimeNode from './TimeNode';
+import EmptyNoms from './EmptyNoms';
 
 var now = moment();
 
@@ -91,7 +92,14 @@ class ListNoms extends React.Component {
 
   render() {
     // Dummy Data
-    const {noms} = this.props;
+    const {noms, emptyNoms} = this.props;
+
+    if(noms.length < 1) {
+      return (
+        <EmptyNoms emptyNoms={emptyNoms} />
+      )
+    }
+
     return (
       <div className="nom-list">
         {this.renderTodaysNoms(noms)}

@@ -18,14 +18,21 @@ class NomViewTag extends React.Component {
     }
 
     render() {
-        let { noms } = this.props;
         let { tag } = this.props.params;
+        let { noms, settings } = this.props;        
         let taggedNoms = noms.filter(filterTaggedNoms.bind(null, tag));
+
+        //set empty noms
+        let emptyNoms = {
+            img: settings.emptyNoms.tag.img,
+            text: "Oh! #" + tag + " is empty!"
+        }
+
         return (
             <div className="view-tag">
                 <h3>#{this.props.params.tag}</h3>
                 <hr />
-                <ListNoms noms={taggedNoms} />
+                <ListNoms noms={taggedNoms} emptyNoms={emptyNoms} />
             </div>
         )
     }
