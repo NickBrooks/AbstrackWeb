@@ -33,7 +33,7 @@ class NewNomModal extends React.Component {
         //addNom(nom);
         addNom(nom);
         this.refs.nomEditor.reset();
-        toggleNewNomModal.bind(null, false);
+        toggleNewNomModal(false);
     }
 
     renderProjects() {
