@@ -36,6 +36,9 @@ span.hashtag {
 	margin-right: 5px;
 	background: #95a5a6;
 	padding: 3px 5px;
+	color: $white;
+	font-weight: normal;
+	font-size: 0.8em;
 
 	&:hover {
 		background: #7f8c8d;
@@ -43,8 +46,6 @@ span.hashtag {
 
 	a {
 		color: $white;
-		font-weight: normal;
-		font-size: 1.1em;
 
 		&:hover {
 			color: $white;

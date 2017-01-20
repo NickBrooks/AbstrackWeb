@@ -13,14 +13,6 @@ class SidebarMenu extends React.Component {
             </li>)
     }
 
-    renderChildren(title, link) {
-        return (
-            <li>
-                <Link to={link}>{title}</Link>
-            </li>
-        )
-    }
-
     render() {
         let {header, headerTo, links} = this.props;
         if (links == undefined) {
@@ -31,7 +23,7 @@ class SidebarMenu extends React.Component {
             <ul className="nav nav-sidebar">
                 {header ? this.renderHeader(header, headerTo) : undefined}
                 {links.map(
-                    (link) => this.renderChildren(link.title, link.link))}
+                (link) => (<li key={link.link}><Link to={link.link}>{link.title}</Link></li>))}
             </ul>
         )
     }
