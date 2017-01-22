@@ -40,7 +40,7 @@ class NomHeader extends React.Component {
             <div className="nom-header">
                 <h3>{this.props.nom.title} {this.renderPinned()}</h3>
                 <div className="hashtags">
-                    {this.props.nom.hashtags.map((hashtag, i) => <HashtagSpan {...this.props} hashtag={hashtag} customClass="default" key={i} i={i} />)}
+                    {this.props.nom.hashtags.map((hashtag, i) => <HashtagSpan {...this.props} hashtag={hashtag} customClass="default" key={i} i={i} />)}<FontAwesome name="plus" />
                 </div>
             </div>
         )

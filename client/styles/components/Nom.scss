@@ -12,5 +12,10 @@
 
     div.hashtags {
         margin-top: 5px;
+
+        .fa {
+            font-size:0.8em;
+            color: $nom-green-light;
+        }
     }
 }
