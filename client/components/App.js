@@ -9,7 +9,7 @@ function mapStateToProps(state) {
         hashtags: state.hashtags,
         milestones: state.milestones,
         noms: state.noms,
-        projects: state.projects,
+        tracks: state.tracks,
         settings: state.settings,
         ui: state.ui,
         userProfile: state.userProfile,

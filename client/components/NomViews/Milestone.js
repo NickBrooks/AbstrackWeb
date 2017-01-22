@@ -17,11 +17,11 @@ class NomViewMilestone extends React.Component {
 
   render() {
     const { milestoneId } = this.props.params;
-    const {milestones, projects, noms, settings} = this.props;
+    const {milestones, tracks, noms, settings} = this.props;
     const milestoneIndex = milestones.findIndex((milestone) => milestone.id === milestoneId);
     const milestone = milestones[milestoneIndex];
-    const projectIndex = projects.findIndex((project) => project.id === milestone.project.id);
-    const project = projects[projectIndex];
+    const trackIndex = tracks.findIndex((track) => track.id === milestone.track.id);
+    const track = tracks[trackIndex];
 
     let milestoneNoms = noms.filter(filterMilestoneNoms.bind(null, milestoneId));
 

@@ -12,7 +12,7 @@ import comments from './dummydata/Comments';
 import hashtags from './dummydata/Hashtags';
 import milestones from './dummydata/Milestones';
 import noms from './dummydata/Noms';
-import projects from './dummydata/Projects';
+import tracks from './dummydata/Tracks';
 import settings from './dummydata/Settings';
 import ui from './dummydata/UI';
 import userProfile from './dummydata/UserProfile';
@@ -25,7 +25,7 @@ const defaultState = {
   hashtags,
   milestones,
   noms,
-  projects,
+  tracks,
   settings,
   ui,
   userProfile,

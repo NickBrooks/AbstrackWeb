@@ -16,13 +16,13 @@ class Nom extends React.Component {
         return [menuItem];
     }
 
-    renderProjectSubMenu(project) {
-        if (project) {
-            const link = "/p/" + project.id;
+    renderTrackSubMenu(track) {
+        if (track) {
+            const link = "/t/" + track.id;
             return (
                 <ul className="nav sub-menu">
-                    <li><h6><FontAwesome name="bookmark" /> Project</h6></li>
-                    <li><Link to={link}>{project.name}</Link></li>
+                    <li><h6><FontAwesome name="bookmark" /> Track</h6></li>
+                    <li><Link to={link}>{track.name}</Link></li>
                 </ul>
             )
         }
@@ -65,7 +65,7 @@ class Nom extends React.Component {
                 </div>
 
                 <div className="col-sm-2 sub-bar">
-                    {this.renderProjectSubMenu(nom.project)}
+                    {this.renderTrackSubMenu(nom.track)}
                     {this.renderMilestoneSubMenu(nom.milestone)}
                 </div>
             </div>

@@ -20,7 +20,7 @@ class NewNomModal extends React.Component {
         var nom = {
             title: this.refs.title.value,
             body: this.refs.body.value,
-            project: {},
+            track: {},
             milestone: {},
             type: "markdown",
             pinned: false,
@@ -36,12 +36,12 @@ class NewNomModal extends React.Component {
         toggleNewNomModal(false);
     }
 
-    renderProjects() {
-        let { projects } = this.props;
+    renderTracks() {
+        let { tracks } = this.props;
         return (
-            <select ref="project" className="form-control">
-                <option>Project</option>
-                {projects.map((project) => <option key={project.id} value={project.id}>{project.name}</option>)}
+            <select ref="track" className="form-control">
+                <option>Track</option>
+                {tracks.map((track) => <option key={track.id} value={track.id}>{track.name}</option>)}
             </select>
         )
     }
@@ -75,7 +75,7 @@ class NewNomModal extends React.Component {
                                     <input ref="hashtags" className="form-control editor-hashtags" type="text" placeholder="#hashtags" />
                                 </div>
                                 <div className="col-xs-3">
-                                    {this.renderProjects()}
+                                    {this.renderTracks()}
                                 </div>
                                 <div className="col-xs-3">
                                     {this.renderMilestones()}

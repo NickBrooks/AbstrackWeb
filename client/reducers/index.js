@@ -6,7 +6,7 @@ import comments from './comments';
 import hashtags from './hashtags';
 import milestones from './milestones';
 import noms from './noms';
-import projects from './projects';
+import tracks from './tracks';
 import settings from './settings';
 import ui from './ui';
 import userProfile from './userProfile';
@@ -18,7 +18,7 @@ const rootReducer = combineReducers({
     hashtags,
     milestones,
     noms,
-    projects,
+    tracks,
     settings,
     ui,
     userProfile,

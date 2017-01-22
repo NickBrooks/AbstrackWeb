@@ -1,4 +1,4 @@
-const projects = [
+const tracks = [
   {
     id: "ae1cee1c-28fb-49f0-9897-d9adbc2a1ebb",
     name: "Big Overseas Trip",
@@ -35,4 +35,4 @@ const projects = [
   }
 ]
 
-export default projects;
+export default tracks;

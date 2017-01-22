@@ -23,23 +23,23 @@ class Sidebar extends React.Component {
         )
     }
 
-    renderProjectsMenu(projects) {
-        if (projects == undefined) {
+    renderTracksMenu(tracks) {
+        if (tracks == undefined) {
             return null;
         }
 
         var links = [];
 
-        for (let project of projects) {
+        for (let track of tracks) {
             links.push({
-                link: "/p/" + project.id,
-                title: project.name
+                link: "/t/" + track.id,
+                title: track.name
             });
         }
 
-        var header = "Projects (" + links.length + ")";
+        var header = "Tracks (" + links.length + ")";
 
-        return (<SidebarMenu header={header} headerTo="/projects" links={links} />)
+        return (<SidebarMenu header={header} headerTo="/tracks" links={links} />)
     }
 
     renderViewsMenu(views) {
@@ -62,7 +62,7 @@ class Sidebar extends React.Component {
     }
 
     render() {
-        let { userProfile, projects, views } = this.props;
+        let { userProfile, tracks, views } = this.props;
 
         return (
             <div className="sidebar menu">
@@ -71,7 +71,7 @@ class Sidebar extends React.Component {
                     <li className="inbox"><Link to="/"><FontAwesome name="envelope-open" /> Inbox</Link></li>
                     <li className="pinned"><Link to="/pinned"><FontAwesome name="thumb-tack" /> Pinned</Link></li>
                 </ul>
-                {this.renderProjectsMenu(projects)}
+                {this.renderTracksMenu(tracks)}
                 {this.renderViewsMenu(views)}
                 <ul className="nav nav-sidebar">
                     <li className="trash"><Link to="/"><FontAwesome name="trash" /> Trash</Link></li>

@@ -4,7 +4,7 @@ const milestones = [
     name: "Trip to Japan",
     description: "Organising everything I need to go to Japan.",
     percent_complete: 25,
-    project: {
+    track: {
       id: "ae1cee1c-28fb-49f0-9897-d9adbc2a1ebb",
       name: "Big Overseas Trip"
     }
@@ -14,7 +14,7 @@ const milestones = [
     name: "Nommer UI",
     description: "Developing the front end for Nommer.",
     percent_complete: 45,
-    project: {
+    track: {
       id: "73172577-74fc-43e7-9683-2782a6bc655f",
       name: "Nommer"
     }
@@ -24,7 +24,7 @@ const milestones = [
     name: "Nommer Backend",
     description: "Developing the backend for Nommer.",
     percent_complete: 67,
-    project: {
+    track: {
       id: "73172577-74fc-43e7-9683-2782a6bc655f",
       name: "Nommer"
     }

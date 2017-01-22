@@ -8,7 +8,7 @@ class HashtagSpan extends React.Component {
 
     render() {
         const { hashtag, customClass, disableLink } = this.props;
-        const link = "/t/" + hashtag;
+        const link = "/tag/" + hashtag;
         const tag = "#" + hashtag;
         const className = "tag hashtag tag-" + customClass;
 

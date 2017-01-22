@@ -17,7 +17,7 @@ const settings = {
       img: "https://i.imgur.com/r2NAHyD.png",
       text: "You have nothing pinned!"
     },
-    project: {
+    track: {
       img: "https://i.imgur.com/r2NAHyD.png"
     },
     tag: {

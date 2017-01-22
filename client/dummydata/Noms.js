@@ -3,7 +3,7 @@ const noms = [
         id: "1adb22aa-7634-4000-ab23-caa441c99345",
         title: "Better word for archiving!?",
         body: "Is there a better word for archiving?",
-        project: {
+        track: {
             id: "73172577-74fc-43e7-9683-2782a6bc655f",
             name: "Nommer"
         },
@@ -38,7 +38,7 @@ const noms = [
         id: "38afd9cf-f959-457b-b407-cb74044318a4",
         title: "Save to Nommer",
         body: "Allows you to save public noms that aren't shared with you \n- Actual version? \n- Or Original?",
-        project: {
+        track: {
             id: "73172577-74fc-43e7-9683-2782a6bc655f",
             name: "Nommer"
         },
@@ -73,7 +73,7 @@ const noms = [
         id: "a616d833-ce1c-43e8-8ee2-915980a3f012",
         title: "Notifications Hub",
         body: "Create a place to view all your notifications.",
-        project: {
+        track: {
             id: "73172577-74fc-43e7-9683-2782a6bc655f",
             name: "Nommer"
         },
@@ -109,7 +109,7 @@ const noms = [
         id: "2c0409a7-70ee-4662-b69e-1b7c8ef965e4",
         title: "@Tag people in nom/comments",
         body: "Be able to `@tag` fellow users in comments",
-        project: {
+        track: {
             id: "73172577-74fc-43e7-9683-2782a6bc655f",
             name: "Nommer"
         },
@@ -144,7 +144,7 @@ const noms = [
         id: "b596161d-d2ac-493e-b47f-ebc34758357b",
         title: "Private/Unlisted/Shareable/Public noms",
         body: "Set the various sharing permissions on noms.",
-        project: {
+        track: {
             id: "73172577-74fc-43e7-9683-2782a6bc655f",
             name: "Nommer"
         },
@@ -180,7 +180,7 @@ const noms = [
         id: "be87c9b3-e4c3-4e7c-b578-3ce65af79151",
         title: "Store User Information in DocDb",
         body: "More of the fine grained stuff like amount of issues, etc etc etc... Just extra meta about user!",
-        project: {
+        track: {
             id: "73172577-74fc-43e7-9683-2782a6bc655f",
             name: "Nommer"
         },
