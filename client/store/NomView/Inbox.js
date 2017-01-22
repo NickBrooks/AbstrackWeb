@@ -1,5 +1,5 @@
 import React from 'react';
-import ListNoms from '../ListNoms/ListNoms';
+import ListNoms from '../../components/ListNoms/ListNoms';
 
 class NomViewInbox extends React.Component {
   constructor(props) {

@@ -1,6 +1,6 @@
 import React from 'react';
-import CommentNode from './CommentNode';
-import AddComment from './AddComment';
+import CommentNode from './Components/Comment';
+import AddComment from './Components/AddComment';
 
 class Comments extends React.Component {
   constructor(props) {
@@ -10,7 +10,7 @@ class Comments extends React.Component {
   renderComments(nomComments) {
     let {nomId, ui} = this.props;
     return (
-      nomComments.map((comment) => <CommentNode {...comment} currentUser={this.props.userProfile} key={comment.id} nomId={nomId} commentId={comment.id} {...this.props} />)
+      nomComments.map((comment) => <Comment {...comment} currentUser={this.props.userProfile} key={comment.id} nomId={nomId} commentId={comment.id} {...this.props} />)
     )
   }
 

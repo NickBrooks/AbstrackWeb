@@ -1,6 +1,6 @@
 import React from 'react';
 import FontAwesome from 'react-fontawesome';
-import ListNoms from '../ListNoms/ListNoms';
+import ListNoms from '../../components/ListNoms/ListNoms';
 
 function filterMilestoneNoms(milestoneId, n) {
   if (typeof n.milestone != "undefined") {

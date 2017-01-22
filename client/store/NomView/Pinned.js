@@ -1,5 +1,5 @@
 import React from 'react';
-import ListNoms from '../ListNoms/ListNoms';
+import ListNoms from '../../components/ListNoms/ListNoms';
 import FontAwesome from 'react-fontawesome';
 
 function filterPinnedNoms(n) {

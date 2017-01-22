@@ -6,13 +6,13 @@ import Style from './styles/app.scss';
 
 // Import Components
 import App from './components/App';
-import NomViewInbox from './components/NomViews/Inbox';
-import NomViewPinned from './components/NomViews/Pinned';
-import NomViewTrack from './components/NomViews/Track';
-import NomViewMilestone from './components/NomViews/Milestone';
-import NomViewTag from './components/NomViews/Tag';
-import Nom from './components/Nom/Nom';
-import UserProfile from './components/UserProfile/UserProfile';
+import NomViewInbox from './store/NomView/Inbox';
+import NomViewPinned from './store/NomView/Pinned';
+import NomViewTrack from './store/NomView/Track';
+import NomViewMilestone from './store/NomView/Milestone';
+import NomViewTag from './store/NomView/Tag';
+import Nom from './store/Nom/Nom';
+import UserProfile from './store/UserProfile/UserProfile';
 
 // Import Router
 import { Router, Route, IndexRoute, browserHistory } from 'react-router';

@@ -1,6 +1,6 @@
 import React from 'react';
-import Avatar from '../Reusable/Avatar';
-import ListNoms from '../ListNoms/ListNoms';
+import Avatar from '../../components/Reusable/Avatar';
+import ListNoms from '../../components/ListNoms/ListNoms';
 
 function filterUserNoms(userId, nom) {
     return nom.created_by.id == userId;

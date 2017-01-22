@@ -2,10 +2,10 @@ import React from 'react';
 import { Link } from 'react-router';
 import moment from 'moment';
 import FontAwesome from 'react-fontawesome';
-import NomBody from './NomBody';
-import NomHeader from './NomHeader';
-import Avatar from '../Reusable/Avatar';
-import Comments from '../Comments/Comments';
+import NomBody from './Components/NomBody';
+import NomHeader from './Components/NomHeader';
+import Avatar from '../../components/Reusable/Avatar';
+import Comments from '../Comment/Comments';
 
 class Nom extends React.Component {
     constructor(props) {

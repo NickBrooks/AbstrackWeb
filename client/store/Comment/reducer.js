@@ -1,5 +1,5 @@
 import moment from 'moment';
-import { guid } from '../functions/functions';
+import { guid } from '../../functions/functions';
 
 function postComments(state = [], action) {
     switch (action.type) {

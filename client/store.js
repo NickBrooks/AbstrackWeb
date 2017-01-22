@@ -5,7 +5,7 @@ import thunk from 'redux-thunk';
 import createLogger from 'redux-logger';
 
 // import the root reducer
-import rootReducer from './reducers/index';
+import rootReducer from './reducers';
 
 // import dummydata
 import comments from './dummydata/Comments';

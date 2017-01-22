@@ -2,9 +2,9 @@ import React from 'react';
 import { Link } from 'react-router';
 import FontAwesome from 'react-fontawesome';
 import ReactMarkdown from 'react-markdown';
-import Avatar from '../Reusable/Avatar';
+import Avatar from '../../../components/Reusable/Avatar';
 
-class CommentNode extends React.Component {
+class Comment extends React.Component {
   constructor(props) {
     super(props);
     this.handleCommentSave = this.handleCommentSave.bind(this);
@@ -95,4 +95,4 @@ class CommentNode extends React.Component {
   }
 }
 
-export default CommentNode;
+export default Comment;

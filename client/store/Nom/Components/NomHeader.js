@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router';
-import HashtagSpan from '../Reusable/HashtagSpan';
+import HashtagSpan from '../../../components/Reusable/HashtagSpan';
 import FontAwesome from 'react-fontawesome';
 
 class NomHeader extends React.Component {
