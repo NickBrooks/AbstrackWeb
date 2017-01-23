@@ -1,11 +1,3 @@
-// toggle the newNomModal
-export function toggleNomEditor(value) {
-    return {
-        type: 'TOGGLE_NOM_EDITOR',
-        value
-    }
-}
-
 // add comment
 export function addComment(nomId, user, body) {
     return {
@@ -48,22 +40,5 @@ export function addCommentError(error) {
     return {
         type: 'ADD_COMMENT_ERROR',
         error
-    }
-}
-
-//add a new nom
-export function addNom(nom) {
-    return {
-        type: 'ADD_NOM',
-        nom
-    }
-}
-
-//pin or unpin a nom
-export function pinNom(nomId, value) {
-    return {
-        type: 'PIN_NOM',
-        nomId,
-        value
     }
 }
