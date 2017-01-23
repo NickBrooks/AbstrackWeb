@@ -2,7 +2,7 @@ import React from 'react';
 import { render } from 'react-dom';
 
 // Import CSS
-import Style from './nommer.scss';
+import Style from './styles/nommer.scss';
 
 // Import Components
 import App from './components/App';
