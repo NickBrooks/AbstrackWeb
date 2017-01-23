@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router';
 import FontAwesome from 'react-fontawesome';
-import Avatar from '../Reusable/Avatar';
-import SidebarMenu from './SidebarMenu';
+import Avatar from '../Avatar/Avatar';
+import SidebarMenu from './Components/SidebarMenu';
 
 class Sidebar extends React.Component {
     constructor(props) {

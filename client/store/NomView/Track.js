@@ -1,6 +1,6 @@
 import React from 'react';
 import FontAwesome from 'react-fontawesome';
-import ListNoms from '../../components/ListNoms/ListNoms';
+import ListNoms from '../../components/NomDisplay/NomDisplay';
 
 function filterTrackNoms(trackId, n) {
   if (typeof n.track != "undefined") {

@@ -1,7 +1,7 @@
 import React from 'react';
 import moment from 'moment';
-import TimeNode from './TimeNode';
-import EmptyNoms from './EmptyNoms';
+import TimeNode from './Components/TimeNode';
+import EmptyNoms from './Components/EmptyNoms';
 
 var now = moment();
 
@@ -45,7 +45,7 @@ function isAYear(n) {
   return (timeDiff > 365);
 }
 
-class ListNoms extends React.Component {
+class NomDisplay extends React.Component {
   constructor(props) {
     super(props);
   }
@@ -112,4 +112,4 @@ class ListNoms extends React.Component {
   }
 }
 
-export default ListNoms;
+export default NomDisplay;

@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router';
 import FontAwesome from 'react-fontawesome';
-import Avatar from '../../../components/Reusable/Avatar';
-import ErrorSpan from '../../../components/Reusable/ErrorSpan';
+import Avatar from '../../../components/Avatar/Avatar';
+import ErrorSpan from '../../../components/ErrorSpan/ErrorSpan';
 
 class AddComment extends React.Component {
     constructor(props) {

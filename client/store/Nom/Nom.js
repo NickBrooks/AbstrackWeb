@@ -4,7 +4,7 @@ import moment from 'moment';
 import FontAwesome from 'react-fontawesome';
 import NomBody from './Components/NomBody';
 import NomHeader from './Components/NomHeader';
-import Avatar from '../../components/Reusable/Avatar';
+import Avatar from '../../components/Avatar/Avatar';
 import Comments from '../Comment/Comments';
 
 class Nom extends React.Component {

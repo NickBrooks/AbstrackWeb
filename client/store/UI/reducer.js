@@ -1,6 +1,6 @@
 function ui(state = [], action) {
     switch (action.type) {
-        case 'TOGGLE_NEW_NOM_MODAL':
+        case 'TOGGLE_NOM_EDITOR':
             return Object.assign({}, state, {
                 newNomModal: {
                     open: action.value

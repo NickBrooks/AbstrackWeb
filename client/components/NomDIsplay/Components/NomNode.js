@@ -1,7 +1,7 @@
 import React from 'react';
-import HashtagSpan from '../Reusable/HashtagSpan';
 import { Link } from 'react-router';
-import Avatar from '../Reusable/Avatar';
+import HashtagSpan from '../../HashtagSpan/HashtagSpan';
+import Avatar from '../../Avatar/Avatar';
 
 class NomNode extends React.Component {
     constructor(props) {

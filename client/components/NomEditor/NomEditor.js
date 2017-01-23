@@ -1,9 +1,9 @@
 import React from 'react';
 import FontAwesome from 'react-fontawesome';
 import Modal from 'react-bootstrap-modal';
-import { conformHashtags } from '../../../functions/functions';
+import { conformHashtags } from '../../functions/functions';
 
-class NewNomModal extends React.Component {
+class NomEditor extends React.Component {
     constructor(props) {
         super(props);
         this.handleNomSubmit = this.handleNomSubmit.bind(this);
@@ -14,7 +14,7 @@ class NewNomModal extends React.Component {
         let {
             userProfile,
             addNom,
-            toggleNewNomModal
+            toggleNomEditor
         } = this.props;
 
         var nom = {
@@ -33,7 +33,7 @@ class NewNomModal extends React.Component {
         //addNom(nom);
         addNom(nom);
         this.refs.nomEditor.reset();
-        toggleNewNomModal(false);
+        toggleNomEditor(false);
     }
 
     renderTracks() {
@@ -59,7 +59,7 @@ class NewNomModal extends React.Component {
     render() {
         return (
             <div>
-                <Modal show={this.props.open} onHide={this.props.toggleNewNomModal.bind(null, false)} aria-labelledby="ModalHeader" className="nom-editor">
+                <Modal show={this.props.open} onHide={this.props.toggleNomEditor.bind(null, false)} aria-labelledby="ModalHeader" className="nom-editor">
                     <form ref="nomEditor" onSubmit={this.handleNomSubmit}>
                         <Modal.Header>
                             <Modal.Title id='ModalHeader'>
@@ -95,4 +95,4 @@ class NewNomModal extends React.Component {
     }
 }
 
-export default NewNomModal;
+export default NomEditor;

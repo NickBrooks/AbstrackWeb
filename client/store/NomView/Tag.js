@@ -1,5 +1,5 @@
 import React from 'react';
-import ListNoms from '../../components/ListNoms/ListNoms';
+import ListNoms from '../../components/NomDisplay/NomDisplay';
 
 function inArray(needle, haystack) {
     for (var i = 0; i < haystack.length; i++) {

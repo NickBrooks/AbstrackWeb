@@ -1,5 +1,5 @@
 import React from 'react';
-import CommentNode from './Components/Comment';
+import CommentNode from './Components/CommentNode';
 import AddComment from './Components/AddComment';
 
 class Comments extends React.Component {
@@ -10,7 +10,7 @@ class Comments extends React.Component {
   renderComments(nomComments) {
     let {nomId, ui} = this.props;
     return (
-      nomComments.map((comment) => <Comment {...comment} currentUser={this.props.userProfile} key={comment.id} nomId={nomId} commentId={comment.id} {...this.props} />)
+      nomComments.map((comment) => <CommentNode {...comment} currentUser={this.props.userProfile} key={comment.id} nomId={nomId} commentId={comment.id} {...this.props} />)
     )
   }
 

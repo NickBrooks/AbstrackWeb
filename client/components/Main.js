@@ -1,8 +1,8 @@
 import React from 'react';
 import Sidebar from './Sidebar/Sidebar';
 import Header from './Header/Header';
-import NewNomButton from './General/NewNomButton';
-import NewNomModal from './General/NewNomModal/NewNomModal';
+import NewNomButton from './NewNomButton/NewNomButton';
+import NewNomModal from './NomEditor/NomEditor';
 
 class Main extends React.Component {
     constructor(props) {

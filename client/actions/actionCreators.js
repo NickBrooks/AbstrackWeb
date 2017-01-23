@@ -1,7 +1,7 @@
 // toggle the newNomModal
-export function toggleNewNomModal(value) {
+export function toggleNomEditor(value) {
     return {
-        type: 'TOGGLE_NEW_NOM_MODAL',
+        type: 'TOGGLE_NOM_EDITOR',
         value
     }
 }
