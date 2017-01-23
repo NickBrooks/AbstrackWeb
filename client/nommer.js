@@ -2,7 +2,7 @@ import React from 'react';
 import { render } from 'react-dom';
 
 // Import CSS
-import Style from './app.scss';
+import Style from './nommer.scss';
 
 // Import Components
 import App from './components/App';
@@ -17,7 +17,7 @@ import UserProfile from './store/UserProfile/UserProfile';
 // Import Router
 import { Router, Route, IndexRoute, browserHistory } from 'react-router';
 import { Provider } from 'react-redux';
-import store, { history } from './store';
+import store, { history } from './store/store';
 
 const router = (
     <Provider store={store}>

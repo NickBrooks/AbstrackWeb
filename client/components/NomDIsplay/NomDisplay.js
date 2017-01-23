@@ -91,7 +91,6 @@ class NomDisplay extends React.Component {
   }
 
   render() {
-    // Dummy Data
     const {noms, emptyNoms} = this.props;
 
     if(noms.length < 1) {
