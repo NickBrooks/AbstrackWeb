@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router';
-import HashtagSpan from '../../../components/HashtagSpan/HashtagSpan';
+import HashtagEditor from './HashtagEditor';
 import FontAwesome from 'react-fontawesome';
 
 class NomHeader extends React.Component {
@@ -40,7 +40,7 @@ class NomHeader extends React.Component {
             <div className="nom-header">
                 <h3>{this.props.nom.title} {this.renderPinned()}</h3>
                 <div className="hashtags">
-                    {this.props.nom.hashtags.map((hashtag, i) => <HashtagSpan {...this.props} hashtag={hashtag} customClass="default" key={i} i={i} />)}<FontAwesome name="plus" />
+                    <HashtagEditor hashtags={this.props.nom.hashtags} />
                 </div>
             </div>
         )
