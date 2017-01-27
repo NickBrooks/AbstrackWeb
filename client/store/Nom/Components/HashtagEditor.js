@@ -8,16 +8,17 @@ class HashtagEditor extends React.Component {
         super(props);
         this.openHashtagEditor = this.openHashtagEditor.bind(this);
         this.state = {
-            open: true
+            open: false
         };
     }
 
     openHashtagEditor(value) {
-        if (value == true) {
-            this.setState({open: true});
+        if (value === true) {
+            this.setState({ open: true });
         }
-
-        this.setState({open: false});
+        else {
+            this.setState({ open: false });
+        }
     }
 
     handleHashtagSubmit() {
@@ -27,11 +28,11 @@ class HashtagEditor extends React.Component {
     renderHashtagEditor() {
         return (
             <div>
-                <Modal show={this.state.open} onHide={() => this.openHashtagEditor(false)} aria-labelledby="ModalHeader" className="nom-editor">
+                <Modal show={this.state.open} onHide={() => this.openHashtagEditor(false)} aria-labelledby="ModalHeader" className="sm hashtag-editor">
                     <form ref="hashtagEditor" onSubmit={this.handleHashtagSubmit}>
                         <Modal.Body>
-                            <div className="form-group row">
-                                {this.props.hashtags.map((hashtag, i) => <p key={i}>{hashtag.name}</p>)}
+                            <div>
+                                {this.props.hashtags.map((hashtag, i) => <h5 key={i}><span className="tag tag-default">#{hashtag}</span></h5>)}
                             </div>
                         </Modal.Body>
                         <Modal.Footer>
