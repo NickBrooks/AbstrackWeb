@@ -59,7 +59,7 @@ class NomEditor extends React.Component {
     render() {
         return (
             <div>
-                <Modal show={this.props.open} onHide={this.props.toggleNomEditor.bind(null, false)} aria-labelledby="ModalHeader" className="nom-editor">
+                <Modal show={this.props.open} onHide={this.props.toggleNomEditor.bind(null, false)} aria-labelledby="ModalHeader" className="modal-full-size nom-editor">
                     <form ref="nomEditor" onSubmit={this.handleNomSubmit}>
                         <Modal.Header>
                             <Modal.Title id='ModalHeader'>

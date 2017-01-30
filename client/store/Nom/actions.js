@@ -14,3 +14,12 @@ export function pinNom(nomId, value) {
         value
     }
 }
+
+//add a new hashtag to a nom
+export function addHashtagToNom(hashtags, nomId) {
+    return {
+        type: 'ADD_HASHTAG_TO_NOM',
+        hashtags,
+        nomId
+    }
+}

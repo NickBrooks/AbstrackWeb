@@ -10,6 +10,7 @@ export function guid() {
 }
 
 export function conformHashtags(hashtags) {
-    hashtags = hashtags.replace(/\s/g,'');
+    hashtags = hashtags.replace(/\s/g, '');
+    hashtags = hashtags.replace(/[^\w,]|_/g, '');
     return hashtags.split(',');
 }
