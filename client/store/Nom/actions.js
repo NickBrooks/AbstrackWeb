@@ -15,10 +15,19 @@ export function pinNom(nomId, value) {
     }
 }
 
-//add a new hashtag to a nom
+//add new hashtags to nom
 export function addHashtagToNom(hashtags, nomId) {
     return {
         type: 'ADD_HASHTAG_TO_NOM',
+        hashtags,
+        nomId
+    }
+}
+
+//remove hashtags from nom
+export function removeHashtagsFromNom(hashtags, nomId) {
+    return {
+        type: 'REMOVE_HASHTAGS_FROM_NOM',
         hashtags,
         nomId
     }

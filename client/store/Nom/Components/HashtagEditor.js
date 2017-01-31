@@ -9,6 +9,7 @@ class HashtagEditor extends React.Component {
         super(props);
         this.openHashtagEditor = this.openHashtagEditor.bind(this);
         this.handleHashtagSubmit = this.handleHashtagSubmit.bind(this);
+        this.handleHashtagRemove = this.handleHashtagRemove.bind(this);
         this.state = {
             open: false
         };
@@ -34,6 +35,11 @@ class HashtagEditor extends React.Component {
         this.refs.hashtagEditor.reset();
     }
 
+    handleHashtagRemove(hashtag) {
+        var hashtags = [hashtag];
+        this.props.removeHashtagsFromNom(hashtags, this.props.nomId);
+    }
+
     renderHashtagEditor() {
         return (
             <div>
@@ -46,7 +52,9 @@ class HashtagEditor extends React.Component {
                         </Modal.Header>
                         <Modal.Body>
                             <div>
-                                {this.props.hashtags.map((hashtag, i) => <h5 key={i}><FontAwesome name="times" className="btn-delete-hashtag" /> <span className="tag tag-default hashtag">#{hashtag}</span></h5>)}
+                                {this.props.hashtags.map((hashtag, i) => <h5 key={i}>
+                                    <FontAwesome name="times" className="btn-delete-hashtag" onClick={() => this.handleHashtagRemove(hashtag)} /> <span className="tag tag-default hashtag">#{hashtag}</span>
+                                </h5>)}
                             </div>
                         </Modal.Body>
                         <Modal.Footer>
