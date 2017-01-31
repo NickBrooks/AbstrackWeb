@@ -1,0 +1,23 @@
+.typeahead {
+    ul.typeahead-selector {
+        position: absolute;
+        background: $white;
+        width: 100%;
+        box-sizing: border-box;
+        text-align: left;
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+
+        li {
+            padding: 5px 10px;
+
+            a {
+                font-family: $font-family-fancy;
+                width: 100%;
+                color: $nom-dark-blue;
+                font-weight: $font-weight-bold;
+            }
+        }
+    }
+}

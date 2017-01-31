@@ -39,14 +39,15 @@ class NomHeader extends React.Component {
         let {
             addHashtagToNom,
             nom,
-            removeHashtagsFromNom
+            removeHashtagsFromNom,
+            hashtags
         } = this.props;
 
         return (
             <div className="nom-header">
                 <h3>{this.props.nom.title} {this.renderPinned()}</h3>
                 <div className="hashtags">
-                    <HashtagEditor hashtags={nom.hashtags} nomId={nom.id} addHashtagToNom={addHashtagToNom} removeHashtagsFromNom={removeHashtagsFromNom} />
+                    <HashtagEditor hashtags={nom.hashtags} hashtagList={hashtags} nomId={nom.id} addHashtagToNom={addHashtagToNom} removeHashtagsFromNom={removeHashtagsFromNom} />
                 </div>
             </div>
         )

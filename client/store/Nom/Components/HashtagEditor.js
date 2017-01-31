@@ -1,38 +1,52 @@
+//libraries
 import React from 'react';
-import HashtagSpan from '../../../components/HashtagSpan/HashtagSpan';
-import { conformHashtags } from '../../../functions/functions';
 import Modal from 'react-bootstrap-modal';
 import FontAwesome from 'react-fontawesome';
+import { Typeahead } from 'react-typeahead';
+
+//components
+import HashtagSpan from '../../../components/HashtagSpan/HashtagSpan';
+import { conformHashtags } from '../../../functions/functions';
 
 class HashtagEditor extends React.Component {
     constructor(props) {
         super(props);
-        this.openHashtagEditor = this.openHashtagEditor.bind(this);
         this.handleHashtagSubmit = this.handleHashtagSubmit.bind(this);
         this.handleHashtagRemove = this.handleHashtagRemove.bind(this);
+        this.handleTypeaheadClick = this.handleTypeaheadClick.bind(this);
         this.state = {
             open: false
         };
     }
 
-    openHashtagEditor(value) {
-        if (value === true) {
-            this.setState({ open: true });
-        }
-        else {
-            this.setState({ open: false });
-        }
+    handleTypeaheadClick(value) {
+        //conform hashtag
+        var hashtags = conformHashtags(value.hashtag);
+
+        //add it
+        this.props.addHashtagToNom(hashtags, this.props.nomId);
+        this.refs.hashtagTypeahead.setState({
+            entryValue: '',
+            selection: null,
+            selectionIndex: null,
+            visible: []
+        });
     }
 
     handleHashtagSubmit(e) {
         e.preventDefault();
 
         //conform hashtag
-        var hashtags = conformHashtags(this.refs.hashtags.value);
+        var hashtags = conformHashtags(this.refs.hashtagTypeahead.state.entryValue);
 
         //add it
         this.props.addHashtagToNom(hashtags, this.props.nomId);
-        this.refs.hashtagEditor.reset();
+        this.refs.hashtagTypeahead.setState({
+            entryValue: '',
+            selection: null,
+            selectionIndex: null,
+            visible: []
+        });
     }
 
     handleHashtagRemove(hashtag) {
@@ -41,9 +55,13 @@ class HashtagEditor extends React.Component {
     }
 
     renderHashtagEditor() {
+        var displayOption = function (option) {
+            return "#" + option.hashtag;
+        };
+
         return (
             <div>
-                <Modal show={this.state.open} onHide={() => this.openHashtagEditor(false)} aria-labelledby="ModalHeader" className="sm hashtag-editor">
+                <Modal show={this.state.open} onHide={() => this.setState({ open: false })} aria-labelledby="ModalHeader" className="sm hashtag-editor">
                     <form ref="hashtagEditor" onSubmit={this.handleHashtagSubmit}>
                         <Modal.Header>
                             <Modal.Title id='ModalHeader'>
@@ -58,7 +76,18 @@ class HashtagEditor extends React.Component {
                             </div>
                         </Modal.Body>
                         <Modal.Footer>
-                            <input type="text" ref="hashtags" className="form-control" placeholder="Add #hashtag" />
+                            <Typeahead ref="hashtagTypeahead"
+                                options={this.props.hashtagList}
+                                filterOption="hashtag"
+                                displayOption={displayOption}
+                                className="hashtag-typeahead"
+                                placeholder="Add #hashtags"
+                                maxVisible={8}
+                                onOptionSelected={this.handleTypeaheadClick}
+                                customClasses={{
+                                    input: "form-control"
+                                }}
+                                />
                             <input type="submit" hidden />
                         </Modal.Footer>
                     </form>
@@ -70,7 +99,7 @@ class HashtagEditor extends React.Component {
     render() {
         return (
             <div className="hashtags">
-                {this.props.hashtags.map((hashtag, i) => <HashtagSpan {...this.props} hashtag={hashtag} customClass="default" key={i} i={i} />)}<FontAwesome name="plus" onClick={() => this.openHashtagEditor(true)} />
+                {this.props.hashtags.map((hashtag, i) => <HashtagSpan {...this.props} hashtag={hashtag} customClass="default" key={i} i={i} />)}<FontAwesome name="plus" onClick={() => this.setState({ open: true })} />
                 {this.renderHashtagEditor()}
             </div>
         )

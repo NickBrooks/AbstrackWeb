@@ -46,6 +46,7 @@
     "react-router-redux": "^4.0.4",
     "react-transform-catch-errors": "^1.0.2",
     "react-transform-hmr": "^1.0.4",
+    "react-typeahead": "^2.0.0-alpha.5",
     "redbox-react": "^1.2.3",
     "redux": "^3.5.2",
     "redux-logger": "^2.7.4",

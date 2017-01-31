@@ -1,64 +1,64 @@
-const hashtags = [
+const hashhashtags = [
   {
-    tag: "nommer"
+    hashtag: "nommer"
   },
   {
-    tag: "todo"
+    hashtag: "todo"
   },
   {
-    tag: "info"
+    hashtag: "info"
   },
   {
-    tag: "idea"
+    hashtag: "idea"
   },
   {
-    tag: "fun"
+    hashtag: "fun"
   },
   {
-    tag: "recipe"
+    hashtag: "recipe"
   },
   {
-    tag: "offline"
+    hashtag: "offline"
   },
   {
-    tag: "travel"
+    hashtag: "travel"
   },
   {
-    tag: "tech"
+    hashtag: "tech"
   },
   {
-    tag: "food"
+    hashtag: "food"
   },
   {
-    tag: "japan"
+    hashtag: "japan"
   },
   {
-    tag: "usa"
+    hashtag: "usa"
   },
   {
-    tag: "roadtrip"
+    hashtag: "roadtrip"
   },
   {
-    tag: "notifications"
+    hashtag: "notifications"
   },
   {
-    tag: "sharing"
+    hashtag: "sharing"
   },
   {
-    tag: "documentdb"
+    hashtag: "documentdb"
   },
   {
-    tag: "vinyl"
+    hashtag: "vinyl"
   },
   {
-    tag: "music"
+    hashtag: "music"
   },
   {
-    tag: "tobuy"
+    hashtag: "tobuy"
   },
   {
-    tag: "list"
+    hashtag: "list"
   }
 ]
 
-export default hashtags;
+export default hashhashtags;
