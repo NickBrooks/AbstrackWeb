@@ -29,6 +29,7 @@ class HashtagEditor extends React.Component {
             entryValue: '',
             selection: null,
             selectionIndex: null,
+            showResults: true,
             visible: []
         });
     }
@@ -45,6 +46,7 @@ class HashtagEditor extends React.Component {
             entryValue: '',
             selection: null,
             selectionIndex: null,
+            showResults: true,
             visible: []
         });
     }
