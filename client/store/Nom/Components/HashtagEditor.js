@@ -56,11 +56,42 @@ class HashtagEditor extends React.Component {
         this.props.removeHashtagsFromNom(hashtags, this.props.nomId);
     }
 
-    renderHashtagEditor() {
-        var displayOption = function (option) {
+    renderTypeahead() {
+        let { hashtags, hashtagList } = this.props;
+
+        function removeExistingTags(hashtags, hashtagList) {
+            return hashtags.indexOf(hashtagList.hashtag) === -1;
+        }
+
+        var filteredHashtags = hashtagList.filter(removeExistingTags.bind(null, hashtags));
+
+        function displayOption(option) {
             return "#" + option.hashtag;
         };
 
+        return (
+            <div>
+                <Typeahead ref="hashtagTypeahead"
+                    options={filteredHashtags}
+                    filterOption="hashtag"
+                    displayOption={displayOption}
+                    className="hashtag-typeahead"
+                    placeholder="Add #hashtags"
+                    maxVisible={8}
+                    onOptionSelected={this.handleTypeaheadClick}
+                    inputProps={{
+                        autoFocus: true
+                    }}
+                    customClasses={{
+                        input: "form-control"
+                    }}
+                    />
+                <input type="submit" hidden />
+            </div>
+        )
+    }
+
+    renderHashtagEditor() {
         return (
             <div>
                 <Modal show={this.state.open} onHide={() => this.setState({ open: false })} aria-labelledby="ModalHeader" className="sm hashtag-editor">
@@ -78,19 +109,7 @@ class HashtagEditor extends React.Component {
                             </div>
                         </Modal.Body>
                         <Modal.Footer>
-                            <Typeahead ref="hashtagTypeahead"
-                                options={this.props.hashtagList}
-                                filterOption="hashtag"
-                                displayOption={displayOption}
-                                className="hashtag-typeahead"
-                                placeholder="Add #hashtags"
-                                maxVisible={8}
-                                onOptionSelected={this.handleTypeaheadClick}
-                                customClasses={{
-                                    input: "form-control"
-                                }}
-                                />
-                            <input type="submit" hidden />
+                            {this.renderTypeahead()}
                         </Modal.Footer>
                     </form>
                 </Modal>
