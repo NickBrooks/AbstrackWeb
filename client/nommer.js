@@ -5,7 +5,7 @@ import { render } from 'react-dom';
 import Style from './styles/nommer.scss';
 
 // Import Components
-import App from './components/App';
+import { App, FullScreen } from './components/App';
 import NomViewInbox from './store/NomView/Inbox';
 import NomViewPinned from './store/NomView/Pinned';
 import NomViewTrack from './store/NomView/Track';
@@ -23,7 +23,9 @@ import store, { history } from './store/store';
 const router = (
     <Provider store={store}>
         <Router history={history}>
-            <Route path="/login" component={LoginView}></Route>
+            <Route component={FullScreen}>
+                <Route path="/login" component={LoginView} />
+            </Route>
             <Route path="/" component={App}>
                 <IndexRoute component={NomViewInbox}></IndexRoute>
                 <Route path="/pinned" component={NomViewPinned}></Route>

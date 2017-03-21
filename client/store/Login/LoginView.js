@@ -1,7 +1,6 @@
 import React from 'react';
 import FontAwesome from 'react-fontawesome';
 import { Link } from 'react-router';
-import { apiGetToken } from '../../api/LoginClient';
 
 class LoginView extends React.Component {
     constructor(props) {
@@ -15,6 +14,7 @@ class LoginView extends React.Component {
 
     handleLogin(e) {
         e.preventDefault();
+        let { handleLogin } = this.props;
         const userName = this.refs.userName.value;
         const password = this.refs.password.value;
 
@@ -22,7 +22,7 @@ class LoginView extends React.Component {
             loginError('Write a comment yo!');
         } else {
             //post the comment
-            apiGetToken(userName, password);
+            handleLogin(userName, password);
             this.refs.loginForm.reset();
         }
     }
@@ -30,7 +30,7 @@ class LoginView extends React.Component {
     render() {
         return (
             <div className="container login-view">
-                <div className="row core-body">
+                <div className="row">
                     <div className="col-md-4 col-md-offset-4">
                         <form ref="loginForm" className="add-comment" onSubmit={this.handleLogin}>
                             <div className="ibox">

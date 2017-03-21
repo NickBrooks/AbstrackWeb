@@ -4,7 +4,7 @@ import Header from './Header/Header';
 import NewNomButton from './NewNomButton/NewNomButton';
 import NewNomModal from './NomEditor/NomEditor';
 
-class Main extends React.Component {
+class AppView extends React.Component {
     constructor(props) {
         super(props);
     }
@@ -30,4 +30,4 @@ class Main extends React.Component {
     }
 }
 
-export default Main;
+export default AppView;

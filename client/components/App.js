@@ -1,6 +1,7 @@
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import Main from './Main';
+import AppView from './AppView';
+import FullScreenView from './FullScreenView';
 
 // import all action creators
 import * as CommentsActions from '../store/Comment/actions';
@@ -48,7 +49,8 @@ function mapDispatchToProps(dispatch) {
     }, dispatch)
 }
 
-const App = connect(mapStateToProps,
-    mapDispatchToProps)(Main);
+export const App = connect(mapStateToProps,
+    mapDispatchToProps)(AppView);
 
-export default App;
+export const FullScreen = connect(mapStateToProps,
+    mapDispatchToProps)(FullScreenView);
