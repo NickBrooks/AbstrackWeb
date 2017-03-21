@@ -1,13 +1,10 @@
-import Axios from 'axios';
-import getApiUrl from '../../api/ApiUrl'
-
-const apiUrl = getApiUrl();
+import { apiGetToken } from '../../api/actions';
 
 export function handleLogin(userName, password) {
-    const request = Axios.post(apiUrl + "auth/token", {
-            userName,
-            password
-        });
+    const request = apiGetToken({
+        userName,
+        password
+    });
 
     return dispatch => {
         request.then(response => {
