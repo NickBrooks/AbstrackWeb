@@ -6,6 +6,7 @@ import Main from './Main';
 import * as CommentsActions from '../store/Comment/actions';
 import * as HashtagActions from '../store/Hashtag/actions';
 import * as MilestoneActions from '../store/Milestone/actions';
+import * as LoginActions from '../store/Login/actions';
 import * as NomActions from '../store/Nom/actions';
 import * as NomViewActions from '../store/NomView/actions';
 import * as SettingsActions from '../store/Settings/actions';
@@ -35,6 +36,7 @@ function mapDispatchToProps(dispatch) {
         ...CommentsActions,
         ...HashtagActions,
         ...MilestoneActions,
+        ...LoginActions,
         ...NomActions,
         ...NomViewActions,
         ...SettingsActions,

@@ -5,6 +5,7 @@ import { routerReducer } from 'react-router-redux';
 import comments from './Comment/reducer';
 import hashtags from './Hashtag/reducer';
 import milestones from './Milestone/reducer';
+import login from './Login/reducer';
 import noms from './Nom/reducer';
 import tracks from './Track/reducer';
 import settings from './Settings/reducer';
@@ -17,6 +18,7 @@ const rootReducer = combineReducers({
     comments,
     hashtags,
     milestones,
+    login,
     noms,
     tracks,
     settings,

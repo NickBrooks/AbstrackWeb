@@ -70,6 +70,10 @@ class Sidebar extends React.Component {
                 <ul className="nav nav-sidebar">
                     <li className="inbox"><Link to="/"><FontAwesome name="envelope-open" /> Inbox</Link></li>
                     <li className="pinned"><Link to="/pinned"><FontAwesome name="thumb-tack" /> Pinned</Link></li>
+                    <li className="notes"><Link to="/notes"><FontAwesome name="sticky-note" /> Notes</Link></li>
+                    <li className="tasks"><Link to="/tasks"><FontAwesome name="check" /> Tasks</Link></li>
+                    <li className="documents"><Link to="/documents"><FontAwesome name="file-text" /> Documents</Link></li>
+                    <li className="video"><Link to="/video"><FontAwesome name="video-camera" /> Video</Link></li>
                 </ul>
                 {this.renderTracksMenu(tracks)}
                 {this.renderViewsMenu(views)}

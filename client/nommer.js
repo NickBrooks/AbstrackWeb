@@ -12,6 +12,7 @@ import NomViewTrack from './store/NomView/Track';
 import NomViewMilestone from './store/NomView/Milestone';
 import NomViewTag from './store/NomView/Tag';
 import Nom from './store/Nom/Nom';
+import LoginView from './store/Login/LoginView';
 import UserProfile from './store/UserProfile/UserProfile';
 
 // Import Router
@@ -22,6 +23,7 @@ import store, { history } from './store/store';
 const router = (
     <Provider store={store}>
         <Router history={history}>
+            <Route path="/login" component={LoginView}></Route>
             <Route path="/" component={App}>
                 <IndexRoute component={NomViewInbox}></IndexRoute>
                 <Route path="/pinned" component={NomViewPinned}></Route>
