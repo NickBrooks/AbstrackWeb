@@ -3,6 +3,8 @@ import { syncHistoryWithStore } from 'react-router-redux';
 import { browserHistory } from 'react-router';
 import thunk from 'redux-thunk';
 import createLogger from 'redux-logger';
+import throttle from 'lodash/throttle';
+import { loadLocalStorageState, saveLocalStorageState } from '../functions';
 
 // import reducer
 import rootReducer from './reducers';
@@ -33,12 +35,20 @@ const defaultState = {
   views
 };
 
+const persistedState = loadLocalStorageState();
 const logger = createLogger();
+
 const store = createStore(
   rootReducer,
   defaultState,
   applyMiddleware(thunk, logger)
 );
+
+store.subscribe(throttle(() => {
+  saveLocalStorageState({
+    userProfile: store.getState().userProfile
+  });
+}, 1000));
 
 export const history = syncHistoryWithStore(browserHistory, store);
 
