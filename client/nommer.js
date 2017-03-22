@@ -5,7 +5,7 @@ import { render } from 'react-dom';
 import Style from './styles/nommer.scss';
 
 // Import Components
-import { App, FullScreen } from './components/App';
+import { App, FullScreen } from './store/App';
 import NomViewInbox from './store/NomView/Inbox';
 import NomViewPinned from './store/NomView/Pinned';
 import NomViewTrack from './store/NomView/Track';

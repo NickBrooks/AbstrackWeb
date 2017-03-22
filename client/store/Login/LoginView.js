@@ -31,7 +31,7 @@ class LoginView extends React.Component {
         return (
             <div className="container login-view">
                 <div className="row">
-                    <div className="col-md-4 col-md-offset-4">
+                    <div className="col-md-6 offset-md-3">
                         <form ref="loginForm" className="add-comment" onSubmit={this.handleLogin}>
                             <div className="ibox">
                                 <input type="text" ref="userName" placeholder="Username" />                                

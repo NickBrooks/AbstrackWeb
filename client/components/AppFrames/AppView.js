@@ -1,8 +1,8 @@
 import React from 'react';
-import Sidebar from './Sidebar/Sidebar';
-import Header from './Header/Header';
-import NewNomButton from './NewNomButton/NewNomButton';
-import NewNomModal from './NomEditor/NomEditor';
+import Sidebar from '../Sidebar/Sidebar';
+import Header from '../Header/Header';
+import NewNomButton from '../NewNomButton/NewNomButton';
+import NewNomModal from '../NomEditor/NomEditor';
 
 class AppView extends React.Component {
     constructor(props) {

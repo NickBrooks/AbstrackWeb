@@ -1,7 +1,7 @@
 import React from 'react';
 import FontAwesome from 'react-fontawesome';
 import Modal from 'react-bootstrap-modal';
-import { conformHashtags } from '../../functions/functions';
+import { conformHashtags } from '../../functions';
 
 class NomEditor extends React.Component {
     constructor(props) {

@@ -1,21 +1,21 @@
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import AppView from './AppView';
-import FullScreenView from './FullScreenView';
+import AppView from '../components/AppFrames/AppView';
+import FullScreenView from '../components/AppFrames/FullScreenView';
 
 // import all action creators
-import * as CommentsActions from '../store/Comment/actions';
-import * as HashtagActions from '../store/Hashtag/actions';
-import * as MilestoneActions from '../store/Milestone/actions';
-import * as LoginActions from '../store/Login/actions';
-import * as NomActions from '../store/Nom/actions';
-import * as NomViewActions from '../store/NomView/actions';
-import * as SettingsActions from '../store/Settings/actions';
-import * as TrackActions from '../store/Track/actions';
-import * as UIActions from '../store/UI/actions';
-import * as UserActions from '../store/User/actions';
-import * as UserProfileActions from '../store/UserProfile/actions';
-import * as ViewActions from '../store/View/actions';
+import * as CommentsActions from './Comment/actions';
+import * as HashtagActions from './Hashtag/actions';
+import * as MilestoneActions from './Milestone/actions';
+import * as LoginActions from './Login/actions';
+import * as NomActions from './Nom/actions';
+import * as NomViewActions from './NomView/actions';
+import * as SettingsActions from './Settings/actions';
+import * as TrackActions from './Track/actions';
+import * as UIActions from './UI/actions';
+import * as UserActions from './User/actions';
+import * as UserProfileActions from './UserProfile/actions';
+import * as ViewActions from './View/actions';
 
 function mapStateToProps(state) {
     return {

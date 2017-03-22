@@ -1,5 +1,5 @@
 import moment from 'moment';
-import { guid } from '../../functions/functions';
+import { guid } from '../../functions';
 
 function extractHashtags(state, nomId) {
     var i = state.findIndex((nom) => nom.id === nomId);

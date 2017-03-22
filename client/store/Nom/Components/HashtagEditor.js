@@ -6,7 +6,7 @@ import { Typeahead } from 'react-typeahead';
 
 //components
 import HashtagSpan from '../../../components/HashtagSpan/HashtagSpan';
-import { conformHashtags } from '../../../functions/functions';
+import { conformHashtags } from '../../../functions';
 
 class HashtagEditor extends React.Component {
     constructor(props) {
