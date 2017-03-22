@@ -1,6 +1,10 @@
 import { apiGetToken } from '../../api/actions';
 import { setLocalStorage, clearLocalStorage } from '../../functions';
 
+let clearAuthData = () => {
+    clearLocalStorage();
+}
+
 function loginSuccess(response) {
     return {
         type: 'LOGIN_SUCCESS',
@@ -8,7 +12,7 @@ function loginSuccess(response) {
     }
 }
 
-function loginFailure(error) {
+export function loginFailure(error) {
     return {
         type: 'LOGIN_FAILURE',
         error
@@ -23,9 +27,14 @@ export function handleLogin(userName, password) {
 
     return dispatch => {
         request.then(response => {
-            dispatch(loginSuccess(response))
+            Promise.all([
+                dispatch(setLocalStorage("auth", JSON.stringify(response.data))),
+                dispatch(loginSuccess(response))
+            ])
         }).catch(error => {
-            dispatch(loginFailure(error))
+            Promise.all([
+                dispatch(loginFailure(error))
+            ])
         });
     };
 }

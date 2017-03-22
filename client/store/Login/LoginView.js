@@ -5,21 +5,17 @@ import { Link } from 'react-router';
 class LoginView extends React.Component {
     constructor(props) {
         super(props);
-        this.handleLogin = this.handleLogin.bind(this);
+        this.handleLoginSubmit = this.handleLoginSubmit.bind(this);
     }
 
-    loginError(error) {
-        console.log(error);
-    }
-
-    handleLogin(e) {
+    handleLoginSubmit(e) {
         e.preventDefault();
-        let { handleLogin } = this.props;
+        let { handleLogin, loginFailure } = this.props;
         const userName = this.refs.userName.value;
         const password = this.refs.password.value;
 
         if (userName == '' || password == '') {
-            loginError('Write a comment yo!');
+            loginFailure('Enter a username and password');
         } else {
             //post the comment
             handleLogin(userName, password);
@@ -32,10 +28,10 @@ class LoginView extends React.Component {
             <div className="container login-view">
                 <div className="row">
                     <div className="col-md-6 offset-md-3">
-                        <form ref="loginForm" className="add-comment" onSubmit={this.handleLogin}>
+                        <form ref="loginForm" className="add-comment" onSubmit={this.handleLoginSubmit}>
                             <div className="ibox">
-                                <input type="text" ref="userName" placeholder="Username" />                                
-                                <input type="text" ref="password" placeholder="Password" />
+                                <input type="text" ref="userName" placeholder="Username" defaultValue="mattcrouch" />                                
+                                <input type="text" ref="password" placeholder="Password" defaultValue="AFC9798!" />
                                 <hr />
                                 <button type="submit" className="btn btn-sm btn-success pull-right"><FontAwesome name="paper-plane" /> Login</button>
                                 <div className="clearfix"></div>
