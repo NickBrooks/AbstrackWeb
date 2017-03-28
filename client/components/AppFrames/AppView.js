@@ -1,4 +1,6 @@
 import React from 'react';
+import { browserHistory } from 'react-router';
+import moment from 'moment';
 import Sidebar from '../Sidebar/Sidebar';
 import Header from '../Header/Header';
 import NewNomButton from '../NewNomButton/NewNomButton';
@@ -7,6 +9,15 @@ import NewNomModal from '../NomEditor/NomEditor';
 class AppView extends React.Component {
     constructor(props) {
         super(props);
+        let { login } = props;
+        
+        if (login.token == "" || login.token == null) {
+            browserHistory.push('/login');
+        }
+
+        if (login.expiration < moment.utc().format()) {
+            console.log('expired');
+        }
     }
 
     render() {

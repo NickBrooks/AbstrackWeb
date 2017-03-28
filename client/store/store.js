@@ -22,11 +22,22 @@ import userProfile from '../data/UserProfile';
 import users from '../data/Users';
 import views from '../data/Views';
 
+const persistedState = loadLocalStorageState();
+const logger = createLogger();
+
+// check for local storage login details
+var loginToken;
+if (typeof persistedState !== "undefined") {
+  persistedState.login.token != null ? loginToken = persistedState.login : loginToken = login;
+} else {
+  loginToken = login;
+}
+
 // create an object for the default state
 const defaultState = {
   comments,
   hashtags,
-  login,
+  login: loginToken,
   milestones,
   noms,
   tracks,
@@ -36,9 +47,6 @@ const defaultState = {
   users,
   views
 };
-
-const persistedState = loadLocalStorageState();
-const logger = createLogger();
 
 const store = createStore(
   rootReducer,

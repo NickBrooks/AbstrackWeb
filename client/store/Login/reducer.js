@@ -1,8 +1,7 @@
 function login(state = [], action) {
     switch (action.type) {
         case 'LOGIN_SUCCESS':
-            console.log(action.data);
-            return [...state, action.data];
+            return action.data;
         case 'LOGIN_FAILURE':
             return [...state, action.nom];
     }
