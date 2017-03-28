@@ -5,10 +5,10 @@ let clearAuthData = () => {
     clearLocalStorage();
 }
 
-function loginSuccess(response) {
+function loginSuccess(data) {
     return {
         type: 'LOGIN_SUCCESS',
-        response
+        data
     }
 }
 
@@ -27,14 +27,9 @@ export function handleLogin(userName, password) {
 
     return dispatch => {
         request.then(response => {
-            Promise.all([
-                dispatch(setLocalStorage("auth", JSON.stringify(response.data))),
-                dispatch(loginSuccess(response))
-            ])
+            dispatch(loginSuccess(response.data));
         }).catch(error => {
-            Promise.all([
-                dispatch(loginFailure(error))
-            ])
+            dispatch(loginFailure(error));
         });
     };
 }

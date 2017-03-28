@@ -21,6 +21,7 @@ function mapStateToProps(state) {
     return {
         comments: state.comments,
         hashtags: state.hashtags,
+        login: state.login,
         milestones: state.milestones,
         noms: state.noms,
         tracks: state.tracks,

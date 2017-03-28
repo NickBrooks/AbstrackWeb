@@ -12,6 +12,7 @@ import rootReducer from './reducers';
 // import data
 import comments from '../data/Comments';
 import hashtags from '../data/Hashtags';
+import login from '../data/Login';
 import milestones from '../data/Milestones';
 import noms from '../data/Noms';
 import tracks from '../data/Tracks';
@@ -25,6 +26,7 @@ import views from '../data/Views';
 const defaultState = {
   comments,
   hashtags,
+  login,
   milestones,
   noms,
   tracks,
@@ -46,7 +48,7 @@ const store = createStore(
 
 store.subscribe(throttle(() => {
   saveLocalStorageState({
-    userProfile: store.getState().userProfile
+    login: store.getState().login
   });
 }, 1000));
 
