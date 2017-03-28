@@ -1,5 +1,6 @@
 import { apiGetToken } from '../../api/actions';
 import { setLocalStorage, clearLocalStorage } from '../../functions';
+import { push } from 'react-router-redux';
 
 let clearAuthData = () => {
     clearLocalStorage();
@@ -28,6 +29,7 @@ export function handleLogin(userName, password) {
     return dispatch => {
         request.then(response => {
             dispatch(loginSuccess(response.data));
+            dispatch(push('/'));
         }).catch(error => {
             dispatch(loginFailure(error));
         });

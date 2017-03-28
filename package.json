@@ -45,7 +45,7 @@
     "react-markdown": "^2.4.2",
     "react-redux": "^4.4.5",
     "react-router": "^2.4.0",
-    "react-router-redux": "^4.0.4",
+    "react-router-redux": "^4.0.8",
     "react-transform-catch-errors": "^1.0.2",
     "react-transform-hmr": "^1.0.4",
     "react-typeahead": "^2.0.0-alpha.5",

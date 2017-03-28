@@ -1,5 +1,5 @@
 import { applyMiddleware, createStore, compose } from 'redux';
-import { syncHistoryWithStore } from 'react-router-redux';
+import { routerMiddleware, syncHistoryWithStore } from 'react-router-redux';
 import { browserHistory } from 'react-router';
 import thunk from 'redux-thunk';
 import createLogger from 'redux-logger';
@@ -51,7 +51,7 @@ const defaultState = {
 const store = createStore(
   rootReducer,
   defaultState,
-  applyMiddleware(thunk, logger)
+  applyMiddleware(thunk, logger, routerMiddleware(browserHistory))
 );
 
 store.subscribe(throttle(() => {
