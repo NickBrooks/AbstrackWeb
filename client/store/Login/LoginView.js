@@ -10,20 +10,21 @@ class LoginView extends React.Component {
 
     handleLoginSubmit(e) {
         e.preventDefault();
-        let { handleLogin, msgLoginError } = this.props;
+        let { handleLogin, loginErrorMsg, loginIsAuthenticating } = this.props;
         const userName = this.refs.userName.value;
         const password = this.refs.password.value;
 
         if (userName == '' || password == '') {
-            msgLoginError('Enter a username and password');
+            loginErrorMsg('Enter a username and password');
         } else {
+            loginIsAuthenticating(true);
             //post the comment
             handleLogin(userName, password);
         }
     }
 
     render() {
-        let { msgLoginError } = this.props.ui.login;
+        let { errorMsg, isAuthenticating } = this.props.ui.login;
 
         return (
             <div className="login-background">
@@ -41,17 +42,17 @@ class LoginView extends React.Component {
                                         <input type="password" className="form-control" ref="password" placeholder="Password" />
                                     </div>
                                     <hr />
-                                    <button type="submit" className="btn btn-success"><FontAwesome name="paper-plane" /> Login</button>
+                                    <button type="submit" className="btn btn-success"><FontAwesome name="paper-plane" /> Login {isAuthenticating ? <FontAwesome name="spinner" spin /> : undefined}</button>
                                     <div className="login-links">
-                                        <p className="text-center"><small><FontAwesome name="question-circle-o" /> Forgot Password</small></p>
+                                        <small><Link to="/register"><FontAwesome name="plus" /> Register</Link> | <Link to="/login/forgot-password"><FontAwesome name="question-circle-o" /> Forgot Password</Link></small>
                                     </div>
                                 </form>
                             </div>
-                            {msgLoginError !== undefined ?
-                            <div className="alert alert-danger" role="alert">
-                                <FontAwesome name="exclamation-triangle" /> {msgLoginError}
-                            </div>
-                            : undefined}
+                            {errorMsg !== undefined ?
+                                <div className="alert alert-danger" role="alert">
+                                    <FontAwesome name="exclamation-triangle" /> {errorMsg}
+                                </div>
+                                : undefined}
                         </div>
                     </div>
                 </div>

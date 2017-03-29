@@ -13,10 +13,17 @@ function loginSuccess(data) {
     }
 }
 
-export function msgLoginError(message) {
+export function loginErrorMsg(message) {
     return {
-        type: 'MSG_LOGIN_ERROR',
+        type: 'LOGIN_ERROR_MESSAGE',
         message
+    }
+}
+
+export function loginIsAuthenticating(value) {
+    return {
+        type: 'LOGIN_IS_AUTHENTICATING',
+        value
     }
 }
 
@@ -35,10 +42,12 @@ export function handleLogin(userName, password) {
     return dispatch => {
         request.then(response => {
             dispatch(loginSuccess(response.data));
-            dispatch(msgLoginError(undefined));
+            dispatch(loginErrorMsg(undefined));
+            dispatch(loginIsAuthenticating(false));
             dispatch(push('/'));
         }).catch(error => {
-            dispatch(msgLoginError("Incorrect username or password"));
+            dispatch(loginIsAuthenticating(false));
+            dispatch(loginErrorMsg("Incorrect username or password"));
         });
     };
 }

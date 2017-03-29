@@ -18,10 +18,16 @@ function ui(state = [], action) {
                     editComment: action.value
                 }
             });
-        case 'MSG_LOGIN_ERROR':
+        case 'LOGIN_ERROR_MESSAGE':
             return Object.assign({}, state, {
                 login: {
-                    msgLoginError: action.message
+                    errorMsg: action.message
+                }
+            });
+        case 'LOGIN_IS_AUTHENTICATING':
+            return Object.assign({}, state, {
+                login: {
+                    isAuthenticating: action.value
                 }
             });
         default:
