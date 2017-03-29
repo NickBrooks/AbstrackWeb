@@ -18,6 +18,12 @@ function ui(state = [], action) {
                     editComment: action.value
                 }
             });
+        case 'MSG_LOGIN_ERROR':
+            return Object.assign({}, state, {
+                login: {
+                    msgLoginError: action.message
+                }
+            });
         default:
             return state;
     }

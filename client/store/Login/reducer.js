@@ -5,7 +5,7 @@ function login(state = [], action) {
         case 'PURGE_TOKEN':
             return null;
         case 'LOGIN_FAILURE':
-            return [...state, action.nom];
+            return null;
     }
     return state;
 }

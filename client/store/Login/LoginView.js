@@ -10,20 +10,21 @@ class LoginView extends React.Component {
 
     handleLoginSubmit(e) {
         e.preventDefault();
-        let { handleLogin, loginFailure } = this.props;
+        let { handleLogin, msgLoginError } = this.props;
         const userName = this.refs.userName.value;
         const password = this.refs.password.value;
 
         if (userName == '' || password == '') {
-            loginFailure('Enter a username and password');
+            msgLoginError('Enter a username and password');
         } else {
             //post the comment
             handleLogin(userName, password);
-            this.refs.loginForm.reset();
         }
     }
 
     render() {
+        let { msgLoginError } = this.props.ui.login;
+
         return (
             <div className="login-background">
                 <div className="container login-view">
@@ -32,19 +33,25 @@ class LoginView extends React.Component {
                             <div className="login-box">
                                 <form ref="loginForm" onSubmit={this.handleLoginSubmit}>
                                     <div className="form-group">
-                                        <label for="exampleInputEmail1"><FontAwesome name="user" /> Username</label>
+                                        <label><FontAwesome name="user" /> Username</label>
                                         <input type="text" className="form-control" ref="userName" placeholder="Username" />
                                     </div>
                                     <div className="form-group">
-                                        <label for="exampleInputPassword1"><FontAwesome name="key" /> Password</label>
+                                        <label><FontAwesome name="key" /> Password</label>
                                         <input type="password" className="form-control" ref="password" placeholder="Password" />
                                     </div>
                                     <hr />
                                     <button type="submit" className="btn btn-success"><FontAwesome name="paper-plane" /> Login</button>
-                                    <div className="clearfix"></div>
+                                    <div className="login-links">
+                                        <p className="text-center"><small><FontAwesome name="question-circle-o" /> Forgot Password</small></p>
+                                    </div>
                                 </form>
                             </div>
-                            <p className="text-center"><FontAwesome name="question-circle-o" /> Forgot Password</p>
+                            {msgLoginError !== undefined ?
+                            <div className="alert alert-danger" role="alert">
+                                <FontAwesome name="exclamation-triangle" /> {msgLoginError}
+                            </div>
+                            : undefined}
                         </div>
                     </div>
                 </div>

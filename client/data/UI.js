@@ -5,6 +5,9 @@ const ui = {
   comments: {
     newCommentError: '',
     editComment: ''
+  },
+  login: {
+    msgLoginError: undefined
   }
 }
 
