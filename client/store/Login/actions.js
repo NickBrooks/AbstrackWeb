@@ -42,7 +42,7 @@ export function handleLogin(userName, password) {
     return dispatch => {
         request.then(response => {
             dispatch(loginSuccess(response.data));
-            dispatch(loginErrorMsg(undefined));
+            dispatch(loginErrorMsg(false));
             dispatch(loginIsAuthenticating(false));
             dispatch(push('/'));
         }).catch(error => {

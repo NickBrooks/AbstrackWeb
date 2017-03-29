@@ -7,7 +7,7 @@ const ui = {
     editComment: ''
   },
   login: {
-    errorMsg: undefined,
+    errorMsg: false,
     isAuthenticating: false
   }
 }

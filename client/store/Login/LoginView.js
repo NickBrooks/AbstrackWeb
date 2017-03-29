@@ -43,12 +43,12 @@ class LoginView extends React.Component {
                                     </div>
                                     <hr />
                                     <button type="submit" className="btn btn-success"><FontAwesome name="paper-plane" /> Login {isAuthenticating ? <FontAwesome name="spinner" spin /> : undefined}</button>
-                                    <div className="login-links">
-                                        <small><Link to="/register"><FontAwesome name="plus" /> Register</Link> | <Link to="/login/forgot-password"><FontAwesome name="question-circle-o" /> Forgot Password</Link></small>
-                                    </div>
                                 </form>
+                                <div className="login-links">
+                                    <small><Link to="/register"><FontAwesome name="plus" /> Register</Link> | <Link to="/login/forgot-password"><FontAwesome name="question-circle-o" /> Forgot Password</Link></small>
+                                </div>
                             </div>
-                            {errorMsg !== undefined ?
+                            {errorMsg ?
                                 <div className="alert alert-danger" role="alert">
                                     <FontAwesome name="exclamation-triangle" /> {errorMsg}
                                 </div>
