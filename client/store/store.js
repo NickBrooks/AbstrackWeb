@@ -28,7 +28,7 @@ const logger = createLogger();
 // check for local storage login details
 var loginToken;
 if (typeof persistedState !== "undefined") {
-  persistedState.login.token != null ? loginToken = persistedState.login : loginToken = login;
+  persistedState.login == null || persistedState.login.token != null ? loginToken = persistedState.login : loginToken = login;
 } else {
   loginToken = login;
 }

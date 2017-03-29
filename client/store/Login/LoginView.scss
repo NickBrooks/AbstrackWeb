@@ -44,5 +44,17 @@
         padding: $box-padding;
         margin: 0 0 $box-margin;
         box-shadow: 0px 1px 5px #666;
+        border-radius: $radius;
+    }
+
+    label {
+        font-family: $font-family-fancy;
+        font-weight: bold;
+        text-transform: uppercase;
+        color: $nom-blue-light;
+    }
+
+    .btn {
+        width: 100%;
     }
 }

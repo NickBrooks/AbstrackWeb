@@ -20,6 +20,12 @@ export function loginFailure(error) {
     }
 }
 
+export function purgeToken() {
+    return {
+        type: 'PURGE_TOKEN'
+    }
+}
+
 export function handleLogin(userName, password) {
     const request = apiGetToken({
         userName,
@@ -33,5 +39,12 @@ export function handleLogin(userName, password) {
         }).catch(error => {
             dispatch(loginFailure(error));
         });
+    };
+}
+
+export function handleLogout() {
+    return dispatch => {
+        dispatch(purgeToken());
+        dispatch(push('/login'));
     };
 }

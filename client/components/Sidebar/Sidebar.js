@@ -9,6 +9,11 @@ class Sidebar extends React.Component {
         super(props);
     }
 
+    logout(e) {
+        e.preventDefault();
+        this.props.handleLogout();
+    }
+
     renderUserBadge() {
         let { userProfile } = this.props;
         var link = "/u/" + userProfile.id;
@@ -79,6 +84,7 @@ class Sidebar extends React.Component {
                 {this.renderViewsMenu(views)}
                 <ul className="nav nav-sidebar">
                     <li className="trash"><Link to="/"><FontAwesome name="trash" /> Trash</Link></li>
+                    <li className="logout"><a href="#" onClick={this.logout.bind(this)}><FontAwesome name="sign-out" /> Logout</a></li>
                 </ul>
             </div>
         )

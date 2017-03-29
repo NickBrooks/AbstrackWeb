@@ -17,7 +17,7 @@ class AppView extends React.Component {
     checkValidToken() {
         let { login } = this.props;
 
-        if (login.token == "" || login.token == null || login.expiration < moment.utc().format()) {
+        if (login == null || login.token == "" || login.token == null || login.expiration < moment.utc().format()) {
             browserHistory.push('/login');
         }
     }

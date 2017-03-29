@@ -32,18 +32,19 @@ class LoginView extends React.Component {
                             <div className="login-box">
                                 <form ref="loginForm" onSubmit={this.handleLoginSubmit}>
                                     <div className="form-group">
-                                        <label for="exampleInputEmail1">Username</label>
+                                        <label for="exampleInputEmail1"><FontAwesome name="user" /> Username</label>
                                         <input type="text" className="form-control" ref="userName" placeholder="Username" />
                                     </div>
                                     <div className="form-group">
-                                        <label for="exampleInputPassword1">Password</label>
+                                        <label for="exampleInputPassword1"><FontAwesome name="key" /> Password</label>
                                         <input type="password" className="form-control" ref="password" placeholder="Password" />
                                     </div>
                                     <hr />
-                                    <button type="submit" className="btn btn-success pull-right"><FontAwesome name="paper-plane" /> Login</button>
+                                    <button type="submit" className="btn btn-success"><FontAwesome name="paper-plane" /> Login</button>
                                     <div className="clearfix"></div>
                                 </form>
                             </div>
+                            <p className="text-center"><FontAwesome name="question-circle-o" /> Forgot Password</p>
                         </div>
                     </div>
                 </div>
