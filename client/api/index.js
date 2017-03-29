@@ -16,3 +16,11 @@ export function apiGetToken(payload) {
             password: payload.password
         });
 }
+
+export function apiGetUserProfile(token) {
+    return Axios.get(apiUrl + "account", {
+        headers: {
+            Authorization: token
+        }
+    });
+}

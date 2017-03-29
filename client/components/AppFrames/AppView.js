@@ -24,6 +24,7 @@ class AppView extends React.Component {
 
     componentWillReceiveProps() {
         this.checkValidToken();
+        this.props.getUserProfile();
     }
 
     render() {

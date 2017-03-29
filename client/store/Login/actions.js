@@ -1,10 +1,5 @@
-import { apiGetToken } from '../../api/actions';
-import { setLocalStorage, clearLocalStorage } from '../../functions';
+import { apiGetToken } from '../../api';
 import { push } from 'react-router-redux';
-
-let clearAuthData = () => {
-    clearLocalStorage();
-}
 
 function loginSuccess(data) {
     return {
