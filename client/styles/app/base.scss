@@ -9,7 +9,6 @@ body {
     line-height: 1.75em;
     color: $font-color;
     font-weight: $font-weight;
-    margin-top: 60px;
     @include scrollbars(.5em, slategray);
 }
 

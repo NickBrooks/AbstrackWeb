@@ -1,0 +1,48 @@
+.login-background {
+    background-size: cover;
+    background-position: center;
+    background-image: none;
+    height: 100vh;
+    filter: grayscale(50%);
+}
+
+@media (orientation: landscape) {
+    .login-background {
+        background-image: url(https://source.unsplash.com/category/nature/768x430);
+    }
+}
+
+@media (min-width: 768px) and (orientation: landscape) {
+    .login-background {
+        background-image: url(https://source.unsplash.com/category/nature/992x558);
+    }
+}
+
+@media (min-width: 992px) and (orientation: landscape) {
+    .login-background {
+        background-image: url(https://source.unsplash.com/category/nature/1200x675);
+    }
+}
+
+@media (min-width: 1200px) and (orientation: landscape) {
+    .login-background {
+        background-image: url(https://source.unsplash.com/category/nature/1440x810);
+    }
+}
+
+@media (min-width: 1440px) and (orientation: landscape) {
+    .login-background {
+        background-image: url(https://source.unsplash.com/category/nature/1920x1080);
+    }
+}
+
+.login-view {
+    padding-top: $navbar-padding;
+
+    .login-box {
+        background-color: rgba(255,255,255,0.8);
+        padding: $box-padding;
+        margin: 0 0 $box-margin;
+        box-shadow: 0px 1px 5px #666;
+    }
+}

@@ -25,18 +25,26 @@ class LoginView extends React.Component {
 
     render() {
         return (
-            <div className="container login-view">
-                <div className="row">
-                    <div className="col-md-6 offset-md-3">
-                        <form ref="loginForm" className="add-comment" onSubmit={this.handleLoginSubmit}>
-                            <div className="ibox">
-                                <input type="text" ref="userName" placeholder="Username" defaultValue="mattcrouch" />
-                                <input type="text" ref="password" placeholder="Password" defaultValue="AFC9798!" />
-                                <hr />
-                                <button type="submit" className="btn btn-sm btn-success pull-right"><FontAwesome name="paper-plane" /> Login</button>
-                                <div className="clearfix"></div>
+            <div className="login-background">
+                <div className="container login-view">
+                    <div className="row">
+                        <div className="col-md-6 offset-md-3">
+                            <div className="login-box">
+                                <form ref="loginForm" onSubmit={this.handleLoginSubmit}>
+                                    <div className="form-group">
+                                        <label for="exampleInputEmail1">Username</label>
+                                        <input type="text" className="form-control" ref="userName" placeholder="Username" />
+                                    </div>
+                                    <div className="form-group">
+                                        <label for="exampleInputPassword1">Password</label>
+                                        <input type="password" className="form-control" ref="password" placeholder="Password" />
+                                    </div>
+                                    <hr />
+                                    <button type="submit" className="btn btn-success pull-right"><FontAwesome name="paper-plane" /> Login</button>
+                                    <div className="clearfix"></div>
+                                </form>
                             </div>
-                        </form>
+                        </div>
                     </div>
                 </div>
             </div>
