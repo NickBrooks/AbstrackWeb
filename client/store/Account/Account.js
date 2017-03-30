@@ -1,7 +1,8 @@
 import React from 'react';
 import FontAwesome from 'react-fontawesome';
 import Avatar from '../../components/Avatar/Avatar';
-import ListNoms from '../../components/NomDisplay/NomDisplay';
+import ProfileDetailsForm from './views/ProfileDetailsForm.js';
+import UpdatePasswordForm from './views/UpdatePasswordForm.js';
 
 class Account extends React.Component {
     constructor(props) {
@@ -30,56 +31,8 @@ class Account extends React.Component {
                                 <h3>{account.displayName} <small className="light">@{account.userName}</small></h3>
                                 {account.bio ? (<span>{account.bio}</span>) : (<span className="light"><em>Enter a bio below</em></span>)}
                             </div>
-                            <div className="ibox">
-                                <form ref="editProfile">
-                                    <h5>Profile details</h5>
-                                    <hr />
-                                    <div className="form-group">
-                                        <label htmlFor="bioInput"><FontAwesome name="address-book-o" /> Bio</label>
-                                        <input type="text" ref="bio" className="form-control" defaultValue={account.bio} id="bioInput" placeholder="Enter a bio" />
-                                    </div>
-                                    <div className="form-group">
-                                        <label htmlFor="companyInput"><FontAwesome name="group" /> Company</label>
-                                        <input type="text" ref="company" className="form-control" defaultValue={account.company} id="companyInput" placeholder="Enter your company" />
-                                    </div>
-                                    <div className="form-group">
-                                        <label htmlFor="locationInput"><FontAwesome name="location-arrow" /> Location</label>
-                                        <input type="text" ref="location" className="form-control" defaultValue={account.location} id="locationInput" placeholder="Share your location" />
-                                    </div>
-                                    <div className="form-group">
-                                        <label htmlFor="urlInput"><FontAwesome name="link" /> URL</label>
-                                        <input type="url" ref="url" className="form-control" defaultValue={account.url} id="urlInput" placeholder="Enter a url" />
-                                    </div>
-                                    <hr />
-                                    <div className="form-group">
-                                        <button type="submit" className="btn btn-success pull-right"><FontAwesome name="caret-right" /> Update profile</button>
-                                    </div>
-                                    <div className="clearfix"></div>
-                                </form>
-                            </div>
-                            <div className="ibox">
-                                <form ref="updatePassword">
-                                    <h5>Update password</h5>
-                                    <hr />
-                                    <div className="form-group">
-                                        <label htmlFor="currentPassword">Current password</label>
-                                        <input type="password" ref="currentPassword" className="form-control" id="currentPassword" />
-                                    </div>
-                                    <div className="form-group">
-                                        <label htmlFor="newPassword">New Password</label>
-                                        <input type="password" ref="newPassword" className="form-control" id="newPassword" />
-                                    </div>
-                                    <div className="form-group">
-                                        <label htmlFor="confirmPassword">Confirm new password</label>
-                                        <input type="password" ref="confirmPassword" className="form-control" id="confirmPassword" />
-                                    </div>
-                                    <hr />
-                                    <div className="form-group">
-                                        <button type="submit" className="btn btn-success pull-right"><FontAwesome name="caret-right" /> Update password</button>
-                                    </div>
-                                    <div className="clearfix"></div>
-                                </form>
-                            </div>
+                            <ProfileDetailsForm {...this.props} />
+                            <UpdatePasswordForm {...this.props} />                            
                         </div>
                     </div>
                 </div>
