@@ -48,10 +48,14 @@ const defaultState = {
   views
 };
 
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+
 const store = createStore(
   rootReducer,
   defaultState,
-  applyMiddleware(thunk, logger, routerMiddleware(browserHistory))
+  composeEnhancers(
+    applyMiddleware(thunk, logger, routerMiddleware(browserHistory))
+  )
 );
 
 store.subscribe(throttle(() => {
