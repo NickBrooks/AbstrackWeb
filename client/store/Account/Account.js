@@ -28,7 +28,7 @@ class Account extends React.Component {
                         <div className="col-md-10">
                             <div className="ibox">
                                 <h3>{account.displayName} <small className="light">@{account.userName}</small></h3>
-                                <span>A chink in your armour.</span>
+                                {account.bio ? (<span>{account.bio}</span>) : (<span className="light"><em>Enter a bio below</em></span>)}
                             </div>
                             <div className="ibox">
                                 <form ref="editProfile">
@@ -40,15 +40,15 @@ class Account extends React.Component {
                                     </div>
                                     <div className="form-group">
                                         <label htmlFor="companyInput"><FontAwesome name="group" /> Company</label>
-                                        <input type="text" ref="company" className="form-control" defaultValue={account.bio} id="companyInput" placeholder="Enter your company" />
+                                        <input type="text" ref="company" className="form-control" defaultValue={account.company} id="companyInput" placeholder="Enter your company" />
                                     </div>
                                     <div className="form-group">
                                         <label htmlFor="locationInput"><FontAwesome name="location-arrow" /> Location</label>
-                                        <input type="text" ref="location" className="form-control" defaultValue={account.bio} id="locationInput" placeholder="Share your location" />
+                                        <input type="text" ref="location" className="form-control" defaultValue={account.location} id="locationInput" placeholder="Share your location" />
                                     </div>
                                     <div className="form-group">
                                         <label htmlFor="urlInput"><FontAwesome name="link" /> URL</label>
-                                        <input type="text" ref="url" className="form-control" defaultValue={account.url} id="urlInput" placeholder="Enter a url" />
+                                        <input type="url" ref="url" className="form-control" defaultValue={account.url} id="urlInput" placeholder="Enter a url" />
                                     </div>
                                     <hr />
                                     <div className="form-group">
