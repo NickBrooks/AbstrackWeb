@@ -10,6 +10,7 @@ import { loadLocalStorageState, saveLocalStorageState } from '../functions';
 import rootReducer from './reducers';
 
 // import data
+import account from '../data/Account';
 import comments from '../data/Comments';
 import hashtags from '../data/Hashtags';
 import login from '../data/Login';
@@ -18,7 +19,6 @@ import noms from '../data/Noms';
 import tracks from '../data/Tracks';
 import settings from '../data/Settings';
 import ui from '../data/UI';
-import account from '../data/Account';
 import users from '../data/Users';
 import views from '../data/Views';
 
@@ -35,6 +35,7 @@ if (typeof persistedState !== "undefined") {
 
 // create an object for the default state
 const defaultState = {
+  account,
   comments,
   hashtags,
   login: loginToken,
@@ -43,7 +44,6 @@ const defaultState = {
   tracks,
   settings,
   ui,
-  account,
   users,
   views
 };
