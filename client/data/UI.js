@@ -2,6 +2,9 @@ const ui = {
   newNomModal: {
     open: false
   },
+  newNomButton: {
+    show: true
+  },
   comments: {
     newCommentError: '',
     editComment: ''

@@ -42,7 +42,7 @@ class AppView extends React.Component {
                         </div>
                     </div>
                 </div>
-                {this.props.ui.newNomModal.open ? null : (<NewNomButton {...this.props} />)}
+                {this.props.ui.newNomButton.show ? (<NewNomButton {...this.props} />) : null}
                 <NewNomModal open={this.props.ui.newNomModal.open} {...this.props} />
             </div>
         )

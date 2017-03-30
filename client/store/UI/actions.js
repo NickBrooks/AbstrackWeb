@@ -5,3 +5,10 @@ export function toggleNomEditor(value) {
         value
     }
 }
+
+export function toggleNewNomButton(value) {
+    return {
+        type: 'TOGGLE_NEW_NOM_BUTTON',
+        value
+    }
+}

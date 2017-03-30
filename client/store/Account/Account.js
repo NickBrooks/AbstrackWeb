@@ -8,6 +8,11 @@ class Account extends React.Component {
         super(props);
 
         this.props.getAccount();
+        this.props.toggleNewNomButton(false);
+    }
+
+    componentWillUnmount() {
+        this.props.toggleNewNomButton(true);
     }
 
     render() {

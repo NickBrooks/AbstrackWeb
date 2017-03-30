@@ -6,6 +6,12 @@ function ui(state = [], action) {
                     open: action.value
                 }
             });
+        case 'TOGGLE_NEW_NOM_BUTTON':
+            return Object.assign({}, state, {
+                newNomButton: {
+                    show: action.value
+                }
+            });
         case 'ADD_COMMENT_ERROR':
             return Object.assign({}, state, {
                 comments: {

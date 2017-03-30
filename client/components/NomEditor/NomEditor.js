@@ -9,6 +9,11 @@ class NomEditor extends React.Component {
         this.handleNomSubmit = this.handleNomSubmit.bind(this);
     }
 
+    closeNomEditor() {
+        this.props.toggleNomEditor(false);
+        this.props.toggleNewNomButton(true);
+    }
+
     handleNomSubmit(e) {
         e.preventDefault();
         let {
@@ -59,7 +64,7 @@ class NomEditor extends React.Component {
     render() {
         return (
             <div>
-                <Modal show={this.props.open} onHide={this.props.toggleNomEditor.bind(null, false)} aria-labelledby="ModalHeader" className="modal-full-size nom-editor">
+                <Modal show={this.props.open} onHide={this.closeNomEditor.bind(this)} aria-labelledby="ModalHeader" className="modal-full-size nom-editor">
                     <form ref="nomEditor" onSubmit={this.handleNomSubmit}>
                         <Modal.Header>
                             <Modal.Title id='ModalHeader'>

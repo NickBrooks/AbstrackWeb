@@ -6,10 +6,15 @@ class NewNomButton extends React.Component {
     super(props);
   }
 
+  openNomEditor() {
+    this.props.toggleNomEditor(true);
+    this.props.toggleNewNomButton(false);
+  }
+
   render() {
     return (
       <div className="new-nom-button">
-        <button type="button" className="btn" onClick={this.props.toggleNomEditor.bind(null, true)}>
+        <button type="button" className="btn" onClick={this.openNomEditor.bind(this)}>
           <FontAwesome name="pencil" />
         </button>
       </div>
