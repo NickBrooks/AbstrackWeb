@@ -6,13 +6,7 @@
     }
 
     li, .add-comment {
-        .user {
-            .username {
-                font-size: 0.9em;
-                color: $nom-gray-active;
-            }
-        }
-
+        
         .ibox {
             border-top: solid 2px $header-color-secondary;
             margin-left: 60px;

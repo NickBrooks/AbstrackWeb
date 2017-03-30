@@ -30,10 +30,7 @@ class Avatar extends React.Component {
     if (customClass) {
       className = className + customClass;
     }
-
-    if (size > 160) {
-      avatarSrc = user.avatar.full;
-    }
+    
     return (
       <img className={className} alt={user.display_name} src={avatarSrc} height={pixelSize} width={pixelSize} />
     )
