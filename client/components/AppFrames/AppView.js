@@ -2,6 +2,7 @@ import React from 'react';
 import { browserHistory } from 'react-router';
 import moment from 'moment';
 import Sidebar from '../Sidebar/Sidebar';
+import LoadingScreen from '../LoadingScreen';
 import Header from '../Header/Header';
 import NewNomButton from '../NewNomButton/NewNomButton';
 import NewNomModal from '../NomEditor/NomEditor';
@@ -12,6 +13,7 @@ class AppView extends React.Component {
         this.checkValidToken = this.checkValidToken.bind(this);
 
         this.checkValidToken();
+        this.props.getUserProfile();
     }
 
     checkValidToken() {
@@ -24,10 +26,9 @@ class AppView extends React.Component {
 
     componentWillReceiveProps() {
         this.checkValidToken();
-        this.props.getUserProfile();
     }
 
-    render() {
+    renderApp() {
         return (
             <div className="app">
                 <Sidebar {...this.props} />
@@ -43,6 +44,14 @@ class AppView extends React.Component {
                 </div>
                 {this.props.ui.newNomModal.open ? null : (<NewNomButton {...this.props} />)}
                 <NewNomModal open={this.props.ui.newNomModal.open} {...this.props} />
+            </div>
+        )
+    }
+
+    render() {
+        return (
+            <div>
+                {this.props.userProfile.userName === undefined ? <LoadingScreen /> : this.renderApp()}
             </div>
         )
     }

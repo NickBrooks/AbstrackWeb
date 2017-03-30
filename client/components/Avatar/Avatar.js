@@ -7,8 +7,23 @@ class Avatar extends React.Component {
 
   render() {
     let { user, size, customClass } = this.props;
-    let avatarSrc = user.avatar.thumb;
     let pixelSize = String(size) + "px";
+    let avatarSrc = "";
+
+    // check if they have an avatar
+    if (user.avatar !== undefined) {
+      if (size > 160) {
+        avatarSrc = user.avatar.full;
+      } else {
+        avatarSrc = user.avatar.thumb;
+      }
+    } else {
+      if (size > 160) {
+        avatarSrc = "http://i.imgur.com/Hg2zm3N.jpg";
+      } else {
+        avatarSrc = "http://i.imgur.com/6HDD0Io.jpg"
+      }      
+    }
 
     //handle customClasses
     let className = "avatar ";

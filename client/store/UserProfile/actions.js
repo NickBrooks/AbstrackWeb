@@ -16,7 +16,7 @@ function getUserProfileFailure(data) {
 
 export function getUserProfile() {  
     return (dispatch, getState) => {
-        const { token } = getState.Login;
+        const { token } = getState().login;
         const request = apiGetUserProfile(token);
 
         request.then(response => {

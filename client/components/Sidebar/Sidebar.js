@@ -21,7 +21,7 @@ class Sidebar extends React.Component {
         return (
             <div className="user-badge">
                 <Link to={link}>
-                        <Avatar user={userProfile} size="25" customClass="pull-left" /> <span>{userProfile.display_name}</span>
+                        <Avatar user={userProfile} size="25" customClass="pull-left" /> <span>{userProfile.displayName}</span>
                 </Link>
                 <div className="clearfix"></div>
             </div>

@@ -20,7 +20,7 @@ export function apiGetToken(payload) {
 export function apiGetUserProfile(token) {
     return Axios.get(apiUrl + "account", {
         headers: {
-            Authorization: token
+            Authorization: "bearer " + token
         }
     });
 }
