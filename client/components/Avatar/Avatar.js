@@ -11,11 +11,11 @@ class Avatar extends React.Component {
     let avatarSrc = "";
 
     // check if they have an avatar
-    if (user.avatar !== undefined) {
+    if (user.avatarThumb !== undefined) {
       if (size > 160) {
-        avatarSrc = user.avatar.full;
+        avatarSrc = user.avatarFull;
       } else {
-        avatarSrc = user.avatar.thumb;
+        avatarSrc = user.avatarThumb;
       }
     } else {
       if (size > 160) {
