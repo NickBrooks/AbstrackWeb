@@ -10,7 +10,7 @@ import noms from './Nom/reducer';
 import tracks from './Track/reducer';
 import settings from './Settings/reducer';
 import ui from './UI/reducer';
-import userProfile from './UserProfile/reducer';
+import account from './Account/reducer';
 import users from './User/reducer';
 import views from './View/reducer';
 
@@ -23,7 +23,7 @@ const rootReducer = combineReducers({
     tracks,
     settings,
     ui,
-    userProfile,
+    account,
     users,
     views,
     routing: routerReducer

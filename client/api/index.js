@@ -17,7 +17,7 @@ export function apiGetToken(payload) {
         });
 }
 
-export function apiGetUserProfile(token) {
+export function apiGetAccount(token) {
     return Axios.get(apiUrl + "account", {
         headers: {
             Authorization: "bearer " + token

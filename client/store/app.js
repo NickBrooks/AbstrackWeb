@@ -14,7 +14,7 @@ import * as SettingsActions from './Settings/actions';
 import * as TrackActions from './Track/actions';
 import * as UIActions from './UI/actions';
 import * as UserActions from './User/actions';
-import * as UserProfileActions from './UserProfile/actions';
+import * as AccountActions from './Account/actions';
 import * as ViewActions from './View/actions';
 
 function mapStateToProps(state) {
@@ -27,7 +27,7 @@ function mapStateToProps(state) {
         tracks: state.tracks,
         settings: state.settings,
         ui: state.ui,
-        userProfile: state.userProfile,
+        account: state.account,
         users: state.users,
         views: state.views
     }
@@ -45,7 +45,7 @@ function mapDispatchToProps(dispatch) {
         ...TrackActions,
         ...UIActions,
         ...UserActions,
-        ...UserProfileActions,
+        ...AccountActions,
         ...ViewActions
     }, dispatch)
 }

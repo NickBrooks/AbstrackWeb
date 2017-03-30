@@ -12,7 +12,7 @@ class NomEditor extends React.Component {
     handleNomSubmit(e) {
         e.preventDefault();
         let {
-            userProfile,
+            account,
             addNom,
             toggleNomEditor
         } = this.props;
@@ -27,7 +27,7 @@ class NomEditor extends React.Component {
             completed: false,
             inbox: true,
             hashtags: conformHashtags(this.refs.hashtags.value),
-            created_by: userProfile
+            created_by: account
         };
 
         //addNom(nom);

@@ -13,7 +13,8 @@ import NomViewMilestone from './store/NomView/Milestone';
 import NomViewTag from './store/NomView/Tag';
 import Nom from './store/Nom/Nom';
 import LoginView from './store/Login/LoginView';
-import UserProfile from './store/UserProfile/UserProfile';
+import User from './store/User/User';
+import Account from './store/Account/Account';
 
 // Import Router
 import { Router, Route, IndexRoute, browserHistory } from 'react-router';
@@ -28,12 +29,13 @@ const router = (
             </Route>
             <Route path="/" component={App}>
                 <IndexRoute component={NomViewInbox}></IndexRoute>
+                <Route path="/account" component={Account} />
                 <Route path="/pinned" component={NomViewPinned}></Route>
                 <Route path="/t/:trackId" component={NomViewTrack}></Route>
                 <Route path="/m/:milestoneId" component={NomViewMilestone}></Route>
                 <Route path="/n/:nomId" component={Nom}></Route>
                 <Route path="/tag/:tag" component={NomViewTag}></Route>
-                <Route path="/u/:userId" component={UserProfile}></Route>
+                <Route path="/u/:userId" component={User}></Route>
             </Route>
         </Router>
     </Provider>

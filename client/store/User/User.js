@@ -6,7 +6,7 @@ function filterUserNoms(userId, nom) {
     return nom.created_by.id == userId;
 }
 
-class UserProfile extends React.Component {
+class User extends React.Component {
     constructor(props) {
         super(props);
     }
@@ -40,4 +40,4 @@ class UserProfile extends React.Component {
     }
 }
 
-export default UserProfile;
+export default User;

@@ -72,16 +72,16 @@ class CommentNode extends React.Component {
 
   render() {
     let {commentId, user, body, currentUser, ui} = this.props;
-    let userProfileLink = "/u/" + user.id;
+    let accountLink = "/u/" + user.id;
     let username = "@" + user.username;
 
     return (
       <li>
-        <Link to={userProfileLink}><Avatar user={user} size="50" customClass="pull-left timeline" /></Link>
+        <Link to={accountLink}><Avatar user={user} size="50" customClass="pull-left timeline" /></Link>
         <div className="ibox comment-body">
           <div className="row">
             <div className="col-xs-10">
-              <Link to={userProfileLink}><h6 className="user">{user.display_name} <span className="username">{username}</span></h6></Link>
+              <Link to={accountLink}><h6 className="user">{user.display_name} <span className="username">{username}</span></h6></Link>
             </div>
             <div className="col-xs-2">
               {user.id === currentUser.id ? this.renderActionButtons() : null}

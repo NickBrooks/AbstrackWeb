@@ -10,7 +10,7 @@ class Comments extends React.Component {
   renderComments(nomComments) {
     let {nomId, ui} = this.props;
     return (
-      nomComments.map((comment) => <CommentNode {...comment} currentUser={this.props.userProfile} key={comment.id} nomId={nomId} commentId={comment.id} {...this.props} />)
+      nomComments.map((comment) => <CommentNode {...comment} currentUser={this.props.account} key={comment.id} nomId={nomId} commentId={comment.id} {...this.props} />)
     )
   }
 

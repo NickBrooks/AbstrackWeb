@@ -15,13 +15,12 @@ class Sidebar extends React.Component {
     }
 
     renderUserBadge() {
-        let { userProfile } = this.props;
-        var link = "/u/" + userProfile.id;
+        let { account } = this.props;
 
         return (
             <div className="user-badge">
-                <Link to={link}>
-                        <Avatar user={userProfile} size="25" customClass="pull-left" /> <span>{userProfile.displayName}</span>
+                <Link to="/account">
+                        <Avatar user={account} size="25" customClass="pull-left" /> <span>{account.displayName}</span>
                 </Link>
                 <div className="clearfix"></div>
             </div>
@@ -67,7 +66,7 @@ class Sidebar extends React.Component {
     }
 
     render() {
-        let { userProfile, tracks, views } = this.props;
+        let { account, tracks, views } = this.props;
 
         return (
             <div className="sidebar menu">

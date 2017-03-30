@@ -18,7 +18,7 @@ import noms from '../data/Noms';
 import tracks from '../data/Tracks';
 import settings from '../data/Settings';
 import ui from '../data/UI';
-import userProfile from '../data/UserProfile';
+import account from '../data/Account';
 import users from '../data/Users';
 import views from '../data/Views';
 
@@ -43,7 +43,7 @@ const defaultState = {
   tracks,
   settings,
   ui,
-  userProfile,
+  account,
   users,
   views
 };

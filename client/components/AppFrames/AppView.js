@@ -13,7 +13,7 @@ class AppView extends React.Component {
         this.checkValidToken = this.checkValidToken.bind(this);
 
         this.checkValidToken();
-        this.props.getUserProfile();
+        this.props.getAccount();
     }
 
     checkValidToken() {
@@ -51,7 +51,7 @@ class AppView extends React.Component {
     render() {
         return (
             <div>
-                {this.props.userProfile.userName === undefined ? <LoadingScreen /> : this.renderApp()}
+                {this.props.account.userName === undefined ? <LoadingScreen /> : this.renderApp()}
             </div>
         )
     }

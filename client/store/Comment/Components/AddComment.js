@@ -14,7 +14,7 @@ class AddComment extends React.Component {
         e.preventDefault();
         let {
             nomId,
-            userProfile,
+            account,
             addComment,
             addCommentError
         } = this.props;
@@ -25,7 +25,7 @@ class AddComment extends React.Component {
             addCommentError('Write a comment yo!');
         } else {
             //post the comment
-            addComment(nomId, userProfile, body);
+            addComment(nomId, account, body);
             addCommentError('');
             this.refs.addCommentForm.reset();
         }
@@ -45,16 +45,16 @@ class AddComment extends React.Component {
     render() {
         let {
             settings,
-            userProfile,
+            account,
             ui,
         } = this.props;
 
-        const userProfileLink = "/u/" + userProfile.id;
-        const username = "@" + userProfile.username;
+        const accountLink = "/u/" + account.id;
+        const username = "@" + account.username;
 
         return (
             <form ref="addCommentForm" className="add-comment" onSubmit={this.handleCommentSubmit}>
-                <Link to={userProfileLink}><Avatar user={userProfile} size="50" customClass="pull-left timeline" /></Link>
+                <Link to={accountLink}><Avatar user={account} size="50" customClass="pull-left timeline" /></Link>
                 <div className="ibox">
                     <textarea ref="body" placeholder={settings.comments.addCommentPlaceholder} />
                     <hr />

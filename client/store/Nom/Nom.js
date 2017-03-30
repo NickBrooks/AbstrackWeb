@@ -47,13 +47,13 @@ class Nom extends React.Component {
         const { noms } = this.props;
         const i = noms.findIndex((nom) => nom.id === nomId);
         const nom = noms[i];
-        const userProfileLink = "/u/" + nom.created_by.id;
+        const accountLink = "/u/" + nom.created_by.id;
         return (
             <div className="row core-body">
                 <div className="col-sm-10">
                     <div className="row">
                         <div className="col-sm-12">
-                            <Link to={userProfileLink}><Avatar user={nom.created_by} size="50" customClass="pull-left timeline" /></Link>
+                            <Link to={accountLink}><Avatar user={nom.created_by} size="50" customClass="pull-left timeline" /></Link>
                             <div className="ibox view-nom">
                                 <NomHeader nom={nom} {...this.props} />
                                 <hr />
