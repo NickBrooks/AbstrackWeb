@@ -81,17 +81,25 @@ class UpdatePasswordForm extends React.Component {
     handleSubmitNewPassword(e) {
         e.preventDefault();
         let { handleUpdatePassword } = this.props;
-        const currentPassword = this.refs.currentPassword.value;
-        const newPassword = this.refs.newPassword.value;
-        const confirmPassword = this.refs.confirmPassword.value;
+        let  { currentPassword, newPassword, confirmPassword } = this.state;
 
-        console.log(currentPassword, newPassword, confirmPassword);
-        //handleUpdatePassword(userName, password);
+        handleUpdatePassword(currentPassword, newPassword);
     }
 
+    componentWillMount() {
+        //ensure error message is null when loading
+        let {
+            ui,
+            updatePasswordErrorMsg
+        } = this.props;
+
+        if (ui.account.password.errorMsg !== false)
+            updatePasswordErrorMsg(false);
+    }
 
     render() {
-        let { errorMsg } = this.state;
+        let { errorMsg, isUpdating } = this.props.ui.account.password;
+
         return (
             <div className="ibox">
                 <form ref="updatePassword" onSubmit={this.handleSubmitNewPassword}>

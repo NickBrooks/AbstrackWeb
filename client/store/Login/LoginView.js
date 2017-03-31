@@ -30,7 +30,7 @@ class LoginView extends React.Component {
             loginErrorMsg
         } = this.props;
 
-        if (ui.login.errorMsg !=- false)
+        if (ui.login.errorMsg !== false)
             loginErrorMsg(false);
     }
 

@@ -13,7 +13,7 @@ class AppView extends React.Component {
         this.checkValidToken = this.checkValidToken.bind(this);
 
         this.checkValidToken();
-        this.props.getAccount();
+        this.props.handleGetAccount();
     }
 
     checkValidToken() {

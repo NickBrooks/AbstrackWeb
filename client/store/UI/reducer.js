@@ -30,6 +30,14 @@ function ui(state = [], action) {
                     errorMsg: action.message
                 }
             });
+        case 'UPDATE_PASSWORD_ERROR_MSG':
+            return Object.assign({}, state, {
+                account: {
+                    password: {
+                        errorMsg: action.message
+                    } 
+                }
+            });
         case 'LOGIN_IS_AUTHENTICATING':
             return Object.assign({}, state, {
                 login: {

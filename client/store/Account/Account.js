@@ -8,7 +8,7 @@ class Account extends React.Component {
     constructor(props) {
         super(props);
 
-        this.props.getAccount();
+        this.props.handleGetAccount();
         this.props.toggleNewNomButton(false);
     }
 
