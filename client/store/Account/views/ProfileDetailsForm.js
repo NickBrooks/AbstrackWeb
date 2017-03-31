@@ -11,7 +11,7 @@ class ProfileDetailsForm extends React.Component {
 
         return (
             <div className="ibox">
-                <form ref="editProfile">
+                <form ref="editProfile" autoComplete="off">
                     <h5>Profile details</h5>
                     <hr />
                     <div className="form-group">

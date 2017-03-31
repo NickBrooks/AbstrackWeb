@@ -23,6 +23,11 @@ export function clearLocalStorage() {
     }
 }
 
+export function checkPasswordStrength(password) {
+    var re = new RegExp("^(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9]).{8,}$");
+    return re.test(password);
+}
+
 export const loadLocalStorageState = () => {
     try {
         const serializedState = localStorage.getItem('state');

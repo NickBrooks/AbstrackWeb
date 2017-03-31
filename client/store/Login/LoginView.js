@@ -23,6 +23,17 @@ class LoginView extends React.Component {
         }
     }
 
+    componentWillMount() {
+        //ensure error message is null when loading
+        let {
+            ui,
+            loginErrorMsg
+        } = this.props;
+
+        if (ui.login.errorMsg !=- false)
+            loginErrorMsg(false);
+    }
+
     render() {
         let { errorMsg, isAuthenticating } = this.props.ui.login;
 

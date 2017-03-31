@@ -1,8 +1,8 @@
 import React from 'react';
 import FontAwesome from 'react-fontawesome';
 import Avatar from '../../components/Avatar/Avatar';
-import ProfileDetailsForm from './views/ProfileDetailsForm.js';
-import UpdatePasswordForm from './views/UpdatePasswordForm.js';
+import ProfileDetailsForm from './views/ProfileDetailsForm';
+import UpdatePasswordForm from './views/UpdatePasswordForm';
 
 class Account extends React.Component {
     constructor(props) {
