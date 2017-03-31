@@ -2,7 +2,8 @@ const ui = {
   account: {
     password: {
       errorMsg: false,
-      isUpdating: false
+      isUpdating: false,
+      updateStatus: false
     }
   },
   comments: {

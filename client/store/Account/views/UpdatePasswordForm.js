@@ -13,14 +13,13 @@ class UpdatePasswordForm extends React.Component {
         this.state = {
             currentPassword: "",
             newPassword: "",
-            confirmPassword: "",
-            errorMsg: false
+            confirmPassword: ""
         }
     }
 
     renderCurrentPasswordValidation() {
-        let  { currentPassword, newPassword } = this.state;
-        
+        let { currentPassword, newPassword } = this.state;
+
         if (newPassword != "" && currentPassword.length === 0) {
             return (<FontAwesome name="exclamation-triangle" />);
         } else {
@@ -29,7 +28,7 @@ class UpdatePasswordForm extends React.Component {
     }
 
     renderNewPasswordValidation() {
-        let  { newPassword } = this.state;
+        let { newPassword } = this.state;
 
         if (newPassword.length === 0) {
             return undefined;
@@ -41,8 +40,8 @@ class UpdatePasswordForm extends React.Component {
     }
 
     renderConfirmPasswordValidation() {
-        let  { newPassword, confirmPassword } = this.state;
-        
+        let { newPassword, confirmPassword } = this.state;
+
         if (confirmPassword.length === 0) {
             return undefined;
         } else if (newPassword == confirmPassword) {
@@ -52,9 +51,26 @@ class UpdatePasswordForm extends React.Component {
         }
     }
 
+    renderUpdateStatus() {
+        let { updateStatus } = this.props.ui.account.password;
+        const style = {
+            marginTop: "6px",
+            marginRight: "10px",
+            color: "#27ae60"
+        }
+
+        if (updateStatus === "updating") {
+            return (<span style={style} className="pull-right"><FontAwesome name="spinner" spin /></span>);
+        } else if (updateStatus === "saved") {
+            return (<span style={style} className="pull-right"><FontAwesome name="check" /> Saved</span>);
+        } else {
+            return undefined;
+        }
+    }
+
     isButtonDisabled() {
-        let  { currentPassword, newPassword, confirmPassword } = this.state;
-        
+        let { currentPassword, newPassword, confirmPassword } = this.state;
+
         if (currentPassword.length === 0) {
             return true;
         } else if (!checkPasswordStrength(newPassword)) {
@@ -81,9 +97,10 @@ class UpdatePasswordForm extends React.Component {
     handleSubmitNewPassword(e) {
         e.preventDefault();
         let { handleUpdatePassword } = this.props;
-        let  { currentPassword, newPassword, confirmPassword } = this.state;
+        let { currentPassword, newPassword, confirmPassword } = this.state;
 
         handleUpdatePassword(currentPassword, newPassword);
+        this.refs.updatePassword.reset();
     }
 
     componentWillMount() {
@@ -124,7 +141,7 @@ class UpdatePasswordForm extends React.Component {
                     {errorMsg ? (<span className="error"><FontAwesome name="exclamation-triangle" /> {errorMsg}</span>) : undefined}
                     <hr />
                     <div className="form-group">
-                        <button type="submit" className="btn btn-success pull-right" disabled={this.isButtonDisabled() ? "disabled" : false}><FontAwesome name="caret-right" /> Update password</button>
+                        <button type="submit" className="btn btn-success pull-right" disabled={this.isButtonDisabled() ? "disabled" : false}><FontAwesome name="caret-right" /> Update password</button> {this.renderUpdateStatus()}
                     </div>
                     <div className="clearfix"></div>
                 </form>

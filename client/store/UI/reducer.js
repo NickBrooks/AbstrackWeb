@@ -38,6 +38,14 @@ function ui(state = [], action) {
                     } 
                 }
             });
+            case 'UPDATE_UPDATE_STATUS':
+            return Object.assign({}, state, {
+                account: {
+                    password: {
+                        updateStatus: action.value
+                    } 
+                }
+            });
         case 'LOGIN_IS_AUTHENTICATING':
             return Object.assign({}, state, {
                 login: {
