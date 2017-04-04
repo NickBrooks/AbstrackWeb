@@ -13,7 +13,7 @@ class NomViewPinned extends React.Component {
 
   render() {
     let {noms, settings} = this.props;
-    let pinnedNoms = noms.filter(filterPinnedNoms)
+    let pinnedNoms = noms.filter(filterPinnedNoms);
     
     return (
       <div className="view-pinned">

@@ -32,3 +32,9 @@ export function removeHashtagsFromNom(hashtags, nomId) {
         nomId
     }
 }
+
+export function getInbox() {
+    return {
+        type: 'GET_INBOX'
+    }
+}

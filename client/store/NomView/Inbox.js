@@ -6,6 +6,10 @@ class NomViewInbox extends React.Component {
     super(props);
   }
 
+  componentWillMount() {
+    getInbox();
+  }
+
   render() {
     let { settings } = this.props;
     

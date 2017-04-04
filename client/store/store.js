@@ -15,7 +15,6 @@ import comments from '../data/Comments';
 import hashtags from '../data/Hashtags';
 import login from '../data/Login';
 import milestones from '../data/Milestones';
-import noms from '../data/Noms';
 import tracks from '../data/Tracks';
 import settings from '../data/Settings';
 import ui from '../data/UI';
@@ -40,7 +39,7 @@ const defaultState = {
   hashtags,
   login: loginToken,
   milestones,
-  noms,
+  noms: [],
   tracks,
   settings,
   ui,
