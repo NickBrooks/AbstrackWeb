@@ -2,7 +2,10 @@ const ui = {
   account: {
     password: {
       errorMsg: false,
-      isUpdating: false,
+      updateStatus: false
+    },
+    profileDetails: {
+      errorMsg: false,
       updateStatus: false
     }
   },

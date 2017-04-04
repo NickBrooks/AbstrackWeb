@@ -1,11 +1,12 @@
 import React from 'react';
 import FontAwesome from 'react-fontawesome';
 import { checkPasswordStrength } from '../../../functions';
+import SaveStatusLabel from '../../../components/SaveStatusLabel';
 
 class UpdatePasswordForm extends React.Component {
     constructor(props) {
         super(props);
-        this.handleSubmitNewPassword = this.handleSubmitNewPassword.bind(this);
+        this.handleUpdatePasswordClick = this.handleUpdatePasswordClick.bind(this);
         this.handleCurrentPasswordChange = this.handleCurrentPasswordChange.bind(this);
         this.handleNewPasswordChange = this.handleNewPasswordChange.bind(this);
         this.handleConfirmPasswordChange = this.handleConfirmPasswordChange.bind(this);
@@ -51,23 +52,6 @@ class UpdatePasswordForm extends React.Component {
         }
     }
 
-    renderUpdateStatus() {
-        let { updateStatus } = this.props.ui.account.password;
-        const style = {
-            marginTop: "6px",
-            marginRight: "10px",
-            color: "#27ae60"
-        }
-
-        if (updateStatus === "updating") {
-            return (<span style={style} className="pull-right"><FontAwesome name="spinner" spin /></span>);
-        } else if (updateStatus === "saved") {
-            return (<span style={style} className="pull-right"><FontAwesome name="check" /> Saved</span>);
-        } else {
-            return undefined;
-        }
-    }
-
     isButtonDisabled() {
         let { currentPassword, newPassword, confirmPassword } = this.state;
 
@@ -94,7 +78,7 @@ class UpdatePasswordForm extends React.Component {
         this.setState({ confirmPassword: event.target.value });
     }
 
-    handleSubmitNewPassword(e) {
+    handleUpdatePasswordClick(e) {
         e.preventDefault();
         let { handleUpdatePassword } = this.props;
         let { currentPassword, newPassword, confirmPassword } = this.state;
@@ -115,11 +99,11 @@ class UpdatePasswordForm extends React.Component {
     }
 
     render() {
-        let { errorMsg, isUpdating } = this.props.ui.account.password;
+        let { errorMsg, updateStatus } = this.props.ui.account.password;
 
         return (
             <div className="ibox">
-                <form ref="updatePassword" onSubmit={this.handleSubmitNewPassword}>
+                <form ref="updatePassword" onSubmit={this.handleUpdatePasswordClick}>
                     <h5>Update password</h5>
                     <hr />
                     <div className="form-group">
@@ -141,7 +125,7 @@ class UpdatePasswordForm extends React.Component {
                     {errorMsg ? (<span className="error"><FontAwesome name="exclamation-triangle" /> {errorMsg}</span>) : undefined}
                     <hr />
                     <div className="form-group">
-                        <button type="submit" className="btn btn-success pull-right" disabled={this.isButtonDisabled() ? "disabled" : false}><FontAwesome name="caret-right" /> Update password</button> {this.renderUpdateStatus()}
+                        <button type="submit" className="btn btn-success pull-right" disabled={this.isButtonDisabled() ? "disabled" : false}><FontAwesome name="caret-right" /> Update password</button> <SaveStatusLabel status={updateStatus} />
                     </div>
                     <div className="clearfix"></div>
                 </form>

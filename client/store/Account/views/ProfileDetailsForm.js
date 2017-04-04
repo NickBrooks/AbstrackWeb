@@ -1,10 +1,12 @@
 import React from 'react';
 import FontAwesome from 'react-fontawesome';
+import SaveStatusLabel from '../../../components/SaveStatusLabel';
 
 class ProfileDetailsForm extends React.Component {
     constructor(props) {
         super(props);
         this.handleBioChange = this.handleBioChange.bind(this);
+        this.handleUpdateProfileDetailsClick = this.handleUpdateProfileDetailsClick.bind(this);
 
         const maxLength = {
                 bio: 140,
@@ -15,32 +17,45 @@ class ProfileDetailsForm extends React.Component {
         this.state = {
             account: props.account,
             maxLength,
-            bioCharacterCount: maxLength.bio - props.account.bio.length
+            bioCharacterCount: null
         }
     }
 
     handleBioChange(event) {
         let { value } = event.target;
 
-        this.setState({ account: {
-            bio: value
-        },
-        bioCharacterCount: this.state.maxLength.bio - value.length
-    });
+        this.setState({
+            account: {
+                bio: value
+            },
+            bioCharacterCount: this.state.maxLength.bio - value.length
+        });
+    }
+
+    handleUpdateProfileDetailsClick(e) {
+        e.preventDefault();
+        let { handleUpdateProfileDetails } = this.props;
+
+        handleUpdateProfileDetails({
+            bio: this.refs.bio.value,
+            company: this.refs.company.value,
+            location: this.refs.location.value
+        });
     }
 
     render() {
         let { account, bioCharacterCount, maxLength } = this.state;
+        let { updateStatus } = this.props.ui.account.profileDetails;
 
         return (
             <div className="ibox">
-                <form ref="editProfile" autoComplete="off">
+                <form ref="editProfile" autoComplete="off" onSubmit={this.handleUpdateProfileDetailsClick}>
                     <h5>Profile details</h5>
                     <hr />
                     <div className="form-group">
                         <label htmlFor="bioInput"><FontAwesome name="address-book-o" /> Bio</label>
                         <input type="text" ref="bio" className="form-control" defaultValue={account.bio} id="bioInput" placeholder="Enter a bio" maxLength={maxLength.bio} onChange={this.handleBioChange} />
-                        <small id="bioHelp" className="form-text text-muted"><strong>{bioCharacterCount} characters</strong></small>
+                        {bioCharacterCount ? (<small id="bioHelp" className="form-text text-muted"><strong>{bioCharacterCount} characters</strong></small>) : null}
                     </div>
                     <div className="form-group">
                         <label htmlFor="companyInput"><FontAwesome name="group" /> Company</label>
@@ -52,7 +67,7 @@ class ProfileDetailsForm extends React.Component {
                     </div>
                     <hr />
                     <div className="form-group">
-                        <button type="submit" className="btn btn-success pull-right"><FontAwesome name="caret-right" /> Update profile</button>
+                        <button type="submit" className="btn btn-success pull-right"><FontAwesome name="caret-right" /> Update profile</button> <SaveStatusLabel status={updateStatus} />
                     </div>
                     <div className="clearfix"></div>
                 </form>

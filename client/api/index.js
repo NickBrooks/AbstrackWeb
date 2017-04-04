@@ -25,6 +25,15 @@ export function apiGetAccount(token) {
     });
 }
 
+export function apiUpdateProfileDetails(updatedDetails, token) {
+    return Axios.put(
+        apiUrl + "account/profile-details", updatedDetails, {
+        headers: {
+            Authorization: "bearer " + token
+        }
+    });
+}
+
 export function apiUpdatePassword(currentPassword, newPassword, token) {
     return Axios.post(apiUrl + "account/password", {
         currentPassword,

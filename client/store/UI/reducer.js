@@ -1,57 +1,47 @@
+// TODO: Tidy this whole area
 function ui(state = [], action) {
     switch (action.type) {
         case 'TOGGLE_NOM_EDITOR':
-            return Object.assign({}, state, {
-                newNomModal: {
-                    open: action.value
-                }
-            });
+            var newState = Object.assign({}, state);
+            newState.newNomModal.open = action.value;
+            return newState;
         case 'TOGGLE_NEW_NOM_BUTTON':
-            return Object.assign({}, state, {
-                newNomButton: {
-                    show: action.value
-                }
-            });
+            var newState = Object.assign({}, state);
+            newState.newNomButton.show = action.value;
+            return newState;  
         case 'ADD_COMMENT_ERROR':
-            return Object.assign({}, state, {
-                comments: {
-                    addCommentError: action.error
-                }
-            });
+            var newState = Object.assign({}, state);
+            newState.comments.addCommentError = action.error;
+            return newState;  
         case 'TOGGLE_EDIT_COMMENT_MODE':
-            return Object.assign({}, state, {
-                comments: {
-                    editComment: action.value
-                }
-            });
+            var newState = Object.assign({}, state);
+            newState.comments.editComment.errorMsg = action.value;
+            return newState;  
         case 'LOGIN_ERROR_MESSAGE':
-            return Object.assign({}, state, {
-                login: {
-                    errorMsg: action.message
-                }
-            });
+            var newState = Object.assign({}, state);
+            newState.login.errorMsg = action.message
+            return newState;  
+        case 'UPDATE_PROFILE_DETAILS_ERROR_MSG':
+            var newState = Object.assign({}, state);
+            newState.account.profileDetails.errorMsg = action.message
+            return newState;            
         case 'UPDATE_PASSWORD_ERROR_MSG':
-            return Object.assign({}, state, {
-                account: {
-                    password: {
-                        errorMsg: action.message
-                    } 
-                }
-            });
-            case 'UPDATE_UPDATE_STATUS':
-            return Object.assign({}, state, {
-                account: {
-                    password: {
-                        updateStatus: action.value
-                    } 
-                }
-            });
+            var newState = Object.assign({}, state);
+            newState.account.password.errorMsg = action.message
+            return newState; 
+        case 'UPDATE_PROFILE_DETAILS_UPDATE_STATUS':
+            var newState = Object.assign({}, state);
+            newState.account.profileDetails.updateStatus = action.value
+            return newState;  
+        case 'UPDATE_PASSWORD_UPDATE_STATUS':
+            var newState = Object.assign({}, state);
+            newState.account.password.updateStatus = action.value
+            return newState; 
         case 'LOGIN_IS_AUTHENTICATING':
-            return Object.assign({}, state, {
-                login: {
+            return { ...state, login: {
                     isAuthenticating: action.value
                 }
-            });
+            }
         default:
             return state;
     }

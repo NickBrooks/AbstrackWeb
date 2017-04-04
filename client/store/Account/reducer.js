@@ -1,6 +1,6 @@
 function account(state = [], action) {
     switch (action.type) {
-        case 'GET_ACCOUNT_SUCCESS':
+        case 'SET_ACCOUNT':
             return action.data;
     }
     return state;
