@@ -10,12 +10,16 @@ function getApiUrl() {
 
 const apiUrl = getApiUrl();
 
+// authentication
+
 export function apiGetToken(payload) {
     return Axios.post(apiUrl + "auth/token", {
         userName: payload.userName,
         password: payload.password
     });
 }
+
+// account
 
 export function apiGetAccount(token) {
     return Axios.get(apiUrl + "account", {
@@ -28,10 +32,10 @@ export function apiGetAccount(token) {
 export function apiUpdateProfileDetails(updatedDetails, token) {
     return Axios.put(
         apiUrl + "account/profile-details", updatedDetails, {
-        headers: {
-            Authorization: "bearer " + token
-        }
-    });
+            headers: {
+                Authorization: "bearer " + token
+            }
+        });
 }
 
 export function apiUpdatePassword(currentPassword, newPassword, token) {
@@ -39,6 +43,16 @@ export function apiUpdatePassword(currentPassword, newPassword, token) {
         currentPassword,
         newPassword
     }, {
+            headers: {
+                Authorization: "bearer " + token
+            }
+        });
+}
+
+// noms
+
+export function apiGetInbox(token) {
+    return Axios.get(apiUrl + "noms", {
         headers: {
             Authorization: "bearer " + token
         }

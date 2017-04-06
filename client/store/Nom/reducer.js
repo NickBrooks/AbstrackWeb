@@ -19,6 +19,8 @@ function noms(state = [], action) {
             action.nom.created_time = moment.utc().format();
             
             return [...state, action.nom];
+        case 'UPDATE_NOM_LIST':
+            return state.concat(action.data);
         case 'PIN_NOM':
             return state.map(nom => nom.id === action.nomId ?
                 // update the nom with a matching id

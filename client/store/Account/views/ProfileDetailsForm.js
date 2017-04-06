@@ -9,10 +9,10 @@ class ProfileDetailsForm extends React.Component {
         this.handleUpdateProfileDetailsClick = this.handleUpdateProfileDetailsClick.bind(this);
 
         const maxLength = {
-                bio: 140,
-                location: 80,
-                company: 80
-            };
+            bio: 140,
+            location: 80,
+            company: 80
+        };
 
         this.state = {
             account: props.account,

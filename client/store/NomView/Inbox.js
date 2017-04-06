@@ -7,7 +7,7 @@ class NomViewInbox extends React.Component {
   }
 
   componentWillMount() {
-    getInbox();
+    this.props.handleGetInbox();
   }
 
   render() {
