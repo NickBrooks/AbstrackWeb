@@ -32,7 +32,7 @@ class NomEditor extends React.Component {
             completed: false,
             inbox: true,
             hashtags: conformHashtags(this.refs.hashtags.value),
-            created_by: account
+            createdBy: account
         };
 
         //addNom(nom);

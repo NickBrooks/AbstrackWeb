@@ -3,7 +3,7 @@ import Avatar from '../../components/Avatar/Avatar';
 import ListNoms from '../../components/NomDisplay/NomDisplay';
 
 function filterUserNoms(userId, nom) {
-    return nom.created_by.id == userId;
+    return nom.createdBy.id == userId;
 }
 
 class User extends React.Component {

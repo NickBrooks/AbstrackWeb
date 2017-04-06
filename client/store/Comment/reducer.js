@@ -6,7 +6,7 @@ function postComments(state = [], action) {
         case 'ADD_COMMENT':
             return [...state, {
                 id: guid(),
-                created_time: moment.utc().format(),
+                createdTime: moment.utc().format(),
                 user: action.user,
                 body: action.body
             }];

@@ -7,7 +7,7 @@ var now = moment();
 
 //filters noms actioned today
 function isToday(n) {
-  var nomTime = moment(n.created_time);
+  var nomTime = moment(n.createdTime);
   var timeDiff = now.diff(nomTime, 'days');
 
   return timeDiff == 0;
@@ -15,7 +15,7 @@ function isToday(n) {
 
 //filters noms actioned this week
 function isThisWeek(n) {
-  var nomTime = moment(n.created_time);
+  var nomTime = moment(n.createdTime);
   var timeDiff = now.diff(nomTime, 'days');
 
   return (timeDiff > 0) && (timeDiff <= 7);
@@ -23,7 +23,7 @@ function isThisWeek(n) {
 
 //filters noms actioned this month
 function isThisMonth(n) {
-  var nomTime = moment(n.created_time);
+  var nomTime = moment(n.createdTime);
   var timeDiff = now.diff(nomTime, 'days');
 
   return (timeDiff > 7) && (timeDiff <= 30);
@@ -31,7 +31,7 @@ function isThisMonth(n) {
 
 //filters noms actioned a few months ago
 function isAFewMonths(n) {
-  var nomTime = moment(n.created_time);
+  var nomTime = moment(n.createdTime);
   var timeDiff = now.diff(nomTime, 'days');
 
   return (timeDiff > 30) && (timeDiff <= 365);
@@ -39,7 +39,7 @@ function isAFewMonths(n) {
 
 //filters noms actioned over year ago
 function isAYear(n) {
-  var nomTime = moment(n.created_time);
+  var nomTime = moment(n.createdTime);
   var timeDiff = now.diff(nomTime, 'days');
 
   return (timeDiff > 365);

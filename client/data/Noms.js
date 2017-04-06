@@ -20,8 +20,8 @@ const noms = [
             "nommer",
             "idea"
         ],
-        created_time: "2016-12-20T12:46:36.611Z",
-        created_by: {
+        createdTime: "2016-12-20T12:46:36.611Z",
+        createdBy: {
             id: "5a72fcdb-c6aa-4534-9b57-15fe16691bfb",
             username: "NickBrooks",
             email: "nbrooks@thirtyseven.com.au",
@@ -55,8 +55,8 @@ const noms = [
             "nommer",
             "idea"
         ],
-        created_time: "2016-12-20T12:46:36.611Z",
-        created_by: {
+        createdTime: "2016-12-20T12:46:36.611Z",
+        createdBy: {
             id: "d66cc855-8788-4d39-bb38-6653eab1d1f0",
             username: "SophieBrooks",
             email: "sbrooks@thirtyseven.com.au",
@@ -91,8 +91,8 @@ const noms = [
             "idea",
             "notifications"
         ],
-        created_time: "2016-12-20T12:46:36.611Z",
-        created_by: {
+        createdTime: "2016-12-20T12:46:36.611Z",
+        createdBy: {
             id: "5a72fcdb-c6aa-4534-9b57-15fe16691bfb",
             username: "NickBrooks",
             email: "nbrooks@thirtyseven.com.au",
@@ -126,8 +126,8 @@ const noms = [
             "nommer",
             "idea"
         ],
-        created_time: "2016-12-20T12:46:36.611Z",
-        created_by: {
+        createdTime: "2016-12-20T12:46:36.611Z",
+        createdBy: {
             id: "5a72fcdb-c6aa-4534-9b57-15fe16691bfb",
             username: "NickBrooks",
             email: "nbrooks@thirtyseven.com.au",
@@ -162,8 +162,8 @@ const noms = [
             "idea",
             "sharing"
         ],
-        created_time: "2016-12-18T12:46:36.611Z",
-        created_by: {
+        createdTime: "2016-12-18T12:46:36.611Z",
+        createdBy: {
             id: "5a72fcdb-c6aa-4534-9b57-15fe16691bfb",
             username: "NickBrooks",
             email: "nbrooks@thirtyseven.com.au",
@@ -198,8 +198,8 @@ const noms = [
             "idea",
             "documentdb"
         ],
-        created_time: "2016-11-30T12:46:36.611Z",
-        created_by: {
+        createdTime: "2016-11-30T12:46:36.611Z",
+        createdBy: {
             id: "5a72fcdb-c6aa-4534-9b57-15fe16691bfb",
             username: "NickBrooks",
             email: "nbrooks@thirtyseven.com.au",
@@ -226,8 +226,8 @@ const noms = [
             "japan",
             "travel"
         ],
-        created_time: "2016-12-20T12:46:36.611Z",
-        created_by: {
+        createdTime: "2016-12-20T12:46:36.611Z",
+        createdBy: {
             id: "5a72fcdb-c6aa-4534-9b57-15fe16691bfb",
             username: "NickBrooks",
             email: "nbrooks@thirtyseven.com.au",
@@ -254,8 +254,8 @@ const noms = [
             "japan",
             "food"
         ],
-        created_time: "2016-12-20T12:46:36.611Z",
-        created_by: {
+        createdTime: "2016-12-20T12:46:36.611Z",
+        createdBy: {
             id: "5a72fcdb-c6aa-4534-9b57-15fe16691bfb",
             username: "NickBrooks",
             email: "nbrooks@thirtyseven.com.au",
@@ -281,8 +281,8 @@ const noms = [
             "recipe",
             "food"
         ],
-        created_time: "2016-12-20T12:46:36.611Z",
-        created_by: {
+        createdTime: "2016-12-20T12:46:36.611Z",
+        createdBy: {
             id: "5a72fcdb-c6aa-4534-9b57-15fe16691bfb",
             username: "NickBrooks",
             email: "nbrooks@thirtyseven.com.au",
@@ -310,8 +310,8 @@ const noms = [
             "music",
             "list"
         ],
-        created_time: "2016-12-20T12:46:36.611Z",
-        created_by: {
+        createdTime: "2016-12-20T12:46:36.611Z",
+        createdBy: {
             id: "5a72fcdb-c6aa-4534-9b57-15fe16691bfb",
             username: "NickBrooks",
             email: "nbrooks@thirtyseven.com.au",
