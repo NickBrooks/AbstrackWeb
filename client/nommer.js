@@ -13,6 +13,7 @@ import NomViewMilestone from './store/NomView/Milestone';
 import NomViewTag from './store/NomView/Tag';
 import Nom from './store/Nom/Nom';
 import LoginView from './store/Login/LoginView';
+import RegisterView from './store/Login/RegisterView';
 import User from './store/User/User';
 import Account from './store/Account/Account';
 
@@ -26,6 +27,7 @@ const router = (
         <Router history={history}>
             <Route component={FullScreen}>
                 <Route path="/login" component={LoginView} />
+                <Route path="/register" component={RegisterView} />
             </Route>
             <Route path="/" component={App}>
                 <IndexRoute component={NomViewInbox}></IndexRoute>

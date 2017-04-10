@@ -1,4 +1,4 @@
-import { apiGetInbox } from '../../api';
+import { apiGetInbox, apiGetNoms } from '../../api';
 
 //add a new nom
 export function addNom(nom) {
@@ -46,6 +46,19 @@ export function handleGetInbox() {
     return (dispatch, getState) => {
         const { token } = getState().login;
         const request = apiGetInbox(token);
+
+        request.then(response => {
+            dispatch(updateNomList(response.data.data));
+        }).catch(error => {
+            console.log(error);
+        });
+    };
+}
+
+export function handleGetNoms(query) {
+    return (dispatch, getState) => {
+        const { token } = getState().login;
+        const request = apiGetNoms(query, token);
 
         request.then(response => {
             dispatch(updateNomList(response.data.data));

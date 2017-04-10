@@ -58,3 +58,11 @@ export function apiGetInbox(token) {
         }
     });
 }
+
+export function apiGetNoms(query, token) {
+    return Axios.get(apiUrl + "noms", {
+        headers: {
+            Authorization: "bearer " + token
+        }
+    });
+}
