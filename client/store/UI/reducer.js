@@ -19,29 +19,40 @@ function ui(state = [], action) {
             return newState;  
         case 'LOGIN_ERROR_MESSAGE':
             var newState = Object.assign({}, state);
-            newState.login.errorMsg = action.message
+            newState.login.errorMsg = action.message;
             return newState;  
+        case 'LOGIN_IS_AUTHENTICATING':
+            var newState = Object.assign({}, state);
+            newState.login.isAuthenticating = action.value;
+            return newState;
+        case 'REGISTER_ERROR_MESSAGE':
+            var newState = Object.assign({}, state);
+            newState.register.errorMsg = action.message;
+            return newState;  
+        case 'REGISTER_IS_VALIDATING_EMAIL':
+            var newState = Object.assign({}, state);
+            newState.register.isValidatingEmail = action.value;
+            return newState;
+        case 'REGISTER_SET_VALID_EMAIL':
+            var newState = Object.assign({}, state);
+            newState.register.validEmail = action.email;
+            return newState;
         case 'UPDATE_PROFILE_DETAILS_ERROR_MSG':
             var newState = Object.assign({}, state);
-            newState.account.profileDetails.errorMsg = action.message
+            newState.account.profileDetails.errorMsg = action.message;
             return newState;            
         case 'UPDATE_PASSWORD_ERROR_MSG':
             var newState = Object.assign({}, state);
-            newState.account.password.errorMsg = action.message
+            newState.account.password.errorMsg = action.message;
             return newState; 
         case 'UPDATE_PROFILE_DETAILS_UPDATE_STATUS':
             var newState = Object.assign({}, state);
-            newState.account.profileDetails.updateStatus = action.value
+            newState.account.profileDetails.updateStatus = action.value;
             return newState;  
         case 'UPDATE_PASSWORD_UPDATE_STATUS':
             var newState = Object.assign({}, state);
-            newState.account.password.updateStatus = action.value
+            newState.account.password.updateStatus = action.value;
             return newState; 
-        case 'LOGIN_IS_AUTHENTICATING':
-            return { ...state, login: {
-                    isAuthenticating: action.value
-                }
-            }
         default:
             return state;
     }

@@ -19,6 +19,14 @@ export function apiGetToken(payload) {
     });
 }
 
+// registration
+
+export function apiValidateEmail(email) {
+    return Axios.post(apiUrl + "register/validate-email", {
+        email
+    });
+}
+
 // account
 
 export function apiGetAccount(token) {
