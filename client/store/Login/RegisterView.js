@@ -116,15 +116,15 @@ class RegisterView extends React.Component {
         return (
             <div>
                 <div className="form-group">
-                        <label htmlFor="password">New Password {this.renderPasswordValidation()}</label>
-                        <input type="password" ref="password" className="form-control" required value={password} autoComplete="new-password" id="password" onChange={this.handlePasswordChange} />
-                        <small id="passwordHelp" className="form-text text-muted">8 or more characters, one uppercase, one digit, one special character (@, $, %, # etc)</small>
-                    </div>
+                    <label htmlFor="password">New Password {this.renderPasswordValidation()}</label>
+                    <input type="password" ref="password" className="form-control" required value={password} autoComplete="new-password" id="password" onChange={this.handlePasswordChange} />
+                    <small id="passwordHelp" className="form-text text-muted">8 or more characters, one uppercase, one digit, one special character (@, $, %, # etc)</small>
+                </div>
 
-                    <div className="form-group">
-                        <label htmlFor="confirmPassword">Confirm new password {this.renderConfirmPasswordValidation()}</label>
-                        <input type="password" ref="confirmPassword" className="form-control" required value={confirmPassword} autoComplete="new-password" id="confirmPassword" onChange={this.handleConfirmPasswordChange} />
-                    </div>
+                <div className="form-group">
+                    <label htmlFor="confirmPassword">Confirm new password {this.renderConfirmPasswordValidation()}</label>
+                    <input type="password" ref="confirmPassword" className="form-control" required value={confirmPassword} autoComplete="new-password" id="confirmPassword" onChange={this.handleConfirmPasswordChange} />
+                </div>
                 <hr />
                 <button type="submit" className="btn btn-success" disabled={this.isRegisterButtonDisabled() ? "disabled" : false}>Register <FontAwesome name="check" /></button>
             </div>

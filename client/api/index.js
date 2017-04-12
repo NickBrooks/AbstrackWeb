@@ -10,12 +10,18 @@ function getApiUrl() {
 
 const apiUrl = getApiUrl();
 
-// authentication
+// login
 
 export function apiGetToken(payload) {
     return Axios.post(apiUrl + "auth/token", {
         userName: payload.userName,
         password: payload.password
+    });
+}
+
+export function apiForgotPassword(email) {
+    return Axios.post(apiUrl + "auth/forgot-password", {
+        email
     });
 }
 

@@ -14,6 +14,7 @@ import NomViewTag from './store/NomView/Tag';
 import Nom from './store/Nom/Nom';
 import LoginView from './store/Login/LoginView';
 import RegisterView from './store/Login/RegisterView';
+import ForgotPasswordView from './store/Login/ForgotPasswordView';
 import User from './store/User/User';
 import Account from './store/Account/Account';
 
@@ -28,6 +29,7 @@ const router = (
             <Route component={FullScreen}>
                 <Route path="/login" component={LoginView} />
                 <Route path="/register" component={RegisterView} />
+                <Route path="/login/forgot-password" component={ForgotPasswordView} />
             </Route>
             <Route path="/" component={App}>
                 <IndexRoute component={NomViewInbox}></IndexRoute>

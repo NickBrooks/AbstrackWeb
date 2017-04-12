@@ -1,4 +1,4 @@
-import { apiGetToken, apiValidateEmail } from '../../api';
+import { apiGetToken, apiValidateEmail, apiForgotPassword } from '../../api';
 import { push } from 'react-router-redux';
 
 function loginSuccess(data) {
@@ -77,6 +77,16 @@ export function handleValidateEmail(email) {
         }).catch(error => {
             dispatch(registerIsValidatingEmail(false));
             dispatch(registerErrorMsg(error.response.data.message));
+        });
+    };
+}
+
+export function handleForgotPassword(email) {
+    const request = apiForgotPassword(email);
+
+    return dispatch => {
+        request.then(response => {}).catch(error => {
+            console.log(error);
         });
     };
 }
