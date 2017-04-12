@@ -27,10 +27,8 @@ export function apiForgotPassword(email) {
 
 // registration
 
-export function apiValidateEmail(email) {
-    return Axios.post(apiUrl + "register/validate-email", {
-        email
-    });
+export function apiRegister(payload) {
+    return Axios.post(apiUrl + "register", payload);
 }
 
 // account

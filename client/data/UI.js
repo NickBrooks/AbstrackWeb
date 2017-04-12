@@ -19,8 +19,7 @@ const ui = {
   },
   register: {
     errorMsg: false,
-    isValidatingEmail: false,
-    validEmail: false
+    isRegistering: false
   },
   newNomModal: {
     open: false

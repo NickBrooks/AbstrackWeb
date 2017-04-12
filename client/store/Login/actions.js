@@ -1,4 +1,4 @@
-import { apiGetToken, apiValidateEmail, apiForgotPassword } from '../../api';
+import { apiGetToken, apiRegister, apiForgotPassword } from '../../api';
 import { push } from 'react-router-redux';
 
 function loginSuccess(data) {
@@ -29,17 +29,10 @@ export function registerErrorMsg(message) {
     }
 }
 
-export function registerIsValidatingEmail(value) {
+export function registerIsRegistering(value) {
     return {
-        type: 'REGISTER_IS_VALIDATING_EMAIL',
+        type: 'REGISTER_IS_REGISTERING',
         value
-    }
-}
-
-export function registerSetValidEmail(email) {
-    return {
-        type: 'REGISTER_SET_VALID_EMAIL',
-        email
     }
 }
 
@@ -67,16 +60,16 @@ export function handleLogin(userName, password) {
     };
 }
 
-export function handleValidateEmail(email) {
-    const request = apiValidateEmail(email);
+export function handleRegistration(payload) {
+    const request = apiRegister(payload);
 
     return dispatch => {
         request.then(response => {
-            dispatch(registerSetValidEmail(email));
-            dispatch(registerIsValidatingEmail(false));
+            dispatch(registerIsRegistering(false));
+            dispatch(push('/login'));
         }).catch(error => {
-            dispatch(registerIsValidatingEmail(false));
-            dispatch(registerErrorMsg(error.response.data.message));
+            dispatch(registerIsRegistering(false));
+            dispatch(registerErrorMsg(error.response.data[0].description));
         });
     };
 }
