@@ -1,5 +1,5 @@
 import React from 'react';
-import ListNoms from '../../components/NomDisplay/NomDisplay';
+import ListNoms from '../../components/ListNoms/ListNoms';
 
 function inArray(needle, haystack) {
     for (var i = 0; i < haystack.length; i++) {
@@ -32,7 +32,7 @@ class NomViewTag extends React.Component {
             <div className="view-tag">
                 <h3>#{this.props.params.tag}</h3>
                 <hr />
-                <ListNoms noms={taggedNoms} emptyNoms={emptyNoms} />
+                <ListNoms nomList={taggedNoms} emptyNoms={emptyNoms} {...this.props} />
             </div>
         )
     }

@@ -1,6 +1,6 @@
 import React from 'react';
 import FontAwesome from 'react-fontawesome';
-import ListNoms from '../../components/NomDisplay/NomDisplay';
+import ListNoms from '../../components/ListNoms/ListNoms';
 
 function filterTrackNoms(trackId, n) {
   if (typeof n.track != "undefined") {
@@ -34,7 +34,7 @@ class NomViewTrack extends React.Component {
         <h3><FontAwesome name="bookmark" style={{ color: "#638495" }} /> {track.name}</h3>
         <h6><span className="tag tag-success"><FontAwesome name="lock" /> {track.visibility}</span></h6>
         <hr />
-        <ListNoms noms={trackNoms} emptyNoms={emptyNoms} />
+        <ListNoms nomList={trackNoms} emptyNoms={emptyNoms} {...this.props} />
       </div>
     )
   }

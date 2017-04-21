@@ -17,15 +17,18 @@ const ui = {
     errorMsg: false,
     isAuthenticating: false
   },
-  register: {
-    errorMsg: false,
-    isRegistering: false
-  },
   newNomModal: {
     open: false
   },
   newNomButton: {
     show: true
+  },
+  nomView: {
+    isLoading: false
+  },
+  register: {
+    errorMsg: false,
+    isRegistering: false
   }
 }
 

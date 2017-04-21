@@ -88,6 +88,14 @@ textarea:focus, textarea:active {
     outline: none;
 }
 
+.text-center {
+    text-align: center;
+}
+
 .light {
     color: $nom-gray-dark;
+}
+
+.fancy {
+    font-family: $font-family-fancy;
 }

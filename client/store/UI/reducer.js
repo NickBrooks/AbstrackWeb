@@ -25,6 +25,10 @@ function ui(state = [], action) {
             var newState = Object.assign({}, state);
             newState.login.isAuthenticating = action.value;
             return newState;
+        case 'NOM_VIEW_IS_LOADING':
+            var newState = Object.assign({}, state);
+            newState.nomView.isLoading = action.value;
+            return newState;
         case 'REGISTER_ERROR_MESSAGE':
             var newState = Object.assign({}, state);
             newState.register.errorMsg = action.message;
@@ -44,7 +48,7 @@ function ui(state = [], action) {
         case 'UPDATE_PASSWORD_UPDATE_STATUS':
             var newState = Object.assign({}, state);
             newState.account.password.updateStatus = action.value;
-            return newState; 
+            return newState;
         default:
             return state;
     }

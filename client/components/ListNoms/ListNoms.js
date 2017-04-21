@@ -91,9 +91,9 @@ class NomDisplay extends React.Component {
   }
 
   render() {
-    const {noms, emptyNoms} = this.props;
+    const {nomList, emptyNoms, ui} = this.props;
 
-    if(noms.length < 1) {
+    if(nomList.length < 1 && !ui.nomView.isLoading) {
       return (
         <EmptyNoms emptyNoms={emptyNoms} />
       )
@@ -101,11 +101,12 @@ class NomDisplay extends React.Component {
 
     return (
       <div className="nom-list">
-        {this.renderTodaysNoms(noms)}
-        {this.renderThisWeeksNoms(noms)}
-        {this.renderThisMonthsNoms(noms)}
-        {this.renderAFewMonthsNoms(noms)}
-        {this.renderAYearsNoms(noms)}
+        {this.renderTodaysNoms(nomList)}
+        {this.renderThisWeeksNoms(nomList)}
+        {this.renderThisMonthsNoms(nomList)}
+        {this.renderAFewMonthsNoms(nomList)}
+        {this.renderAYearsNoms(nomList)}
+        {ui.nomView.isLoading ? <p className="text-center text-uppercase fancy light">Loading...</p> : undefined}
       </div>
     )
   }
