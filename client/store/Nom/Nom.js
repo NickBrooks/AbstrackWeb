@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router';
-import moment from 'moment';
 import FontAwesome from 'react-fontawesome';
 import NomBody from './Components/NomBody';
 import NomHeader from './Components/NomHeader';

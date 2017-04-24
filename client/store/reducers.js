@@ -7,6 +7,7 @@ import hashtags from './Hashtag/reducer';
 import milestones from './Milestone/reducer';
 import login from './Login/reducer';
 import noms from './Nom/reducer';
+import nomViews from './NomView/reducer';
 import tracks from './Track/reducer';
 import settings from './Settings/reducer';
 import ui from './UI/reducer';
@@ -20,6 +21,7 @@ const rootReducer = combineReducers({
     milestones,
     login,
     noms,
+    nomViews,
     tracks,
     settings,
     ui,

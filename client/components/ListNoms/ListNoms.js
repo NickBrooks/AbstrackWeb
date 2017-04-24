@@ -122,9 +122,14 @@ class NomDisplay extends React.Component {
   }
 
   componentWillMount() {
-    let { loadNomList } = this.props;
+    let { loadNomList, nomViews, noms, viewName } = this.props;
 
-    loadNomList();
+    // only load view again if older than 60 seconds
+    if (nomViews === undefined ||
+      nomViews[viewName] === undefined ||
+      moment().subtract(60, 'seconds') > moment(nomViews[viewName].timeFetched)) {
+      loadNomList();
+    }
   }
 
   render() {

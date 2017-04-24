@@ -24,6 +24,7 @@ function mapStateToProps(state) {
         login: state.login,
         milestones: state.milestones,
         noms: state.noms,
+        nomViews: state.nomViews,
         tracks: state.tracks,
         settings: state.settings,
         ui: state.ui,

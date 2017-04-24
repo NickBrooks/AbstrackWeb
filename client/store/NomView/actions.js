@@ -1,9 +1,18 @@
 import { apiGetInbox, apiGetNoms } from '../../api';
+import moment from 'moment';
 
 export function nomViewIsLoading(value) {
     return {
         type: 'NOM_VIEW_IS_LOADING',
         value
+    }
+}
+
+export function updateNomViewList(view, timeFetched) {
+    return {
+        type: 'UPDATE_NOM_VIEW_LIST',
+        view,
+        timeFetched
     }
 }
 
@@ -23,6 +32,7 @@ export function handleGetInbox() {
         const request = apiGetInbox(token);
 
         request.then(response => {
+            dispatch(updateNomViewList("inbox", moment.utc().format()))
             dispatch(nomViewIsLoading(false));
             dispatch(updateNomList(response.data.data));
         }).catch(error => {

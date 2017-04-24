@@ -16,10 +16,10 @@ class NomViewInbox extends React.Component {
 
   render() {
     let { settings, handleGetInbox } = this.props;
-    
+
     return (
       <div className="view-inbox">
-        <ListNoms loadNomList={handleGetInbox} emptyNoms={settings.emptyNoms.inbox} {...this.props} />
+        <ListNoms loadNomList={handleGetInbox} viewName="inbox" emptyNoms={settings.emptyNoms.inbox} {...this.props} />
       </div>
     )
   }

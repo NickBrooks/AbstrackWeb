@@ -12,7 +12,6 @@ class NomViewPinned extends React.Component {
   }
 
   componentWillMount() {
-    this.props.handleGetInbox();
     this.props.setSearchBar({
       defaultValue: "Pinned",
       class: "searchBar-pinned"
@@ -20,12 +19,11 @@ class NomViewPinned extends React.Component {
   }
 
   render() {
-    let { noms, settings } = this.props;
-    let pinnedNoms = noms.filter(filterPinnedNoms);
+    let { noms, settings, handleGetInbox } = this.props;
 
     return (
       <div className="view-pinned">
-        <ListNoms nomList={pinnedNoms} emptyNoms={settings.emptyNoms.pinned} {...this.props} />
+        <ListNoms loadNomList={handleGetInbox} emptyNoms={settings.emptyNoms.pinned} {...this.props} />
       </div>
     )
   }
