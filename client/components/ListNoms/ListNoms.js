@@ -2,6 +2,7 @@ import React from 'react';
 import moment from 'moment';
 import TimeNode from './Components/TimeNode';
 import EmptyNoms from './Components/EmptyNoms';
+import FontAwesome from 'react-fontawesome';
 
 var now = moment();
 
@@ -48,6 +49,13 @@ function isAYear(n) {
 class NomDisplay extends React.Component {
   constructor(props) {
     super(props);
+    this.refreshNomList = this.refreshNomList.bind(this);
+  }
+
+  refreshNomList(e) {
+    e.preventDefault();
+    const { ui, loadNomsFunction } = this.props;
+    if (ui.nomView.isLoading) { return null }
   }
 
   renderTodaysNoms(noms) {
@@ -106,15 +114,19 @@ class NomDisplay extends React.Component {
         {this.renderThisMonthsNoms(nomList)}
         {this.renderAFewMonthsNoms(nomList)}
         {this.renderAYearsNoms(nomList)}
-        {ui.nomView.isLoading ? <p className="text-center text-uppercase fancy light">Loading...</p> : undefined}
+
       </div>
     )
   }
 
   render() {
+    const { ui } = this.props;
+
     return (
       <div>
+        <button onClick={this.refreshNomList} className="pull-right btn btn-toolbar btn-sm">{ui.nomView.isLoading ? <FontAwesome name="refresh" spin /> : <FontAwesome name="refresh" />}</button>
         {this.renderNomList()}
+        {ui.nomView.isLoading ? <p className="text-center text-uppercase fancy light">Loading...</p> : undefined}
       </div>
     )
   }
