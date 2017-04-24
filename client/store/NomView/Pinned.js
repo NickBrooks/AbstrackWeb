@@ -18,6 +18,13 @@ class NomViewPinned extends React.Component {
     });
   }
 
+  componentWillUnmount() {
+    this.props.setSearchBar({
+      defaultValue: "Search noms",
+      class: "searchBar-inbox"
+    });
+  }
+
   render() {
     let { noms, settings, handleGetInbox } = this.props;
 
