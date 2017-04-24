@@ -54,8 +54,10 @@ class NomDisplay extends React.Component {
 
   refreshNomList(e) {
     e.preventDefault();
-    const { ui, loadNomsFunction } = this.props;
+    let { ui, loadNomList } = this.props;
     if (ui.nomView.isLoading) { return null }
+
+    loadNomList();
   }
 
   renderTodaysNoms(noms) {
@@ -99,9 +101,9 @@ class NomDisplay extends React.Component {
   }
 
   renderNomList() {
-    const { nomList, emptyNoms, ui } = this.props;
+    const { noms, emptyNoms, ui } = this.props;
 
-    if (nomList.length < 1 && !ui.nomView.isLoading) {
+    if (noms.length < 1 && !ui.nomView.isLoading) {
       return (
         <EmptyNoms emptyNoms={emptyNoms} />
       )
@@ -109,14 +111,20 @@ class NomDisplay extends React.Component {
 
     return (
       <div className="nom-list">
-        {this.renderTodaysNoms(nomList)}
-        {this.renderThisWeeksNoms(nomList)}
-        {this.renderThisMonthsNoms(nomList)}
-        {this.renderAFewMonthsNoms(nomList)}
-        {this.renderAYearsNoms(nomList)}
+        {this.renderTodaysNoms(noms)}
+        {this.renderThisWeeksNoms(noms)}
+        {this.renderThisMonthsNoms(noms)}
+        {this.renderAFewMonthsNoms(noms)}
+        {this.renderAYearsNoms(noms)}
 
       </div>
     )
+  }
+
+  componentWillMount() {
+    let { loadNomList } = this.props;
+
+    loadNomList();
   }
 
   render() {

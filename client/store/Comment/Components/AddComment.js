@@ -44,7 +44,6 @@ class AddComment extends React.Component {
 
     render() {
         let {
-            settings,
             account,
             ui,
         } = this.props;
@@ -56,7 +55,7 @@ class AddComment extends React.Component {
             <form ref="addCommentForm" className="add-comment" onSubmit={this.handleCommentSubmit}>
                 <Link to={accountLink}><Avatar user={account} size="50" customClass="pull-left timeline" /></Link>
                 <div className="ibox">
-                    <textarea ref="body" placeholder={settings.comments.addCommentPlaceholder} />
+                    <textarea ref="body" placeholder={ui.comments.addCommentPlaceholder} />
                     <hr />
                     {ui.comments.addCommentError ? (<ErrorSpan error={ui.comments.addCommentError} />) : null}
                     <button type="submit" className="btn btn-sm btn-success pull-right"><FontAwesome name="paper-plane" /> Reply</button>

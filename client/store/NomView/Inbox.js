@@ -8,7 +8,6 @@ class NomViewInbox extends React.Component {
   }
 
   componentWillMount() {
-    this.props.handleGetInbox();
     this.props.setSearchBar({
       defaultValue: false,
       class: false
@@ -16,11 +15,11 @@ class NomViewInbox extends React.Component {
   }
 
   render() {
-    let { settings } = this.props;
+    let { settings, handleGetInbox } = this.props;
     
     return (
       <div className="view-inbox">
-        <ListNoms nomList={this.props.noms} emptyNoms={settings.emptyNoms.inbox} {...this.props} />
+        <ListNoms loadNomList={handleGetInbox} emptyNoms={settings.emptyNoms.inbox} {...this.props} />
       </div>
     )
   }
