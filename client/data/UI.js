@@ -1,4 +1,10 @@
 const ui = {
+  avatar: {
+    empty: {
+      regular: "https://i.imgur.com/Hg2zm3N.jpg",
+      thumb: "https://i.imgur.com/6HDD0Io.jpg"
+    }
+  },
   account: {
     password: {
       errorMsg: false,

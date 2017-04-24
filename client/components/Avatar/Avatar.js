@@ -17,7 +17,7 @@ class Avatar extends React.Component {
     }
 
     // check if they have an avatar
-    if (user !== undefined && user.avatarThumb !== undefined) {
+    if (user !== undefined && user.avatarThumb !== null) {
       if (size > 160) {
         avatarSrc = user.avatarFull;
       } else {
@@ -29,9 +29,9 @@ class Avatar extends React.Component {
       )
     } else {
       if (size > 160) {
-        avatarSrc = "http://i.imgur.com/Hg2zm3N.jpg";
+        avatarSrc = "https://i.imgur.com/Hg2zm3N.jpg";
       } else {
-        avatarSrc = "http://i.imgur.com/6HDD0Io.jpg"
+        avatarSrc = "https://i.imgur.com/6HDD0Io.jpg"
       }
 
       return (
