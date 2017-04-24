@@ -2,7 +2,6 @@ import { applyMiddleware, createStore, compose } from 'redux';
 import { routerMiddleware, syncHistoryWithStore } from 'react-router-redux';
 import { browserHistory } from 'react-router';
 import thunk from 'redux-thunk';
-import createLogger from 'redux-logger';
 import throttle from 'lodash/throttle';
 import { loadLocalStorageState, saveLocalStorageState } from '../functions';
 
@@ -22,7 +21,6 @@ import users from '../data/Users';
 import views from '../data/Views';
 
 const persistedState = loadLocalStorageState();
-const logger = createLogger();
 
 // check for local storage login details
 var loginToken;
@@ -53,7 +51,7 @@ const store = createStore(
   rootReducer,
   defaultState,
   composeEnhancers(
-    applyMiddleware(thunk, logger, routerMiddleware(browserHistory))
+    applyMiddleware(thunk, routerMiddleware(browserHistory))
   )
 );
 
