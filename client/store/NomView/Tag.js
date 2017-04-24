@@ -21,6 +21,7 @@ class NomViewTag extends React.Component {
         let { tag } = this.props.params;
         let { noms, settings } = this.props;        
         let taggedNoms = noms.filter(filterTaggedNoms.bind(null, tag));
+        const title = (<span>#{this.props.params.tag}</span>)
 
         //set empty noms
         let emptyNoms = {
@@ -30,9 +31,7 @@ class NomViewTag extends React.Component {
 
         return (
             <div className="view-tag">
-                <h3>#{this.props.params.tag}</h3>
-                <hr />
-                <ListNoms nomList={taggedNoms} emptyNoms={emptyNoms} {...this.props} />
+                <ListNoms nomList={taggedNoms} title={title} emptyNoms={emptyNoms} {...this.props} />
             </div>
         )
     }

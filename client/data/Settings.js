@@ -1,10 +1,4 @@
 const settings = {
-  searchbar: {
-    text: "Search #noms"
-  },
-  comments: {
-    addCommentPlaceholder: "Add a reply"
-  },
   emptyNoms: {
     inbox: {
       img: "https://i.imgur.com/r2NAHyD.png",

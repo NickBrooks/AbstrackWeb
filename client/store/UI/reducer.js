@@ -9,6 +9,10 @@ function ui(state = [], action) {
             var newState = Object.assign({}, state);
             newState.newNomButton.show = action.value;
             return newState;
+        case 'SET_SEARCH_BAR':
+            var newState = Object.assign({}, state);
+            newState.searchBar = action.value;
+            return newState;
         case 'ADD_COMMENT_ERROR':
             var newState = Object.assign({}, state);
             newState.comments.addCommentError = action.error;

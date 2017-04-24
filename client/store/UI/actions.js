@@ -12,3 +12,10 @@ export function toggleNewNomButton(value) {
         value
     }
 }
+
+export function setSearchBar(value) {
+    return {
+        type: 'SET_SEARCH_BAR',
+        value
+    }
+}

@@ -10,6 +10,7 @@ const ui = {
     }
   },
   comments: {
+    addCommentPlaceholder: "Add a reply",
     newCommentError: '',
     editComment: ''
   },
@@ -29,6 +30,10 @@ const ui = {
   register: {
     errorMsg: false,
     isRegistering: false
+  },
+  searchBar: {
+    defaultValue: "Search noms",
+    class: "searchBar-inbox",
   }
 }
 

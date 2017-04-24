@@ -1,0 +1,64 @@
+.header {
+    background: $nom-header-blue;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 999;
+
+    &.searchBar-pinned {
+        background: $nom-orange-light;
+
+        input[type="text"]#search-bar::-webkit-input-placeholder {
+            color: $nom-orange-text;
+        }
+
+        input[type="text"]#search-bar::-moz-placeholder {
+            color: $nom-orange-text;
+        }
+
+        input[type="text"]#search-bar:-ms-input-placeholder {
+            color: $nom-orange-text;
+        }
+
+        input[type="text"]#search-bar:-moz-placeholder {
+            color: $nom-orange-text;
+        }
+    }
+}
+
+@media (min-width: 768px) {
+    .header {
+        left: $sidebar-width;
+    }
+}
+
+input[type="text"]#search-bar {
+    background: rgba(0, 0, 0, 0);
+    border: none;
+    outline: none;
+    box-shadow: none;
+    font-size: 1.3em;
+    font-family: $font-family-fancy;
+    padding: 15px;
+    width: 100%;
+    max-width: 100%;
+    display: block;
+    color: #fff;
+}
+
+input[type="text"]#search-bar::-webkit-input-placeholder {
+    color: $nom-header-blue-text;
+}
+
+input[type="text"]#search-bar::-moz-placeholder {
+    color: $nom-header-blue-text;
+}
+
+input[type="text"]#search-bar:-ms-input-placeholder {
+    color: $nom-header-blue-text;
+}
+
+input[type="text"]#search-bar:-moz-placeholder {
+    color: $nom-header-blue-text;
+}

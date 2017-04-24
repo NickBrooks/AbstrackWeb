@@ -3,7 +3,7 @@ import { browserHistory } from 'react-router';
 import moment from 'moment';
 import Sidebar from '../Sidebar/Sidebar';
 import LoadingScreen from '../LoadingScreen';
-import Header from '../Header/Header';
+import SearchBar from '../SearchBar/SearchBar';
 import NewNomButton from '../NewNomButton/NewNomButton';
 import NewNomModal from '../NomEditor/NomEditor';
 
@@ -35,7 +35,7 @@ class AppView extends React.Component {
                 <div className="container-fluid main">
                     <div className="row">
                         <div className="col-sm-12 header">
-                            <Header {...this.props} />
+                            <SearchBar {...this.props} />
                         </div>
                         <div className="col-sm-12 body">
                             {React.cloneElement(this.props.children, this.props)}

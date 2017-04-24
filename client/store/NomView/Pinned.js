@@ -11,14 +11,20 @@ class NomViewPinned extends React.Component {
     super(props);
   }
 
+  componentWillMount() {
+    this.props.handleGetInbox();
+    this.props.setSearchBar({
+      defaultValue: "Pinned",
+      class: "searchBar-pinned"
+    });
+  }
+
   render() {
-    let {noms, settings} = this.props;
+    let { noms, settings } = this.props;
     let pinnedNoms = noms.filter(filterPinnedNoms);
-    
+
     return (
       <div className="view-pinned">
-        <h3 className="pinned"><FontAwesome name="thumb-tack" /> Pinned</h3>
-        <hr />
         <ListNoms nomList={pinnedNoms} emptyNoms={settings.emptyNoms.pinned} {...this.props} />
       </div>
     )

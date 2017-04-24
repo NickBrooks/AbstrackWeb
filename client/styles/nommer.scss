@@ -1,5 +1,6 @@
 //variables
 @import "app/mixins.scss";
+@import "app/colors.scss";
 @import "app/variables.scss";
 
 //browser hacks
@@ -20,7 +21,7 @@
 @import "../components/Avatar/Avatar.scss";
 @import "../components/ErrorSpan/ErrorSpan.scss";
 @import "../components/HashtagSpan/HashtagSpan.scss";
-@import "../components/Header/Header.scss";
+@import "../components/SearchBar/SearchBar.scss";
 @import "../components/NewNomButton/NewNomButton.scss";
 @import "../components/ListNoms/ListNoms.scss";
 @import "../components/NomEditor/NomEditor.scss";
