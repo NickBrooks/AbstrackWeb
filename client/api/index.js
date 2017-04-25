@@ -62,9 +62,16 @@ export function apiUpdatePassword(currentPassword, newPassword, token) {
 }
 
 // noms
-
 export function apiGetInbox(token) {
     return Axios.get(apiUrl + "inbox", {
+        headers: {
+            Authorization: "bearer " + token
+        }
+    });
+}
+
+export function apiGetPinned(token) {
+    return Axios.get(apiUrl + "pinned", {
         headers: {
             Authorization: "bearer " + token
         }

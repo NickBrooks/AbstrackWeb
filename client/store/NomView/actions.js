@@ -1,4 +1,4 @@
-import { apiGetInbox, apiGetNoms } from '../../api';
+import { apiGetInbox, apiGetPinned, apiGetNoms } from '../../api';
 import moment from 'moment';
 
 export function nomViewIsLoading(value) {
@@ -51,7 +51,7 @@ export function handleGetPinned() {
         dispatch(nomViewIsLoading(true));
 
         const { token } = getState().login;
-        const request = apiGetInbox(token);
+        const request = apiGetPinned(token);
         const view = "pinned";
 
         request.then(response => {
