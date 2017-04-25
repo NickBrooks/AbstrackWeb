@@ -24,9 +24,9 @@ function mergeCurrentStateAndFetchedNoms(state, action) {
     }
 
     // remove that entire view from noms
-    for (var nom in newState) {
+    newState.forEach(function (nom) {
         nom.views = nom.views.filter(removeView.bind(null, action.view));
-    }
+    })
 
     // merge the boys in
     action.data.forEach(function (nom) {
@@ -35,6 +35,7 @@ function mergeCurrentStateAndFetchedNoms(state, action) {
         if (key >= 0) {
             newState[key].data = nom;
             newState[key].views.push(action.view);
+            newState[key].timeFetched = action.timeFetched;
         } else {
             var views = [];
             views.push(action.view);
@@ -42,7 +43,8 @@ function mergeCurrentStateAndFetchedNoms(state, action) {
             newState.push({
                 id: nom.id,
                 data: nom,
-                views
+                views,
+                timeFetched: action.timeFetched
             })
         }
     })

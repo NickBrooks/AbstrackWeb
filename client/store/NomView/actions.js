@@ -12,7 +12,7 @@ export function updateNomViewList(view, timeFetched) {
     return {
         type: 'UPDATE_NOM_VIEW_LIST',
         view,
-        timeFetched
+        timeFetched: moment.utc().format()
     }
 }
 
@@ -20,7 +20,8 @@ export function updateNomStore(data, view) {
     return {
         type: 'UPDATE_NOM_STORE',
         data,
-        view
+        view,
+        timeFetched: moment.utc().format()
     }
 }
 
@@ -34,7 +35,7 @@ export function handleGetInbox() {
         const view = "inbox";
 
         request.then(response => {
-            dispatch(updateNomViewList(view, moment.utc().format()))
+            dispatch(updateNomViewList(view))
             dispatch(nomViewIsLoading(false));
             dispatch(updateNomStore(response.data.data, view));
         }).catch(error => {
@@ -54,7 +55,7 @@ export function handleGetPinned() {
         const view = "pinned";
 
         request.then(response => {
-            dispatch(updateNomViewList(view, moment.utc().format()))
+            dispatch(updateNomViewList(view))
             dispatch(nomViewIsLoading(false));
             dispatch(updateNomStore(response.data.data, view));
         }).catch(error => {
