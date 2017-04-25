@@ -13,33 +13,41 @@ function extractHashtags(state, nomId) {
 }
 
 function mergeCurrentStateAndFetchedNoms(state, action) {
-    var currentState = Object.assign({}, state);
+    var newState = state.slice();
 
     function removeView(value, view) {
         return value !== view;
     }
 
+    function doesNomExist(existingNom, returnedNom) {
+        return existingNom.id === returnedNom.id;
+    }
+
     // remove that entire view from noms
-    for (var nom in currentState) {
+    for (var nom in newState) {
         nom.views = nom.views.filter(removeView.bind(null, action.view));
-        currentState[nom.data.id] = nom;
     }
 
     // merge the boys in
     action.data.forEach(function (nom) {
-        console.log(nom);
-        if (currentState[nom.id] === undefined) {
-            currentState[nom.id] = {
-                data: null,
-                views: []
-            }
-        }
+        var key = newState.findIndex(doesNomExist.bind(null, nom));
 
-        currentState[nom.id].data = nom;
-        currentState[nom.id].views.push(action.view);
+        if (key >= 0) {
+            newState[key].data = nom;
+            newState[key].views.push(action.view);
+        } else {
+            var views = [];
+            views.push(action.view);
+
+            newState.push({
+                id: nom.id,
+                data: nom,
+                views
+            })
+        }
     })
 
-    return currentState;
+    return newState;
 }
 
 function noms(state = [], action) {

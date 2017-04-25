@@ -61,6 +61,7 @@ class NomList extends React.Component {
   }
 
   renderTodaysNoms(noms) {
+    console.log(Object.prototype.toString.call(noms).slice(8, -1));
     let filteredNoms = noms.filter(isToday);
     if (filteredNoms.length > 0) {
       return <TimeNode noms={filteredNoms} title="Today" />
@@ -109,16 +110,19 @@ class NomList extends React.Component {
       )
     }
 
-    return (
-      <div className="nom-list">
-        {this.renderTodaysNoms(noms)}
-        {this.renderThisWeeksNoms(noms)}
-        {this.renderThisMonthsNoms(noms)}
-        {this.renderAFewMonthsNoms(noms)}
-        {this.renderAYearsNoms(noms)}
+    if (!ui.nomView.isLoading) {
+      return (
+        <div className="nom-list">
+          {this.renderTodaysNoms(noms)}
+          {this.renderThisWeeksNoms(noms)}
+          {this.renderThisMonthsNoms(noms)}
+          {this.renderAFewMonthsNoms(noms)}
+          {this.renderAYearsNoms(noms)}
+        </div>
+      )
+    }
 
-      </div>
-    )
+    return undefined;
   }
 
   componentWillMount() {
