@@ -44,6 +44,26 @@ export function handleGetInbox() {
     };
 }
 
+export function handleGetPinned() {
+    return (dispatch, getState) => {
+        // denote loading
+        dispatch(nomViewIsLoading(true));
+
+        const { token } = getState().login;
+        const request = apiGetInbox(token);
+        const view = "pinned";
+
+        request.then(response => {
+            dispatch(updateNomViewList(view, moment.utc().format()))
+            dispatch(nomViewIsLoading(false));
+            dispatch(updateNomStore(response.data.data, view));
+        }).catch(error => {
+            dispatch(nomViewIsLoading(false));
+            console.log(error);
+        });
+    };
+}
+
 export function handleGetNoms(query) {
     return (dispatch, getState) => {
         const { token } = getState().login;

@@ -6,6 +6,11 @@ import FontAwesome from 'react-fontawesome';
 
 var now = moment();
 
+//filters noms from this view
+function isThisView(view, nom) {
+  return nom.views.indexOf(view) >= 0;
+}
+
 //filters noms actioned today
 function isToday(n) {
   var nomTime = moment(n.createdTime);
@@ -61,7 +66,6 @@ class NomList extends React.Component {
   }
 
   renderTodaysNoms(noms) {
-    console.log(Object.prototype.toString.call(noms).slice(8, -1));
     let filteredNoms = noms.filter(isToday);
     if (filteredNoms.length > 0) {
       return <TimeNode noms={filteredNoms} title="Today" />
@@ -102,9 +106,10 @@ class NomList extends React.Component {
   }
 
   renderNomList() {
-    const { noms, emptyNoms, ui } = this.props;
+    let { noms, emptyNoms, ui, viewName } = this.props;
+    let viewNoms = noms.filter(isThisView.bind(null, viewName));
 
-    if (noms.length < 1 && !ui.nomView.isLoading) {
+    if (viewNoms.length < 1 && !ui.nomView.isLoading) {
       return (
         <EmptyNoms emptyNoms={emptyNoms} />
       )
@@ -113,11 +118,11 @@ class NomList extends React.Component {
     if (!ui.nomView.isLoading) {
       return (
         <div className="nom-list">
-          {this.renderTodaysNoms(noms)}
-          {this.renderThisWeeksNoms(noms)}
-          {this.renderThisMonthsNoms(noms)}
-          {this.renderAFewMonthsNoms(noms)}
-          {this.renderAYearsNoms(noms)}
+          {this.renderTodaysNoms(viewNoms)}
+          {this.renderThisWeeksNoms(viewNoms)}
+          {this.renderThisMonthsNoms(viewNoms)}
+          {this.renderAFewMonthsNoms(viewNoms)}
+          {this.renderAYearsNoms(viewNoms)}
         </div>
       )
     }
@@ -126,7 +131,7 @@ class NomList extends React.Component {
   }
 
   componentWillMount() {
-    let { loadNomList, nomViews, noms, viewName } = this.props;
+    let { loadNomList, nomViews, viewName } = this.props;
 
     // only load view again if older than 60 seconds
     if (nomViews === undefined ||

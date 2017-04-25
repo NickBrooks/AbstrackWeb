@@ -9,7 +9,7 @@ class NomNode extends React.Component {
     }
 
     render() {
-        const nom = this.props;
+        const nom = this.props.data;
         const link = "/n/" + nom.id;
 
         return (
