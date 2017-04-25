@@ -1,5 +1,5 @@
 import React from 'react';
-import ListNoms from '../../components/ListNoms/ListNoms';
+import NomList from '../../components/NomList/NomList';
 import FontAwesome from 'react-fontawesome';
 
 function filterPinnedNoms(n) {
@@ -30,7 +30,7 @@ class NomViewPinned extends React.Component {
 
     return (
       <div className="view-pinned">
-        <ListNoms loadNomList={handleGetInbox} emptyNoms={settings.emptyNoms.pinned} {...this.props} />
+        <NomList loadNomList={handleGetInbox} emptyNoms={settings.emptyNoms.pinned} {...this.props} />
       </div>
     )
   }

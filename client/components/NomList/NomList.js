@@ -46,7 +46,7 @@ function isAYear(n) {
   return (timeDiff > 365);
 }
 
-class NomDisplay extends React.Component {
+class NomList extends React.Component {
   constructor(props) {
     super(props);
     this.refreshNomList = this.refreshNomList.bind(this);
@@ -145,4 +145,4 @@ class NomDisplay extends React.Component {
   }
 }
 
-export default NomDisplay;
+export default NomList;

@@ -1,5 +1,5 @@
 import React from 'react';
-import ListNoms from '../../components/ListNoms/ListNoms';
+import NomList from '../../components/NomList/NomList';
 import FontAwesome from 'react-fontawesome';
 
 class NomViewInbox extends React.Component {
@@ -19,7 +19,7 @@ class NomViewInbox extends React.Component {
 
     return (
       <div className="view-inbox">
-        <ListNoms loadNomList={handleGetInbox} viewName="inbox" emptyNoms={settings.emptyNoms.inbox} {...this.props} />
+        <NomList loadNomList={handleGetInbox} viewName="inbox" emptyNoms={settings.emptyNoms.inbox} {...this.props} />
       </div>
     )
   }

@@ -1,6 +1,6 @@
 import React from 'react';
 import FontAwesome from 'react-fontawesome';
-import ListNoms from '../../components/ListNoms/ListNoms';
+import NomList from '../../components/NomList/NomList';
 
 function filterMilestoneNoms(milestoneId, n) {
   if (typeof n.milestone != "undefined") {
@@ -38,7 +38,7 @@ class NomViewMilestone extends React.Component {
         <div className="text-xs-center">{milestone.percent_complete}%</div>
         <progress className="progress progress-success" value={milestone.percent_complete} max="100"></progress>
         <hr />
-        <ListNoms nomList={milestoneNoms} emptyNoms={emptyNoms} {...this.props} />
+        <NomList nomList={milestoneNoms} emptyNoms={emptyNoms} {...this.props} />
       </div>
     )
   }
