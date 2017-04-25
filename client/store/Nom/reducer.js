@@ -12,15 +12,45 @@ function extractHashtags(state, nomId) {
     return [...nom.hashtags];
 }
 
+function mergeCurrentStateAndFetchedNoms(state, action) {
+    var currentState = Object.assign({}, state);
+
+    function removeView(value, view) {
+        return value !== view;
+    }
+
+    // remove that entire view from noms
+    for (var nom in currentState) {
+        nom.views = nom.views.filter(removeView.bind(null, action.view));
+        currentState[nom.data.id] = nom;
+    }
+
+    // merge the boys in
+    action.data.forEach(function (nom) {
+        console.log(nom);
+        if (currentState[nom.id] === undefined) {
+            currentState[nom.id] = {
+                data: null,
+                views: []
+            }
+        }
+
+        currentState[nom.id].data = nom;
+        currentState[nom.id].views.push(action.view);
+    })
+
+    return currentState;
+}
+
 function noms(state = [], action) {
     switch (action.type) {
         case 'ADD_NOM':
             action.nom.id = guid();
             action.nom.createdTime = moment.utc().format();
-            
+
             return [...state, action.nom];
-        case 'UPDATE_NOM_LIST':
-            return state.concat(action.data);
+        case 'UPDATE_NOM_STORE':
+            return mergeCurrentStateAndFetchedNoms(state, action);
         case 'PIN_NOM':
             return state.map(nom => nom.id === action.nomId ?
                 // update the nom with a matching id

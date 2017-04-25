@@ -16,10 +16,11 @@ export function updateNomViewList(view, timeFetched) {
     }
 }
 
-export function updateNomList(data) {
+export function updateNomStore(data, view) {
     return {
-        type: 'UPDATE_NOM_LIST',
-        data
+        type: 'UPDATE_NOM_STORE',
+        data,
+        view
     }
 }
 
@@ -30,11 +31,12 @@ export function handleGetInbox() {
 
         const { token } = getState().login;
         const request = apiGetInbox(token);
+        const view = "inbox";
 
         request.then(response => {
-            dispatch(updateNomViewList("inbox", moment.utc().format()))
+            dispatch(updateNomViewList(view, moment.utc().format()))
             dispatch(nomViewIsLoading(false));
-            dispatch(updateNomList(response.data.data));
+            dispatch(updateNomStore(response.data.data, view));
         }).catch(error => {
             dispatch(nomViewIsLoading(false));
             console.log(error);
@@ -48,7 +50,7 @@ export function handleGetNoms(query) {
         const request = apiGetNoms(query, token);
 
         request.then(response => {
-            dispatch(updateNomList(response.data.data));
+            dispatch(updateNomStore(response.data.data));
         }).catch(error => {
             console.log(error);
         });
