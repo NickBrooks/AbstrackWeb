@@ -115,7 +115,7 @@ class NomList extends React.Component {
       )
     }
 
-    if (!ui.nomView.isLoading) {
+    if (viewNoms.length >= 1) {
       return (
         <div className="nom-list">
           {this.renderTodaysNoms(viewNoms)}
