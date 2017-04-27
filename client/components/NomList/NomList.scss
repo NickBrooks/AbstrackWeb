@@ -32,6 +32,15 @@
             .body {
                 color: #666;
             }
+
+            .images {
+                img {
+                    max-width: 200px;
+                    max-height: 200px;
+                    height: auto;
+                    width: auto;
+                }
+            }
         }
 
         .comment-count {

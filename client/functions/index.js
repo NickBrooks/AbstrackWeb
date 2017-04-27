@@ -28,6 +28,12 @@ export function checkPasswordStrength(password) {
     return re.test(password);
 }
 
+export function extractImagesFromString(string) {
+    // https://regex101.com/r/vS2jJ4/8
+    const regex = /\b(https?:\/\/\S+(?:png|jpe?g|gif)\S*)\b/igm;
+    return string.match(regex);
+}
+
 export const loadLocalStorageState = () => {
     try {
         const serializedState = localStorage.getItem('state');
