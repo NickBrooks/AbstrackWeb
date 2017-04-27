@@ -29,26 +29,33 @@
                 font-weight: 600;
             }
 
+            .comment-count {
+                background: $nom-blue-light;
+                color: $white;
+                padding: 0px 3px;
+                border-radius: 4px;
+                font-size: 0.8em;
+            }
+
             .body {
                 color: #666;
             }
 
-            .images {
-                img {
-                    max-width: 200px;
-                    max-height: 200px;
-                    height: auto;
-                    width: auto;
-                }
+            .media-preview {
+                width: 100%;
+                margin: auto;
+                overflow: hidden;
+                white-space: nowrap;
             }
-        }
 
-        .comment-count {
-            background: $nom-blue;
-            color: $white;
-            padding: 0px 3px;
-            border-radius: 4px;
-            font-size: 0.8em;
+            .cropped-thumb {
+                width: 140px;
+                height: 100px;
+                display: inline-block;
+                background-position: center center;
+                background-repeat: no-repeat;
+                background-size: cover;
+            }
         }
     }
 }

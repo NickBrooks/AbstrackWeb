@@ -9,14 +9,16 @@ class NomNode extends React.Component {
         super(props);
     }
 
-    renderImages() {
+    renderMediaPreviews() {
         var images = extractImagesFromString(this.props.data.body);
 
         if (images) {
             return (
-                <div className="images">
-                    {images.map((image, i) => <img src={image} key={i} i={i} />)}
-                </div>
+                <ul className="media-preview my-1">
+                    {images.map((image, i) =>
+                        <li className="cropped-thumb mr-1" style={{backgroundImage: "url(" + image + ")"}}></li>)
+                    }
+                </ul>
             )
         }
     }
@@ -34,7 +36,7 @@ class NomNode extends React.Component {
                     <div className="hashtags">
                         {nom.hashtags.map((hashtag, i) => <HashtagSpan {...this.props} hashtag={hashtag} disableLink={true} customClass="default" key={i} i={i} />)}
                     </div>
-                    {this.renderImages()}
+                    {this.renderMediaPreviews()}
                 </li>
             </Link>
         )
