@@ -16,8 +16,8 @@ class NomNode extends React.Component {
             return (
                 <ul className="media-preview my-1">
                     {images.map((image, i) =>
-                        <li className="cropped-thumb mr-1" style={{backgroundImage: "url(" + image + ")"}}></li>)
-                    }
+                        <li className="cropped-thumb mr-1" style={{ backgroundImage: "url(" + image + ")" }}></li>
+                    )}
                 </ul>
             )
         }

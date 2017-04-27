@@ -16,13 +16,14 @@
 
         .nom-node {
             padding: 8px 13px;
-            margin-bottom: 3px;
+            margin-bottom: 5px;
             background: white;
-            border: 1px solid #eee;
+            border: 1px solid $nom-gray;
+            border-top: 2px solid $nom-faded-blue;
             color: $font-color;
 
             &:hover {
-                background: #eee;
+                background: $nom-gray;
             }
 
             .title {
@@ -55,6 +56,7 @@
                 background-position: center center;
                 background-repeat: no-repeat;
                 background-size: cover;
+                box-shadow: $box-shadow;
             }
         }
     }
