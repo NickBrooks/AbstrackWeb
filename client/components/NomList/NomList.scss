@@ -16,6 +16,7 @@
 
         .nom-node {
             padding: 8px 13px;
+            position: relative;
             margin-bottom: 5px;
             background: white;
             border: 1px solid $nom-gray;
@@ -24,7 +25,15 @@
 
             &:hover {
                 background: $nom-gray;
-            }
+
+                .quick-info {
+                    padding-right: 90px;
+                }
+
+                .toolbar {
+                    display: block;
+                }
+            }            
 
             .title {
                 font-weight: 600;
@@ -40,6 +49,29 @@
 
             .body {
                 color: #666;
+            }
+
+            .toolbar {
+                display: none;
+                position: absolute;
+                top: 8px;
+                right: 13px;
+
+                .btn-secondary {
+                    color: #999;
+                    background-color: transparent;
+                    border-color: transparent;
+
+                    .fa {
+                        font-size: 1.1em;
+                    }
+                }
+
+                .btn-secondary:hover {
+                    color: #373a3c;
+                    background-color: transparent;
+                    border-color: transparent;
+                }
             }
 
             .media-preview {
