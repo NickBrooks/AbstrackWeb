@@ -14,9 +14,13 @@ class NomNode extends React.Component {
 
         return (
             <Link to={link}>
-                <li>
-                    <Avatar user={nom.createdBy} size="25" /> <span className="title">{nom.title}</span> <span className="comment-count">({nom.commentCount})</span> {nom.hashtags.map((hashtag, i) =>
+                <li className="nom-node">
+                    <div className="text-truncate">
+                        <span className="title">{nom.title}</span> {nom.commentCount > 0 ? <span className="comment-count">{nom.commentCount}</span> : undefined} <span className="body">{nom.body}</span>
+                    </div>
+                    <div className="hashtags">{nom.hashtags.map((hashtag, i) =>
                         <HashtagSpan {...this.props} hashtag={hashtag} disableLink={true} customClass="default" key={i} i={i} />)}
+                    </div>
                 </li>
             </Link>
         )

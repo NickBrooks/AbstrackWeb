@@ -7,17 +7,6 @@
             padding: 0;
             margin: 0;
 
-            li {
-                padding: 8px 13px;
-                background: white;
-                border: 1px solid #eee;
-                color: $font-color;
-            }
-
-            li:hover {
-                background: #eee;
-            }
-
             a:active,
             a:focus,
             a:hover {
@@ -25,12 +14,32 @@
             }
         }
 
-        .title {
-            margin-left: 5px;
+        .nom-node {
+            padding: 8px 13px;
+            margin-bottom: 3px;
+            background: white;
+            border: 1px solid #eee;
+            color: $font-color;
+
+            &:hover {
+                background: #eee;
+            }
+
+            .title {
+                font-weight: 600;
+            }
+
+            .body {
+                color: #666;
+            }
         }
 
         .comment-count {
-            color: $nom-gray-dark;
+            background: $nom-blue;
+            color: $white;
+            padding: 0px 3px;
+            border-radius: 4px;
+            font-size: 0.8em;
         }
     }
 }
