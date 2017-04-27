@@ -34,6 +34,12 @@ export function extractImagesFromString(string) {
     return string.match(regex);
 }
 
+export function extractYoutubeFromString(string) {
+    // https://regex101.com/r/muukhG/1
+    const regex = /(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/ ]{11})/i
+    return string.match(regex);
+}
+
 export const loadLocalStorageState = () => {
     try {
         const serializedState = localStorage.getItem('state');

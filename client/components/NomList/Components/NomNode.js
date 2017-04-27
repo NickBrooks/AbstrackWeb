@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router';
 import removeMd from 'remove-markdown';
-import { extractImagesFromString } from '../../../functions';
+import { extractImagesFromString, extractYoutubeFromString } from '../../../functions';
 import HashtagSpan from '../../HashtagSpan/HashtagSpan';
 import Avatar from '../../Avatar/Avatar';
 
@@ -11,7 +11,13 @@ class NomNode extends React.Component {
     }
 
     renderMediaPreviews() {
-        var images = extractImagesFromString(this.props.data.body);
+        let { body } = this.props.data;
+        var images = extractImagesFromString(body);
+        var youtube = extractYoutubeFromString(body);
+        if (youtube != null) {
+            console.log(youtube);
+            images.push("https://img.youtube.com/vi/" + youtube[1] +"/0.jpg")
+        }
 
         if (images) {
             return (
