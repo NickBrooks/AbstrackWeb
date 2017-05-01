@@ -50,9 +50,8 @@ function updatePasswordErrorMsg(message) {
 }
 
 export function handleGetAccount() {
-    return (dispatch, getState) => {
-        const { token } = getState().login;
-        const request = apiGetAccount(token);
+    return (dispatch) => {
+        const request = apiGetAccount();
 
         request.then(response => {
             dispatch(setAccount(response.data));
@@ -63,9 +62,8 @@ export function handleGetAccount() {
 }
 
 export function handleUpdateProfileDetails(updatedDetails) {
-    return (dispatch, getState) => {
-        const { token } = getState().login;
-        const request = apiUpdateProfileDetails(updatedDetails, token);
+    return (dispatch) => {
+        const request = apiUpdateProfileDetails(updatedDetails);
 
         dispatch(updateProfileDetailsUpdateStatus("updating"));
 
@@ -83,9 +81,8 @@ export function handleUpdateProfileDetails(updatedDetails) {
 }
 
 export function handleUpdatePassword(currentPassword, newPassword) {
-    return (dispatch, getState) => {
-        const { token } = getState().login;
-        const request = apiUpdatePassword(currentPassword, newPassword, token);
+    return (dispatch) => {
+        const request = apiUpdatePassword(currentPassword, newPassword);
 
         dispatch(updatePasswordUpdateStatus("updating"));
 

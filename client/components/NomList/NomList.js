@@ -68,7 +68,7 @@ class NomList extends React.Component {
   renderTodaysNoms(noms) {
     let filteredNoms = noms.filter(isToday);
     if (filteredNoms.length > 0) {
-      return <TimeNode noms={filteredNoms} title="Today" />
+      return <TimeNode filteredNoms={filteredNoms} title="Today" {...this.props} />
     }
     return;
   }
@@ -76,7 +76,7 @@ class NomList extends React.Component {
   renderThisWeeksNoms(noms) {
     let filteredNoms = noms.filter(isThisWeek);
     if (filteredNoms.length > 0) {
-      return <TimeNode noms={filteredNoms} title="This week" />
+      return <TimeNode filteredNoms={filteredNoms} title="This week" {...this.props} />
     }
     return;
   }
@@ -84,7 +84,7 @@ class NomList extends React.Component {
   renderThisMonthsNoms(noms) {
     let filteredNoms = noms.filter(isThisMonth);
     if (filteredNoms.length > 0) {
-      return <TimeNode noms={filteredNoms} title="This month" />
+      return <TimeNode filteredNoms={filteredNoms} title="This month" {...this.props} />
     }
     return;
   }
@@ -92,7 +92,7 @@ class NomList extends React.Component {
   renderAFewMonthsNoms(noms) {
     let filteredNoms = noms.filter(isAFewMonths);
     if (filteredNoms.length > 0) {
-      return <TimeNode noms={filteredNoms} title="A few months ago" />
+      return <TimeNode filteredNoms={filteredNoms} title="A few months ago" {...this.props} />
     }
     return;
   }
@@ -100,7 +100,7 @@ class NomList extends React.Component {
   renderAYearsNoms(noms) {
     let filteredNoms = noms.filter(isAYear);
     if (filteredNoms.length > 0) {
-      return <TimeNode noms={filteredNoms} title="A year ago" />
+      return <TimeNode filteredNoms={filteredNoms} title="A year ago" {...this.props} />
     }
     return;
   }

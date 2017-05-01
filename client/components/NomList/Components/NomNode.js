@@ -5,24 +5,17 @@ import removeMd from 'remove-markdown';
 import { extractImagesFromString, extractYoutubeFromString } from '../../../functions';
 import HashtagSpan from '../../HashtagSpan/HashtagSpan';
 import Avatar from '../../Avatar/Avatar';
+import NomNodeToolbar from './NomNodeToolbar';
 
 class NomNode extends React.Component {
     constructor(props) {
         super(props);
     }
 
-    renderToolbar() {
-        return (
-            <div className="btn-group toolbar" role="group" aria-label="First group">
-                <button type="button" className="btn btn-sm btn-secondary"><FontAwesome name="thumb-tack" /></button>
-                <button type="button" className="btn btn-sm btn-secondary"><FontAwesome name="check" /></button>
-                <button type="button" className="btn btn-sm btn-secondary"><FontAwesome name="caret-down" /></button>
-            </div>
-        )
-    }
-
     renderMediaPreviews() {
-        let { body } = this.props.data;
+        let { noms, id } = this.props;
+        const i = noms.findIndex((nom) => nom.data.id === id);
+        let { body } = noms[i].data;
         var images = extractImagesFromString(body);
         var youtube = extractYoutubeFromString(body);
         if (youtube != null) {
@@ -33,7 +26,7 @@ class NomNode extends React.Component {
             return (
                 <ul className="media-preview my-1">
                     {images.map((image, i) =>
-                        <li className="cropped-thumb mr-1" style={{ backgroundImage: "url(" + image + ")" }}></li>
+                        <li className="cropped-thumb mr-1" style={{ backgroundImage: "url(" + image + ")" }} key={i}></li>
                     )}
                 </ul>
             )
@@ -41,16 +34,26 @@ class NomNode extends React.Component {
     }
 
     render() {
-        const nom = this.props.data;
+        let { noms, id } = this.props;
+        const i = noms.findIndex((nom) => nom.data.id === id);
+        const nom = noms[i].data;
+        const views = noms[i].views;
         const link = "/n/" + nom.id;
         const body = removeMd(nom.body);
 
+        var isInbox = false;
+        var isPinned = false;
+        if (views.indexOf("inbox") >= 0)
+            isInbox = true;
+        if (views.indexOf("pinned") >= 0)
+            isPinned = true;
+
         return (
             <Link to={link}>
-                <li className="nom-node">
+                <li className={"nom-node" + (isPinned ? " pinned" : "")}>
                     <div className="quick-info text-truncate">
-                        <span className="title">{nom.title}</span> {nom.commentCount > 0 ? <span className="comment-count">{nom.commentCount}</span> : undefined} <span className="body">{body}</span>
-                        {this.renderToolbar()}
+                        {isPinned ? <FontAwesome name="thumb-tack" /> : undefined} <span className="title">{nom.title}</span> {nom.commentCount > 0 ? <span className="comment-count">{nom.commentCount}</span> : undefined} <span className="body">{body}</span>
+                        <NomNodeToolbar {...this.props} />
                     </div>
                     <div className="hashtags">
                         {nom.hashtags.map((hashtag, i) => <HashtagSpan {...this.props} hashtag={hashtag} disableLink={true} customClass="default" key={i} i={i} />)}

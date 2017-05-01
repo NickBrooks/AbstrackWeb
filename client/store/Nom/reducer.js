@@ -52,6 +52,22 @@ function mergeCurrentStateAndFetchedNoms(state, action) {
     return newState;
 }
 
+function pinNom(nom, value) {
+    var i = nom.views.indexOf("pinned");
+
+    if (value) {
+        if (i == -1) {
+            nom.views.push("pinned");
+        }
+    } else {
+        if (i > -1) {
+            nom.views.splice(i, 1);
+        }
+    }
+
+    return nom;
+}
+
 function noms(state = [], action) {
     switch (action.type) {
         case 'ADD_NOM':
@@ -64,7 +80,7 @@ function noms(state = [], action) {
         case 'PIN_NOM':
             return state.map(nom => nom.id === action.nomId ?
                 // update the nom with a matching id
-                { ...nom, pinned: action.value } :
+                pinNom(nom, action.value) :
                 // otherwise return original nom
                 nom
             );

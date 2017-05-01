@@ -26,12 +26,11 @@ export function updateNomStore(data, view) {
 }
 
 export function handleGetInbox() {
-    return (dispatch, getState) => {
+    return (dispatch) => {
         // denote loading
         dispatch(nomViewIsLoading(true));
 
-        const { token } = getState().login;
-        const request = apiGetInbox(token);
+        const request = apiGetInbox();
         const view = "inbox";
 
         request.then(response => {
@@ -46,12 +45,11 @@ export function handleGetInbox() {
 }
 
 export function handleGetPinned() {
-    return (dispatch, getState) => {
+    return (dispatch) => {
         // denote loading
         dispatch(nomViewIsLoading(true));
 
-        const { token } = getState().login;
-        const request = apiGetPinned(token);
+        const request = apiGetPinned();
         const view = "pinned";
 
         request.then(response => {
@@ -66,9 +64,8 @@ export function handleGetPinned() {
 }
 
 export function handleGetNoms(query) {
-    return (dispatch, getState) => {
-        const { token } = getState().login;
-        const request = apiGetNoms(query, token);
+    return (dispatch) => {
+        const request = apiGetNoms(query);
 
         request.then(response => {
             dispatch(updateNomStore(response.data.data));
