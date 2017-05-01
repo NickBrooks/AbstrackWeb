@@ -37,12 +37,16 @@ export function removeHashtagsFromNom(hashtags, nomId) {
 
 export function handlePinNom(nomId, value) {
     return (dispatch) => {
+        dispatch(pinNom(nomId, value));
         const request = apiPinNom(nomId, value);
 
-        request.then(response => {
-            dispatch(pinNom(nomId, value))
-        }).catch(error => {
+        request.catch(error => {
             console.log(error);
+            if (value) {
+                dispatch(pinNom(nomId, false));
+            } else {
+                dispatch(pinNom(nomId, true));
+            }
         });
     };
 }
