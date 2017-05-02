@@ -26,7 +26,7 @@ class NomViewTrack extends React.Component {
     const { handleSearchNoms, tracks, settings } = this.props;
     const i = tracks.findIndex((track) => track.id === trackId);
     const track = tracks[i];
-    const view = 't:"' + track.name + '"';
+    const view = 't:"' + trackId + '"';
 
     var query = {
       trackIds: [trackId]
