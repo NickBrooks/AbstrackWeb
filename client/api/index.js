@@ -1,5 +1,7 @@
 import Axios from 'axios';
 
+// set some default stuff
+
 function getApiUrl() {
     const apiUrl = localStorage.getItem('test.apiUrl');
 
@@ -53,6 +55,7 @@ export function apiUpdatePassword(currentPassword, newPassword) {
 }
 
 // noms
+
 export function apiGetInbox() {
     return Axios.get("inbox");
 }
@@ -71,4 +74,10 @@ export function apiPinNom(nomId, value) {
     } else {
         return Axios.delete("pinned/" + nomId);
     }
+}
+
+// tracks
+
+export function apiGetTracks() {
+    return Axios.get("tracks");
 }

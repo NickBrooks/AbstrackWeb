@@ -14,6 +14,7 @@ class AppView extends React.Component {
 
         this.checkValidToken();
         this.props.handleGetAccount();
+        this.props.handleGetTracks();
     }
 
     checkValidToken() {
