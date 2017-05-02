@@ -4,7 +4,6 @@ import { routerReducer } from 'react-router-redux';
 //reducers
 import comments from './Comment/reducer';
 import hashtags from './Hashtag/reducer';
-import milestones from './Milestone/reducer';
 import login from './Login/reducer';
 import noms from './Nom/reducer';
 import nomViews from './NomView/reducer';
@@ -18,7 +17,6 @@ import views from './View/reducer';
 const rootReducer = combineReducers({
     comments,
     hashtags,
-    milestones,
     login,
     noms,
     nomViews,
