@@ -57,12 +57,22 @@ class NomList extends React.Component {
     this.refreshNomList = this.refreshNomList.bind(this);
   }
 
+  loadNoms() {
+    let { loadNomList, query, viewName } = this.props;
+
+    if (query != undefined) {
+      loadNomList(viewName, query);
+    } else {
+      loadNomList(viewName);
+    }
+  }
+
   refreshNomList(e) {
     e.preventDefault();
     let { ui, loadNomList } = this.props;
     if (ui.nomView.isLoading) { return null }
 
-    loadNomList();
+    this.loadNoms();
   }
 
   renderTodaysNoms(noms) {
@@ -131,13 +141,13 @@ class NomList extends React.Component {
   }
 
   componentWillMount() {
-    let { loadNomList, nomViews, viewName } = this.props;
+    let { nomViews, viewName } = this.props;
 
     // only load view again if older than 60 seconds
     if (nomViews === undefined ||
       nomViews[viewName] === undefined ||
       moment().subtract(60, 'seconds') > moment(nomViews[viewName].timeFetched)) {
-      loadNomList();
+      this.loadNoms();
     }
   }
 

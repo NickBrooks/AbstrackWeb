@@ -1,4 +1,4 @@
-import { apiGetInbox, apiGetPinned, apiGetNoms } from '../../api';
+import { apiGetInbox, apiGetPinned, apiSearchNoms } from '../../api';
 import moment from 'moment';
 
 export function nomViewIsLoading(value) {
@@ -25,13 +25,12 @@ export function updateNomStore(data, view) {
     }
 }
 
-export function handleGetInbox() {
+export function handleGetInbox(view) {
     return (dispatch) => {
         // denote loading
         dispatch(nomViewIsLoading(true));
 
         const request = apiGetInbox();
-        const view = "inbox";
 
         request.then(response => {
             dispatch(updateNomViewList(view))
@@ -44,13 +43,12 @@ export function handleGetInbox() {
     };
 }
 
-export function handleGetPinned() {
+export function handleGetPinned(view) {
     return (dispatch) => {
         // denote loading
         dispatch(nomViewIsLoading(true));
 
         const request = apiGetPinned();
-        const view = "pinned";
 
         request.then(response => {
             dispatch(updateNomViewList(view))
@@ -63,13 +61,18 @@ export function handleGetPinned() {
     };
 }
 
-export function handleGetNoms(query) {
+export function handleSearchNoms(view, query) {
     return (dispatch) => {
-        const request = apiGetNoms(query);
+        // denote loading
+        dispatch(nomViewIsLoading(true));
+        const request = apiSearchNoms(query);
 
         request.then(response => {
-            dispatch(updateNomStore(response.data.data));
+            dispatch(updateNomViewList(view))
+            dispatch(nomViewIsLoading(false));
+            dispatch(updateNomStore(response.data.data, view));
         }).catch(error => {
+            dispatch(nomViewIsLoading(false));
             console.log(error);
         });
     };

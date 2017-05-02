@@ -61,8 +61,8 @@ export function apiGetPinned() {
     return Axios.get("pinned");
 }
 
-export function apiGetNoms(query) {
-    return Axios.get("noms");
+export function apiSearchNoms(query) {
+    return Axios.post("search/noms", query);
 }
 
 export function apiPinNom(nomId, value) {

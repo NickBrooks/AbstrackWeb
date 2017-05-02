@@ -38,7 +38,7 @@ const router = (
                 <Route path="/t/:trackId" component={NomViewTrack}></Route>
                 <Route path="/m/:milestoneId" component={NomViewMilestone}></Route>
                 <Route path="/n/:nomId" component={Nom}></Route>
-                <Route path="/tag/:tag" component={NomViewTag}></Route>
+                <Route path="/tag/:tags" component={NomViewTag}></Route>
                 <Route path="/u/:userId" component={User}></Route>
             </Route>
         </Router>
