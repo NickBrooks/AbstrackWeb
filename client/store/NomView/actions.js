@@ -1,4 +1,4 @@
-import { apiGetInbox, apiGetNoms } from '../../api';
+import { apiGetInbox, apiGetPinned, apiSearchNoms } from '../../api';
 import moment from 'moment';
 
 export function nomViewIsLoading(value) {
@@ -12,29 +12,30 @@ export function updateNomViewList(view, timeFetched) {
     return {
         type: 'UPDATE_NOM_VIEW_LIST',
         view,
-        timeFetched
+        timeFetched: moment.utc().format()
     }
 }
 
-export function updateNomList(data) {
+export function updateNomStore(data, view) {
     return {
-        type: 'UPDATE_NOM_LIST',
-        data
+        type: 'UPDATE_NOM_STORE',
+        data,
+        view,
+        timeFetched: moment.utc().format()
     }
 }
 
-export function handleGetInbox() {
-    return (dispatch, getState) => {
+export function handleGetInbox(view) {
+    return (dispatch) => {
         // denote loading
         dispatch(nomViewIsLoading(true));
 
-        const { token } = getState().login;
-        const request = apiGetInbox(token);
+        const request = apiGetInbox();
 
         request.then(response => {
-            dispatch(updateNomViewList("inbox", moment.utc().format()))
+            dispatch(updateNomViewList(view))
             dispatch(nomViewIsLoading(false));
-            dispatch(updateNomList(response.data.data));
+            dispatch(updateNomStore(response.data.data, view));
         }).catch(error => {
             dispatch(nomViewIsLoading(false));
             console.log(error);
@@ -42,14 +43,36 @@ export function handleGetInbox() {
     };
 }
 
-export function handleGetNoms(query) {
-    return (dispatch, getState) => {
-        const { token } = getState().login;
-        const request = apiGetNoms(query, token);
+export function handleGetPinned(view) {
+    return (dispatch) => {
+        // denote loading
+        dispatch(nomViewIsLoading(true));
+
+        const request = apiGetPinned();
 
         request.then(response => {
-            dispatch(updateNomList(response.data.data));
+            dispatch(updateNomViewList(view))
+            dispatch(nomViewIsLoading(false));
+            dispatch(updateNomStore(response.data.data, view));
         }).catch(error => {
+            dispatch(nomViewIsLoading(false));
+            console.log(error);
+        });
+    };
+}
+
+export function handleSearchNoms(view, query) {
+    return (dispatch) => {
+        // denote loading
+        dispatch(nomViewIsLoading(true));
+        const request = apiSearchNoms(query);
+
+        request.then(response => {
+            dispatch(updateNomViewList(view))
+            dispatch(nomViewIsLoading(false));
+            dispatch(updateNomStore(response.data.data, view));
+        }).catch(error => {
+            dispatch(nomViewIsLoading(false));
             console.log(error);
         });
     };

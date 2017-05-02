@@ -1,37 +1,63 @@
 import React from 'react';
-import ListNoms from '../../components/ListNoms/ListNoms';
-
-function inArray(needle, haystack) {
-    for (var i = 0; i < haystack.length; i++) {
-        if (haystack[i] == needle) return true;
-    }
-    return false;
-}
-
-function filterTaggedNoms(tag, n) {
-    return inArray(tag, n.hashtags);
-}
+import NomList from '../../components/NomList/NomList';
+import { conformHashtags } from '../../functions';
 
 class NomViewTag extends React.Component {
     constructor(props) {
         super(props);
     }
 
-    render() {
-        let { tag } = this.props.params;
-        let { noms, settings } = this.props;        
-        let taggedNoms = noms.filter(filterTaggedNoms.bind(null, tag));
-        const title = (<span>#{this.props.params.tag}</span>)
+    generateHashtagString(tags) {
+        var newTags = tags.map(tag => {
+            return "#" + tag;
+        });
 
-        //set empty noms
+        return newTags.join(", ");
+    }
+
+    componentWillMount() {
+        let { tags } = this.props.params;
+
+        // just make sure some tags have been provided
+        if (tags == undefined) {
+            this.props.setSearchBar({
+                defaultValue: false,
+                class: false
+            });
+        }
+
+        const tagList = conformHashtags(tags);
+        const tagString = this.generateHashtagString(tagList);
+
+        this.props.setSearchBar({
+            defaultValue: tagString,
+            class: false
+        });
+    }
+
+    render() {
+        let { settings, handleSearchNoms } = this.props;
+        let { tags } = this.props.params;
+
+        // just make sure some tags have been provided
+        if (tags == undefined) return null;
+
+        const tagList = conformHashtags(tags);
+        const tagString = this.generateHashtagString(tagList);
+
+        // set empty noms
         let emptyNoms = {
             img: settings.emptyNoms.tag.img,
-            text: "Oh! #" + tag + " is empty!"
+            text: "Oh! " + this.generateHashtagString(tagList) + " is empty!"
+        }
+
+        var query = {
+            hashtags: tagList
         }
 
         return (
             <div className="view-tag">
-                <ListNoms nomList={taggedNoms} title={title} emptyNoms={emptyNoms} {...this.props} />
+                <NomList loadNomList={handleSearchNoms} query={query} viewName={tagString} emptyNoms={emptyNoms} {...this.props} />
             </div>
         )
     }

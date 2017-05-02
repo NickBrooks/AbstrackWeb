@@ -1,6 +1,6 @@
 import React from 'react';
 import Avatar from '../../components/Avatar/Avatar';
-import ListNoms from '../../components/ListNoms/ListNoms';
+import NomList from '../../components/NomList/NomList';
 
 function filterUserNoms(userId, nom) {
     return nom.createdBy.id == userId;
@@ -32,7 +32,7 @@ class User extends React.Component {
                 </div>
                 <div class="row">
                     <div class="col-xs-12">
-                        <ListNoms noms={userNoms} />
+                        <NomList noms={userNoms} />
                     </div>
                 </div>
             </div >

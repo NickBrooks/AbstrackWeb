@@ -1,10 +1,6 @@
 import React from 'react';
-import ListNoms from '../../components/ListNoms/ListNoms';
+import NomList from '../../components/NomList/NomList';
 import FontAwesome from 'react-fontawesome';
-
-function filterPinnedNoms(n) {
-  return n.pinned == true;
-}
 
 class NomViewPinned extends React.Component {
   constructor(props) {
@@ -26,11 +22,11 @@ class NomViewPinned extends React.Component {
   }
 
   render() {
-    let { noms, settings, handleGetInbox } = this.props;
+    let { noms, settings, handleGetPinned } = this.props;
 
     return (
       <div className="view-pinned">
-        <ListNoms loadNomList={handleGetInbox} emptyNoms={settings.emptyNoms.pinned} {...this.props} />
+        <NomList loadNomList={handleGetPinned} viewName="pinned" emptyNoms={settings.emptyNoms.pinned} {...this.props} />
       </div>
     )
   }

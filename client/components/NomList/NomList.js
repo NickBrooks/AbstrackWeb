@@ -6,9 +6,14 @@ import FontAwesome from 'react-fontawesome';
 
 var now = moment();
 
+//filters noms from this view
+function isThisView(view, nom) {
+  return nom.views.indexOf(view) >= 0;
+}
+
 //filters noms actioned today
 function isToday(n) {
-  var nomTime = moment(n.createdTime);
+  var nomTime = moment(n.data.updatedTime);
   var timeDiff = now.diff(nomTime, 'days');
 
   return timeDiff == 0;
@@ -16,7 +21,7 @@ function isToday(n) {
 
 //filters noms actioned this week
 function isThisWeek(n) {
-  var nomTime = moment(n.createdTime);
+  var nomTime = moment(n.data.updatedTime);
   var timeDiff = now.diff(nomTime, 'days');
 
   return (timeDiff > 0) && (timeDiff <= 7);
@@ -24,7 +29,7 @@ function isThisWeek(n) {
 
 //filters noms actioned this month
 function isThisMonth(n) {
-  var nomTime = moment(n.createdTime);
+  var nomTime = moment(n.data.updatedTime);
   var timeDiff = now.diff(nomTime, 'days');
 
   return (timeDiff > 7) && (timeDiff <= 30);
@@ -32,7 +37,7 @@ function isThisMonth(n) {
 
 //filters noms actioned a few months ago
 function isAFewMonths(n) {
-  var nomTime = moment(n.createdTime);
+  var nomTime = moment(n.data.updatedTime);
   var timeDiff = now.diff(nomTime, 'days');
 
   return (timeDiff > 30) && (timeDiff <= 365);
@@ -40,16 +45,26 @@ function isAFewMonths(n) {
 
 //filters noms actioned over year ago
 function isAYear(n) {
-  var nomTime = moment(n.createdTime);
+  var nomTime = moment(n.data.updatedTime);
   var timeDiff = now.diff(nomTime, 'days');
 
   return (timeDiff > 365);
 }
 
-class NomDisplay extends React.Component {
+class NomList extends React.Component {
   constructor(props) {
     super(props);
     this.refreshNomList = this.refreshNomList.bind(this);
+  }
+
+  loadNoms() {
+    let { loadNomList, query, viewName } = this.props;
+
+    if (query != undefined) {
+      loadNomList(viewName, query);
+    } else {
+      loadNomList(viewName);
+    }
   }
 
   refreshNomList(e) {
@@ -57,13 +72,13 @@ class NomDisplay extends React.Component {
     let { ui, loadNomList } = this.props;
     if (ui.nomView.isLoading) { return null }
 
-    loadNomList();
+    this.loadNoms();
   }
 
   renderTodaysNoms(noms) {
     let filteredNoms = noms.filter(isToday);
     if (filteredNoms.length > 0) {
-      return <TimeNode noms={filteredNoms} title="Today" />
+      return <TimeNode filteredNoms={filteredNoms} title="Today" {...this.props} />
     }
     return;
   }
@@ -71,7 +86,7 @@ class NomDisplay extends React.Component {
   renderThisWeeksNoms(noms) {
     let filteredNoms = noms.filter(isThisWeek);
     if (filteredNoms.length > 0) {
-      return <TimeNode noms={filteredNoms} title="This week" />
+      return <TimeNode filteredNoms={filteredNoms} title="This week" {...this.props} />
     }
     return;
   }
@@ -79,7 +94,7 @@ class NomDisplay extends React.Component {
   renderThisMonthsNoms(noms) {
     let filteredNoms = noms.filter(isThisMonth);
     if (filteredNoms.length > 0) {
-      return <TimeNode noms={filteredNoms} title="This month" />
+      return <TimeNode filteredNoms={filteredNoms} title="This month" {...this.props} />
     }
     return;
   }
@@ -87,7 +102,7 @@ class NomDisplay extends React.Component {
   renderAFewMonthsNoms(noms) {
     let filteredNoms = noms.filter(isAFewMonths);
     if (filteredNoms.length > 0) {
-      return <TimeNode noms={filteredNoms} title="A few months ago" />
+      return <TimeNode filteredNoms={filteredNoms} title="A few months ago" {...this.props} />
     }
     return;
   }
@@ -95,40 +110,44 @@ class NomDisplay extends React.Component {
   renderAYearsNoms(noms) {
     let filteredNoms = noms.filter(isAYear);
     if (filteredNoms.length > 0) {
-      return <TimeNode noms={filteredNoms} title="A year ago" />
+      return <TimeNode filteredNoms={filteredNoms} title="A year ago" {...this.props} />
     }
     return;
   }
 
   renderNomList() {
-    const { noms, emptyNoms, ui } = this.props;
+    let { noms, emptyNoms, ui, viewName } = this.props;
+    let viewNoms = noms.filter(isThisView.bind(null, viewName));
 
-    if (noms.length < 1 && !ui.nomView.isLoading) {
+    if (viewNoms.length < 1 && !ui.nomView.isLoading) {
       return (
         <EmptyNoms emptyNoms={emptyNoms} />
       )
     }
 
-    return (
-      <div className="nom-list">
-        {this.renderTodaysNoms(noms)}
-        {this.renderThisWeeksNoms(noms)}
-        {this.renderThisMonthsNoms(noms)}
-        {this.renderAFewMonthsNoms(noms)}
-        {this.renderAYearsNoms(noms)}
+    if (viewNoms.length >= 1) {
+      return (
+        <div className="nom-list">
+          {this.renderTodaysNoms(viewNoms)}
+          {this.renderThisWeeksNoms(viewNoms)}
+          {this.renderThisMonthsNoms(viewNoms)}
+          {this.renderAFewMonthsNoms(viewNoms)}
+          {this.renderAYearsNoms(viewNoms)}
+        </div>
+      )
+    }
 
-      </div>
-    )
+    return undefined;
   }
 
   componentWillMount() {
-    let { loadNomList, nomViews, noms, viewName } = this.props;
+    let { nomViews, viewName } = this.props;
 
     // only load view again if older than 60 seconds
     if (nomViews === undefined ||
       nomViews[viewName] === undefined ||
       moment().subtract(60, 'seconds') > moment(nomViews[viewName].timeFetched)) {
-      loadNomList();
+      this.loadNoms();
     }
   }
 
@@ -145,4 +164,4 @@ class NomDisplay extends React.Component {
   }
 }
 
-export default NomDisplay;
+export default NomList;

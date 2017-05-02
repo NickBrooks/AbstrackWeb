@@ -1,0 +1,104 @@
+.nom-list {
+    .time-node {
+        margin-bottom: 25px;
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+
+            a:active,
+            a:focus,
+            a:hover {
+                text-decoration: none;
+            }
+        }
+
+        .nom-node {
+            padding: 8px 13px;
+            position: relative;
+            margin-bottom: 5px;
+            background: white;
+            border: 1px solid $nom-gray;
+            border-top: 2px solid $nom-faded-blue;
+            color: $font-color;
+
+            &:hover {
+                background: $nom-gray;
+
+                .quick-info {
+                    padding-right: 90px;
+                }
+
+                .toolbar {
+                    display: block;
+                }
+            }            
+
+            .title {
+                font-weight: 600;
+            }
+
+            .comment-count {
+                background: $nom-blue-light;
+                color: $white;
+                padding: 0px 3px;
+                border-radius: 4px;
+                font-size: 0.8em;
+            }
+
+            .body {
+                color: #666;
+            }
+
+            .toolbar {
+                display: none;
+                position: absolute;
+                top: 8px;
+                right: 13px;
+
+                .btn-secondary {
+                    color: #999;
+                    background-color: transparent;
+                    border-color: transparent;
+
+                    .fa {
+                        font-size: 1.1em;
+                    }
+                }
+
+                .btn-secondary:hover {
+                    color: #373a3c;
+                    background-color: transparent;
+                    border-color: transparent;
+                }
+            }
+
+            .media-preview {
+                width: 100%;
+                margin: auto;
+                overflow: hidden;
+                white-space: nowrap;
+            }
+
+            .cropped-thumb {
+                width: 140px;
+                height: 100px;
+                display: inline-block;
+                background-position: center center;
+                background-repeat: no-repeat;
+                background-size: cover;
+                box-shadow: $box-shadow;
+            }
+        }
+    }
+}
+
+.empty-noms {
+    text-align: center;
+
+    img {
+        max-width: 600px;
+        margin-bottom: $box-padding * 2;
+    }
+}

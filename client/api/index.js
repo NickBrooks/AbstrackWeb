@@ -8,19 +8,23 @@ function getApiUrl() {
     return "https://api.nommer.co/api/";
 }
 
-const apiUrl = getApiUrl();
+export function getAuthToken() {
+    const state = JSON.parse(localStorage.getItem('state'));
+    return state.login;
+}
+
+const authToken = getAuthToken();
+Axios.defaults.headers.common['Authorization'] = 'bearer ' + authToken.token;
+Axios.defaults.baseURL = getApiUrl();
 
 // login
 
 export function apiGetToken(payload) {
-    return Axios.post(apiUrl + "auth/token", {
-        userName: payload.userName,
-        password: payload.password
-    });
+    return Axios.post("auth/token", payload);
 }
 
 export function apiForgotPassword(email) {
-    return Axios.post(apiUrl + "auth/forgot-password", {
+    return Axios.post("auth/forgot-password", {
         email
     });
 }
@@ -28,53 +32,43 @@ export function apiForgotPassword(email) {
 // registration
 
 export function apiRegister(payload) {
-    return Axios.post(apiUrl + "register", payload);
+    return Axios.post("register", payload);
 }
 
 // account
 
-export function apiGetAccount(token) {
-    return Axios.get(apiUrl + "account", {
-        headers: {
-            Authorization: "bearer " + token
-        }
-    });
+export function apiGetAccount() {
+    return Axios.get("account");
 }
 
-export function apiUpdateProfileDetails(updatedDetails, token) {
-    return Axios.put(
-        apiUrl + "account/profile-details", updatedDetails, {
-            headers: {
-                Authorization: "bearer " + token
-            }
-        });
+export function apiUpdateProfileDetails(updatedDetails) {
+    return Axios.put("account/profile-details", updatedDetails);
 }
 
-export function apiUpdatePassword(currentPassword, newPassword, token) {
-    return Axios.post(apiUrl + "account/password", {
+export function apiUpdatePassword(currentPassword, newPassword) {
+    return Axios.post("account/password", {
         currentPassword,
         newPassword
-    }, {
-            headers: {
-                Authorization: "bearer " + token
-            }
-        });
+    });
 }
 
 // noms
-
-export function apiGetInbox(token) {
-    return Axios.get(apiUrl + "inbox", {
-        headers: {
-            Authorization: "bearer " + token
-        }
-    });
+export function apiGetInbox() {
+    return Axios.get("inbox");
 }
 
-export function apiGetNoms(query, token) {
-    return Axios.get(apiUrl + "noms", {
-        headers: {
-            Authorization: "bearer " + token
-        }
-    });
+export function apiGetPinned() {
+    return Axios.get("pinned");
+}
+
+export function apiSearchNoms(query) {
+    return Axios.post("search/noms", query);
+}
+
+export function apiPinNom(nomId, value) {
+    if (value) {
+        return Axios.post("pinned/" + nomId);
+    } else {
+        return Axios.delete("pinned/" + nomId);
+    }
 }

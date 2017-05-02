@@ -5,7 +5,13 @@
 }
 
 .pinned {
-    .fa {
+    .fa-thumb-tack {
         color: $nom-orange-light;
+    }
+}
+
+.nom-node {
+    .fa-thumb-tack {
+        margin-right: 5px;
     }
 }

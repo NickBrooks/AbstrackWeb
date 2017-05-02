@@ -1,3 +1,5 @@
+import { apiPinNom } from '../../api';
+
 //add a new nom
 export function addNom(nom) {
     return {
@@ -31,4 +33,20 @@ export function removeHashtagsFromNom(hashtags, nomId) {
         hashtags,
         nomId
     }
+}
+
+export function handlePinNom(nomId, value) {
+    return (dispatch) => {
+        dispatch(pinNom(nomId, value));
+        const request = apiPinNom(nomId, value);
+
+        request.catch(error => {
+            console.log(error);
+            if (value) {
+                dispatch(pinNom(nomId, false));
+            } else {
+                dispatch(pinNom(nomId, true));
+            }
+        });
+    };
 }
