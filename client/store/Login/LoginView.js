@@ -31,7 +31,7 @@ class LoginView extends React.Component {
         } = this.props;
 
         purgeToken();
-        
+
         if (ui.login.errorMsg !== false)
             loginErrorMsg(false);
     }

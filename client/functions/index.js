@@ -40,6 +40,12 @@ export function extractYoutubeFromString(string) {
     return string.match(regex);
 }
 
+export function delay(t) {
+    return new Promise(function (resolve) {
+        setTimeout(resolve, t)
+    });
+}
+
 export const loadLocalStorage = (key) => {
     try {
         const serialized = localStorage.getItem(key);

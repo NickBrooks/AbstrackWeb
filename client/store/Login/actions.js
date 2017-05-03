@@ -1,5 +1,5 @@
 import { apiGetToken, apiRegister, apiForgotPassword } from '../../api';
-import { saveLocalStorage, removeLocalStorage } from '../../functions';
+import { delay, saveLocalStorage, removeLocalStorage } from '../../functions';
 import { push } from 'react-router-redux';
 
 function loginSuccess(data) {
@@ -52,9 +52,11 @@ export function handleLogin(userName, password) {
     return dispatch => {
         request.then(response => {
             saveLocalStorage("auth", response.data);
-            dispatch(loginSuccess(response.data));
-            dispatch(loginIsAuthenticating(false));
-            dispatch(push('/'));
+            delay(1000).then(() => {
+                dispatch(loginSuccess(response.data));
+                dispatch(loginIsAuthenticating(false));
+                dispatch(push('/'))
+            });
         }).catch(error => {
             dispatch(loginIsAuthenticating(false));
             dispatch(loginErrorMsg("Incorrect username or password"));
