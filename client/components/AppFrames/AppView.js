@@ -10,11 +10,7 @@ import NewNomModal from '../NomEditor/NomEditor';
 class AppView extends React.Component {
     constructor(props) {
         super(props);
-        this.checkValidToken = this.checkValidToken.bind(this);
-
         this.checkValidToken();
-        this.props.handleGetAccount();
-        this.props.handleGetTracks();
     }
 
     checkValidToken() {
@@ -23,6 +19,11 @@ class AppView extends React.Component {
         if (login == null || login.token == "" || login.token == null || login.expiration < moment.utc().format()) {
             browserHistory.push('/login');
         }
+    }
+
+    componentWillMount() {
+        this.props.handleGetAccount();
+        this.props.handleGetTracks();
     }
 
     componentWillReceiveProps() {

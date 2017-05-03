@@ -26,9 +26,12 @@ class LoginView extends React.Component {
         //ensure error message is null when loading
         let {
             ui,
-            loginErrorMsg
+            loginErrorMsg,
+            purgeToken
         } = this.props;
 
+        purgeToken();
+        
         if (ui.login.errorMsg !== false)
             loginErrorMsg(false);
     }

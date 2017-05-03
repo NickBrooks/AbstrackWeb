@@ -40,23 +40,31 @@ export function extractYoutubeFromString(string) {
     return string.match(regex);
 }
 
-export const loadLocalStorageState = () => {
+export const loadLocalStorage = (key) => {
     try {
-        const serializedState = localStorage.getItem('state');
-        if (serializedState === null) {
+        const serialized = localStorage.getItem(key);
+        if (serialized === null) {
             return undefined;
         }
-        return JSON.parse(serializedState);
+        return JSON.parse(serialized);
     } catch (err) {
         console.log(err);
         return undefined;
     }
 }
 
-export const saveLocalStorageState = (state) => {
+export const saveLocalStorage = (key, value) => {
     try {
-        const serializedState = JSON.stringify(state);
-        localStorage.setItem('state', serializedState);
+        const serialized = JSON.stringify(value);
+        localStorage.setItem(key, serialized);
+    } catch (err) {
+        console.log(err);
+    }
+}
+
+export const removeLocalStorage = (key) => {
+    try {
+        localStorage.removeItem(key);
     } catch (err) {
         console.log(err);
     }

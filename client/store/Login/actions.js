@@ -1,4 +1,5 @@
 import { apiGetToken, apiRegister, apiForgotPassword } from '../../api';
+import { saveLocalStorage, removeLocalStorage } from '../../functions';
 import { push } from 'react-router-redux';
 
 function loginSuccess(data) {
@@ -37,9 +38,9 @@ export function registerIsRegistering(value) {
 }
 
 export function purgeToken() {
-    return {
-        type: 'PURGE_TOKEN'
-    }
+    return dispatch => {
+        removeLocalStorage("auth");
+    };
 }
 
 export function handleLogin(userName, password) {
@@ -50,6 +51,7 @@ export function handleLogin(userName, password) {
 
     return dispatch => {
         request.then(response => {
+            saveLocalStorage("auth", response.data);
             dispatch(loginSuccess(response.data));
             dispatch(loginIsAuthenticating(false));
             dispatch(push('/'));
@@ -78,7 +80,7 @@ export function handleForgotPassword(email) {
     const request = apiForgotPassword(email);
 
     return dispatch => {
-        request.then(response => {}).catch(error => {
+        request.then(response => { }).catch(error => {
             console.log(error);
         });
     };
