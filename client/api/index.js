@@ -1,5 +1,5 @@
 import Axios from 'axios';
-import { getAuthHeader } from './auth';
+import { loadLocalStorage } from '../functions';
 
 // set some default stuff
 
@@ -11,7 +11,19 @@ function getApiUrl() {
     return "https://api.nommer.co/api/";
 }
 
+export function getAuthToken() {
+    var auth = loadLocalStorage("auth");
+
+    if (auth == null || auth.token == null) {
+        return null;
+    }
+
+    return auth.token;
+}
+
+var token = getAuthToken();
 Axios.defaults.baseURL = getApiUrl();
+Axios.defaults.headers.common['Authorization'] = (token ? 'bearer ' + token : undefined);
 
 // login
 
@@ -34,44 +46,44 @@ export function apiRegister(payload) {
 // account
 
 export function apiGetAccount() {
-    return Axios.get("account", getAuthHeader());
+    return Axios.get("account");
 }
 
 export function apiUpdateProfileDetails(updatedDetails) {
-    return Axios.put("account/profile-details", updatedDetails, getAuthHeader());
+    return Axios.put("account/profile-details", updatedDetails);
 }
 
 export function apiUpdatePassword(currentPassword, newPassword) {
     return Axios.post("account/password", {
         currentPassword,
         newPassword
-    }, getAuthHeader());
+    });
 }
 
 // noms
 
 export function apiGetInbox() {
-    return Axios.get("inbox", getAuthHeader());
+    return Axios.get("inbox");
 }
 
 export function apiGetPinned() {
-    return Axios.get("pinned", getAuthHeader());
+    return Axios.get("pinned");
 }
 
 export function apiSearchNoms(query) {
-    return Axios.post("search/noms", query, getAuthHeader());
+    return Axios.post("search/noms", query);
 }
 
 export function apiPinNom(nomId, value) {
     if (value) {
-        return Axios.post("pinned/" + nomId, getAuthHeader());
+        return Axios.post("pinned/" + nomId);
     } else {
-        return Axios.delete("pinned/" + nomId, getAuthHeader());
+        return Axios.delete("pinned/" + nomId);
     }
 }
 
 // tracks
 
 export function apiGetTracks() {
-    return Axios.get("tracks", getAuthHeader());
+    return Axios.get("tracks");
 }
