@@ -6,6 +6,7 @@ import LoadingScreen from '../LoadingScreen';
 import SearchBar from '../SearchBar/SearchBar';
 import NewNomButton from '../NewNomButton/NewNomButton';
 import NewNomModal from '../NomEditor/NomEditor';
+import { loadLocalStorage } from '../../functions';
 
 class AppView extends React.Component {
     constructor(props) {
@@ -14,9 +15,9 @@ class AppView extends React.Component {
     }
 
     checkValidToken() {
-        let { login } = this.props;
+        const auth = loadLocalStorage('auth');
 
-        if (login == null || login.token == "" || login.token == null || login.expiration < moment.utc().format()) {
+        if (auth == null || auth.token == "" || auth.token == null || auth.expiration < moment.utc().format()) {
             browserHistory.push('/login');
         }
     }

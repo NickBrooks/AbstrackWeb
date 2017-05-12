@@ -50,10 +50,11 @@ export function handleLogin(userName, password) {
     });
 
     return dispatch => {
+        dispatch(loginIsAuthenticating(true));
         request.then(response => {
             saveLocalStorage("auth", response.data);
-            delay(1000).then(() => {
-                dispatch(loginSuccess(response.data));
+            dispatch(loginSuccess(response.data));
+            delay(1000).then(() => {                
                 dispatch(loginIsAuthenticating(false));
                 dispatch(push('/'))
             });

@@ -17,7 +17,6 @@ class LoginView extends React.Component {
         if (userName == '' || password == '') {
             loginErrorMsg('Enter a username and password');
         } else {
-            loginIsAuthenticating(true);
             handleLogin(userName, password);
         }
     }
