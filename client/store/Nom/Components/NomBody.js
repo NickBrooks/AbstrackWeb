@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactMarkdown from 'react-markdown';
+import RenderMarkdown from '../../../components/RenderMarkdown/RenderMarkdown';
 
 class NomDescription extends React.Component {
     constructor(props) {
@@ -9,7 +9,7 @@ class NomDescription extends React.Component {
     render() {
         return (
             <div className="nom-body">
-                <ReactMarkdown source={this.props.body} />
+                <RenderMarkdown markdown={this.props.body} />
             </div>
         )
     }
