@@ -43,6 +43,12 @@ export function purgeToken() {
     };
 }
 
+export function purgeStore() {
+    return {
+        type: 'PURGE_STORE'
+    }
+}
+
 export function handleLogin(userName, password) {
     const request = apiGetToken({
         userName,
@@ -92,6 +98,7 @@ export function handleForgotPassword(email) {
 export function handleLogout() {
     return dispatch => {
         dispatch(purgeToken());
+        dispatch(purgeStore());
         dispatch(push('/login'));
     };
 }

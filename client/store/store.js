@@ -3,33 +3,68 @@ import { routerMiddleware, syncHistoryWithStore } from 'react-router-redux';
 import { browserHistory } from 'react-router';
 import thunk from 'redux-thunk';
 import { loadLocalStorageState, saveLocalStorageState } from '../functions';
-
-// import reducer
-import rootReducer from './reducers';
+import { combineReducers } from 'redux';
+import { routerReducer } from 'react-router-redux';
 
 // import data
-import account from '../data/Account';
-import comments from '../data/Comments';
-import hashtags from '../data/Hashtags';
-import login from '../data/Login';
-import settings from '../data/Settings';
-import ui from '../data/UI';
-import users from '../data/Users';
-import views from '../data/Views';
+import accountData from '../data/Account';
+import commentsData from '../data/Comments';
+import hashtagsData from '../data/Hashtags';
+import loginData from '../data/Login';
+import settingsData from '../data/Settings';
+import uiData from '../data/UI';
+import usersData from '../data/Users';
+import viewsData from '../data/Views';
 
 // create an object for the default state
 const defaultState = {
-  account,
+  account: accountData,
+  comments: commentsData,
+  hashtags: hashtagsData,
+  login: loginData,
+  noms: [],
+  tracks: [],
+  settings: settingsData,
+  ui: uiData,
+  users: usersData,
+  views: viewsData
+};
+
+//reducers
+import comments from './Comment/reducer';
+import hashtags from './Hashtag/reducer';
+import login from './Login/reducer';
+import noms from './Nom/reducer';
+import nomViews from './NomView/reducer';
+import tracks from './Track/reducer';
+import settings from './Settings/reducer';
+import ui from './UI/reducer';
+import account from './Account/reducer';
+import users from './User/reducer';
+import views from './View/reducer';
+
+const appReducer = combineReducers({
   comments,
   hashtags,
   login,
-  noms: [],
-  tracks: [],
+  noms,
+  nomViews,
+  tracks,
   settings,
   ui,
+  account,
   users,
-  views
-};
+  views,
+  routing: routerReducer
+});
+
+const rootReducer = (state, action) => {
+  if (action.type === 'PURGE_STORE') {
+    state = defaultState
+  }
+
+  return appReducer(state, action);
+}
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
