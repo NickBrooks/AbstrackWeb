@@ -28,7 +28,7 @@ class NomNode extends React.Component {
 
         if (media.length > 0) {
             return (
-                <ul className="media-preview my-1">
+                <ul className="list-unstyled media-preview my-1">
                     {media.map((image, i) =>
                         <li className="cropped-thumb mr-1" style={{ backgroundImage: "url(" + image + ")" }} key={i}></li>
                     )}

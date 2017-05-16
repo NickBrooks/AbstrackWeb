@@ -40,6 +40,9 @@ const ui = {
   searchBar: {
     defaultValue: "Search noms",
     class: "searchBar-inbox",
+  },
+  tracks: {
+    updateStatus: false
   }
 }
 
