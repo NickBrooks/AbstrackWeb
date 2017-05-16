@@ -53,6 +53,10 @@ function ui(state = [], action) {
             var newState = Object.assign({}, state);
             newState.account.password.updateStatus = action.value;
             return newState;
+        case 'ADD_TRACK_UPDATE_STATUS':
+            var newState = Object.assign({}, state);
+            newState.tracks.updateStatus = action.value;
+            return newState;
         default:
             return state;
     }

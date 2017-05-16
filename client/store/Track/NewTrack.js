@@ -8,7 +8,7 @@ class NewTrack extends React.Component {
         super(props);
         this.handleNameChange = this.handleNameChange.bind(this);
         this.handleDescriptionChange = this.handleDescriptionChange.bind(this);
-        this.handleSubmitNewTrack = this.handleSubmitNewTrack.bind(this);
+        this.handleSubmitAddTrack = this.handleSubmitAddTrack.bind(this);
 
 
         const maxLength = {
@@ -38,8 +38,17 @@ class NewTrack extends React.Component {
         });
     }
 
-    handleSubmitNewTrack() {
-        console.log("Do something");
+    handleSubmitAddTrack(e) {
+        e.preventDefault();
+        let { handleAddTrack } = this.props;
+        var name = this.refs.name.value;
+        var description = this.refs.description.value;
+        var track = { name, description };
+
+        if (track != null)
+            handleAddTrack(track);
+        
+        //TODO: handle no track name... bit of validation
     }
 
     componentWillMount() {
@@ -65,7 +74,7 @@ class NewTrack extends React.Component {
                 <h4><Link to="/tracks"><span className="fa-stack nom-green-light"><FontAwesome name="circle" stack="2x" /><FontAwesome name="list-ul" inverse stack="1x" /></span></Link> Create a new track</h4>
                 <hr />
                 <div className="ibox">
-                    <form ref="addTrack" autoComplete="off" onSubmit={this.handleSubmitNewTrack}>
+                    <form ref="addTrack" autoComplete="off" onSubmit={this.handleSubmitAddTrack}>
                         <div className="form-group">
                             <label htmlFor="nameInput"><FontAwesome name="list-ul" /> Track name</label>
                             <input type="text" ref="name" className="form-control" placeholder="Enter a track name" maxLength={maxLength.name} onChange={this.handleNameChange} />
@@ -73,7 +82,7 @@ class NewTrack extends React.Component {
                         </div>
                         <div className="form-group">
                             <label htmlFor="description"><FontAwesome name="pencil" /> Description</label>
-                            <input type="text" ref="description" className="form-control" placeholder="Enter a description" maxLength={maxLength.name} onChange={this.handleDescriptionChange} />
+                            <input type="text" ref="description" className="form-control" placeholder="Enter a description" maxLength={maxLength.description} onChange={this.handleDescriptionChange} />
                             {descriptionCount ? (<small id="descriptionHelp" className="form-text text-muted"><strong>{descriptionCount}</strong></small>) : null}
                         </div>
                         <hr />

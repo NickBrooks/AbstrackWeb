@@ -89,3 +89,7 @@ export function apiPinNom(nomId, value) {
 export function apiGetTracks() {
     return Axios.get("tracks", getAuthHeader());
 }
+
+export function apiAddTrack(track) {
+    return Axios.post("tracks", track, getAuthHeader());
+}
