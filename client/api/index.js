@@ -80,7 +80,7 @@ export function apiPinNom(nomId, value) {
     if (value) {
         return Axios.post("pinned/" + nomId, null, getAuthHeader());
     } else {
-        return Axios.delete("pinned/" + nomId, null, getAuthHeader());
+        return Axios.delete("pinned/" + nomId, getAuthHeader());
     }
 }
 

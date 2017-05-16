@@ -1,18 +1,11 @@
 import React from "react";
 import FontAwesome from "react-fontawesome";
 import { Link } from "react-router";
+import EmptyContent from '../../components/EmptyContent/EmptyContent';
 
 class Tracks extends React.Component {
     constructor(props) {
         super(props);
-    }
-
-    renderEmptyTracks() {
-        return (
-            <div>
-                Your tracks are empty, create one.
-            </div>
-        )
     }
 
     renderTracks() {
@@ -29,7 +22,7 @@ class Tracks extends React.Component {
         return (
             <li>
                 <div className="quick-info text-truncate">
-                    <span className="fa-stack nom-green"><FontAwesome name="circle" stack="2x" /><FontAwesome name="list-ul" inverse stack="1x" /></span> <span className="title">{track.name}</span> <span className="body">{track.description}</span>
+                    <span className="fa-stack nom-green-light"><FontAwesome name="circle" stack="2x" /><FontAwesome name="list-ul" inverse stack="1x" /></span> <span className="title">{track.name}</span> <span className="body">{track.description}</span>
                 </div>
             </li>
         )
@@ -51,11 +44,16 @@ class Tracks extends React.Component {
 
     render() {
         let { tracks } = this.props;
+        var emptyContent = {
+            text: "Your tracks are empty, create one.",
+            img: "https://i.imgur.com/QiaS6Xt.png"
+        };
+
         return (
             <div className="track-list">
                 <h3>Tracks ({tracks.length})</h3>
                 <hr />
-                {tracks == null || tracks.length == 0 ? this.renderEmptyTracks() : this.renderTracks()}
+                {tracks == null || tracks.length == 3 ? <EmptyContent emptyContent={emptyContent} /> : this.renderTracks()}
             </div>
         )
     }

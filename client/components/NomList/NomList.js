@@ -1,7 +1,7 @@
 import React from 'react';
 import moment from 'moment';
 import TimeNode from './Components/TimeNode';
-import EmptyNoms from './Components/EmptyNoms';
+import EmptyContent from '../EmptyContent/EmptyContent';
 import FontAwesome from 'react-fontawesome';
 
 var now = moment();
@@ -121,7 +121,7 @@ class NomList extends React.Component {
 
     if (viewNoms.length < 1 && !ui.nomView.isLoading) {
       return (
-        <EmptyNoms emptyNoms={emptyNoms} />
+        <EmptyContent emptyContent={emptyNoms} />
       )
     }
 

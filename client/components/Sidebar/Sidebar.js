@@ -46,25 +46,6 @@ class Sidebar extends React.Component {
         return (<SidebarMenu header={header} headerTo="/tracks" links={links} />)
     }
 
-    renderViewsMenu(views) {
-        if (views == undefined) {
-            return null;
-        }
-
-        var links = [];
-
-        for (let view of views) {
-            links.push({
-                link: "/v/" + view.id,
-                title: view.name
-            });
-        }
-
-        var header = "Views (" + links.length + ")";
-
-        return (<SidebarMenu header={header} headerTo="/views" links={links} />)
-    }
-
     render() {
         let { account, tracks, views } = this.props;
 
@@ -76,7 +57,6 @@ class Sidebar extends React.Component {
                     <li className="pinned"><Link to="/pinned"><FontAwesome name="thumb-tack" /> Pinned</Link></li>
                 </ul>
                 {this.renderTracksMenu(tracks)}
-                {this.renderViewsMenu(views)}
                 <ul className="nav nav-sidebar">
                     <li className="trash"><Link to="/"><FontAwesome name="trash" /> Trash</Link></li>
                     <li className="logout"><a href="#" onClick={this.logout.bind(this)}><FontAwesome name="sign-out" /> Logout</a></li>
