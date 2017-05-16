@@ -1,0 +1,29 @@
+ul.node-list {
+    a:active,
+    a:focus,
+    a:hover {
+        text-decoration: none;
+    }
+
+    li {
+        padding: 8px 13px;
+        position: relative;
+        margin-bottom: 5px;
+        background: white;
+        border: 1px solid $nom-gray;
+        border-top: 2px solid $nom-faded-blue;
+        color: $font-color;
+
+        &:hover {
+            background: $nom-gray;
+        }
+
+        .title {
+            font-weight: 600;
+        }
+
+        .body {
+            color: #666;
+        }
+    }
+}

@@ -2,7 +2,7 @@ import React from 'react';
 import { render } from 'react-dom';
 
 // Import CSS
-import Style from './styles/nommer.scss';
+import Style from './styles/App.scss';
 
 // Import Components
 import { App, FullScreen } from './store/App';
@@ -16,6 +16,7 @@ import RegisterView from './store/Login/RegisterView';
 import ForgotPasswordView from './store/Login/ForgotPasswordView';
 import User from './store/User/User';
 import Account from './store/Account/Account';
+import Tracks from './store/Track/Tracks';
 
 // Import Router
 import { Router, Route, IndexRoute, browserHistory } from 'react-router';
@@ -34,6 +35,7 @@ const router = (
                 <IndexRoute component={NomViewInbox}></IndexRoute>
                 <Route path="/account" component={Account} />
                 <Route path="/pinned" component={NomViewPinned}></Route>
+                <Route path="/tracks" component={Tracks}></Route>
                 <Route path="/t/:trackId" component={NomViewTrack}></Route>
                 <Route path="/n/:nomId" component={Nom}></Route>
                 <Route path="/tag/:tags" component={NomViewTag}></Route>
