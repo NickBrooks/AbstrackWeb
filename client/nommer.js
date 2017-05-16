@@ -17,6 +17,7 @@ import ForgotPasswordView from './store/Login/ForgotPasswordView';
 import User from './store/User/User';
 import Account from './store/Account/Account';
 import Tracks from './store/Track/Tracks';
+import NewTrack from './store/Track/NewTrack';
 
 // Import Router
 import { Router, Route, IndexRoute, browserHistory } from 'react-router';
@@ -37,6 +38,7 @@ const router = (
                 <Route path="/pinned" component={NomViewPinned}></Route>
                 <Route path="/tracks" component={Tracks}></Route>
                 <Route path="/t/:trackId" component={NomViewTrack}></Route>
+                <Route path="/new/track" component={NewTrack}></Route>
                 <Route path="/n/:nomId" component={Nom}></Route>
                 <Route path="/tag/:tags" component={NomViewTag}></Route>
                 <Route path="/u/:userId" component={User}></Route>

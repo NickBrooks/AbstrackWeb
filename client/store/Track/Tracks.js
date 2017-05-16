@@ -46,12 +46,12 @@ class Tracks extends React.Component {
         let { tracks } = this.props;
         var emptyContent = {
             text: "Your tracks are empty, create one.",
-            img: "https://i.imgur.com/QiaS6Xt.png"
+            img: "https://i.imgur.com/9uC4oct.png"
         };
 
         return (
             <div className="track-list">
-                <h3>Tracks ({tracks.length})</h3>
+                <h4><Link to="/tracks"><span className="fa-stack nom-green-light"><FontAwesome name="circle" stack="2x" /><FontAwesome name="list-ul" inverse stack="1x" /></span></Link> Tracks ({tracks.length}) <Link to="/new/track"><FontAwesome name="plus" className="nom-green-light" /></Link></h4>
                 <hr />
                 {tracks == null || tracks.length == 3 ? <EmptyContent emptyContent={emptyContent} /> : this.renderTracks()}
             </div>
