@@ -16,16 +16,20 @@ class NomNode extends React.Component {
         let { noms, id } = this.props;
         const i = noms.findIndex((nom) => nom.data.id === id);
         let { body } = noms[i].data;
+        var media = [];
         var images = extractImagesFromString(body);
+        if (images != null) {
+            media = images;
+        }
         var youtube = extractYoutubeFromString(body);
         if (youtube != null) {
-            images.push("https://img.youtube.com/vi/" + youtube[1] + "/0.jpg")
+            media.push("https://img.youtube.com/vi/" + youtube[1] + "/0.jpg")
         }
 
-        if (images) {
+        if (media.length > 0) {
             return (
                 <ul className="media-preview my-1">
-                    {images.map((image, i) =>
+                    {media.map((image, i) =>
                         <li className="cropped-thumb mr-1" style={{ backgroundImage: "url(" + image + ")" }} key={i}></li>
                     )}
                 </ul>

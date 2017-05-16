@@ -2,26 +2,35 @@ import React from 'react';
 import FontAwesome from 'react-fontawesome';
 import NomList from '../../components/NomList/NomList';
 
-function filterTrackNoms(trackId, n) {
-  if (typeof n.track != "undefined") {
-    return n.track.id == trackId;
-  }
-
-  return;
-}
-
 class NomViewTrack extends React.Component {
   constructor(props) {
     super(props);
   }
 
+  componentWillMount() {
+    this.props.setSearchBar({
+      defaultValue: "Track",
+      class: "searchBar-track"
+    });
+  }
+
+  componentWillUnmount() {
+    this.props.setSearchBar({
+      defaultValue: false,
+      class: false
+    });
+  }
+
   render() {
     const { trackId } = this.props.params;
-    const { noms, tracks, settings } = this.props;
+    const { handleSearchNoms, tracks, settings } = this.props;
     const i = tracks.findIndex((track) => track.id === trackId);
     const track = tracks[i];
+    const view = 't:"' + trackId + '"';
 
-    let trackNoms = noms.filter(filterTrackNoms.bind(null, trackId))
+    var query = {
+      trackIds: [trackId]
+    }
 
     //set empty noms
     let emptyNoms = {
@@ -31,10 +40,10 @@ class NomViewTrack extends React.Component {
 
     return (
       <div className="view-track">
-        <h3><FontAwesome name="bookmark" style={{ color: "#638495" }} /> {track.name}</h3>
-        <h6><span className="tag tag-success"><FontAwesome name="lock" /> {track.visibility}</span></h6>
+        <h3>{track.name}</h3>
+        <h6>{track.description}</h6>
         <hr />
-        <NomList nomList={trackNoms} emptyNoms={emptyNoms} {...this.props} />
+        <NomList loadNomList={handleSearchNoms} query={query} viewName={view} emptyNoms={emptyNoms} {...this.props} />
       </div>
     )
   }

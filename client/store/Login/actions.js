@@ -1,4 +1,5 @@
 import { apiGetToken, apiRegister, apiForgotPassword } from '../../api';
+import { delay, saveLocalStorage, removeLocalStorage } from '../../functions';
 import { push } from 'react-router-redux';
 
 function loginSuccess(data) {
@@ -37,8 +38,14 @@ export function registerIsRegistering(value) {
 }
 
 export function purgeToken() {
+    return dispatch => {
+        removeLocalStorage("auth");
+    };
+}
+
+export function purgeStore() {
     return {
-        type: 'PURGE_TOKEN'
+        type: 'PURGE_STORE'
     }
 }
 
@@ -49,10 +56,14 @@ export function handleLogin(userName, password) {
     });
 
     return dispatch => {
+        dispatch(loginIsAuthenticating(true));
         request.then(response => {
+            saveLocalStorage("auth", response.data);
             dispatch(loginSuccess(response.data));
-            dispatch(loginIsAuthenticating(false));
-            dispatch(push('/'));
+            delay(1000).then(() => {                
+                dispatch(loginIsAuthenticating(false));
+                dispatch(push('/'))
+            });
         }).catch(error => {
             dispatch(loginIsAuthenticating(false));
             dispatch(loginErrorMsg("Incorrect username or password"));
@@ -78,7 +89,7 @@ export function handleForgotPassword(email) {
     const request = apiForgotPassword(email);
 
     return dispatch => {
-        request.then(response => {}).catch(error => {
+        request.then(response => { }).catch(error => {
             console.log(error);
         });
     };
@@ -87,6 +98,7 @@ export function handleForgotPassword(email) {
 export function handleLogout() {
     return dispatch => {
         dispatch(purgeToken());
+        dispatch(purgeStore());
         dispatch(push('/login'));
     };
 }

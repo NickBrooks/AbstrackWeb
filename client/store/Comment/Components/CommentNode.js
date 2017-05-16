@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router';
 import FontAwesome from 'react-fontawesome';
-import ReactMarkdown from 'react-markdown';
 import Avatar from '../../../components/Avatar/Avatar';
+import RenderMarkdown from '../../../components/RenderMarkdown/RenderMarkdown';
 
 class CommentNode extends React.Component {
   constructor(props) {
@@ -55,7 +55,7 @@ class CommentNode extends React.Component {
 
   renderReadOnlyMode(body) {
     return (
-      <ReactMarkdown source={body} />
+      <RenderMarkdown markdown={body} />
     );
   }
 

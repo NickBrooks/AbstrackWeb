@@ -26,7 +26,6 @@ class NomEditor extends React.Component {
             title: this.refs.title.value,
             body: this.refs.body.value,
             track: {},
-            milestone: {},
             type: "markdown",
             pinned: false,
             completed: false,
@@ -51,16 +50,6 @@ class NomEditor extends React.Component {
         )
     }
 
-    renderMilestones() {
-        let { milestones } = this.props;
-        return (
-            <select ref="milestone" className="form-control">
-                <option>Milestone</option>
-                {milestones.map((milestone) => <option key={milestone.id} value={milestone.id}>{milestone.name}</option>)}
-            </select>
-        )
-    }
-
     render() {
         return (
             <div>
@@ -79,11 +68,8 @@ class NomEditor extends React.Component {
                                 <div className="col-xs-6">
                                     <input ref="hashtags" className="form-control editor-hashtags" type="text" placeholder="#hashtags" />
                                 </div>
-                                <div className="col-xs-3">
+                                <div className="col-xs-6">
                                     {this.renderTracks()}
-                                </div>
-                                <div className="col-xs-3">
-                                    {this.renderMilestones()}
                                 </div>
                                 <div className="col-xs-12">
                                     <textarea ref="body" className="form-control editor-body" placeholder="Say something" />

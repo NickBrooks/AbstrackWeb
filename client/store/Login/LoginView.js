@@ -17,7 +17,6 @@ class LoginView extends React.Component {
         if (userName == '' || password == '') {
             loginErrorMsg('Enter a username and password');
         } else {
-            loginIsAuthenticating(true);
             handleLogin(userName, password);
         }
     }
@@ -26,8 +25,11 @@ class LoginView extends React.Component {
         //ensure error message is null when loading
         let {
             ui,
-            loginErrorMsg
+            loginErrorMsg,
+            purgeToken
         } = this.props;
+
+        purgeToken();
 
         if (ui.login.errorMsg !== false)
             loginErrorMsg(false);

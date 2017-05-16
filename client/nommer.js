@@ -9,7 +9,6 @@ import { App, FullScreen } from './store/App';
 import NomViewInbox from './store/NomView/Inbox';
 import NomViewPinned from './store/NomView/Pinned';
 import NomViewTrack from './store/NomView/Track';
-import NomViewMilestone from './store/NomView/Milestone';
 import NomViewTag from './store/NomView/Tag';
 import Nom from './store/Nom/Nom';
 import LoginView from './store/Login/LoginView';
@@ -36,7 +35,6 @@ const router = (
                 <Route path="/account" component={Account} />
                 <Route path="/pinned" component={NomViewPinned}></Route>
                 <Route path="/t/:trackId" component={NomViewTrack}></Route>
-                <Route path="/m/:milestoneId" component={NomViewMilestone}></Route>
                 <Route path="/n/:nomId" component={Nom}></Route>
                 <Route path="/tag/:tags" component={NomViewTag}></Route>
                 <Route path="/u/:userId" component={User}></Route>

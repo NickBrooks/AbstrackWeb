@@ -6,7 +6,6 @@ import FullScreenView from '../components/AppFrames/FullScreenView';
 // import all action creators
 import * as CommentsActions from './Comment/actions';
 import * as HashtagActions from './Hashtag/actions';
-import * as MilestoneActions from './Milestone/actions';
 import * as LoginActions from './Login/actions';
 import * as NomActions from './Nom/actions';
 import * as NomViewActions from './NomView/actions';
@@ -22,7 +21,6 @@ function mapStateToProps(state) {
         comments: state.comments,
         hashtags: state.hashtags,
         login: state.login,
-        milestones: state.milestones,
         noms: state.noms,
         nomViews: state.nomViews,
         tracks: state.tracks,
@@ -38,7 +36,6 @@ function mapDispatchToProps(dispatch) {
     return bindActionCreators({
         ...CommentsActions,
         ...HashtagActions,
-        ...MilestoneActions,
         ...LoginActions,
         ...NomActions,
         ...NomViewActions,

@@ -1,4 +1,7 @@
 import Axios from 'axios';
+import { loadLocalStorage } from '../functions';
+
+// set some default stuff
 
 function getApiUrl() {
     const apiUrl = localStorage.getItem('test.apiUrl');
@@ -8,13 +11,20 @@ function getApiUrl() {
     return "https://api.nommer.co/api/";
 }
 
-export function getAuthToken() {
-    const state = JSON.parse(localStorage.getItem('state'));
-    return state.login;
+function getAuthHeader() {
+    var auth = loadLocalStorage("auth");
+
+    if (auth == null || auth.token == null) {
+        return null;
+    }
+
+    return {
+        headers: {
+            Authorization: "bearer " + auth.token
+        }
+    }
 }
 
-const authToken = getAuthToken();
-Axios.defaults.headers.common['Authorization'] = 'bearer ' + authToken.token;
 Axios.defaults.baseURL = getApiUrl();
 
 // login
@@ -38,37 +48,44 @@ export function apiRegister(payload) {
 // account
 
 export function apiGetAccount() {
-    return Axios.get("account");
+    return Axios.get("account", getAuthHeader());
 }
 
 export function apiUpdateProfileDetails(updatedDetails) {
-    return Axios.put("account/profile-details", updatedDetails);
+    return Axios.put("account/profile-details", updatedDetails, getAuthHeader());
 }
 
 export function apiUpdatePassword(currentPassword, newPassword) {
     return Axios.post("account/password", {
         currentPassword,
         newPassword
-    });
+    }, getAuthHeader());
 }
 
 // noms
+
 export function apiGetInbox() {
-    return Axios.get("inbox");
+    return Axios.get("inbox", getAuthHeader());
 }
 
 export function apiGetPinned() {
-    return Axios.get("pinned");
+    return Axios.get("pinned", getAuthHeader());
 }
 
 export function apiSearchNoms(query) {
-    return Axios.post("search/noms", query);
+    return Axios.post("search/noms", query, getAuthHeader());
 }
 
 export function apiPinNom(nomId, value) {
     if (value) {
-        return Axios.post("pinned/" + nomId);
+        return Axios.post("pinned/" + nomId, null, getAuthHeader());
     } else {
-        return Axios.delete("pinned/" + nomId);
+        return Axios.delete("pinned/" + nomId, null, getAuthHeader());
     }
+}
+
+// tracks
+
+export function apiGetTracks() {
+    return Axios.get("tracks", getAuthHeader());
 }

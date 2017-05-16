@@ -4,9 +4,6 @@ const settings = {
       img: "https://i.imgur.com/r2NAHyD.png",
       text: "Your inbox is super, super clean!"
     },
-    milestone: {
-      img: "https://i.imgur.com/r2NAHyD.png"
-    },
     pinned: {
       img: "https://i.imgur.com/r2NAHyD.png",
       text: "You have nothing pinned!"
