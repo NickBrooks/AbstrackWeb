@@ -1,4 +1,4 @@
-import { apiGetTracks, apiAddTrack, apiUpdateTrack } from '../../api';
+import { apiGetTracks, apiAddTrack, apiUpdateTrack, apiDeleteTrack } from '../../api';
 import { push } from 'react-router-redux';
 
 function setTracks(data) {
@@ -18,6 +18,13 @@ function addTrack(track) {
 function updateTrack(track) {
     return {
         type: 'UPDATE_TRACK',
+        track
+    }
+}
+
+function deleteTrack(trackId) {
+    return {
+        type: 'DELETE_TRACK',
         track
     }
 }
@@ -67,6 +74,23 @@ export function handleUpdateTrack(trackId, track) {
             dispatch(updateTrack(response.data));
             dispatch(addTrackUpdateStatus(false));
             dispatch(push('/t/' + trackId));
+        }).catch(error => {
+            dispatch(addTrackUpdateStatus(false));
+            //TODO: handle error
+            console.log(error);
+        });
+    };
+}
+
+export function handleDeleteTrack(trackId) {
+    return (dispatch) => {
+        dispatch(addTrackUpdateStatus("updating"));
+        const request = apiDeleteTrack(trackId);
+
+        request.then(response => {
+            dispatch(deleteTrack(trackId));
+            dispatch(addTrackUpdateStatus(false));
+            dispatch(push('/tracks'));
         }).catch(error => {
             dispatch(addTrackUpdateStatus(false));
             //TODO: handle error

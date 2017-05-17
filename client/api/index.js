@@ -97,3 +97,7 @@ export function apiAddTrack(track) {
 export function apiUpdateTrack(trackId, track) {
     return Axios.put("tracks/" + trackId, track, getAuthHeader());
 }
+
+export function apiDeleteTrack(trackId) {
+    return Axios.delete("tracks/" + trackId, getAuthHeader());
+}

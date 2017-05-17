@@ -42,7 +42,8 @@ const ui = {
     class: "searchBar-inbox",
   },
   tracks: {
-    updateStatus: false
+    updateStatus: false,
+    deleteTrackWarning: "Deleting this track will remove all track assignments from any Noms assigned to this track."
   }
 }
 

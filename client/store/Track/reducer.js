@@ -11,6 +11,13 @@ function tracks(state = [], action) {
                 // otherwise return track
                 track
             );
+        case 'DELETE_TRACK':
+            return state.map(track => track.id === action.trackId ?
+                // replace the track that matches
+                undefined :
+                // otherwise return track
+                track
+            );
     }
     return state;
 }

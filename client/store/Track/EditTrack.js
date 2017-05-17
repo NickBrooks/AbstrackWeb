@@ -68,7 +68,7 @@ class EditTrack extends React.Component {
     render() {
         let { descriptionCount, nameCount, maxLength } = this.state;
         let { trackId } = this.props.params;
-        let { handleSearchNoms, tracks, settings, ui } = this.props;
+        let { tracks, ui } = this.props;
         const i = tracks.findIndex((track) => track.id === trackId);
         const track = tracks[i];
 

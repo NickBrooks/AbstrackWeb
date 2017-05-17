@@ -18,6 +18,7 @@ import User from './store/User/User';
 import Account from './store/Account/Account';
 import Tracks from './store/Track/Tracks';
 import EditTrack from './store/Track/EditTrack';
+import DeleteTrack from './store/Track/DeleteTrack';
 import NewTrack from './store/Track/NewTrack';
 
 // Import Router
@@ -40,6 +41,7 @@ const router = (
                 <Route path="/tracks" component={Tracks}></Route>
                 <Route path="/t/:trackId" component={Track}></Route>
                 <Route path="/t/:trackId/edit" component={EditTrack}></Route>
+                <Route path="/t/:trackId/delete" component={DeleteTrack}></Route>
                 <Route path="/new/track" component={NewTrack}></Route>
                 <Route path="/n/:nomId" component={Nom}></Route>
                 <Route path="/tag/:tags" component={NomViewTag}></Route>
