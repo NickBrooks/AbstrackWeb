@@ -3,47 +3,12 @@
         margin-bottom: 25px;
 
         .nom-node {
-
-            &:hover {
-
-                .quick-info {
-                    padding-right: 90px;
-                }
-
-                .toolbar {
-                    display: block;
-                }
-            }
-
             .comment-count {
                 background: $nom-blue-light;
                 color: $white;
                 padding: 0px 3px;
                 border-radius: 4px;
                 font-size: 0.8em;
-            }
-
-            .toolbar {
-                display: none;
-                position: absolute;
-                top: 8px;
-                right: 13px;
-
-                .btn-secondary {
-                    color: #999;
-                    background-color: transparent;
-                    border-color: transparent;
-
-                    .fa {
-                        font-size: 1.1em;
-                    }
-                }
-
-                .btn-secondary:hover {
-                    color: #373a3c;
-                    background-color: transparent;
-                    border-color: transparent;
-                }
             }
 
             .media-preview {

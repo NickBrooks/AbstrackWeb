@@ -56,7 +56,7 @@ class NomNodeToolbar extends React.Component {
             isPinned = true;
 
         return (
-            <div className="btn-group toolbar" role="group">
+            <div className="btn-group toolbar node-toolbar" role="group">
                 {isPinned ? this.renderPinnedButton() : this.renderUnpinnedButton()}
                 {isInbox ? this.renderInboxedButton() : this.renderArchivedButton()}
                 <object><button type="button" aria-label="More options" className="btn btn-sm btn-secondary"><FontAwesome name="caret-down" /></button></object>

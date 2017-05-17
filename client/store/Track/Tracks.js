@@ -2,6 +2,7 @@ import React from "react";
 import FontAwesome from "react-fontawesome";
 import { Link } from "react-router";
 import EmptyContent from '../../components/EmptyContent/EmptyContent';
+import TrackNodeToolbar from './components/TrackNodeToolbar';
 
 class Tracks extends React.Component {
     constructor(props) {
@@ -23,6 +24,7 @@ class Tracks extends React.Component {
             <li>
                 <div className="quick-info text-truncate">
                     <span className="fa-stack nom-green-light"><FontAwesome name="circle" stack="2x" /><FontAwesome name="list-ul" inverse stack="1x" /></span> <span className="title">{track.name}</span> <span className="body">{track.description}</span>
+                    <TrackNodeToolbar trackId={track.id} />
                 </div>
             </li>
         )

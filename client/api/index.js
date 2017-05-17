@@ -93,3 +93,7 @@ export function apiGetTracks() {
 export function apiAddTrack(track) {
     return Axios.post("tracks", track, getAuthHeader());
 }
+
+export function apiUpdateTrack(trackId, track) {
+    return Axios.put("tracks/" + trackId, track, getAuthHeader());
+}
