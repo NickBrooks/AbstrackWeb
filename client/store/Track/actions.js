@@ -1,4 +1,5 @@
 import { apiGetTracks, apiAddTrack } from '../../api';
+import { push } from 'react-router-redux';
 
 function setTracks(data) {
     return {
@@ -35,12 +36,13 @@ export function handleGetTracks() {
 
 export function handleAddTrack(track) {
     return (dispatch) => {
-        dispatch(addTrackUpdateStatus(true));
+        dispatch(addTrackUpdateStatus("updating"));
         const request = apiAddTrack(track);
 
         request.then(response => {
             dispatch(addTrack(response.data));
             dispatch(addTrackUpdateStatus(false));
+            dispatch(push('/t/' + response.data.id));
         }).catch(error => {
             dispatch(addTrackUpdateStatus(false));
             //TODO: handle error

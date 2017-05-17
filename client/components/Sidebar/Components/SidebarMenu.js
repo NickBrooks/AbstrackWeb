@@ -20,7 +20,7 @@ class SidebarMenu extends React.Component {
         }
 
         return (
-            <ul className="nav nav-sidebar">
+            <ul className="nav nav-sidebar text-truncate">
                 {header ? this.renderHeader(header, headerTo) : undefined}
                 {links.map(
                 (link) => (<li key={link.link}><Link to={link.link}>{link.title}</Link></li>))}

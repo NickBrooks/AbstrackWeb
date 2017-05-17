@@ -53,7 +53,7 @@ class Tracks extends React.Component {
             <div className="track-list">
                 <h4><Link to="/tracks"><span className="fa-stack nom-green-light"><FontAwesome name="circle" stack="2x" /><FontAwesome name="list-ul" inverse stack="1x" /></span></Link> Tracks ({tracks.length}) <Link to="/new/track"><FontAwesome name="plus" className="nom-green-light" /></Link></h4>
                 <hr />
-                {tracks == null || tracks.length == 3 ? <EmptyContent emptyContent={emptyContent} /> : this.renderTracks()}
+                {tracks == null || tracks.length == 0 ? <EmptyContent emptyContent={emptyContent} /> : this.renderTracks()}
             </div>
         )
     }

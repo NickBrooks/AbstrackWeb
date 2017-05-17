@@ -77,12 +77,12 @@ class NewTrack extends React.Component {
                     <form ref="addTrack" autoComplete="off" onSubmit={this.handleSubmitAddTrack}>
                         <div className="form-group">
                             <label htmlFor="nameInput"><FontAwesome name="list-ul" /> Track name</label>
-                            <input type="text" ref="name" className="form-control" placeholder="Enter a track name" maxLength={maxLength.name} onChange={this.handleNameChange} />
+                            <input type="text" ref="name" className="form-control" placeholder="Enter a track name" disabled={updateStatus ? true : false} maxLength={maxLength.name} onChange={this.handleNameChange} />
                             {nameCount ? (<small id="nameHelp" className="form-text text-muted"><strong>{nameCount}</strong></small>) : null}
                         </div>
                         <div className="form-group">
                             <label htmlFor="description"><FontAwesome name="pencil" /> Description</label>
-                            <input type="text" ref="description" className="form-control" placeholder="Enter a description" maxLength={maxLength.description} onChange={this.handleDescriptionChange} />
+                            <input type="text" ref="description" className="form-control" placeholder="Enter a description" disabled={updateStatus ? true : false} maxLength={maxLength.description} onChange={this.handleDescriptionChange} />
                             {descriptionCount ? (<small id="descriptionHelp" className="form-text text-muted"><strong>{descriptionCount}</strong></small>) : null}
                         </div>
                         <hr />

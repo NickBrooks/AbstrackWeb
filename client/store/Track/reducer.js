@@ -3,7 +3,7 @@ function tracks(state = [], action) {
         case 'SET_TRACKS':
             return action.data;
         case 'ADD_TRACK':
-            return state.push(action.track);
+            return [...state, action.track];
     }
     return state;
 }

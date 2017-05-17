@@ -52,12 +52,12 @@ class Sidebar extends React.Component {
         return (
             <div className="sidebar menu">
                 {this.renderUserBadge()}
-                <ul className="nav nav-sidebar">
+                <ul className="nav nav-sidebar text-truncate">
                     <li className="inbox"><Link to="/"><FontAwesome name="envelope-open" /> Inbox</Link></li>
                     <li className="pinned"><Link to="/pinned"><FontAwesome name="thumb-tack" /> Pinned</Link></li>
                 </ul>
                 {this.renderTracksMenu(tracks)}
-                <ul className="nav nav-sidebar">
+                <ul className="nav nav-sidebar text-truncate">
                     <li className="trash"><Link to="/"><FontAwesome name="trash" /> Trash</Link></li>
                     <li className="logout"><a href="#" onClick={this.logout.bind(this)}><FontAwesome name="sign-out" /> Logout</a></li>
                 </ul>

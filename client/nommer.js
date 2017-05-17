@@ -8,7 +8,7 @@ import Style from './styles/App.scss';
 import { App, FullScreen } from './store/App';
 import NomViewInbox from './store/NomView/Inbox';
 import NomViewPinned from './store/NomView/Pinned';
-import NomViewTrack from './store/NomView/Track';
+import Track from './store/Track/Track';
 import NomViewTag from './store/NomView/Tag';
 import Nom from './store/Nom/Nom';
 import LoginView from './store/Login/LoginView';
@@ -37,7 +37,7 @@ const router = (
                 <Route path="/account" component={Account} />
                 <Route path="/pinned" component={NomViewPinned}></Route>
                 <Route path="/tracks" component={Tracks}></Route>
-                <Route path="/t/:trackId" component={NomViewTrack}></Route>
+                <Route path="/t/:trackId" component={Track}></Route>
                 <Route path="/new/track" component={NewTrack}></Route>
                 <Route path="/n/:nomId" component={Nom}></Route>
                 <Route path="/tag/:tags" component={NomViewTag}></Route>
