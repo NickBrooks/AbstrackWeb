@@ -28,7 +28,7 @@ class NomNode extends React.Component {
 
         if (media.length > 0) {
             return (
-                <ul className="list-unstyled media-preview my-1">
+                <ul className="list-unstyled media-preview mt-1">
                     {media.map((image, i) =>
                         <li className="cropped-thumb mr-1" style={{ backgroundImage: "url(" + image + ")" }} key={i}></li>
                     )}
@@ -60,7 +60,7 @@ class NomNode extends React.Component {
                         <NomNodeToolbar {...this.props} />
                     </div>
                     <div className="hashtags">
-                        {nom.hashtags.map((hashtag, i) => <HashtagSpan {...this.props} hashtag={hashtag} disableLink={true} customClass="default" key={i} i={i} />)}
+                        {nom.track ? <span className="tag tracktag"><small><FontAwesome name="list-ul" /></small> {nom.track.name}</span> : undefined}{nom.hashtags.map((hashtag, i) => <HashtagSpan {...this.props} hashtag={hashtag} disableLink={true} customClass="default" key={i} i={i} />)}
                     </div>
                     {this.renderMediaPreviews()}
                 </li>
