@@ -1,5 +1,6 @@
 import React from 'react';
 import FontAwesome from 'react-fontawesome';
+import { browserHistory } from 'react-router';
 
 class NewNomButton extends React.Component {
   constructor(props) {
@@ -7,8 +8,7 @@ class NewNomButton extends React.Component {
   }
 
   openNomEditor() {
-    this.props.toggleNomEditor(true);
-    this.props.toggleNewNomButton(false);
+    browserHistory.push("/new/nom");
   }
 
   render() {

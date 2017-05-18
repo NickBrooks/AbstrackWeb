@@ -1,0 +1,45 @@
+.nom-editor {
+    background: #fff;
+    box-shadow: $box-shadow;
+    border-radius: $radius;
+
+    hr {
+        margin: 0 0;
+    }
+
+    input, textarea {
+        border: none
+    }
+
+    input {
+        font-size: 1.5em;
+        padding: $box-padding;
+    }
+    
+    .editor-body {
+        padding: $box-padding;
+    }
+
+    textarea {
+        padding: 0;
+    }
+
+    .form-control {
+        margin: 0;
+    }
+}
+
+.nom-editor-footer {
+    background: $new-nom-footer;
+    bottom: 0;
+    position: fixed;
+    left: $sidebar-width;
+    right: 0;
+    padding: $box-padding/2 $box-padding;
+
+    .actions {
+        button {
+            margin-left: 10px;
+        }
+    }
+}

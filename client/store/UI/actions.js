@@ -19,3 +19,10 @@ export function setSearchBar(value) {
         value
     }
 }
+
+export function togglePreviewMode(value) {
+    return {
+        type: 'TOGGLE_PREVIEW_MODE',
+        value: value
+    }
+}

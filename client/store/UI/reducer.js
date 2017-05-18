@@ -9,6 +9,10 @@ function ui(state = [], action) {
             var newState = Object.assign({}, state);
             newState.newNomButton.show = action.value;
             return newState;
+        case 'TOGGLE_PREVIEW_MODE':
+            var newState = Object.assign({}, state);
+            newState.nom.editor.previewMode = action.value;
+            return newState;
         case 'SET_SEARCH_BAR':
             var newState = Object.assign({}, state);
             newState.searchBar = action.value;

@@ -31,7 +31,10 @@ const ui = {
     show: true
   },
   nom: {
-    fetchingStatus: false
+    fetchingStatus: false,
+    editor: {
+      previewMode: false
+    }
   },
   nomView: {
     isLoading: false
