@@ -2,13 +2,13 @@ import React from 'react';
 import { render } from 'react-dom';
 
 // Import CSS
-import Style from './styles/nommer.scss';
+import Style from './styles/App.scss';
 
 // Import Components
 import { App, FullScreen } from './store/App';
 import NomViewInbox from './store/NomView/Inbox';
 import NomViewPinned from './store/NomView/Pinned';
-import NomViewTrack from './store/NomView/Track';
+import Track from './store/Track/Track';
 import NomViewTag from './store/NomView/Tag';
 import Nom from './store/Nom/Nom';
 import LoginView from './store/Login/LoginView';
@@ -16,6 +16,10 @@ import RegisterView from './store/Login/RegisterView';
 import ForgotPasswordView from './store/Login/ForgotPasswordView';
 import User from './store/User/User';
 import Account from './store/Account/Account';
+import Tracks from './store/Track/Tracks';
+import EditTrack from './store/Track/EditTrack';
+import DeleteTrack from './store/Track/DeleteTrack';
+import NewTrack from './store/Track/NewTrack';
 
 // Import Router
 import { Router, Route, IndexRoute, browserHistory } from 'react-router';
@@ -34,7 +38,11 @@ const router = (
                 <IndexRoute component={NomViewInbox}></IndexRoute>
                 <Route path="/account" component={Account} />
                 <Route path="/pinned" component={NomViewPinned}></Route>
-                <Route path="/t/:trackId" component={NomViewTrack}></Route>
+                <Route path="/tracks" component={Tracks}></Route>
+                <Route path="/t/:trackId" component={Track}></Route>
+                <Route path="/t/:trackId/edit" component={EditTrack}></Route>
+                <Route path="/t/:trackId/delete" component={DeleteTrack}></Route>
+                <Route path="/new/track" component={NewTrack}></Route>
                 <Route path="/n/:nomId" component={Nom}></Route>
                 <Route path="/tag/:tags" component={NomViewTag}></Route>
                 <Route path="/u/:userId" component={User}></Route>

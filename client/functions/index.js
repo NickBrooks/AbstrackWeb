@@ -30,7 +30,7 @@ export function checkPasswordStrength(password) {
 
 export function extractImagesFromString(string) {
     // https://regex101.com/r/vS2jJ4/8
-    const regex = /\b(https?:\/\/\S+(?:png|jpe?g|gif)\S*)\b/igm;
+    const regex = /\b(https?:\/\/\S+(?:png|jpe?g|gif))\b/igm;
     return string.match(regex);
 }
 

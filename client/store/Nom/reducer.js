@@ -34,11 +34,15 @@ function mergeCurrentStateAndFetchedNoms(state, action) {
 
         if (key >= 0) {
             newState[key].data = nom;
-            newState[key].views.push(action.view);
             newState[key].timeFetched = action.timeFetched;
+            if (action.view != undefined) {
+                newState[key].views.push(action.view);
+            }
         } else {
             var views = [];
-            views.push(action.view);
+            if (action.view != undefined) {
+                views.push(action.view);
+            }
 
             newState.push({
                 id: nom.id,

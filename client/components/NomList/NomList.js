@@ -1,8 +1,9 @@
 import React from 'react';
 import moment from 'moment';
 import TimeNode from './Components/TimeNode';
-import EmptyNoms from './Components/EmptyNoms';
+import EmptyContent from '../EmptyContent/EmptyContent';
 import FontAwesome from 'react-fontawesome';
+import delay from '../../functions';
 
 var now = moment();
 
@@ -55,10 +56,15 @@ class NomList extends React.Component {
   constructor(props) {
     super(props);
     this.refreshNomList = this.refreshNomList.bind(this);
+
+    this.state = {
+      viewName: props.viewName
+    }
   }
 
   loadNoms() {
-    let { loadNomList, query, viewName } = this.props;
+    let { viewName } = this.state
+    let { loadNomList, query } = this.props;
 
     if (query != undefined) {
       loadNomList(viewName, query);
@@ -121,7 +127,7 @@ class NomList extends React.Component {
 
     if (viewNoms.length < 1 && !ui.nomView.isLoading) {
       return (
-        <EmptyNoms emptyNoms={emptyNoms} />
+        <EmptyContent emptyContent={emptyNoms} />
       )
     }
 
@@ -140,8 +146,9 @@ class NomList extends React.Component {
     return undefined;
   }
 
-  componentWillMount() {
-    let { nomViews, viewName } = this.props;
+  checkIfViewNeedsUpdating() {
+    let { viewName } = this.state;
+    let { nomViews } = this.props;
 
     // only load view again if older than 60 seconds
     if (nomViews === undefined ||
@@ -149,6 +156,22 @@ class NomList extends React.Component {
       moment().subtract(60, 'seconds') > moment(nomViews[viewName].timeFetched)) {
       this.loadNoms();
     }
+  }
+
+  componentWillReceiveProps(newProps) {
+    if (this.state.viewName != newProps.viewName) {
+      this.setState({ viewName: newProps.viewName });
+    }
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (this.state.viewName != prevState.viewName) {
+      this.checkIfViewNeedsUpdating();
+    }
+  }
+
+  componentWillMount() {
+    this.checkIfViewNeedsUpdating();
   }
 
   render() {

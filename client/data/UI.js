@@ -30,6 +30,9 @@ const ui = {
   newNomButton: {
     show: true
   },
+  nom: {
+    fetchingStatus: false
+  },
   nomView: {
     isLoading: false
   },
@@ -40,6 +43,10 @@ const ui = {
   searchBar: {
     defaultValue: "Search noms",
     class: "searchBar-inbox",
+  },
+  tracks: {
+    updateStatus: false,
+    deleteTrackWarning: "Deleting this track will remove all track assignments from any Noms assigned to this track."
   }
 }
 

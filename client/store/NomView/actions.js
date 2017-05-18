@@ -1,4 +1,5 @@
 import { apiGetInbox, apiGetPinned, apiSearchNoms } from '../../api';
+import { updateNomStore } from '../Nom/actions';
 import moment from 'moment';
 
 export function nomViewIsLoading(value) {
@@ -11,15 +12,6 @@ export function nomViewIsLoading(value) {
 export function updateNomViewList(view, timeFetched) {
     return {
         type: 'UPDATE_NOM_VIEW_LIST',
-        view,
-        timeFetched: moment.utc().format()
-    }
-}
-
-export function updateNomStore(data, view) {
-    return {
-        type: 'UPDATE_NOM_STORE',
-        data,
         view,
         timeFetched: moment.utc().format()
     }

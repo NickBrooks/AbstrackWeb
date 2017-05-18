@@ -2,7 +2,7 @@ import React from 'react';
 import FontAwesome from 'react-fontawesome';
 import NomList from '../../components/NomList/NomList';
 
-class NomViewTrack extends React.Component {
+class Track extends React.Component {
   constructor(props) {
     super(props);
   }
@@ -49,4 +49,4 @@ class NomViewTrack extends React.Component {
   }
 }
 
-export default NomViewTrack;
+export default Track;

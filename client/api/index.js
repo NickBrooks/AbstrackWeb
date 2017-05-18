@@ -64,6 +64,10 @@ export function apiUpdatePassword(currentPassword, newPassword) {
 
 // noms
 
+export function apiGetNom(nomId) {
+    return Axios.get("noms/" + nomId, getAuthHeader());
+}
+
 export function apiGetInbox() {
     return Axios.get("inbox", getAuthHeader());
 }
@@ -80,7 +84,7 @@ export function apiPinNom(nomId, value) {
     if (value) {
         return Axios.post("pinned/" + nomId, null, getAuthHeader());
     } else {
-        return Axios.delete("pinned/" + nomId, null, getAuthHeader());
+        return Axios.delete("pinned/" + nomId, getAuthHeader());
     }
 }
 
@@ -88,4 +92,16 @@ export function apiPinNom(nomId, value) {
 
 export function apiGetTracks() {
     return Axios.get("tracks", getAuthHeader());
+}
+
+export function apiAddTrack(track) {
+    return Axios.post("tracks", track, getAuthHeader());
+}
+
+export function apiUpdateTrack(trackId, track) {
+    return Axios.put("tracks/" + trackId, track, getAuthHeader());
+}
+
+export function apiDeleteTrack(trackId) {
+    return Axios.delete("tracks/" + trackId, getAuthHeader());
 }
