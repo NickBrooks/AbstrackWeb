@@ -1,6 +1,7 @@
 import React from "react";
 import FontAwesome from "react-fontawesome";
 import { Link } from "react-router";
+import { setDocumentTitle } from '../../functions';
 import SaveStatusLabel from '../../components/SaveStatusLabel';
 
 class DeleteTrack extends React.Component {
@@ -35,6 +36,8 @@ class DeleteTrack extends React.Component {
             defaultValue: "Delete Track",
             class: "searchBar-track"
         });
+
+        setDocumentTitle("Delete Track")
     }
 
     componentWillUnmount() {
@@ -42,6 +45,8 @@ class DeleteTrack extends React.Component {
             defaultValue: false,
             class: false
         });
+
+        setDocumentTitle();
     }
 
     render() {

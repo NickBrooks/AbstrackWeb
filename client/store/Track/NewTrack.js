@@ -1,6 +1,7 @@
 import React from "react";
 import FontAwesome from "react-fontawesome";
 import { Link } from "react-router";
+import { setDocumentTitle } from '../../functions';
 import SaveStatusLabel from '../../components/SaveStatusLabel';
 
 class NewTrack extends React.Component {
@@ -56,6 +57,8 @@ class NewTrack extends React.Component {
             defaultValue: "New Track",
             class: "searchBar-track"
         });
+
+        setDocumentTitle("New Track");
     }
 
     componentWillUnmount() {
@@ -63,6 +66,8 @@ class NewTrack extends React.Component {
             defaultValue: false,
             class: false
         });
+
+        setDocumentTitle();
     }
 
     render() {

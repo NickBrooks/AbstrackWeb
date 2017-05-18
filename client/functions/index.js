@@ -9,6 +9,10 @@ export function guid() {
         s4() + '-' + s4() + s4() + s4();
 }
 
+export function setDocumentTitle(value) {
+    document.title = (value === undefined ? "Nommer" : value + " // Nommer");
+}
+
 export function conformHashtags(hashtags) {
     hashtags = hashtags.replace(/\s/g, '');
     hashtags = hashtags.replace(/[^\w,]|_/g, '');

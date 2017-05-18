@@ -1,4 +1,5 @@
 import React from 'react';
+import { setDocumentTitle } from '../../functions';
 import NomList from '../../components/NomList/NomList';
 import { conformHashtags } from '../../functions';
 
@@ -33,6 +34,12 @@ class NomViewTag extends React.Component {
             defaultValue: tagString,
             class: false
         });
+
+        setDocumentTitle(tagString);
+    }
+
+    componentWillUnmount() {
+        setDocumentTitle();
     }
 
     render() {

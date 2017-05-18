@@ -1,4 +1,5 @@
 import React from 'react';
+import { setDocumentTitle } from '../../functions';
 import NomList from '../../components/NomList/NomList';
 import FontAwesome from 'react-fontawesome';
 
@@ -12,6 +13,12 @@ class NomViewInbox extends React.Component {
       defaultValue: false,
       class: false
     });
+
+    setDocumentTitle("Inbox");
+  }
+
+  componentWillUnmount() {
+      setDocumentTitle();
   }
 
   render() {

@@ -1,5 +1,6 @@
 import React from 'react';
 import FontAwesome from 'react-fontawesome';
+import { setDocumentTitle } from '../../functions';
 import Avatar from '../../components/Avatar/Avatar';
 import ProfileDetailsForm from './views/ProfileDetailsForm';
 import UpdatePasswordForm from './views/UpdatePasswordForm';
@@ -14,10 +15,12 @@ class Account extends React.Component {
 
     componentWillUnmount() {
         this.props.toggleNewNomButton(true);
+        setDocumentTitle();
     }
 
     render() {
         let { account } = this.props;
+        setDocumentTitle(account.displayName);
 
         return (
             <div className="account" >

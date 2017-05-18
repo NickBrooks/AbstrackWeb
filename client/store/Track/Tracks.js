@@ -1,6 +1,7 @@
 import React from "react";
 import FontAwesome from "react-fontawesome";
 import { Link } from "react-router";
+import { setDocumentTitle } from '../../functions';
 import EmptyContent from '../../components/EmptyContent/EmptyContent';
 import TrackNodeToolbar from './components/TrackNodeToolbar';
 
@@ -35,6 +36,8 @@ class Tracks extends React.Component {
             defaultValue: "Tracks",
             class: "searchBar-track"
         });
+
+        setDocumentTitle("Tracks");
     }
 
     componentWillUnmount() {
@@ -42,6 +45,8 @@ class Tracks extends React.Component {
             defaultValue: false,
             class: false
         });
+
+        setDocumentTitle();
     }
 
     render() {

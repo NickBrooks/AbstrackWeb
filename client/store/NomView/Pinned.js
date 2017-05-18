@@ -1,4 +1,5 @@
 import React from 'react';
+import { setDocumentTitle } from '../../functions';
 import NomList from '../../components/NomList/NomList';
 import FontAwesome from 'react-fontawesome';
 
@@ -12,6 +13,8 @@ class NomViewPinned extends React.Component {
       defaultValue: "Pinned",
       class: "searchBar-pinned"
     });
+
+    setDocumentTitle("Pinned");
   }
 
   componentWillUnmount() {
@@ -19,6 +22,8 @@ class NomViewPinned extends React.Component {
       defaultValue: false,
       class: false
     });
+
+    setDocumentTitle();
   }
 
   render() {

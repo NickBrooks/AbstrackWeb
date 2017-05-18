@@ -1,5 +1,6 @@
 import React from 'react';
 import FontAwesome from 'react-fontawesome';
+import { setDocumentTitle } from '../../functions';
 import NomList from '../../components/NomList/NomList';
 
 class Track extends React.Component {
@@ -12,6 +13,7 @@ class Track extends React.Component {
       defaultValue: "Track",
       class: "searchBar-track"
     });
+
   }
 
   componentWillUnmount() {
@@ -19,6 +21,8 @@ class Track extends React.Component {
       defaultValue: false,
       class: false
     });
+
+    setDocumentTitle();
   }
 
   render() {
@@ -27,6 +31,7 @@ class Track extends React.Component {
     const i = tracks.findIndex((track) => track.id === trackId);
     const track = tracks[i];
     const view = 't:"' + trackId + '"';
+    setDocumentTitle(track.name);
 
     var query = {
       trackIds: [trackId]

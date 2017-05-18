@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router';
 import FontAwesome from 'react-fontawesome';
+import { setDocumentTitle } from '../../functions';
 import moment from 'moment';
 import NomBody from './Components/NomBody';
 import NomHeader from './Components/NomHeader';
@@ -29,6 +30,10 @@ class Nom extends React.Component {
         }
     }
 
+    componentWillUnmount() {
+        setDocumentTitle();
+    }
+
     renderLoading() {
         return (
             <h3>Loading...</h3>
@@ -46,6 +51,7 @@ class Nom extends React.Component {
         }
 
         const nom = noms[i].data;
+        setDocumentTitle(nom.title);
         const accountLink = "/u/" + nom.createdBy.id;
 
         return (
