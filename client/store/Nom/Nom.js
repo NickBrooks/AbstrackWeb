@@ -1,10 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router';
 import FontAwesome from 'react-fontawesome';
+import moment from 'moment';
 import NomBody from './Components/NomBody';
 import NomHeader from './Components/NomHeader';
 import Avatar from '../../components/Avatar/Avatar';
 import Comments from '../Comment/Comments';
+import Nom404 from './Components/Nom404';
 
 class Nom extends React.Component {
     constructor(props) {
@@ -13,7 +15,18 @@ class Nom extends React.Component {
 
     componentWillMount() {
         let { nomId } = this.props.params;
-        this.props.handleGetNom(nomId);
+        const { noms } = this.props;
+
+        if (noms.length == 0) {
+            this.props.handleGetNom(nomId);
+        } else {
+            const i = noms.findIndex((nom) => nom.id === nomId);
+            const nom = noms[i].data;
+
+            if (nom === null || moment().subtract(60, 'seconds') > moment(nom.timeFetched)) {
+                this.props.handleGetNom(nomId);
+            }
+        }
     }
 
     renderLoading() {
@@ -26,6 +39,12 @@ class Nom extends React.Component {
         const { nomId } = this.props.params;
         const { noms } = this.props;
         const i = noms.findIndex((nom) => nom.id === nomId);
+        if (i === -1) {
+            return (
+                <Nom404 />
+            )
+        }
+
         const nom = noms[i].data;
         const accountLink = "/u/" + nom.createdBy.id;
 
