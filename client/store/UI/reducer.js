@@ -33,6 +33,10 @@ function ui(state = [], action) {
             var newState = Object.assign({}, state);
             newState.nomView.isLoading = action.value;
             return newState;
+        case 'UPDATE_NOM_FETCHING_STATUS':
+            var newState = Object.assign({}, state);
+            newState.nom.fetchingStatus = action.value;
+            return newState;
         case 'REGISTER_ERROR_MESSAGE':
             var newState = Object.assign({}, state);
             newState.register.errorMsg = action.message;

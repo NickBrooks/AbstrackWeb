@@ -11,12 +11,24 @@ class Nom extends React.Component {
         super(props);
     }
 
-    render() {
+    componentWillMount() {
+        let { nomId } = this.props.params;
+        this.props.handleGetNom(nomId);
+    }
+
+    renderLoading() {
+        return (
+            <h3>Loading...</h3>
+        )
+    }
+
+    renderLoaded() {
         const { nomId } = this.props.params;
         const { noms } = this.props;
         const i = noms.findIndex((nom) => nom.id === nomId);
         const nom = noms[i].data;
         const accountLink = "/u/" + nom.createdBy.id;
+
         return (
             <div className="row core-body">
                 <div className="col-sm-12">
@@ -29,6 +41,14 @@ class Nom extends React.Component {
                     <Comments nomId={nom.id} {...this.props} />
                 </div>
             </div>
+        )
+    }
+
+    render() {
+        let { ui } = this.props;
+
+        return (
+            (ui.nom.fetchingStatus ? this.renderLoading() : this.renderLoaded())
         )
     }
 }

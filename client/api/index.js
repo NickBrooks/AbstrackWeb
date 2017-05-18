@@ -64,6 +64,10 @@ export function apiUpdatePassword(currentPassword, newPassword) {
 
 // noms
 
+export function apiGetNom(nomId) {
+    return Axios.get("noms/" + nomId, getAuthHeader());
+}
+
 export function apiGetInbox() {
     return Axios.get("inbox", getAuthHeader());
 }

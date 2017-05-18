@@ -1,4 +1,5 @@
-import { apiPinNom } from '../../api';
+import { apiPinNom, apiGetNom } from '../../api';
+import moment from 'moment';
 
 //add a new nom
 export function addNom(nom) {
@@ -8,7 +9,17 @@ export function addNom(nom) {
     }
 }
 
-//pin or unpin a nom
+// update the list of noms
+export function updateNomStore(data, view) {
+    return {
+        type: 'UPDATE_NOM_STORE',
+        data,
+        view,
+        timeFetched: moment.utc().format()
+    }
+}
+
+// pin or unpin a nom
 export function pinNom(nomId, value) {
     return {
         type: 'PIN_NOM',
@@ -17,7 +28,7 @@ export function pinNom(nomId, value) {
     }
 }
 
-//add new hashtags to nom
+// add new hashtags to nom
 export function addHashtagToNom(hashtags, nomId) {
     return {
         type: 'ADD_HASHTAG_TO_NOM',
@@ -26,13 +37,36 @@ export function addHashtagToNom(hashtags, nomId) {
     }
 }
 
-//remove hashtags from nom
+// remove hashtags from nom
 export function removeHashtagsFromNom(hashtags, nomId) {
     return {
         type: 'REMOVE_HASHTAGS_FROM_NOM',
         hashtags,
         nomId
     }
+}
+
+// update nom fetching status
+function updateNomFetchingStatus(value) {
+    return {
+        type: 'UPDATE_NOM_FETCHING_STATUS',
+        value
+    }
+}
+
+export function handleGetNom(nomId) {
+    return (dispatch) => {
+        dispatch(updateNomFetchingStatus(true));
+        const request = apiGetNom(nomId);
+
+        request.then(response => {
+            dispatch(updateNomStore([response.data]));
+            dispatch(updateNomFetchingStatus(false));
+        }).catch(error => {
+            dispatch(updateNomFetchingStatus(false));
+            console.log(error);
+        });
+    };
 }
 
 export function handlePinNom(nomId, value) {

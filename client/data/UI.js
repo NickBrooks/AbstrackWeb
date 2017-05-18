@@ -30,6 +30,9 @@ const ui = {
   newNomButton: {
     show: true
   },
+  nom: {
+    fetchingStatus: false
+  },
   nomView: {
     isLoading: false
   },
