@@ -10,22 +10,37 @@
     input, textarea {
         border: none
     }
-
-    input {
-        font-size: 1.5em;
+    
+    .form-control, .markdown {
+        margin: 0;
         padding: $box-padding;
     }
-    
+
+    .editor-title {
+        font-size: 1.5em;
+    }
+
     .editor-body {
-        padding: $box-padding;
+        textarea {
+            resize: none;
+            height: calc(100vh - 260px);
+        }
+    }
+
+    .editor-hashtags {
+        padding: $box-padding/2 $box-padding;
+        font-size: 0.9em;
+        font-weight: bold;
+        color: $nom-header-blue;
     }
 
     textarea {
         padding: 0;
     }
 
-    .form-control {
-        margin: 0;
+    .markdown {
+        height: calc(100vh - 220px);
+        overflow-y: scroll;
     }
 }
 

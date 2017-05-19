@@ -41,9 +41,13 @@ class NewNom extends React.Component {
                 <div className="nom-editor">
                     <input type="text" className="form-control editor-title" placeholder="Title" />
                     <hr />
-                    <div className="editor-body">
-                        {ui.nom.editor.previewMode ? <RenderMarkdown markdown={body} /> : <textarea ref="body" className="form-control" defaultValue={body} placeholder="Say something" onChange={this.handleBodyChange} />}
-                    </div>
+                    {ui.nom.editor.previewMode ?
+                        <RenderMarkdown markdown={body} className="preview-mode" /> :
+                        <div className="editor-body">
+                            <textarea ref="body" className="form-control" defaultValue={body} placeholder="Say something..." onChange={this.handleBodyChange} />
+                            <input type="text" className="form-control editor-hashtags" placeholder="Hashtags" />
+                        </div>
+                    }
                 </div>
                 <NewNomFooter {...this.props} />
             </div>
