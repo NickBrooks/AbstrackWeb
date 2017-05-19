@@ -22,6 +22,10 @@ class AppView extends React.Component {
         }
     }
 
+    newNomShortcut() {
+        browserHistory.push('/new/nom');
+    }
+
     componentWillMount() {
         this.props.handleGetAccount();
         this.props.handleGetTracks();
@@ -29,6 +33,15 @@ class AppView extends React.Component {
 
     componentWillReceiveProps() {
         this.checkValidToken();
+    }
+
+    componentDidMount() {
+        let { newNomShortcut } = this;
+
+        Mousetrap.bind(['ctrl+enter'], function () {
+            newNomShortcut();
+            return false;
+        });
     }
 
     renderApp() {
