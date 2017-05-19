@@ -11,11 +11,12 @@ ul.node-list {
         margin-bottom: 5px;
         background: white;
         border: 1px solid $nom-gray;
-        border-top: 2px solid $nom-faded-blue;
+        border-top: $border-top;
+        box-shadow: $box-shadow;
         color: $font-color;
 
         &:hover {
-            background: $nom-gray;
+            background: $off-white;
 
             .quick-info {
                 padding-right: 90px;

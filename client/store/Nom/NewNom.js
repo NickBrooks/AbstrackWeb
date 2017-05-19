@@ -43,6 +43,7 @@ class NewNom extends React.Component {
                         <RenderMarkdown markdown={body} className="preview-mode" /> :
                         <div className="editor-body">
                             <textarea ref="body" className="form-control mousetrap" defaultValue={body} placeholder="Say something..." onChange={this.handleKeyChange.bind(null, "body")} />
+                            <hr />
                             <input type="text" className="form-control editor-hashtags mousetrap" defaultValue={hashtags} placeholder="Hashtags" onChange={this.handleKeyChange.bind(null, "hashtags")} />
                         </div>
                     }
