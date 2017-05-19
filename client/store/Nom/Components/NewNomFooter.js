@@ -1,23 +1,44 @@
 import React from 'react';
 import FontAwesome from 'react-fontawesome';
+import Mousetrap from 'mousetrap';
 
 class NewNomFooter extends React.Component {
     constructor(props) {
         super(props);
-        this.previewModeOn = this.previewModeOn.bind(this);
-        this.previewModeOff = this.previewModeOff.bind(this);
+        this.togglePreview = this.togglePreview.bind(this);
+        this.handlePreviewClick = this.handlePreviewClick.bind(this);
     }
 
-    previewModeOn(e) {
+    handlePreviewClick(e) {
         e.preventDefault();
-
-        this.props.togglePreviewMode(true);
+        this.togglePreview();
     }
 
-    previewModeOff(e) {
-        e.preventDefault();
+    togglePreview() {
+        let { ui, togglePreviewMode } = this.props;
 
-        this.props.togglePreviewMode(false);
+        if (ui.nom.editor.previewMode == false) {
+            togglePreviewMode(true);
+        } else {
+            togglePreviewMode(false);
+        }
+    }
+
+    componentDidMount() {
+        let { togglePreview } = this;
+
+        Mousetrap.bind(['ctrl+8'], function () {
+            togglePreview();
+            return false;
+        });
+    }
+    componentWillUnmount() {
+        let { togglePreview } = this;
+
+        Mousetrap.unbind(['ctrl+8'], function () {
+            togglePreview();
+            return false;
+        });
     }
 
     render() {
@@ -27,8 +48,8 @@ class NewNomFooter extends React.Component {
             <div className="nom-editor-footer">
                 <div className="actions pull-right">
                     {ui.nom.editor.previewMode ?
-                        <button type="button" className="btn btn-sm btn-info" onClick={this.previewModeOff}><FontAwesome name="pencil" /> Edit</button> :
-                        <button type="button" className="btn btn-sm btn-info" onClick={this.previewModeOn}><FontAwesome name="eye" /> Preview</button>
+                        <button type="button" className="btn btn-sm btn-info" onClick={this.handlePreviewClick}><FontAwesome name="pencil" /> Edit</button> :
+                        <button type="button" className="btn btn-sm btn-info" onClick={this.handlePreviewClick}><FontAwesome name="eye" /> Preview</button>
                     }
                     <button type="button" className="btn btn-sm btn-success"><FontAwesome name="check" /> Publish</button>
                 </div>

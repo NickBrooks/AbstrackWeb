@@ -29,7 +29,6 @@ class NewNom extends React.Component {
         this.setState({
             body: value
         });
-        console.log(this.state);
     }
 
     render() {
@@ -39,13 +38,13 @@ class NewNom extends React.Component {
         return (
             <div>
                 <div className="nom-editor">
-                    <input type="text" className="form-control editor-title" placeholder="Title" />
+                    <input type="text" className="form-control editor-title mousetrap" placeholder="Title" />
                     <hr />
                     {ui.nom.editor.previewMode ?
                         <RenderMarkdown markdown={body} className="preview-mode" /> :
                         <div className="editor-body">
-                            <textarea ref="body" className="form-control" defaultValue={body} placeholder="Say something..." onChange={this.handleBodyChange} />
-                            <input type="text" className="form-control editor-hashtags" placeholder="Hashtags" />
+                            <textarea ref="body" className="form-control mousetrap" defaultValue={body} placeholder="Say something..." onChange={this.handleBodyChange} />
+                            <input type="text" className="form-control editor-hashtags mousetrap" placeholder="Hashtags" />
                         </div>
                     }
                 </div>
