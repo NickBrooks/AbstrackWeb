@@ -7,8 +7,7 @@ class RegisterView extends React.Component {
     constructor(props) {
         super(props);
         this.handleRegisterSubmit = this.handleRegisterSubmit.bind(this);
-        this.handlePasswordChange = this.handlePasswordChange.bind(this);
-        this.handleConfirmPasswordChange = this.handleConfirmPasswordChange.bind(this);
+        this.handleKeyChange = this.handleKeyChange.bind(this);
 
         this.state = {
             password: "",
@@ -40,12 +39,10 @@ class RegisterView extends React.Component {
         }
     }
 
-    handlePasswordChange(e) {
-        this.setState({ password: e.target.value });
-    }
-
-    handleConfirmPasswordChange(e) {
-        this.setState({ confirmPassword: e.target.value });
+    handleKeyChange(key, e) {
+        var newState = this.state;
+        newState[key] = e.target.value;
+        this.setState(newState);
     }
 
     isRegisterButtonDisabled() {
@@ -117,12 +114,12 @@ class RegisterView extends React.Component {
                                     </div>
                                     <div className="form-group">
                                         <label htmlFor="password">New Password {this.renderPasswordValidation()}</label>
-                                        <input type="password" ref="password" className="form-control" required autoComplete="new-password" id="password" onChange={this.handlePasswordChange} />
+                                        <input type="password" ref="password" className="form-control" required autoComplete="new-password" id="password" onChange={this.handleKeyChange.bind(null, "password")} />
                                         <small id="passwordHelp" className="form-text text-muted">8 or more characters, one uppercase, one digit, one special character (@, $, %, # etc)</small>
                                     </div>
                                     <div className="form-group">
                                         <label htmlFor="confirmPassword">Confirm new password {this.renderConfirmPasswordValidation()}</label>
-                                        <input type="password" ref="confirmPassword" className="form-control" required autoComplete="new-password" id="confirmPassword" onChange={this.handleConfirmPasswordChange} />
+                                        <input type="password" ref="confirmPassword" className="form-control" required autoComplete="new-password" id="confirmPassword" onChange={this.handleKeyChange.bind(null, "confirmPassword")} />
                                     </div>
                                     <hr />
                                     <button type="submit" className="btn btn-success" disabled={this.isRegisterButtonDisabled() ? "disabled" : false}>Register <FontAwesome name="check" /></button>

@@ -7,7 +7,7 @@ import SaveStatusLabel from '../../components/SaveStatusLabel';
 class DeleteTrack extends React.Component {
     constructor(props) {
         super(props);
-        this.handleTrackNameVerification = this.handleTrackNameVerification.bind(this);
+        this.handleKeyChange = this.handleKeyChange.bind(this);
         this.handleSubmitDeleteTrack = this.handleSubmitDeleteTrack.bind(this);
 
         let { trackId } = this.props.params;
@@ -21,8 +21,10 @@ class DeleteTrack extends React.Component {
         }
     }
 
-    handleTrackNameVerification(e) {
-        this.setState({ inputName: e.target.value });
+    handleKeyChange(key, e) {
+        var newState = this.state;
+        newState[key] = e.target.value;
+        this.setState(newState);
     }
 
     handleSubmitDeleteTrack(e) {
@@ -64,7 +66,7 @@ class DeleteTrack extends React.Component {
                     <form ref="deleteTrack" autoComplete="off" onSubmit={this.handleSubmitDeleteTrack}>
                         <p><FontAwesome name="exclamation-triangle" /> {ui.tracks.deleteTrackWarning}</p>
                         <div className="form-group">
-                            <input type="text" ref="name" className="form-control" placeholder="Enter track name to delete" onChange={this.handleTrackNameVerification} />
+                            <input type="text" ref="name" className="form-control" placeholder="Enter track name to delete" onChange={this.handleKeyChange.bind(null, "inputName")} />
                         </div>
                         <hr />
                         <div className="form-group">

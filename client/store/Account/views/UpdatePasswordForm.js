@@ -7,9 +7,7 @@ class UpdatePasswordForm extends React.Component {
     constructor(props) {
         super(props);
         this.handleUpdatePasswordClick = this.handleUpdatePasswordClick.bind(this);
-        this.handleCurrentPasswordChange = this.handleCurrentPasswordChange.bind(this);
-        this.handleNewPasswordChange = this.handleNewPasswordChange.bind(this);
-        this.handleConfirmPasswordChange = this.handleConfirmPasswordChange.bind(this);
+        this.handleKeyChange = this.handleKeyChange.bind(this);
 
         this.state = {
             currentPassword: "",
@@ -66,16 +64,10 @@ class UpdatePasswordForm extends React.Component {
         }
     }
 
-    handleCurrentPasswordChange(event) {
-        this.setState({ currentPassword: event.target.value });
-    }
-
-    handleNewPasswordChange(event) {
-        this.setState({ newPassword: event.target.value });
-    }
-
-    handleConfirmPasswordChange(event) {
-        this.setState({ confirmPassword: event.target.value });
+    handleKeyChange(key, e) {
+        var newState = this.state;
+        newState[key] = e.target.value;
+        this.setState(newState);
     }
 
     handleUpdatePasswordClick(e) {
@@ -108,18 +100,18 @@ class UpdatePasswordForm extends React.Component {
                     <hr />
                     <div className="form-group">
                         <label htmlFor="currentPassword">Current password {this.renderCurrentPasswordValidation()}</label>
-                        <input type="password" ref="currentPassword" className="form-control" required id="currentPassword" onChange={this.handleCurrentPasswordChange} />
+                        <input type="password" ref="currentPassword" className="form-control" required id="currentPassword" onChange={this.handleKeyChange.bind(null, "currentPassword")} />
                     </div>
 
                     <div className="form-group">
                         <label htmlFor="newPassword">New Password {this.renderNewPasswordValidation()}</label>
-                        <input type="password" ref="newPassword" className="form-control" required autoComplete="new-password" id="newPassword" onChange={this.handleNewPasswordChange} />
+                        <input type="password" ref="newPassword" className="form-control" required autoComplete="new-password" id="newPassword" onChange={this.handleKeyChange.bind(null, "newPassword")} />
                         <small id="passwordHelp" className="form-text text-muted">8 or more characters, one uppercase, one digit, one special character (@, $, %, # etc)</small>
                     </div>
 
                     <div className="form-group">
                         <label htmlFor="confirmPassword">Confirm new password {this.renderConfirmPasswordValidation()}</label>
-                        <input type="password" ref="confirmPassword" className="form-control" required autoComplete="new-password" id="confirmPassword" onChange={this.handleConfirmPasswordChange} />
+                        <input type="password" ref="confirmPassword" className="form-control" required autoComplete="new-password" id="confirmPassword" onChange={this.handleKeyChange.bind(null, "confirmPassword")} />
                     </div>
 
                     {errorMsg ? (<span className="error"><FontAwesome name="exclamation-triangle" /> {errorMsg}</span>) : undefined}

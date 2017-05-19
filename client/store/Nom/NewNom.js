@@ -6,10 +6,11 @@ import NewNomFooter from './Components/NewNomFooter';
 class NewNom extends React.Component {
     constructor(props) {
         super(props);
-        this.handleBodyChange = this.handleBodyChange.bind(this);
+        this.handleKeyChange = this.handleKeyChange.bind(this);
 
         this.state = {
-            body: ""
+            body: "",
+            hashtags: ""
         }
     }
 
@@ -23,17 +24,15 @@ class NewNom extends React.Component {
         setDocumentTitle();
     }
 
-    handleBodyChange(event) {
-        let { value } = event.target;
-
-        this.setState({
-            body: value
-        });
+    handleKeyChange(key, e) {
+        var newState = this.state;
+        newState[key] = e.target.value;
+        this.setState(newState);
     }
 
     render() {
         let { ui } = this.props;
-        let { body } = this.state;
+        let { body, hashtags } = this.state;
 
         return (
             <div>
@@ -43,8 +42,8 @@ class NewNom extends React.Component {
                     {ui.nom.editor.previewMode ?
                         <RenderMarkdown markdown={body} className="preview-mode" /> :
                         <div className="editor-body">
-                            <textarea ref="body" className="form-control mousetrap" defaultValue={body} placeholder="Say something..." onChange={this.handleBodyChange} />
-                            <input type="text" className="form-control editor-hashtags mousetrap" placeholder="Hashtags" />
+                            <textarea ref="body" className="form-control mousetrap" defaultValue={body} placeholder="Say something..." onChange={this.handleKeyChange.bind(null, "body")} />
+                            <input type="text" className="form-control editor-hashtags mousetrap" defaultValue={hashtags} placeholder="Hashtags" onChange={this.handleKeyChange.bind(null, "hashtags")} />
                         </div>
                     }
                 </div>

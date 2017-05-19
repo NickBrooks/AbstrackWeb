@@ -7,10 +7,8 @@ import SaveStatusLabel from '../../components/SaveStatusLabel';
 class EditTrack extends React.Component {
     constructor(props) {
         super(props);
-        this.handleNameChange = this.handleNameChange.bind(this);
-        this.handleDescriptionChange = this.handleDescriptionChange.bind(this);
+        this.handleKeyChange = this.handleKeyChange.bind(this);
         this.handleSubmitEditTrack = this.handleSubmitEditTrack.bind(this);
-
 
         const maxLength = {
             name: 60,
@@ -23,20 +21,10 @@ class EditTrack extends React.Component {
         }
     }
 
-    handleNameChange(event) {
-        let { value } = event.target;
-
-        this.setState({
-            nameCount: this.state.maxLength.name - value.length
-        });
-    }
-
-    handleDescriptionChange(event) {
-        let { value } = event.target;
-
-        this.setState({
-            descriptionCount: this.state.maxLength.description - value.length
-        });
+    handleKeyChange(key, e) {
+        var newState = this.state;
+        newState[key] = e.target.value;
+        this.setState(newState);
     }
 
     handleSubmitEditTrack(e) {
@@ -85,12 +73,12 @@ class EditTrack extends React.Component {
                     <form ref="addTrack" autoComplete="off" onSubmit={this.handleSubmitEditTrack}>
                         <div className="form-group">
                             <label htmlFor="nameInput"><FontAwesome name="list-ul" /> Track name</label>
-                            <input type="text" ref="name" className="form-control" placeholder="Enter a track name" defaultValue={track.name} disabled={ui.updateStatus ? true : false} maxLength={maxLength.name} onChange={this.handleNameChange} />
+                            <input type="text" ref="name" className="form-control" placeholder="Enter a track name" defaultValue={track.name} disabled={ui.updateStatus ? true : false} maxLength={maxLength.name} onChange={this.handleKeyChange.bind(null, "nameCount")} />
                             {nameCount ? (<small id="nameHelp" className="form-text text-muted"><strong>{nameCount}</strong></small>) : null}
                         </div>
                         <div className="form-group">
                             <label htmlFor="description"><FontAwesome name="pencil" /> Description</label>
-                            <input type="text" ref="description" className="form-control" placeholder="Enter a description" defaultValue={track.description} disabled={ui.updateStatus ? true : false} maxLength={maxLength.description} onChange={this.handleDescriptionChange} />
+                            <input type="text" ref="description" className="form-control" placeholder="Enter a description" defaultValue={track.description} disabled={ui.updateStatus ? true : false} maxLength={maxLength.description} onChange={this.handleKeyChange.bind(null, "descriptionCount")} />
                             {descriptionCount ? (<small id="descriptionHelp" className="form-text text-muted"><strong>{descriptionCount}</strong></small>) : null}
                         </div>
                         <hr />
