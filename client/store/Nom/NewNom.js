@@ -15,7 +15,10 @@ class NewNom extends React.Component {
     }
 
     componentWillMount() {
-        this.props.toggleNewNomButton(false);
+        let { toggleNewNomButton, togglePreviewMode } = this.props;
+
+        toggleNewNomButton(false);
+        togglePreviewMode(false);
         setDocumentTitle("New Nom");
     }
 
