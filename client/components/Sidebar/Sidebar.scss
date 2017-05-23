@@ -1,5 +1,10 @@
 .sidebar {
     display: none;
+
+    .fa-stack-1x {
+        margin-top: -1px;
+        font-size: 0.8em;
+    }
 }
 
 @media (min-width: 768px) {

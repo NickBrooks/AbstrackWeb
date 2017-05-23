@@ -1,4 +1,4 @@
-import { apiGetInbox, apiGetPinned, apiSearchNoms } from '../../api';
+import { apiGetInbox, apiGetPinned, apiSearchNoms, apiGetDrafts } from '../../api';
 import { updateNomStore } from '../Nom/actions';
 import moment from 'moment';
 
@@ -58,6 +58,24 @@ export function handleSearchNoms(view, query) {
         // denote loading
         dispatch(nomViewIsLoading(true));
         const request = apiSearchNoms(query);
+
+        request.then(response => {
+            dispatch(updateNomViewList(view))
+            dispatch(nomViewIsLoading(false));
+            dispatch(updateNomStore(response.data.data, view));
+        }).catch(error => {
+            dispatch(nomViewIsLoading(false));
+            console.log(error);
+        });
+    };
+}
+
+export function handleGetDrafts(view) {
+    return (dispatch) => {
+        // denote loading
+        dispatch(nomViewIsLoading(true));
+
+        const request = apiGetDrafts();
 
         request.then(response => {
             dispatch(updateNomViewList(view))

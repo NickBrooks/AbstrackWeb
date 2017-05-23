@@ -88,6 +88,12 @@ export function apiPinNom(nomId, value) {
     }
 }
 
+// drafts
+
+export function apiGetDrafts() {
+    return Axios.get("drafts", getAuthHeader());
+}
+
 // tracks
 
 export function apiGetTracks() {

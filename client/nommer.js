@@ -8,6 +8,7 @@ import Style from './styles/App.scss';
 import { App, FullScreen } from './store/App';
 import NomViewInbox from './store/NomView/Inbox';
 import NomViewPinned from './store/NomView/Pinned';
+import NomViewDrafts from './store/NomView/Drafts';
 import Track from './store/Track/Track';
 import NomViewTag from './store/NomView/Tag';
 import Nom from './store/Nom/Nom';
@@ -46,6 +47,7 @@ const router = (
                 <Route path="/new/track" component={NewTrack}></Route>
                 <Route path="/n/:nomId" component={Nom}></Route>
                 <Route path="/new/nom" component={NewNom}></Route>
+                <Route path="/drafts" component={NomViewDrafts}></Route>
                 <Route path="/tag/:tags" component={NomViewTag}></Route>
                 <Route path="/u/:userId" component={User}></Route>
             </Route>

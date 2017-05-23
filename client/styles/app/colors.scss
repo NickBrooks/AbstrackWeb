@@ -21,19 +21,37 @@ $nom-orange: #FF5722;
 $nom-orange-light: #FF7043;
 $nom-yellow: #FFEE58;
 $nom-orange-text: #ffdace;
+$nom-purple: #BA68C8;
+$nom-purple-text: #E1BEE7;
 
 .nom-green {
-    color: #27ae60;
+    color: $nom-green;
 }
 
 .bg-nom-green {
-    background: #27ae60;
+    background: $nom-green;
 }
 
 .nom-green-light {
-    color: #2ecc71;
+    color: $nom-green-light;
 }
 
 .bg-nom-green-light {
-    background: #2ecc71;
+    background: $nom-green-light;
+}
+
+.nom-orange-light {
+    color: $nom-orange-light;
+}
+
+.bg-nom-orange-light {
+    background: $nom-orange-light;
+}
+
+.nom-purple {
+    color: $nom-purple;
+}
+
+.bg-nom-green {
+    background: $nom-purple;
 }

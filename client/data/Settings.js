@@ -1,5 +1,9 @@
 const settings = {
   emptyNoms: {
+    drafts: {
+      img: "https://i.imgur.com/r2NAHyD.png",
+      text: "No working drafts!"
+    },
     inbox: {
       img: "https://i.imgur.com/r2NAHyD.png",
       text: "Your inbox is super, super clean!"

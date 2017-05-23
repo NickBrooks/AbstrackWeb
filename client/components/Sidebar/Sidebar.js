@@ -20,7 +20,7 @@ class Sidebar extends React.Component {
         return (
             <div className="user-badge">
                 <Link to="/account">
-                        <Avatar user={account} size="25" customClass="pull-left" /> <span>{account.displayName}</span>
+                    <Avatar user={account} size="25" customClass="pull-left" /> <span>{account.displayName}</span>
                 </Link>
                 <div className="clearfix"></div>
             </div>
@@ -53,8 +53,9 @@ class Sidebar extends React.Component {
             <div className="sidebar menu">
                 {this.renderUserBadge()}
                 <ul className="nav nav-sidebar text-truncate">
-                    <li className="inbox"><Link to="/"><FontAwesome name="envelope-open" /> Inbox</Link></li>
-                    <li className="pinned"><Link to="/pinned"><FontAwesome name="thumb-tack" /> Pinned</Link></li>
+                    <li className="inbox"><Link to="/"><span className="fa-stack nom-green-light"><FontAwesome name="circle" stack="2x" /><FontAwesome name="envelope-open" inverse stack="1x" /></span> Inbox</Link></li>
+                    <li className="pinned"><Link to="/pinned"><span className="fa-stack nom-orange-light"><FontAwesome name="circle" stack="2x" /><FontAwesome name="thumb-tack" inverse stack="1x" /></span> Pinned</Link></li>
+                    <li className="drafts"><Link to="/drafts"><span className="fa-stack nom-purple"><FontAwesome name="circle" stack="2x" /><FontAwesome name="pencil" inverse stack="1x" /></span> Drafts</Link></li>
                 </ul>
                 {this.renderTracksMenu(tracks)}
                 <ul className="nav nav-sidebar text-truncate">
