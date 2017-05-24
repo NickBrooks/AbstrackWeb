@@ -111,7 +111,7 @@ export function handleGetDraft(draftId) {
 
 export function handleAddDraft(draft) {
     return (dispatch) => {
-        dispatch(updateDraftSavingStatus("saving"));
+        dispatch(updateDraftSavingStatus("Saving"));
         delete draft.data.createdBy;
         delete draft.data.id;
         delete draft.data.updatedTime;
@@ -119,10 +119,10 @@ export function handleAddDraft(draft) {
 
         request.then(response => {
             dispatch(updateNomStore([response.data], "drafts"));
-            dispatch(updateDraftSavingStatus("saved"));
+            dispatch(updateDraftSavingStatus("Saved"));
             dispatch(push("/new/nom/" + response.data.id));
         }).catch(error => {
-            dispatch(updateDraftSavingStatus(false));
+            dispatch(updateDraftSavingStatus("Error..."));
             console.log(error);
         });
     };
@@ -130,14 +130,14 @@ export function handleAddDraft(draft) {
 
 export function handleSaveDraft(draft) {
     return (dispatch) => {
-        dispatch(updateDraftSavingStatus("saving"));
+        dispatch(updateDraftSavingStatus("Saving"));
         const request = apiUpdateDraft(draft.id, draft.data);
 
         request.then(response => {
             dispatch(updateNomStore([response.data], "drafts"));
-            dispatch(updateDraftSavingStatus("saved"));
+            dispatch(updateDraftSavingStatus("Saved"));
         }).catch(error => {
-            dispatch(updateDraftSavingStatus(false));
+            dispatch(updateDraftSavingStatus("Error..."));
             console.log(error);
         });
     };

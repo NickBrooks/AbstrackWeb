@@ -84,7 +84,6 @@ class NomEditor extends React.Component {
         let { handleAddDraft, handleSaveDraft } = this.props;
         let { draft } = this.state;
         this.clearTimeouts();
-        console.log({state: this.state});
         this.setTimeout(function () { (draft.id ? handleSaveDraft(draft) : handleAddDraft(draft)) }, 2500);
     }
 

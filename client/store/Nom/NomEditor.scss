@@ -58,4 +58,13 @@
             margin-left: 10px;
         }
     }
+
+    .btn-link {
+        color: $nom-dark-blue;
+        cursor: default;
+
+        &:hover {
+            text-decoration: none;
+        }
+    }
 }
