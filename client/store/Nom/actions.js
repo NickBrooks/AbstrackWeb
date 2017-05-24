@@ -111,8 +111,16 @@ export function handleGetDraft(draftId) {
 export function handleSaveDraft(draft) {
     return (dispatch) => {
         dispatch(updateDraftSavingStatus("saving"));
-        console.log(draft);
-        const request = (draft.id? apiUpdateDraft(draft.id, draft.data): apiAddDraft(draft.data));
+        
+        //remove ID to stop causing 400 errors
+        if (draft.id == null) {
+            delete draft.data.createdBy;
+            delete draft.data.id;
+            delete draft.data.updatedTime;
+        };
+
+        //select correct request
+        const request = (draft.id ? apiUpdateDraft(draft.id, draft.data) : apiAddDraft(draft.data));
 
         request.then(response => {
             dispatch(updateNomStore([response.data], "drafts"));

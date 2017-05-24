@@ -13,12 +13,17 @@ class NomEditor extends React.Component {
             draftId: props.params.draftId,
             draft: {
                 data: {
-                    id: null,
-                    updatedTime: null,
-                    title: null,
-                    body: null,
-                    track: null,
-                    hashtags: null
+                    id: "",
+                    createdBy: {
+                        id: ""
+                    },
+                    updatedTime: "",
+                    title: "",
+                    body: "",
+                    track: {
+                        id: ""
+                    },
+                    hashtags: []
                 }
             }
         }

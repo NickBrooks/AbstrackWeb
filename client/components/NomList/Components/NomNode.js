@@ -83,7 +83,7 @@ class NomNode extends React.Component {
                         <NomNodeToolbar {...this.props} />
                     </div>
                     <div className="hashtags">
-                        {track ? <span className="tag tracktag"><small><FontAwesome name="list-ul" /></small> {track.name}</span> : undefined}{nom.hashtags.map((hashtag, i) => <HashtagSpan {...this.props} hashtag={hashtag} disableLink={true} customClass="default" key={i} i={i} />)}
+                        {track ? <span className="tag tracktag"><small><FontAwesome name="list-ul" /></small> {track.name}</span> : undefined}{nom.hashtags ? nom.hashtags.map((hashtag, i) => <HashtagSpan {...this.props} hashtag={hashtag} disableLink={true} customClass="default" key={i} i={i} />) : undefined}
                     </div>
                     {this.renderMediaPreviews()}
                 </li>
