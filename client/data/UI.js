@@ -20,6 +20,9 @@ const ui = {
     newCommentError: '',
     editComment: ''
   },
+  draft: {
+    fetchingStatus: false
+  },
   login: {
     errorMsg: false,
     isAuthenticating: false

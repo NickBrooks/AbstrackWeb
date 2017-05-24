@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router';
 import FontAwesome from 'react-fontawesome';
 import removeMd from 'remove-markdown';
-import { extractImagesFromString, extractYoutubeFromString } from '../../../functions';
+import { extractNom, extractTrack, extractImagesFromString, extractYoutubeFromString } from '../../../functions';
 import HashtagSpan from '../../HashtagSpan/HashtagSpan';
 import Avatar from '../../Avatar/Avatar';
 import NomNodeToolbar from './NomNodeToolbar';
@@ -11,13 +11,13 @@ class NomNode extends React.Component {
     constructor(props) {
         super(props);
 
-        const nom = this.extractNom(props.noms, props.id);
+        const nom = extractNom(props.noms, props.id);
         const body = removeMd(nom.data.body);
         const isInbox = (nom.views.indexOf("inbox") >= 0 ? true : false);
         const isPinned = (nom.views.indexOf("pinned") >= 0 ? true : false);
-        const link = this.generateLink(props.id);
+        const link = this.generateLink(nom);
         const views = nom.views;
-        const track = (nom.data.track ? this.extractTrack(props.tracks, nom.data.track.id) : null)
+        const track = (nom.data.track ? extractTrack(props.tracks, nom.data.track.id) : null)
 
         this.state = {
             body,
@@ -30,19 +30,12 @@ class NomNode extends React.Component {
         }
     }
 
-    extractTrack(tracks, trackId) {
-        if (trackId == null) return null;
-        var i = tracks.findIndex((track) => track.id === trackId);
-        return tracks[i];
-    }
+    generateLink(nom) {        
+        if (nom.views.findIndex((view) => view == "drafts") >= 0) {
+            return "/new/nom/" + nom.id;
+        }
 
-    extractNom(noms, nomId) {
-        const i = noms.findIndex((nom) => nom.data.id === nomId);
-        return noms[i];
-    }
-
-    generateLink(nomId) {
-        return "/n/" + nomId;
+        return "/n/" + nom.id;
     }
 
     renderMediaPreviews() {

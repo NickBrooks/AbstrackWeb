@@ -1,4 +1,4 @@
-import { apiPinNom, apiGetNom } from '../../api';
+import { apiPinNom, apiGetNom, apiGetDraft } from '../../api';
 import moment from 'moment';
 
 //add a new nom
@@ -6,6 +6,14 @@ export function addNom(nom) {
     return {
         type: 'ADD_NOM',
         nom
+    }
+}
+
+// removes a particular view from the nom store
+export function removeViewFromNomStore(view) {
+    return {
+        type: 'REMOVE_VIEW_FROM_NOM_STORE',
+        view
     }
 }
 
@@ -54,6 +62,14 @@ function updateNomFetchingStatus(value) {
     }
 }
 
+// update draft fetching status
+function updateDraftFetchingStatus(value) {
+    return {
+        type: 'UPDATE_DRAFT_FETCHING_STATUS',
+        value
+    }
+}
+
 export function handleGetNom(nomId) {
     return (dispatch) => {
         dispatch(updateNomFetchingStatus(true));
@@ -64,6 +80,21 @@ export function handleGetNom(nomId) {
             dispatch(updateNomFetchingStatus(false));
         }).catch(error => {
             dispatch(updateNomFetchingStatus(false));
+            console.log(error);
+        });
+    };
+}
+
+export function handleGetDraft(draftId) {
+    return (dispatch) => {
+        dispatch(updateDraftFetchingStatus(true));
+        const request = apiGetDraft(draftId);
+
+        request.then(response => {
+            dispatch(updateNomStore([response.data], "drafts"));
+            dispatch(updateDraftFetchingStatus(false));
+        }).catch(error => {
+            dispatch(updateDraftFetchingStatus(false));
             console.log(error);
         });
     };

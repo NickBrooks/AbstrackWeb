@@ -94,6 +94,10 @@ export function apiGetDrafts() {
     return Axios.get("drafts", getAuthHeader());
 }
 
+export function apiGetDraft(draftId) {
+    return Axios.get("drafts/" + draftId, getAuthHeader());
+}
+
 // tracks
 
 export function apiGetTracks() {
