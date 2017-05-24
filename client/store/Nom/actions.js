@@ -1,5 +1,6 @@
 import { apiPinNom, apiGetNom, apiGetDraft, apiAddDraft, apiUpdateDraft } from '../../api';
 import moment from 'moment';
+import { push } from 'react-router-redux';
 
 //add a new nom
 export function addNom(nom) {
@@ -108,19 +109,29 @@ export function handleGetDraft(draftId) {
     };
 }
 
+export function handleAddDraft(draft) {
+    return (dispatch) => {
+        dispatch(updateDraftSavingStatus("saving"));
+        delete draft.data.createdBy;
+        delete draft.data.id;
+        delete draft.data.updatedTime;
+        const request = apiAddDraft(draft.data);
+
+        request.then(response => {
+            dispatch(updateNomStore([response.data], "drafts"));
+            dispatch(updateDraftSavingStatus("saved"));
+            dispatch(push("/new/nom/" + response.data.id));
+        }).catch(error => {
+            dispatch(updateDraftSavingStatus(false));
+            console.log(error);
+        });
+    };
+}
+
 export function handleSaveDraft(draft) {
     return (dispatch) => {
         dispatch(updateDraftSavingStatus("saving"));
-        
-        //remove ID to stop causing 400 errors
-        if (draft.id == null) {
-            delete draft.data.createdBy;
-            delete draft.data.id;
-            delete draft.data.updatedTime;
-        };
-
-        //select correct request
-        const request = (draft.id ? apiUpdateDraft(draft.id, draft.data) : apiAddDraft(draft.data));
+        const request = apiUpdateDraft(draft.id, draft.data);
 
         request.then(response => {
             dispatch(updateNomStore([response.data], "drafts"));

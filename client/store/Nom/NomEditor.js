@@ -10,7 +10,7 @@ class NomEditor extends React.Component {
         this.handleHashtagsChange = this.handleHashtagsChange.bind(this);
 
         this.state = {
-            draftId: props.params.draftId,
+            draftId: null,
             draft: {
                 data: {
                     id: "",
@@ -40,7 +40,7 @@ class NomEditor extends React.Component {
 
     componentWillMount() {
         let { handleGetDraft, noms, setSearchBar, toggleNewNomButton, togglePreviewMode } = this.props;
-        let { draftId } = this.state;
+        let { draftId } = this.props.params;
 
         // set the timeouts
         this.timeouts = [];
@@ -59,12 +59,11 @@ class NomEditor extends React.Component {
         }
     }
 
-    componentWillReceiveProps() {
-        let { noms } = this.props;
-        let { draftId } = this.state;
+    componentWillReceiveProps(nextProps) {
+        let { params, noms } = nextProps;
 
-        if (draftId != null) {
-            this.setState({ draft: extractNom(noms, draftId) });
+        if (params.draftId != null) {
+            this.setState({ draftId: params.draftId, draft: extractNom(noms, params.draftId) });
         }
     }
 
@@ -82,10 +81,11 @@ class NomEditor extends React.Component {
     }
 
     saveDraft() {
-        let { handleSaveDraft } = this.props;
+        let { handleAddDraft, handleSaveDraft } = this.props;
         let { draft } = this.state;
         this.clearTimeouts();
-        this.setTimeout(function () { handleSaveDraft(draft); }, 5000);
+        console.log({state: this.state});
+        this.setTimeout(function () { (draft.id ? handleSaveDraft(draft) : handleAddDraft(draft)) }, 2500);
     }
 
     handleHashtagsChange(e) {
