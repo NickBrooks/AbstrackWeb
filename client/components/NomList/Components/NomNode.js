@@ -10,17 +10,51 @@ import NomNodeToolbar from './NomNodeToolbar';
 class NomNode extends React.Component {
     constructor(props) {
         super(props);
+
+        const nom = this.extractNom(props.noms, props.id);
+        const body = removeMd(nom.data.body);
+        const isInbox = (nom.views.indexOf("inbox") >= 0 ? true : false);
+        const isPinned = (nom.views.indexOf("pinned") >= 0 ? true : false);
+        const link = this.generateLink(props.id);
+        const views = nom.views;
+        const track = (nom.data.track ? this.extractTrack(props.tracks, nom.data.track.id) : null)
+
+        this.state = {
+            body,
+            isInbox,
+            isPinned,
+            link,
+            nom: nom.data,
+            track,
+            views,
+        }
+    }
+
+    extractTrack(tracks, trackId) {
+        if (trackId == null) return null;
+        var i = tracks.findIndex((track) => track.id === trackId);
+        return tracks[i];
+    }
+
+    extractNom(noms, nomId) {
+        const i = noms.findIndex((nom) => nom.data.id === nomId);
+        return noms[i];
+    }
+
+    generateLink(nomId) {
+        return "/n/" + nomId;
     }
 
     renderMediaPreviews() {
-        let { noms, id } = this.props;
-        const i = noms.findIndex((nom) => nom.data.id === id);
-        let { body } = noms[i].data;
+        let { body } = this.state;
+
         var media = [];
+
         var images = extractImagesFromString(body);
         if (images != null) {
             media = images;
         }
+
         var youtube = extractYoutubeFromString(body);
         if (youtube != null) {
             media.push("https://img.youtube.com/vi/" + youtube[1] + "/0.jpg")
@@ -38,19 +72,15 @@ class NomNode extends React.Component {
     }
 
     render() {
-        let { noms, id } = this.props;
-        const i = noms.findIndex((nom) => nom.data.id === id);
-        const nom = noms[i].data;
-        const views = noms[i].views;
-        const link = "/n/" + nom.id;
-        const body = removeMd(nom.body);
-
-        var isInbox = false;
-        var isPinned = false;
-        if (views.indexOf("inbox") >= 0)
-            isInbox = true;
-        if (views.indexOf("pinned") >= 0)
-            isPinned = true;
+        let {
+            body,
+            isPinned,
+            isInbox,
+            link,
+            nom,
+            track,
+            views
+        } = this.state;
 
         return (
             <Link to={link}>
@@ -60,7 +90,7 @@ class NomNode extends React.Component {
                         <NomNodeToolbar {...this.props} />
                     </div>
                     <div className="hashtags">
-                        {nom.track ? <span className="tag tracktag"><small><FontAwesome name="list-ul" /></small> {nom.track.name}</span> : undefined}{nom.hashtags.map((hashtag, i) => <HashtagSpan {...this.props} hashtag={hashtag} disableLink={true} customClass="default" key={i} i={i} />)}
+                        {track ? <span className="tag tracktag"><small><FontAwesome name="list-ul" /></small> {track.name}</span> : undefined}{nom.hashtags.map((hashtag, i) => <HashtagSpan {...this.props} hashtag={hashtag} disableLink={true} customClass="default" key={i} i={i} />)}
                     </div>
                     {this.renderMediaPreviews()}
                 </li>

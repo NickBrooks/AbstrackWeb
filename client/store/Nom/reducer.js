@@ -14,19 +14,22 @@ function extractHashtags(state, nomId) {
 
 function mergeCurrentStateAndFetchedNoms(state, action) {
     var newState = state.slice();
-
-    function removeView(value, view) {
-        return value !== view;
-    }
-
+    
     function doesNomExist(existingNom, returnedNom) {
         return existingNom.id === returnedNom.id;
     }
-
+    
+    function removeView(value, view) {
+        return value !== view;
+    }
+    
     // remove that entire view from noms
     newState.forEach(function (nom) {
         nom.views = nom.views.filter(removeView.bind(null, action.view));
     })
+
+    // return state if no noms
+    if (action.data == null) return state;
 
     // merge the boys in
     action.data.forEach(function (nom) {
