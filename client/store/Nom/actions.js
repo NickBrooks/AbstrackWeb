@@ -1,4 +1,4 @@
-import { apiPinNom, apiGetNom, apiGetDraft } from '../../api';
+import { apiPinNom, apiGetNom, apiGetDraft, apiAddDraft, apiUpdateDraft } from '../../api';
 import moment from 'moment';
 
 //add a new nom
@@ -55,7 +55,7 @@ export function removeHashtagsFromNom(hashtags, nomId) {
 }
 
 // update nom fetching status
-function updateNomFetchingStatus(value) {
+export function updateNomFetchingStatus(value) {
     return {
         type: 'UPDATE_NOM_FETCHING_STATUS',
         value
@@ -63,9 +63,17 @@ function updateNomFetchingStatus(value) {
 }
 
 // update draft fetching status
-function updateDraftFetchingStatus(value) {
+export function updateDraftFetchingStatus(value) {
     return {
         type: 'UPDATE_DRAFT_FETCHING_STATUS',
+        value
+    }
+}
+
+// update draft saving status
+export function updateDraftSavingStatus(value) {
+    return {
+        type: 'UPDATE_DRAFT_SAVING_STATUS',
         value
     }
 }
@@ -95,6 +103,22 @@ export function handleGetDraft(draftId) {
             dispatch(updateDraftFetchingStatus(false));
         }).catch(error => {
             dispatch(updateDraftFetchingStatus(false));
+            console.log(error);
+        });
+    };
+}
+
+export function handleSaveDraft(draft) {
+    return (dispatch) => {
+        dispatch(updateDraftSavingStatus("saving"));
+        console.log(draft);
+        const request = (draft.id? apiUpdateDraft(draft.id, draft.data): apiAddDraft(draft.data));
+
+        request.then(response => {
+            dispatch(updateNomStore([response.data], "drafts"));
+            dispatch(updateDraftSavingStatus("saved"));
+        }).catch(error => {
+            dispatch(updateDraftSavingStatus(false));
             console.log(error);
         });
     };

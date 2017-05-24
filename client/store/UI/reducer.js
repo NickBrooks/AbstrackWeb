@@ -45,6 +45,10 @@ function ui(state = [], action) {
             var newState = Object.assign({}, state);
             newState.draft.fetchingStatus = action.value;
             return newState;
+            case 'UPDATE_DRAFT_SAVING_STATUS':
+            var newState = Object.assign({}, state);
+            newState.draft.savingStatus = action.value;
+            return newState;
         case 'REGISTER_ERROR_MESSAGE':
             var newState = Object.assign({}, state);
             newState.register.errorMsg = action.message;

@@ -21,7 +21,8 @@ const ui = {
     editComment: ''
   },
   draft: {
-    fetchingStatus: false
+    fetchingStatus: false,
+    savingStatus: false
   },
   login: {
     errorMsg: false,

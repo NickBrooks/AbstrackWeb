@@ -98,6 +98,14 @@ export function apiGetDraft(draftId) {
     return Axios.get("drafts/" + draftId, getAuthHeader());
 }
 
+export function apiAddDraft(draft) {
+    return Axios.post("drafts", draft,  getAuthHeader());
+}
+
+export function apiUpdateDraft(draftId, draft) {
+    return Axios.put("drafts/" + draftId, draft, getAuthHeader());
+}
+
 // tracks
 
 export function apiGetTracks() {

@@ -14,21 +14,17 @@ class NomEditor extends React.Component {
             draft: {
                 data: {
                     id: null,
-                    createdBy: {
-                        id: null
-                    },
                     updatedTime: null,
                     title: null,
                     body: null,
-                    track: {
-                        id: null
-                    },
-                    hashtags: [],
+                    track: null,
+                    hashtags: null
                 }
             }
         }
     }
 
+    // https://stackoverflow.com/questions/29526739/stopping-a-timeout-in-reactjs
     setTimeout() {
         this.timeouts.push(setTimeout.apply(null, arguments));
     }
@@ -68,7 +64,7 @@ class NomEditor extends React.Component {
     }
 
     componentWillUnmount() {
-        let { setSearchBar, toggleNewNomButton, togglePreviewMode } = this.props;
+        let { setSearchBar, toggleNewNomButton, togglePreviewMode, updateDraftSavingStatus } = this.props;
 
         toggleNewNomButton(true);
         setDocumentTitle();
@@ -77,32 +73,28 @@ class NomEditor extends React.Component {
             class: false
         });
         this.clearTimeouts();
+        updateDraftSavingStatus(false);
     }
 
-    handleDraftSave() {
-        let { data } = this.state.draft;
+    saveDraft() {
+        let { handleSaveDraft } = this.props;
+        let { draft } = this.state;
         this.clearTimeouts();
-        this.setTimeout(function () { console.log(data); }, 5000);
+        this.setTimeout(function () { handleSaveDraft(draft); }, 5000);
     }
 
     handleHashtagsChange(e) {
         var newState = this.state;
         newState["draft"]["data"]["hashtags"] = conformHashtags(e.target.value);
         this.setState(newState);
-        this.handleDraftSave();
+        this.saveDraft();
     }
 
     handleTextChange(key, e) {
         var newState = this.state;
         newState["draft"]["data"][key] = e.target.value;
         this.setState(newState);
-        this.handleDraftSave();
-    }
-
-    renderLoading() {
-        return (
-            <h3>Loading draft...</h3>
-        )
+        this.saveDraft();
     }
 
     renderLoaded() {
@@ -131,10 +123,9 @@ class NomEditor extends React.Component {
 
     render() {
         let { ui } = this.props;
-        console.log(this.state);
 
         return (
-            (ui.draft.fetchingStatus ? this.renderLoading() : this.renderLoaded())
+            (ui.draft.fetchingStatus ? <h3>Loading draft...</h3> : this.renderLoaded())
         )
     }
 }
