@@ -109,7 +109,14 @@ class NomEditor extends React.Component {
         return (
             <div>
                 <div className="nom-editor">
-                    <input type="text" className="form-control editor-title mousetrap" defaultValue={title} placeholder="Title" onChange={this.handleTextChange.bind(null, "title")} />
+                    <div className="row">
+                        <div className="col-sm-9">
+                            <input type="text" className="form-control editor-title mousetrap" defaultValue={title} placeholder="Title" onChange={this.handleTextChange.bind(null, "title")} />
+                        </div>
+                        <div className="col-sm-3">
+                            <input type="text" className="form-control editor-track mousetrap" placeholder="Track" onChange={this.handleTextChange.bind(null, "track")} />
+                        </div>
+                    </div>
                     <hr />
                     {ui.nom.editor.previewMode ?
                         <RenderMarkdown markdown={body} className="preview-mode" /> :
