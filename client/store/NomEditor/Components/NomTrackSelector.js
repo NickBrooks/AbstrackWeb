@@ -1,19 +1,31 @@
 import React from 'react';
 import { Typeahead } from 'react-typeahead';
 import FontAwesome from 'react-fontawesome';
+import { delay, } from '../../../functions';
 
 class NomTrackSelector extends React.Component {
     constructor(props) {
         super(props);
         this.selectTrack = this.selectTrack.bind(this);
-
-        this.state = {
-            selectedTrack: null
-        }
     }
 
-    selectTrack(selectedTrack) {
-        this.setState({ selectedTrack });
+    saveDraft() {
+        let { nomEditor, handleAddDraft, handleSaveDraft } = this.props;
+        (nomEditor.id ? handleSaveDraft(nomEditor) : handleAddDraft(nomEditor));
+    }
+
+    clearTrack() {
+        this.props.setDraftTrack(null);
+        delay(500).then(() => {
+            this.saveDraft();
+        })
+    }
+
+    selectTrack(track) {
+        this.props.setDraftTrack(track.id);
+        delay(500).then(() => {
+            this.saveDraft();
+        })
     }
 
     renderTypeahead() {
@@ -34,20 +46,24 @@ class NomTrackSelector extends React.Component {
         )
     }
 
-    renderSelectedTrack(selectedTrack) {
+    renderSelectedTrack() {
+        let { nomEditor, tracks } = this.props;
+        const i = tracks.findIndex((track) => track.id === nomEditor.track.id);
+        const track = tracks[i];
+
         return (
             <div className="selected-track text-truncate pull-right">
-                <span className="selected-tag bg-nom-green-light"><button className="btn btn-link" onClick={() => this.setState({ selectedTrack: null })}><FontAwesome name="close" /> </button> {selectedTrack.name}</span>
+                <span className="selected-tag bg-nom-green-light"><button className="btn btn-link" onClick={() => this.clearTrack()}><FontAwesome name="close" /> </button> {track.name}</span>
             </div>
         )
     }
 
     render() {
-        let { selectedTrack } = this.state;
+        let { nomEditor, tracks } = this.props;
 
         return (
             <div className="editor-track">
-                {selectedTrack ? this.renderSelectedTrack(selectedTrack) : this.renderTypeahead()}
+                {(nomEditor.track == null || nomEditor.track.id == null) ? this.renderTypeahead() : this.renderSelectedTrack(nomEditor)}
             </div>
         )
     }

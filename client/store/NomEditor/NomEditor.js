@@ -1,5 +1,5 @@
 import React from 'react';
-import { conformHashtags, extractNom, setDocumentTitle } from '../../functions';
+import { conformHashtags, delay, extractNom, setDocumentTitle } from '../../functions';
 import RenderMarkdown from '../../components/RenderMarkdown/RenderMarkdown';
 import NomEditorFooter from './Components/NomEditorFooter';
 import NomTrackSelector from './Components/NomTrackSelector';
@@ -7,27 +7,23 @@ import NomTrackSelector from './Components/NomTrackSelector';
 class NomEditor extends React.Component {
     constructor(props) {
         super(props);
-        this.handleTextChange = this.handleTextChange.bind(this);
+        this.handleTitleChange = this.handleTitleChange.bind(this);
+        this.handleBodyCange = this.handleBodyCange.bind(this);
         this.handleHashtagsChange = this.handleHashtagsChange.bind(this);
 
-        this.state = {
-            draftId: null,
-            draft: {
-                data: {
-                    id: "",
-                    createdBy: {
-                        id: ""
-                    },
-                    updatedTime: "",
-                    title: "",
-                    body: "",
-                    track: {
-                        id: ""
-                    },
-                    hashtags: []
-                }
-            }
-        }
+        this.props.setDraft({
+            id: "",
+            createdBy: {
+                id: ""
+            },
+            updatedTime: "",
+            title: "",
+            body: "",
+            track: {
+                id: ""
+            },
+            hashtags: []
+        });
     }
 
     // https://stackoverflow.com/questions/29526739/stopping-a-timeout-in-reactjs
@@ -82,37 +78,43 @@ class NomEditor extends React.Component {
     }
 
     saveDraft() {
-        let { handleAddDraft, handleSaveDraft } = this.props;
-        let { draft } = this.state;
+        let { nomEditor, handleAddDraft, handleSaveDraft } = this.props;
+
         this.clearTimeouts();
-        this.setTimeout(function () { (draft.id ? handleSaveDraft(draft) : handleAddDraft(draft)) }, 2500);
+        this.setTimeout(function () { (nomEditor.id ? handleSaveDraft(nomEditor) : handleAddDraft(nomEditor)) }, 2500);
     }
 
     handleHashtagsChange(e) {
-        var newState = this.state;
-        newState["draft"]["data"]["hashtags"] = conformHashtags(e.target.value);
-        this.setState(newState);
-        this.saveDraft();
+        this.props.setDraftHashtags(conformHashtags(e.target.value));
+        delay(500).then(() => {
+            this.saveDraft();
+        })
     }
 
-    handleTextChange(key, e) {
-        var newState = this.state;
-        newState["draft"]["data"][key] = e.target.value;
-        this.setState(newState);
-        this.saveDraft();
+    handleTitleChange(e) {
+        this.props.setDraftTitle(e.target.value);
+        delay(500).then(() => {
+            this.saveDraft();
+        })
+    }
+
+    handleBodyCange(e) {
+        this.props.setDraftBody(e.target.value);
+        delay(500).then(() => {
+            this.saveDraft();
+        })
     }
 
     renderLoaded() {
-        let { ui } = this.props;
-        let { body, hashtags, title } = this.state.draft.data;
-        setDocumentTitle(title ? title : "New Nom");
+        let { ui, nomEditor } = this.props;
+        setDocumentTitle(nomEditor.title ? nomEditor.title : "New Nom");
 
         return (
             <div>
                 <div className="nom-editor">
                     <div className="row">
                         <div className="col-sm-9">
-                            <input type="text" className="form-control editor-title mousetrap" defaultValue={title} placeholder="Title" onChange={this.handleTextChange.bind(null, "title")} />
+                            <input type="text" className="form-control editor-title mousetrap" defaultValue={nomEditor.title} placeholder="Title" onChange={this.handleTitleChange} />
                         </div>
                         <div className="col-sm-3">
                             <NomTrackSelector {...this.props} />
@@ -120,11 +122,11 @@ class NomEditor extends React.Component {
                     </div>
                     <hr />
                     {ui.nom.editor.previewMode ?
-                        <RenderMarkdown markdown={body} className="preview-mode" /> :
+                        <RenderMarkdown markdown={nomEditor.body} className="preview-mode" /> :
                         <div className="editor-body">
-                            <textarea ref="body" className="form-control mousetrap" defaultValue={body} placeholder="Say something..." onChange={this.handleTextChange.bind(null, "body")} />
+                            <textarea ref="body" className="form-control mousetrap" defaultValue={nomEditor.body} placeholder="Say something..." onChange={this.handleBodyChange} />
                             <hr />
-                            <input type="text" className="form-control editor-hashtags mousetrap" defaultValue={hashtags} placeholder="Hashtags" onChange={this.handleHashtagsChange} />
+                            <input type="text" className="form-control editor-hashtags mousetrap" defaultValue={nomEditor.hashtags} placeholder="Hashtags" onChange={this.handleHashtagsChange} />
                         </div>
                     }
                 </div>

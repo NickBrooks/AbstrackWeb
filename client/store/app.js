@@ -22,7 +22,7 @@ function mapStateToProps(state) {
         comments: state.comments,
         hashtags: state.hashtags,
         login: state.login,
-        nomEditor: statae.nomEditor,
+        nomEditor: state.nomEditor,
         noms: state.noms,
         nomViews: state.nomViews,
         tracks: state.tracks,

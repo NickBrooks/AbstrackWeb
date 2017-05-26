@@ -49,6 +49,7 @@ const appReducer = combineReducers({
   comments,
   hashtags,
   login,
+  nomEditor,
   noms,
   nomViews,
   tracks,
