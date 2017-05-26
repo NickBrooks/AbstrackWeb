@@ -8,10 +8,10 @@ class NomEditor extends React.Component {
     constructor(props) {
         super(props);
         this.handleTitleChange = this.handleTitleChange.bind(this);
-        this.handleBodyCange = this.handleBodyCange.bind(this);
+        this.handleBodyChange = this.handleBodyChange.bind(this);
         this.handleHashtagsChange = this.handleHashtagsChange.bind(this);
 
-        this.props.setDraft({
+        props.setDraft({
             id: "",
             createdBy: {
                 id: ""
@@ -98,7 +98,7 @@ class NomEditor extends React.Component {
         })
     }
 
-    handleBodyCange(e) {
+    handleBodyChange(e) {
         this.props.setDraftBody(e.target.value);
         delay(500).then(() => {
             this.saveDraft();
