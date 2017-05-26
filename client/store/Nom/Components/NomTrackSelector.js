@@ -36,7 +36,7 @@ class NomTrackSelector extends React.Component {
 
     renderSelectedTrack(selectedTrack) {
         return (
-            <div className="selected-track text-truncate">
+            <div className="selected-track text-truncate pull-right">
                 <span className="selected-tag bg-nom-green-light"><button className="btn btn-link" onClick={() => this.setState({ selectedTrack: null })}><FontAwesome name="close" /> </button> {selectedTrack.name}</span>
             </div>
         )
