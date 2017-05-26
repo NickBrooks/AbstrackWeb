@@ -5,12 +5,42 @@
         overflow: hidden;
         text-overflow: ellipsis;
         white-space: nowrap;
-        background: $off-white;
         box-shadow: -2px 2px 3px rgba(0, 0, 0, 0.1);
+
+        li {
+            border-bottom: 1px solid $off-white;
+
+            &:hover {
+                background: $off-white;
+            }
+        }
 
         li a {
             font-weight: normal;
-            font-size: 0.8em
+            font-size: 0.8em;
+        }
+    }
+
+    .selected-track {
+        padding: 17px 0;
+        font-family: $font-family-fancy;
+
+        span.selected-tag {
+            display: inline-block;
+            max-width: calc(100% - 15px);
+            font-weight: normal;
+            font-size: 0.8em;
+            padding: 3px 5px;
+            color: #fff;
+            border-radius: 5px;
+        }
+
+        button {
+            margin: 0;
+            padding: 0;
+            color: #eee;
+            margin-top: -4px;
+            font-size: 0.8em;
         }
     }
 }
