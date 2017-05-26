@@ -1,0 +1,16 @@
+.editor-track {
+    ul.typeahead-selector {
+        right: 15px;
+        top: 64px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        background: $off-white;
+        box-shadow: -2px 2px 3px rgba(0, 0, 0, 0.1);
+
+        li a {
+            font-weight: normal;
+            font-size: 0.8em
+        }
+    }
+}

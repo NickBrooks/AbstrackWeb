@@ -2,6 +2,7 @@ import React from 'react';
 import { conformHashtags, extractNom, setDocumentTitle } from '../../functions';
 import RenderMarkdown from '../../components/RenderMarkdown/RenderMarkdown';
 import NomEditorFooter from './Components/NomEditorFooter';
+import NomTrackSelector from './Components/NomTrackSelector';
 
 class NomEditor extends React.Component {
     constructor(props) {
@@ -114,7 +115,7 @@ class NomEditor extends React.Component {
                             <input type="text" className="form-control editor-title mousetrap" defaultValue={title} placeholder="Title" onChange={this.handleTextChange.bind(null, "title")} />
                         </div>
                         <div className="col-sm-3">
-                            <input type="text" className="form-control editor-track mousetrap" placeholder="Track" onChange={this.handleTextChange.bind(null, "track")} />
+                            <NomTrackSelector {...this.props} />
                         </div>
                     </div>
                     <hr />
