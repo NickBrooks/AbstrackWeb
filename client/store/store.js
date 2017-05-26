@@ -22,6 +22,7 @@ const defaultState = {
   comments: commentsData,
   hashtags: hashtagsData,
   login: loginData,
+  nomEditor: null,
   noms: [],
   tracks: [],
   settings: settingsData,
@@ -34,6 +35,7 @@ const defaultState = {
 import comments from './Comment/reducer';
 import hashtags from './Hashtag/reducer';
 import login from './Login/reducer';
+import nomEditor from './NomEditor/reducer';
 import noms from './Nom/reducer';
 import nomViews from './NomView/reducer';
 import tracks from './Track/reducer';

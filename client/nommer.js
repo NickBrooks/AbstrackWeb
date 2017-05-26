@@ -12,7 +12,7 @@ import NomViewDrafts from './store/NomView/Drafts';
 import Track from './store/Track/Track';
 import NomViewTag from './store/NomView/Tag';
 import Nom from './store/Nom/Nom';
-import NomEditor from './store/Nom/NomEditor';
+import NomEditor from './store/NomEditor/NomEditor';
 import LoginView from './store/Login/LoginView';
 import RegisterView from './store/Login/RegisterView';
 import ForgotPasswordView from './store/Login/ForgotPasswordView';
