@@ -26,7 +26,6 @@
 @import "../components/RenderMarkdown/RenderMarkdown.scss";
 @import "../components/NewNomButton/NewNomButton.scss";
 @import "../components/NomList/NomList.scss";
-@import "../components/NomEditor/NomEditor.scss";
 @import "../components/Sidebar/Sidebar.scss";
 @import "../components/Typeahead/Typeahead.scss";
 
@@ -35,7 +34,8 @@
 @import "../store/Hashtag/Hashtag.scss";
 @import "../store/Login/LoginView.scss";
 @import "../store/Nom/Nom.scss";
-@import "../store/Nom/NomEditor.scss";
+@import "../store/NomEditor/NomEditor.scss";
+@import "../store/NomEditor/Components/NomTrackSelector.scss";
 @import "../store/NomView/NomView.scss";
 @import "../store/Settings/Settings.scss";
 @import "../store/Track/Track.scss";

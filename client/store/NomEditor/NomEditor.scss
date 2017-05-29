@@ -17,8 +17,9 @@
         padding: $box-padding;
     }
 
-    .editor-title {
-        font-size: 1.5em;
+    .editor-title, .editor-track {
+        font-size: 1.3em;
+        font-weight: 600;
     }
 
     .editor-body {
@@ -56,6 +57,15 @@
     .actions {
         button {
             margin-left: 10px;
+        }
+    }
+
+    .btn-link {
+        color: $nom-dark-blue;
+        cursor: default;
+
+        &:hover {
+            text-decoration: none;
         }
     }
 }

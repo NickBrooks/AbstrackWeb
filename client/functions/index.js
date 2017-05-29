@@ -79,3 +79,14 @@ export const removeLocalStorage = (key) => {
         console.log(err);
     }
 }
+
+export const extractNom = (noms, nomId) => {
+    const i = noms.findIndex((nom) => nom.id === nomId);
+    return noms[i];
+}
+
+export const extractTrack = (tracks, trackId) => {
+    if (trackId == null) return null;
+    var i = tracks.findIndex((track) => track.id === trackId);
+    return tracks[i];
+}

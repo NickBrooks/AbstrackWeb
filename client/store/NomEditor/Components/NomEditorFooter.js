@@ -32,6 +32,7 @@ class NewNomFooter extends React.Component {
             return false;
         });
     }
+
     componentWillUnmount() {
         let { togglePreview } = this;
 
@@ -46,7 +47,11 @@ class NewNomFooter extends React.Component {
 
         return (
             <div className="nom-editor-footer">
+                <div className="actions pull-left col-sm-2">
+                    <label className="form-check-label"><input className="form-check-input" type="checkbox" value="" /> Inbox</label>
+                </div>
                 <div className="actions pull-right">
+                    {ui.draft.savingStatus ? <button type="button" className="btn btn-sm btn-link">{ui.draft.savingStatus}</button> : undefined}
                     {ui.nom.editor.previewMode ?
                         <button type="button" className="btn btn-sm btn-info" onClick={this.handlePreviewClick}><FontAwesome name="pencil" /> Edit</button> :
                         <button type="button" className="btn btn-sm btn-info" onClick={this.handlePreviewClick}><FontAwesome name="eye" /> Preview</button>

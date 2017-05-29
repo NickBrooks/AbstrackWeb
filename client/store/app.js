@@ -8,6 +8,7 @@ import * as CommentsActions from './Comment/actions';
 import * as HashtagActions from './Hashtag/actions';
 import * as LoginActions from './Login/actions';
 import * as NomActions from './Nom/actions';
+import * as NomEditorActions from './NomEditor/actions';
 import * as NomViewActions from './NomView/actions';
 import * as SettingsActions from './Settings/actions';
 import * as TrackActions from './Track/actions';
@@ -21,6 +22,7 @@ function mapStateToProps(state) {
         comments: state.comments,
         hashtags: state.hashtags,
         login: state.login,
+        nomEditor: state.nomEditor,
         noms: state.noms,
         nomViews: state.nomViews,
         tracks: state.tracks,
@@ -38,6 +40,7 @@ function mapDispatchToProps(dispatch) {
         ...HashtagActions,
         ...LoginActions,
         ...NomActions,
+        ...NomEditorActions,
         ...NomViewActions,
         ...SettingsActions,
         ...TrackActions,

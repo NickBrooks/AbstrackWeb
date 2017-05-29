@@ -1,4 +1,4 @@
-import { apiPinNom, apiGetNom } from '../../api';
+import { apiPinNom, apiGetNom, apiGetDraft, apiAddDraft, apiUpdateDraft } from '../../api';
 import moment from 'moment';
 
 //add a new nom
@@ -6,6 +6,14 @@ export function addNom(nom) {
     return {
         type: 'ADD_NOM',
         nom
+    }
+}
+
+// removes a particular view from the nom store
+export function removeViewFromNomStore(view) {
+    return {
+        type: 'REMOVE_VIEW_FROM_NOM_STORE',
+        view
     }
 }
 
@@ -47,7 +55,7 @@ export function removeHashtagsFromNom(hashtags, nomId) {
 }
 
 // update nom fetching status
-function updateNomFetchingStatus(value) {
+export function updateNomFetchingStatus(value) {
     return {
         type: 'UPDATE_NOM_FETCHING_STATUS',
         value

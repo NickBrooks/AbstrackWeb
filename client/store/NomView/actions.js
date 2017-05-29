@@ -1,5 +1,5 @@
-import { apiGetInbox, apiGetPinned, apiSearchNoms } from '../../api';
-import { updateNomStore } from '../Nom/actions';
+import { apiGetInbox, apiGetPinned, apiSearchNoms, apiGetDrafts } from '../../api';
+import { updateNomStore, removeViewFromNomStore } from '../Nom/actions';
 import moment from 'moment';
 
 export function nomViewIsLoading(value) {
@@ -25,8 +25,9 @@ export function handleGetInbox(view) {
         const request = apiGetInbox();
 
         request.then(response => {
-            dispatch(updateNomViewList(view))
+            dispatch(updateNomViewList(view));
             dispatch(nomViewIsLoading(false));
+            dispatch(removeViewFromNomStore(view));
             dispatch(updateNomStore(response.data.data, view));
         }).catch(error => {
             dispatch(nomViewIsLoading(false));
@@ -43,8 +44,9 @@ export function handleGetPinned(view) {
         const request = apiGetPinned();
 
         request.then(response => {
-            dispatch(updateNomViewList(view))
+            dispatch(updateNomViewList(view));
             dispatch(nomViewIsLoading(false));
+            dispatch(removeViewFromNomStore(view));
             dispatch(updateNomStore(response.data.data, view));
         }).catch(error => {
             dispatch(nomViewIsLoading(false));
@@ -60,8 +62,28 @@ export function handleSearchNoms(view, query) {
         const request = apiSearchNoms(query);
 
         request.then(response => {
+            dispatch(updateNomViewList(view));
+            dispatch(nomViewIsLoading(false));
+            dispatch(removeViewFromNomStore(view));
+            dispatch(updateNomStore(response.data.data, view));
+        }).catch(error => {
+            dispatch(nomViewIsLoading(false));
+            console.log(error);
+        });
+    };
+}
+
+export function handleGetDrafts(view) {
+    return (dispatch) => {
+        // denote loading
+        dispatch(nomViewIsLoading(true));
+
+        const request = apiGetDrafts();
+
+        request.then(response => {
             dispatch(updateNomViewList(view))
             dispatch(nomViewIsLoading(false));
+            dispatch(removeViewFromNomStore(view));
             dispatch(updateNomStore(response.data.data, view));
         }).catch(error => {
             dispatch(nomViewIsLoading(false));

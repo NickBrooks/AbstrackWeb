@@ -12,21 +12,30 @@ function extractHashtags(state, nomId) {
     return [...nom.hashtags];
 }
 
-function mergeCurrentStateAndFetchedNoms(state, action) {
+function removeViewFromNomStore(state, action) {
     var newState = state.slice();
 
     function removeView(value, view) {
         return value !== view;
     }
 
-    function doesNomExist(existingNom, returnedNom) {
-        return existingNom.id === returnedNom.id;
-    }
-
     // remove that entire view from noms
     newState.forEach(function (nom) {
         nom.views = nom.views.filter(removeView.bind(null, action.view));
     })
+
+    return newState;
+}
+
+function mergeCurrentStateAndFetchedNoms(state, action) {
+    // return state if no noms
+    if (action.data == null) return state;
+
+    var newState = state.slice();
+
+    function doesNomExist(existingNom, returnedNom) {
+        return existingNom.id === returnedNom.id;
+    }
 
     // merge the boys in
     action.data.forEach(function (nom) {
@@ -79,6 +88,8 @@ function noms(state = [], action) {
             action.nom.createdTime = moment.utc().format();
 
             return [...state, action.nom];
+        case 'REMOVE_VIEW_FROM_NOM_STORE':
+            return removeViewFromNomStore(state, action);
         case 'UPDATE_NOM_STORE':
             return mergeCurrentStateAndFetchedNoms(state, action);
         case 'PIN_NOM':

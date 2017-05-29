@@ -5,7 +5,6 @@ import Sidebar from '../Sidebar/Sidebar';
 import LoadingScreen from '../LoadingScreen';
 import SearchBar from '../SearchBar/SearchBar';
 import NewNomButton from '../NewNomButton/NewNomButton';
-import NewNomModal from '../NomEditor/NomEditor';
 import { loadLocalStorage } from '../../functions';
 
 class AppView extends React.Component {
@@ -59,7 +58,6 @@ class AppView extends React.Component {
                     </div>
                 </div>
                 {this.props.ui.newNomButton.show ? (<NewNomButton {...this.props} />) : null}
-                <NewNomModal open={this.props.ui.newNomModal.open} {...this.props} />
             </div>
         )
     }

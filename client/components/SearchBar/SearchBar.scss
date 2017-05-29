@@ -45,6 +45,26 @@
             color: $nom-green-text;
         }
     }
+
+    &.searchBar-drafts {
+        background: $nom-purple;
+
+        input[type="text"]#search-bar::-webkit-input-placeholder {
+            color: $nom-purple-text;
+        }
+
+        input[type="text"]#search-bar::-moz-placeholder {
+            color: $nom-purple-text;
+        }
+
+        input[type="text"]#search-bar:-ms-input-placeholder {
+            color: $nom-purple-text;
+        }
+
+        input[type="text"]#search-bar:-moz-placeholder {
+            color: $nom-purple-text;
+        }
+    }
 }
 
 @media (min-width: 768px) {
