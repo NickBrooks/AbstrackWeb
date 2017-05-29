@@ -18,7 +18,8 @@ class NewTrack extends React.Component {
 
         this.state = {
             maxLength,
-            nameCount: null
+            name: "",
+            description: ""
         }
     }
 
@@ -60,7 +61,7 @@ class NewTrack extends React.Component {
     }
 
     render() {
-        let { descriptionCount, nameCount, maxLength } = this.state;
+        let { description, name, maxLength } = this.state;
         let { updateStatus } = this.props.ui.tracks;
 
         return (
@@ -71,13 +72,13 @@ class NewTrack extends React.Component {
                     <form ref="addTrack" autoComplete="off" onSubmit={this.handleSubmitAddTrack}>
                         <div className="form-group">
                             <label htmlFor="nameInput"><FontAwesome name="list-ul" /> Track name</label>
-                            <input type="text" ref="name" className="form-control" placeholder="Enter a track name" disabled={updateStatus ? true : false} maxLength={maxLength.name} onChange={this.handleKeyChange.bind(null, "nameCount")} />
-                            {nameCount ? (<small id="nameHelp" className="form-text text-muted"><strong>{nameCount}</strong></small>) : null}
+                            <input type="text" ref="name" className="form-control" placeholder="Enter a track name" disabled={updateStatus ? true : false} maxLength={maxLength.name} onChange={this.handleKeyChange.bind(null, "name")} />
+                            {name ? (<small id="nameHelp" className="form-text text-muted"><strong>{maxLength.name - name.length}</strong></small>) : null}
                         </div>
                         <div className="form-group">
                             <label htmlFor="description"><FontAwesome name="pencil" /> Description</label>
-                            <input type="text" ref="description" className="form-control" placeholder="Enter a description" disabled={updateStatus ? true : false} maxLength={maxLength.description} onChange={this.handleKeyChange.bind(null, "descriptionCount")} />
-                            {descriptionCount ? (<small id="descriptionHelp" className="form-text text-muted"><strong>{descriptionCount}</strong></small>) : null}
+                            <input type="text" ref="description" className="form-control" placeholder="Enter a description" disabled={updateStatus ? true : false} maxLength={maxLength.description} onChange={this.handleKeyChange.bind(null, "description")} />
+                            {description ? (<small id="descriptionHelp" className="form-text text-muted"><strong>{maxLength.description - description.length}</strong></small>) : null}
                         </div>
                         <hr />
                         <div className="form-group">
