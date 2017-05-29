@@ -10,8 +10,8 @@ class NomTrackSelector extends React.Component {
     }
 
     saveDraft() {
-        let { nomEditor, handleAddDraft, handleSaveDraft } = this.props;
-        (nomEditor.id ? handleSaveDraft(nomEditor) : handleAddDraft(nomEditor));
+        let { nomEditor, handleAddDraft, handleSaveDraft, params } = this.props;
+        (params.draftId ? handleSaveDraft(nomEditor) : handleAddDraft(nomEditor));
     }
 
     clearTrack() {
@@ -42,6 +42,7 @@ class NomTrackSelector extends React.Component {
                     input: "form-control"
                 }}
                 maxVisible={5}
+                tabIndex={2}
             />
         )
     }

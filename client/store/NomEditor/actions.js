@@ -63,6 +63,7 @@ export function handleGetDraft(draftId) {
             dispatch(updateDraftFetchingStatus(false));
         }).catch(error => {
             dispatch(updateDraftFetchingStatus(false));
+            dispatch(push("/new/nom/"));
             console.log(error);
         });
     };

@@ -12,7 +12,7 @@ class NomNode extends React.Component {
         super(props);
 
         const nom = extractNom(props.noms, props.id);
-        const body = removeMd(nom.data.body);
+        const body = (nom.data.body ? removeMd(nom.data.body) : "");
         const isInbox = (nom.views.indexOf("inbox") >= 0 ? true : false);
         const isPinned = (nom.views.indexOf("pinned") >= 0 ? true : false);
         const link = this.generateLink(nom);
@@ -30,7 +30,7 @@ class NomNode extends React.Component {
         }
     }
 
-    generateLink(nom) {        
+    generateLink(nom) {
         if (nom.views.findIndex((view) => view == "drafts") >= 0) {
             return "/new/nom/" + nom.id;
         }
