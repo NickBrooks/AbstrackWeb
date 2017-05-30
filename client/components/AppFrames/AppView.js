@@ -47,7 +47,7 @@ class AppView extends React.Component {
         return (
             <div className="app">
                 <Sidebar {...this.props} />
-                <div className="container-fluid main">
+                <div className="container main">
                     <div className="row">
                         <div className="col-sm-12 header">
                             <SearchBar {...this.props} />

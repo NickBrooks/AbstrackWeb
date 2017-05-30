@@ -47,6 +47,9 @@ const ui = {
     errorMsg: false,
     isRegistering: false
   },
+  sidebar: {
+    open: false
+  },
   searchBar: {
     defaultValue: "Search noms",
     class: "searchBar-inbox",

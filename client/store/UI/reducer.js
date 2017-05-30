@@ -13,6 +13,10 @@ function ui(state = [], action) {
             var newState = Object.assign({}, state);
             newState.nom.editor.previewMode = action.value;
             return newState;
+        case 'TOGGLE_SIDEBAR':
+            var newState = Object.assign({}, state);
+            newState.sidebar.open = action.value;
+            return newState;
         case 'SET_SEARCH_BAR':
             var newState = Object.assign({}, state);
             newState.searchBar = action.value;
@@ -45,7 +49,7 @@ function ui(state = [], action) {
             var newState = Object.assign({}, state);
             newState.draft.fetchingStatus = action.value;
             return newState;
-            case 'UPDATE_DRAFT_SAVING_STATUS':
+        case 'UPDATE_DRAFT_SAVING_STATUS':
             var newState = Object.assign({}, state);
             newState.draft.savingStatus = action.value;
             return newState;

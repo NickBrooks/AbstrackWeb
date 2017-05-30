@@ -13,6 +13,13 @@ export function toggleNewNomButton(value) {
     }
 }
 
+export function toggleSidebar(value) {
+    return {
+        type: 'TOGGLE_SIDEBAR',
+        value
+    }
+}
+
 export function setSearchBar(value) {
     return {
         type: 'SET_SEARCH_BAR',

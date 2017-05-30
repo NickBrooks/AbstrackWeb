@@ -47,10 +47,12 @@ class Sidebar extends React.Component {
     }
 
     render() {
-        let { account, tracks, views } = this.props;
+        let { account, tracks, views, ui } = this.props;
+        console.log(ui.sidebar.open);
+        const className = "sidebar menu " + (ui.sidebar.open ? "open" : "closed");
 
         return (
-            <div className="sidebar menu">
+            <div className={className}>
                 {this.renderUserBadge()}
                 <ul className="nav nav-sidebar text-truncate">
                     <li className="inbox"><Link to="/"><span className="fa-stack nom-green-light"><FontAwesome name="circle" stack="2x" /><FontAwesome name="envelope-open" inverse stack="1x" /></span> Inbox</Link></li>
