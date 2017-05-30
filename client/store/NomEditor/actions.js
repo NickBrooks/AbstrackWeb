@@ -88,10 +88,10 @@ export function handleAddDraft(draft) {
     };
 }
 
-export function handleSaveDraft(draft) {
+export function handleSaveDraft(draftId, draft) {
     return (dispatch) => {
         dispatch(updateDraftSavingStatus("Saving"));
-        const request = apiUpdateDraft(draft.id, draft);
+        const request = apiUpdateDraft(draftId, draft);
 
         request.then(response => {
             dispatch(updateNomStore([response.data], "drafts"));

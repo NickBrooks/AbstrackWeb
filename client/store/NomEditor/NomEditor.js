@@ -42,7 +42,7 @@ class NomEditor extends React.Component {
 
     componentWillMount() {
         let { handleGetDraft, noms, setSearchBar, toggleNewNomButton, togglePreviewMode } = this.props;
-        let { draftId } = this.props.params;        
+        let { draftId } = this.props.params;
 
         // set the timeouts
         this.timeouts = [];
@@ -76,11 +76,15 @@ class NomEditor extends React.Component {
         updateDraftSavingStatus(false);
     }
 
+    componentWillReceiveProps(nextProps) {
+        let { draftId } = this.props.params;
+    }
+
     saveDraft() {
         let { nomEditor, handleAddDraft, handleSaveDraft, params } = this.props;
 
         this.clearTimeouts();
-        this.setTimeout(function () { (params.draftId ? handleSaveDraft(nomEditor) : handleAddDraft(nomEditor)) }, 2500);
+        this.setTimeout(function () { (params.draftId ? handleSaveDraft(params.draftId, nomEditor) : handleAddDraft(nomEditor)) }, 2500);
     }
 
     handleHashtagsChange(e) {
@@ -113,7 +117,7 @@ class NomEditor extends React.Component {
                 <div className="nom-editor">
                     <div className="row">
                         <div className="col-sm-9">
-                            <input type="text" className="form-control editor-title mousetrap" defaultValue={nomEditor.title} placeholder="Title" tabIndex={1} onChange={this.handleTitleChange} />
+                            <input type="text" className="form-control editor-title mousetrap" defaultValue={(!nomEditor || !nomEditor.title ? null : nomEditor.title)} placeholder="Title" tabIndex={1} onChange={this.handleTitleChange} />
                         </div>
                         <div className="col-sm-3">
                             <NomTrackSelector {...this.props} />
@@ -123,9 +127,9 @@ class NomEditor extends React.Component {
                     {ui.nom.editor.previewMode ?
                         <RenderMarkdown markdown={nomEditor.body} className="preview-mode" /> :
                         <div className="editor-body">
-                            <textarea ref="body" className="form-control mousetrap" defaultValue={nomEditor.body} placeholder="Say something..." tabIndex={2} onChange={this.handleBodyChange} />
+                            <textarea ref="body" className="form-control mousetrap" defaultValue={(!nomEditor || !nomEditor.body ? null : nomEditor.body)} placeholder="Say something..." tabIndex={2} onChange={this.handleBodyChange} />
                             <hr />
-                            <input type="text" className="form-control editor-hashtags mousetrap" defaultValue={nomEditor.hashtags} placeholder="Hashtags" tabIndex={3} onChange={this.handleHashtagsChange} />
+                            <input type="text" className="form-control editor-hashtags mousetrap" defaultValue={(!nomEditor || !nomEditor.hashtags ? null : nomEditor.hashtags)} placeholder="Hashtags" tabIndex={3} onChange={this.handleHashtagsChange} />
                         </div>
                     }
                 </div>

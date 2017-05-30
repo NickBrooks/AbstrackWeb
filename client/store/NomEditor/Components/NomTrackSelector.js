@@ -11,7 +11,7 @@ class NomTrackSelector extends React.Component {
 
     saveDraft() {
         let { nomEditor, handleAddDraft, handleSaveDraft, params } = this.props;
-        (params.draftId ? handleSaveDraft(nomEditor) : handleAddDraft(nomEditor));
+        (params.draftId ? handleSaveDraft(params.draftId, nomEditor) : handleAddDraft(nomEditor));
     }
 
     clearTrack() {
@@ -64,7 +64,7 @@ class NomTrackSelector extends React.Component {
 
         return (
             <div className="editor-track">
-                {(nomEditor.track == null || nomEditor.track.id == null) ? this.renderTypeahead() : this.renderSelectedTrack(nomEditor)}
+                {(nomEditor == null || nomEditor.track == null || nomEditor.track.id == null) ? this.renderTypeahead() : this.renderSelectedTrack(nomEditor)}
             </div>
         )
     }
