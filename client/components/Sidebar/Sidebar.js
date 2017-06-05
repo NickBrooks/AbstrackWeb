@@ -9,6 +9,10 @@ class Sidebar extends React.Component {
         super(props);
     }
 
+    closeSidebar() {
+        this.props.toggleSidebar(false);
+    }
+
     logout(e) {
         e.preventDefault();
         this.props.handleLogout();
@@ -48,22 +52,25 @@ class Sidebar extends React.Component {
 
     render() {
         let { account, tracks, views, ui } = this.props;
-        console.log(ui.sidebar.open);
         const className = "sidebar menu " + (ui.sidebar.open ? "open" : "closed");
 
         return (
-            <div className={className}>
-                {this.renderUserBadge()}
-                <ul className="nav nav-sidebar text-truncate">
-                    <li className="inbox"><Link to="/"><span className="fa-stack nom-green-light"><FontAwesome name="circle" stack="2x" /><FontAwesome name="envelope-open" inverse stack="1x" /></span> Inbox</Link></li>
-                    <li className="pinned"><Link to="/pinned"><span className="fa-stack nom-orange-light"><FontAwesome name="circle" stack="2x" /><FontAwesome name="thumb-tack" inverse stack="1x" /></span> Pinned</Link></li>
-                    <li className="drafts"><Link to="/drafts"><span className="fa-stack nom-purple"><FontAwesome name="circle" stack="2x" /><FontAwesome name="pencil" inverse stack="1x" /></span> Drafts</Link></li>
-                </ul>
-                {this.renderTracksMenu(tracks)}
-                <ul className="nav nav-sidebar text-truncate">
-                    <li className="trash"><Link to="/"><FontAwesome name="trash" /> Trash</Link></li>
-                    <li className="logout"><a href="#" onClick={this.logout.bind(this)}><FontAwesome name="sign-out" /> Logout</a></li>
-                </ul>
+            <div>
+                <div className={className}>
+                    {this.renderUserBadge()}
+                    <ul className="nav nav-sidebar text-truncate">
+                        <li className="inbox"><Link to="/"><span className="fa-stack nom-green-light"><FontAwesome name="circle" stack="2x" /><FontAwesome name="envelope-open" inverse stack="1x" /></span> Inbox</Link></li>
+                        <li className="pinned"><Link to="/pinned"><span className="fa-stack nom-orange-light"><FontAwesome name="circle" stack="2x" /><FontAwesome name="thumb-tack" inverse stack="1x" /></span> Pinned</Link></li>
+                        <li className="drafts"><Link to="/drafts"><span className="fa-stack nom-purple"><FontAwesome name="circle" stack="2x" /><FontAwesome name="pencil" inverse stack="1x" /></span> Drafts</Link></li>
+                    </ul>
+                    {this.renderTracksMenu(tracks)}
+                    <ul className="nav nav-sidebar text-truncate">
+                        <li className="trash"><Link to="/"><FontAwesome name="trash" /> Trash</Link></li>
+                        <li className="logout"><a href="#" onClick={this.logout.bind(this)}><FontAwesome name="sign-out" /> Logout</a></li>
+                    </ul>
+                </div>
+                <div className={"hidden-sidebar " + (ui.sidebar.open ? "open" : "closed")} onClick={this.closeSidebar.bind(this)}>
+                </div>
             </div>
         )
     }

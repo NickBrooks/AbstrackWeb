@@ -6,6 +6,14 @@
     right: 0;
     z-index: 999;
 
+    .sidebar-toggle {
+        color: #fff;
+
+        &:hover,  &:active, &:focus {
+            color: $nom-header-blue-text;
+        }
+    }
+
     &.searchBar-pinned {
         background: $nom-orange-light;
 
@@ -23,6 +31,12 @@
 
         input[type="text"]#search-bar:-moz-placeholder {
             color: $nom-orange-text;
+        }
+
+        .sidebar-toggle {
+            &:hover,  &:active, &:focus {
+                color: $nom-orange-text;
+            }
         }
     }
 
@@ -44,6 +58,12 @@
         input[type="text"]#search-bar:-moz-placeholder {
             color: $nom-green-text;
         }
+
+        .sidebar-toggle {
+            &:hover,  &:active, &:focus {
+                color: $nom-green-text;
+            }
+        }
     }
 
     &.searchBar-drafts {
@@ -63,6 +83,12 @@
 
         input[type="text"]#search-bar:-moz-placeholder {
             color: $nom-purple-text;
+        }
+
+        .sidebar-toggle {
+            &:hover,  &:active, &:focus {
+                color: $nom-purple-text;
+            }
         }
     }
 }

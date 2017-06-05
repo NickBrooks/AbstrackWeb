@@ -17,7 +17,7 @@ class Header extends React.Component {
             <div className={"header " + (searchBar.class ? searchBar.class : "searchBar-inbox")}>
                 <div className="row">
                     <div className="col-sm-12 input-group">
-                        <button className="btn btn-link white" type="button" onClick={this.openSidebar.bind(this)}>
+                        <button className="btn btn-link sidebar-toggle" type="button" onClick={this.openSidebar.bind(this)}>
                             <FontAwesome name="bars" />
                         </button>
                         <input id="search-bar" type="text" className="form-control" placeholder={(searchBar.defaultValue ? searchBar.defaultValue : "Search noms")} />

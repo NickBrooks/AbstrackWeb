@@ -3,13 +3,24 @@
     top: 0;
     bottom: 0;
     left: 0;
-    z-index: 1000;
+    z-index: 10001;
     width: $sidebar-width;
     max-width: $sidebar-width;
     padding: 15px 0;
     overflow-x: hidden;
     overflow-y: auto;
     background-color: $nom-dark-blue;
+    animation: animateleft 0.2s;
+    
+    @keyframes animateleft{
+        from {
+            left: -$sidebar-width;
+            opacity: 0;
+            } to {
+            left: 0;
+            opacity: 1;
+            }
+        }
 
     &.closed {
         display: none;
@@ -22,6 +33,23 @@
     .fa-stack-1x {
         margin-top: -1px;
         font-size: 0.8em;
+    }
+}
+
+.hidden-sidebar {
+    &.closed {
+        display: none;
+    }
+
+    &.open {
+        display:block;
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        left: $sidebar-width;
+        right: 0;
+        background: transparent;
+        z-index: 10000;
     }
 }
 

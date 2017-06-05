@@ -30,8 +30,16 @@ class AppView extends React.Component {
         this.props.handleGetTracks();
     }
 
-    componentWillReceiveProps() {
+    componentWillReceiveProps(nextProps) {
+        let { location, toggleSidebar, ui } = this.props;
+
+        // token check
         this.checkValidToken();
+
+        // close sidebar on route change
+        if (location != nextProps.location && ui.sidebar.open) {
+            toggleSidebar(false);
+        }
     }
 
     componentDidMount() {
