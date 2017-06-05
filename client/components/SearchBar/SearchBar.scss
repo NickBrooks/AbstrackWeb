@@ -17,6 +17,10 @@
     &.searchBar-pinned {
         background: $nom-orange-light;
 
+        input[type="text"]#search-bar {
+            background: #fa8863;
+        }
+
         input[type="text"]#search-bar::-webkit-input-placeholder {
             color: $nom-orange-text;
         }
@@ -42,6 +46,10 @@
 
     &.searchBar-track {
         background: $nom-green;
+
+        input[type="text"]#search-bar {
+            background: #4cb578;
+        }
 
         input[type="text"]#search-bar::-webkit-input-placeholder {
             color: $nom-green-text;
@@ -69,6 +77,10 @@
     &.searchBar-drafts {
         background: $nom-purple;
 
+        input[type="text"]#search-bar {
+            background: #c772d5;
+        }
+
         input[type="text"]#search-bar::-webkit-input-placeholder {
             color: $nom-purple-text;
         }
@@ -94,13 +106,14 @@
 }
 
 input[type="text"]#search-bar {
-    background: rgba(0, 0, 0, 0);
+    background: #7795a4;
     border: none;
     outline: none;
     box-shadow: none;
     font-size: 1.3em;
     font-family: $font-family-fancy;
-    padding: 15px;
+    margin: 5px;
+    padding: 10px 20px;
     width: 100%;
     max-width: 100%;
     display: block;

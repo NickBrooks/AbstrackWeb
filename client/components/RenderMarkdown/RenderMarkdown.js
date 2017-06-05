@@ -35,7 +35,7 @@ class RenderMarkdown extends React.Component {
         let { markdown } = this.props;
 
         return (
-            <div className="markdown" dangerouslySetInnerHTML={{ __html: marked(markdown) }}></div>
+            <div className="markdown" dangerouslySetInnerHTML={{ __html: marked((markdown? markdown : "")) }}></div>
         )
     }
 }
