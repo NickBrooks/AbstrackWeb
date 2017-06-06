@@ -10,6 +10,8 @@ import { loadLocalStorage } from '../../functions';
 class AppView extends React.Component {
     constructor(props) {
         super(props);
+        this.handleToggleSidebar = this.handleToggleSidebar.bind(this);
+        
         this.checkValidToken();
     }
 
@@ -19,6 +21,12 @@ class AppView extends React.Component {
         if (auth == null || auth.token == "" || auth.token == null || auth.expiration < moment.utc().format()) {
             browserHistory.push('/login');
         }
+    }
+
+    handleToggleSidebar() {
+        let { toggleSidebar, ui } = this.props;
+
+        ui.sidebar.open ? toggleSidebar(false) : toggleSidebar(true);
     }
 
     newNomShortcut() {
@@ -43,10 +51,29 @@ class AppView extends React.Component {
     }
 
     componentDidMount() {
-        let { newNomShortcut } = this;
+        let { newNomShortcut, handleToggleSidebar } = this;
 
         Mousetrap.bind(['ctrl+enter'], function () {
             newNomShortcut();
+            return false;
+        });
+
+        Mousetrap.bind(['/'], function () {
+            handleToggleSidebar();
+            return false;
+        });
+    }
+
+    componentWillUnmount() {
+        let { newNomShortcut, handleToggleSidebar } = this;
+
+        Mousetrap.unbind(['ctrl+enter'], function () {
+            newNomShortcut();
+            return false;
+        });
+
+        Mousetrap.unbind(['/'], function () {
+            handleToggleSidebar();
             return false;
         });
     }
