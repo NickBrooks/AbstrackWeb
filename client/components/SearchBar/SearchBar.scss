@@ -5,100 +5,85 @@
     left: 0;
     right: 0;
     z-index: 999;
-
     .sidebar-toggle {
         color: #fff;
-
-        &:hover,  &:active, &:focus {
+        &:hover,
+        &:active,
+        &:focus {
             color: $nom-header-blue-text;
         }
     }
-
     &.searchBar-pinned {
         background: $nom-orange-light;
-
         input[type="text"]#search-bar {
             background: #fa8863;
         }
-
         input[type="text"]#search-bar::-webkit-input-placeholder {
             color: $nom-orange-text;
         }
-
         input[type="text"]#search-bar::-moz-placeholder {
             color: $nom-orange-text;
         }
-
         input[type="text"]#search-bar:-ms-input-placeholder {
             color: $nom-orange-text;
         }
-
         input[type="text"]#search-bar:-moz-placeholder {
             color: $nom-orange-text;
         }
-
         .sidebar-toggle {
-            &:hover,  &:active, &:focus {
+            &:hover,
+            &:active,
+            &:focus {
                 color: $nom-orange-text;
             }
         }
     }
-
     &.searchBar-track {
         background: $nom-green;
-
         input[type="text"]#search-bar {
             background: #4cb578;
         }
-
         input[type="text"]#search-bar::-webkit-input-placeholder {
             color: $nom-green-text;
         }
-
         input[type="text"]#search-bar::-moz-placeholder {
             color: $nom-green-text;
         }
-
         input[type="text"]#search-bar:-ms-input-placeholder {
             color: $nom-green-text;
         }
-
         input[type="text"]#search-bar:-moz-placeholder {
             color: $nom-green-text;
         }
-
         .sidebar-toggle {
-            &:hover,  &:active, &:focus {
+            &:hover,
+            &:active,
+            &:focus {
                 color: $nom-green-text;
             }
         }
     }
-
     &.searchBar-drafts {
         background: $nom-purple;
-
         input[type="text"]#search-bar {
             background: #c772d5;
         }
-
         input[type="text"]#search-bar::-webkit-input-placeholder {
             color: $nom-purple-text;
         }
-
         input[type="text"]#search-bar::-moz-placeholder {
             color: $nom-purple-text;
         }
-
         input[type="text"]#search-bar:-ms-input-placeholder {
             color: $nom-purple-text;
         }
-
         input[type="text"]#search-bar:-moz-placeholder {
             color: $nom-purple-text;
         }
-
         .sidebar-toggle {
-            &:hover,  &:active, &:focus {
+            &:hover,
+            &:active,
+            &:focus {
                 color: $nom-purple-text;
             }
         }

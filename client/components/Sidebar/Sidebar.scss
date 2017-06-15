@@ -11,26 +11,23 @@
     overflow-y: auto;
     background-color: $nom-dark-blue;
     animation: animateleft 0.2s;
-    box-shadow: 0 16px 24px 2px rgba(0,0,0,0.14), 0 6px 30px 5px rgba(0,0,0,0.12), 0 8px 10px -5px rgba(0,0,0,0.2);
-    
-    @keyframes animateleft{
+    box-shadow: 0 16px 24px 2px rgba(0, 0, 0, 0.14), 0 6px 30px 5px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.2);
+    @keyframes animateleft {
         from {
             left: -$sidebar-width;
             opacity: 0;
-            } to {
+        }
+        to {
             left: 0;
             opacity: 1;
-            }
         }
-
+    }
     &.closed {
         display: none;
     }
-
     &.open {
         display: block;
     }
-
     .fa-stack-1x {
         margin-top: -1px;
         font-size: 0.8em;
@@ -41,9 +38,8 @@
     &.closed {
         display: none;
     }
-
     &.open {
-        display:block;
+        display: block;
         position: fixed;
         top: 0;
         bottom: 0;
@@ -57,13 +53,11 @@
 .user-badge {
     padding: 0 15px;
     margin: 0 0 25px;
-
     a {
         &:hover {
             text-decoration: none;
         }
     }
-
     span {
         margin: 0px 0 0 6px;
         color: #fff;
@@ -75,17 +69,14 @@
 .nav-sidebar {
     padding: 0 15px;
     margin-bottom: ($box-margin / 2);
-
     li {
         overflow: hidden;
     }
-
-    li > a {
+    li>a {
         color: $nom-gray-medium;
         font-size: 0.9em;
         line-height: 1;
     }
-
     .nav-sidebar-header span {
         font-weight: $font-weight-bold;
         text-transform: uppercase;

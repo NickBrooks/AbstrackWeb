@@ -1,32 +1,31 @@
 a.btn-circle {
-	border-radius: 50%;
-	width: 25px;
-	height: 25px;
-	padding: 0;
-	color: $white;
-
-	i {
-		font-size: 0.9em;
-		margin: 6px 0 0 -1px;
-	}
+    border-radius: 50%;
+    width: 25px;
+    height: 25px;
+    padding: 0;
+    color: $white;
+    i {
+        font-size: 0.9em;
+        margin: 6px 0 0 -1px;
+    }
 }
 
 .btn-success {
-	background-color: $nom-green-light;
-	border: 1px solid $nom-green-light;
-
-	&:hover {
-		background-color: $nom-green;
-		border: 1px solid $nom-green;
-	}
+    background-color: $nom-green-light;
+    border: 1px solid $nom-green-light;
+    &:hover {
+        background-color: $nom-green;
+        border: 1px solid $nom-green;
+    }
 }
 
 .btn-toolbar {
     color: #7f8c8d;
     background-color: #FAFAFA;
-
-	&:hover, &:active, &:focus {
-		background-color: #eee;
-		outline: none !important;
-	}
+    &:hover,
+    &:active,
+    &:focus {
+        background-color: #eee;
+        outline: none !important;
+    }
 }

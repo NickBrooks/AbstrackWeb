@@ -1,60 +1,58 @@
 //https://codepen.io/AntonSidorov/pen/ZLOWPO 
 $base-size: 1.5rem;
-
 .auios-label {
-  display: inline-block;
-  margin: 0;
+    display: inline-block;
+    margin: 0;
 }
 
 .auios-toggle {
-  width: $base-size / 7 * 12;
-  height: $base-size;
-  border-radius: $base-size;
-  -webkit-appearance: initial;
-  position: relative;
-  background-color: $nom-gray;
-  box-shadow: inset 0 0 0 0 $nom-gray-dark;
-  line-height: 2.375rem;
-  vertical-align:middle;
-  margin-top: -4px;
-  //the border size needs adjustment all the time
-  border: $base-size/20 solid $nom-gray-dark;
-  transition: box-shadow .28s ease-in-out, border-color .28s ease-in-out;
-  cursor: pointer; 
-  &:before {
-    content: "";
-    position: absolute;
-    right: 45%;
-    left: 0;
-    top: 0;
-    bottom: 0;
-    border: $base-size / 80 solid rgba(0, 0, 0, .12);
-    box-shadow: 0px $base-size * .1875 $base-size*.3125 0px rgba(0, 0, 0, 0.15);
+    width: $base-size / 7 * 12;
+    height: $base-size;
+    border-radius: $base-size;
+    -webkit-appearance: initial;
+    position: relative;
     background-color: $nom-gray;
-    display: block;
-    border-radius: $base-size/2;
-    background-clip: padding-box;
-    z-index: 2;
-    transition: left .3s ease-in-out, right .3s ease-in-out;
-  }
-  &:active {
-    box-shadow: inset 0 0 0 $base-size/2 $nom-gray-dark;
+    box-shadow: inset 0 0 0 0 $nom-gray-dark;
+    line-height: 2.375rem;
+    vertical-align: middle;
+    margin-top: -4px; //the border size needs adjustment all the time
+    border: $base-size/20 solid $nom-gray-dark;
+    transition: box-shadow .28s ease-in-out, border-color .28s ease-in-out;
+    cursor: pointer;
     &:before {
-      right: 35%;
+        content: "";
+        position: absolute;
+        right: 45%;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        border: $base-size / 80 solid rgba(0, 0, 0, .12);
+        box-shadow: 0px $base-size * .1875 $base-size*.3125 0px rgba(0, 0, 0, 0.15);
+        background-color: $nom-gray;
+        display: block;
+        border-radius: $base-size/2;
+        background-clip: padding-box;
+        z-index: 2;
+        transition: left .3s ease-in-out, right .3s ease-in-out;
     }
-    &:checked:before {
-      left: 35%;
+    &:active {
+        box-shadow: inset 0 0 0 $base-size/2 $nom-gray-dark;
+        &:before {
+            right: 35%;
+        }
+        &:checked:before {
+            left: 35%;
+        }
     }
-  }
-  &:focus {
-    outline: none!important;
-  }
-  &:checked {
-    box-shadow: inset 0 0 0 $base-size/2 $nom-green-light;
-    border-color: $nom-green-light;
-    &:before {
-      left: 45%;
-      right: 0;
+    &:focus {
+        outline: none!important;
     }
-  }
+    &:checked {
+        box-shadow: inset 0 0 0 $base-size/2 $nom-green-light;
+        border-color: $nom-green-light;
+        &:before {
+            left: 45%;
+            right: 0;
+        }
+    }
 }

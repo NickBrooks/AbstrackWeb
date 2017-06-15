@@ -4,14 +4,12 @@
         margin: 0;
         padding: 0;
     }
-
-    li, .add-comment {
-        
+    li,
+    .add-comment {
         .ibox {
             border-top: solid 2px $nom-header-blue-text;
             margin-left: 60px;
         }
-
         img {
             max-width: 100%;
             margin: 15px 0;

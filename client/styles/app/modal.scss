@@ -1,5 +1,4 @@
 // TAKEN FROM 'react-bootstrap-modal', rbm-patch.css https://github.com/jquense/react-bootstrap-modal/blob/master/lib/styles/rbm-patch.css
-
 .animated {
     -webkit-animation-duration: 1s;
     -moz-animation-duration: 1s;
@@ -10,8 +9,10 @@
     -o-animation-fill-mode: both;
     animation-fill-mode: both
 }
+
 @-webkit-keyframes shake {
-    0%, 100% {
+    0%,
+    100% {
         -webkit-transform: translateX(0)
     }
     10%,
@@ -28,8 +29,10 @@
         -webkit-transform: translateX(10px)
     }
 }
+
 @-moz-keyframes shake {
-    0%, 100% {
+    0%,
+    100% {
         -moz-transform: translateX(0)
     }
     10%,
@@ -46,8 +49,10 @@
         -moz-transform: translateX(10px)
     }
 }
+
 @-o-keyframes shake {
-    0%, 100% {
+    0%,
+    100% {
         -o-transform: translateX(0)
     }
     10%,
@@ -64,8 +69,10 @@
         -o-transform: translateX(10px)
     }
 }
+
 @keyframes shake {
-    0%, 100% {
+    0%,
+    100% {
         transform: translateX(0)
     }
     10%,
@@ -82,6 +89,7 @@
         transform: translateX(10px)
     }
 }
+
 .shake {
     -webkit-animation-name: shake;
     -moz-animation-name: shake;
@@ -96,7 +104,6 @@
 .modal-header {
     background: $nom-header-blue;
     color: #fff;
-
     .modal-title {
         line-height: 1;
     }
@@ -106,37 +113,30 @@
     .modal {
         min-height: calc(100% - 20px);
     }
-
     .modal-dialog {
         height: calc(100% - 20px);
         box-sizing: border-box;
         padding: 0;
     }
-
     .modal-content {
         width: 100%;
         min-height: 100%;
         overflow: hidden;
-
         .close {
             position: absolute;
             top: 10px;
             right: 10px
         }
     }
-
     .modal-header {
         border-bottom: $hr-border;
     }
-
     .modal-body {
         height: calc(100vh - 198px);
     }
-
     .modal-footer {
         border-top: $hr-border;
     }
-
     @media (min-width: 576px) {
         .modal {
             min-height: calc(100% - 60px);
@@ -145,13 +145,11 @@
             height: calc(100% - 60px);
         }
     }
-
     @media (min-width: 576px) and (max-width: 1400px) {
         .modal-dialog {
             max-width: 90%;
         }
     }
-
     @media (min-width: 1400px) {
         .modal-dialog {
             max-width: 1260px;

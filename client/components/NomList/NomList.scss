@@ -1,7 +1,6 @@
 .nom-list {
     .time-node {
         margin-bottom: 25px;
-
         .nom-node {
             .comment-count {
                 background: $nom-blue-light;
@@ -10,14 +9,12 @@
                 border-radius: 4px;
                 font-size: 0.8em;
             }
-
             .media-preview {
                 width: 100%;
                 margin: auto;
                 overflow: hidden;
                 white-space: nowrap;
             }
-
             .cropped-thumb {
                 width: 140px;
                 height: 100px;

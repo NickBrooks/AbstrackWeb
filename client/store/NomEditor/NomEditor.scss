@@ -3,43 +3,38 @@
     box-shadow: $box-shadow;
     border-radius: $radius;
     border-top: $border-top;
-
     hr {
         margin: 0 0;
     }
-
-    input, textarea {
+    input,
+    textarea {
         border: none
     }
-    
-    .form-control, .markdown {
+    .form-control,
+    .markdown {
         margin: 0;
         padding: $box-padding;
     }
-
-    .editor-title, .editor-track {
+    .editor-title,
+    .editor-track {
         font-size: 1.3em;
         font-weight: 600;
     }
-
     .editor-body {
         textarea {
             resize: none;
             height: calc(100vh - 260px);
         }
     }
-
     .editor-hashtags {
         padding: $box-padding/2 $box-padding;
         font-size: 0.9em;
         font-weight: bold;
         color: $nom-header-blue;
     }
-
     textarea {
         padding: 0;
     }
-
     .markdown {
         height: calc(100vh - 220px);
         overflow-y: auto;
@@ -53,17 +48,14 @@
     left: 0;
     right: 0;
     padding: $box-padding/2 $box-padding;
-
     .actions {
         button {
             margin-left: 10px;
         }
     }
-
     .btn-link {
         color: $nom-dark-blue;
         cursor: default;
-
         &:hover {
             text-decoration: none;
         }
