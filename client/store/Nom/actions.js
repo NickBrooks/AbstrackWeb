@@ -1,5 +1,6 @@
-import { apiPinNom, apiGetNom, apiGetDraft, apiAddDraft, apiUpdateDraft } from '../../api';
+import { apiAddNom, apiPinNom, apiGetNom } from '../../api';
 import moment from 'moment';
+import { push } from 'react-router-redux';
 
 //add a new nom
 export function addNom(nom) {
@@ -28,11 +29,12 @@ export function updateNomStore(data, view) {
 }
 
 // pin or unpin a nom
-export function pinNom(nomId, value) {
+export function addRemoveViewFromNom(nomId, value, view) {
     return {
-        type: 'PIN_NOM',
+        type: 'ADD_REMOVE_VIEW_FROM_NOM',
         nomId,
-        value
+        value,
+        view
     }
 }
 
@@ -62,6 +64,14 @@ export function updateNomFetchingStatus(value) {
     }
 }
 
+// update nom adding status
+export function updateNomAddingStatus(value) {
+    return {
+        type: 'UPDATE_NOM_ADDING_STATUS',
+        value
+    }
+}
+
 export function handleGetNom(nomId) {
     return (dispatch) => {
         dispatch(updateNomFetchingStatus(true));
@@ -77,18 +87,31 @@ export function handleGetNom(nomId) {
     };
 }
 
+export function handleAddNom(newNomDTO) {
+    return (dispatch) => {
+        dispatch(updateNomAddingStatus(true));
+        const request = apiAddNom(newNomDTO);
+
+        request.then(response => {
+            dispatch(updateNomStore([response.data], newNomDTO.skipInbox ? undefined : "inbox"));
+            dispatch(addRemoveViewFromNom(response.data.id, false, "drafts"));
+            dispatch(push("/n/" + response.data.id))
+            dispatch(updateNomAddingStatus(false));
+        }).catch(error => {
+            dispatch(updateNomAddingStatus(false));
+            console.log(error);
+        });
+    };
+}
+
 export function handlePinNom(nomId, value) {
     return (dispatch) => {
-        dispatch(pinNom(nomId, value));
+        dispatch(addRemoveViewFromNom(nomId, value, "pinned"));
         const request = apiPinNom(nomId, value);
 
         request.catch(error => {
             console.log(error);
-            if (value) {
-                dispatch(pinNom(nomId, false));
-            } else {
-                dispatch(pinNom(nomId, true));
-            }
+            dispatch(addRemoveViewFromNom(nomId, value ? false : true, "pinned"));
         });
     };
 }

@@ -6,9 +6,10 @@ import { delay, } from '../../../functions';
 class NewNomFooter extends React.Component {
     constructor(props) {
         super(props);
+        this.handleInboxChange = this.handleInboxChange.bind(this);
         this.togglePreview = this.togglePreview.bind(this);
         this.handlePreviewClick = this.handlePreviewClick.bind(this);
-        this.handleInboxChange = this.handleInboxChange.bind(this);
+        this.handlePublishClick = this.handlePublishClick.bind(this);
     }
 
     saveDraft() {
@@ -18,6 +19,11 @@ class NewNomFooter extends React.Component {
         if (nomEditor.body != null || nomEditor.title != null) {
             (params.draftId ? handleSaveDraft(params.draftId, nomEditor) : handleAddDraft(nomEditor));
         }
+    }
+
+    handlePublishClick(e) {
+        e.preventDefault();
+        this.props.handleAddNom(this.props.nomEditor);
     }
 
     handlePreviewClick(e) {
@@ -75,7 +81,7 @@ class NewNomFooter extends React.Component {
                 <div className="actions pull-right">
                     {ui.draft.savingStatus ? <button type="button" className="btn btn-sm btn-link">{ui.draft.savingStatus}</button> : undefined}
                     <button type="button" className="btn btn-sm btn-info" onClick={this.handlePreviewClick}>{ui.nom.editor.previewMode ? editButton : previewButton}</button>
-                    <button type="button" className="btn btn-sm btn-success"><FontAwesome name="check" /> Publish</button>
+                    <button type="button" className="btn btn-sm btn-success" onClick={this.handlePublishClick}><FontAwesome name="check" /> Publish</button>
                 </div>
             </div>
         )

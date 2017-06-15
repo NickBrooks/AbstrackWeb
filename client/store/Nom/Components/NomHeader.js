@@ -11,10 +11,10 @@ class NomHeader extends React.Component {
 
     handlePinNom(value, e) {
         e.preventDefault();
-        let { nom, pinNom } = this.props;
+        let { nom, handlePinNom } = this.props;
 
         //pin it!
-        pinNom(nom.id, value);
+        handlePinNom(nom.id, value);
     }
 
     renderPinned() {

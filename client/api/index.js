@@ -68,6 +68,10 @@ export function apiGetNom(nomId) {
     return Axios.get("noms/" + nomId, getAuthHeader());
 }
 
+export function apiAddNom(newNomDTO) {
+    return Axios.post("noms", newNomDTO, getAuthHeader());
+}
+
 export function apiGetInbox() {
     return Axios.get("inbox", getAuthHeader());
 }
@@ -99,7 +103,7 @@ export function apiGetDraft(draftId) {
 }
 
 export function apiAddDraft(draft) {
-    return Axios.post("drafts", draft,  getAuthHeader());
+    return Axios.post("drafts", draft, getAuthHeader());
 }
 
 export function apiUpdateDraft(draftId, draft) {

@@ -36,6 +36,7 @@ const ui = {
   },
   nom: {
     fetchingStatus: false,
+    addingStatus: false,
     editor: {
       previewMode: false
     }

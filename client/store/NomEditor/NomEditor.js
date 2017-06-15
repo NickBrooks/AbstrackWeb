@@ -22,16 +22,12 @@ class NomEditor extends React.Component {
 
         // set the default
         setDraft({
-            id: null,
-            createdBy: {
-                id: null
-            },
-            updatedTime: null,
-            title: null,
-            body: null,
-            track: {
-                id: null
-            },
+            id: undefined,
+            createdBy: undefined,
+            updatedTime: undefined,
+            title: undefined,
+            body: undefined,
+            track: undefined,
             hashtags: [],
             skipInbox: false
         });
@@ -111,7 +107,7 @@ class NomEditor extends React.Component {
 
     renderLoaded() {
         let { ui, nomEditor } = this.props;
-        setDocumentTitle(!nomEditor || !nomEditor.title ? "New Nom": nomEditor.title);
+        setDocumentTitle(!nomEditor || !nomEditor.title ? "New Nom" : nomEditor.title);
 
         return (
             <div>

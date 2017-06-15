@@ -1,16 +1,12 @@
 const nomEditor = {
-    id: null,
-    createdBy: {
-        id: null
-    },
-    updatedTime: null,
-    title: null,
-    body: null,
-    track: {
-        id: null
-    },
+    id: undefined,
+    createdBy: undefined,
+    updatedTime: undefined,
+    title: undefined,
+    body: undefined,
+    track: undefined,
     hashtags: [],
-    skipInbox: false
+    skipInbox: undefined
 }
 
 export default nomEditor;
