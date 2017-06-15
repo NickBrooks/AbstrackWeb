@@ -65,12 +65,12 @@ function mergeCurrentStateAndFetchedNoms(state, action) {
     return newState;
 }
 
-function pinNom(nom, value) {
-    var i = nom.views.indexOf("pinned");
+function addRemoveViewFromNom(nom, value, view) {
+    var i = nom.views.indexOf(view);
 
     if (value) {
         if (i == -1) {
-            nom.views.push("pinned");
+            nom.views.push(view);
         }
     } else {
         if (i > -1) {
@@ -92,10 +92,10 @@ function noms(state = [], action) {
             return removeViewFromNomStore(state, action);
         case 'UPDATE_NOM_STORE':
             return mergeCurrentStateAndFetchedNoms(state, action);
-        case 'PIN_NOM':
+        case 'ADD_REMOVE_VIEW_FROM_NOM':
             return state.map(nom => nom.id === action.nomId ?
                 // update the nom with a matching id
-                pinNom(nom, action.value) :
+                addRemoveViewFromNom(nom, action.value, action.view) :
                 // otherwise return original nom
                 nom
             );
