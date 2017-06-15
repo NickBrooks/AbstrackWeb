@@ -18,6 +18,14 @@ export function updateDraftSavingStatus(value) {
     }
 }
 
+// handle the skip inbox toggle
+export function toggleSkipInbox(value) {
+    return {
+        type: 'TOGGLE_SKIP_INBOX',
+        value
+    }
+}
+
 export function setDraft(payload) {
     return {
         type: 'SET_DRAFT',

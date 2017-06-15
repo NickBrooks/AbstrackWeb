@@ -10,6 +10,10 @@ function nomEditor(state = [], action) {
             var newState = Object.assign({}, state);
             newState.body = action.body;
             return newState;
+        case 'TOGGLE_SKIP_INBOX':
+            var newState = Object.assign({}, state);
+            newState.skipInbox = action.value;
+            return newState;
         case 'SET_DRAFT_HASHTAGS':
             var newState = Object.assign({}, state);
             newState.hashtags = action.hashtags;

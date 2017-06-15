@@ -11,7 +11,11 @@ class NomTrackSelector extends React.Component {
 
     saveDraft() {
         let { nomEditor, handleAddDraft, handleSaveDraft, params } = this.props;
-        (params.draftId ? handleSaveDraft(params.draftId, nomEditor) : handleAddDraft(nomEditor));
+
+        // do the save only if there's already a body and title 
+        if (nomEditor.body != null || nomEditor.title != null) {
+            (params.draftId ? handleSaveDraft(params.draftId, nomEditor) : handleAddDraft(nomEditor));
+        }
     }
 
     clearTrack() {

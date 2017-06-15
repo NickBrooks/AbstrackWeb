@@ -32,7 +32,8 @@ class NomEditor extends React.Component {
             track: {
                 id: null
             },
-            hashtags: []
+            hashtags: [],
+            skipInbox: false
         });
     }
 

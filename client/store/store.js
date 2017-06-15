@@ -11,6 +11,7 @@ import accountData from '../data/Account';
 import commentsData from '../data/Comments';
 import hashtagsData from '../data/Hashtags';
 import loginData from '../data/Login';
+import nomEditorData from '../data/NomEditor';
 import settingsData from '../data/Settings';
 import uiData from '../data/UI';
 import usersData from '../data/Users';
@@ -22,7 +23,7 @@ const defaultState = {
   comments: commentsData,
   hashtags: hashtagsData,
   login: loginData,
-  nomEditor: null,
+  nomEditor: nomEditorData,
   noms: [],
   tracks: [],
   settings: settingsData,

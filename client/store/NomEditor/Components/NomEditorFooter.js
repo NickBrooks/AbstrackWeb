@@ -1,17 +1,35 @@
 import React from 'react';
 import FontAwesome from 'react-fontawesome';
 import Mousetrap from 'mousetrap';
+import { delay, } from '../../../functions';
 
 class NewNomFooter extends React.Component {
     constructor(props) {
         super(props);
         this.togglePreview = this.togglePreview.bind(this);
         this.handlePreviewClick = this.handlePreviewClick.bind(this);
+        this.handleInboxChange = this.handleInboxChange.bind(this);
+    }
+
+    saveDraft() {
+        let { nomEditor, handleAddDraft, handleSaveDraft, params } = this.props;
+
+        // do the save only if there's already a body and title 
+        if (nomEditor.body != null || nomEditor.title != null) {
+            (params.draftId ? handleSaveDraft(params.draftId, nomEditor) : handleAddDraft(nomEditor));
+        }
     }
 
     handlePreviewClick(e) {
         e.preventDefault();
         this.togglePreview();
+    }
+
+    handleInboxChange() {
+        this.props.toggleSkipInbox(this.refs.skipInbox.checked ? false : true);
+        delay(500).then(() => {
+            this.saveDraft();
+        })
     }
 
     togglePreview() {
@@ -43,21 +61,20 @@ class NewNomFooter extends React.Component {
     }
 
     render() {
-        let { ui } = this.props;
+        let { nomEditor, ui } = this.props;
+        const editButton = (<span><FontAwesome name="pencil" /> Edit</span>);
+        const previewButton = (<span><FontAwesome name="eye" /> Preview</span>);
 
         return (
             <div className="nom-editor-footer">
                 <div className="actions pull-left col-sm-2">
-                    <label className="auios-label">
-                        <input className="auios-toggle" type="checkbox" /> Inbox
+                    <label className="toggle-label">
+                        <input className="toggle-button" ref="skipInbox" type="checkbox" onChange={this.handleInboxChange} checked={!nomEditor.skipInbox} /> Inbox
                     </label>
                 </div>
                 <div className="actions pull-right">
                     {ui.draft.savingStatus ? <button type="button" className="btn btn-sm btn-link">{ui.draft.savingStatus}</button> : undefined}
-                    {ui.nom.editor.previewMode ?
-                        <button type="button" className="btn btn-sm btn-info" onClick={this.handlePreviewClick}><FontAwesome name="pencil" /> Edit</button> :
-                        <button type="button" className="btn btn-sm btn-info" onClick={this.handlePreviewClick}><FontAwesome name="eye" /> Preview</button>
-                    }
+                    <button type="button" className="btn btn-sm btn-info" onClick={this.handlePreviewClick}>{ui.nom.editor.previewMode ? editButton : previewButton}</button>
                     <button type="button" className="btn btn-sm btn-success"><FontAwesome name="check" /> Publish</button>
                 </div>
             </div>

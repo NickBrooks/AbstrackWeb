@@ -1,11 +1,11 @@
 //https://codepen.io/AntonSidorov/pen/ZLOWPO 
 $base-size: 1.5rem;
-.auios-label {
+.toggle-label {
     display: inline-block;
     margin: 0;
 }
 
-.auios-toggle {
+.toggle-button {
     width: $base-size / 7 * 12;
     height: $base-size;
     border-radius: $base-size;
