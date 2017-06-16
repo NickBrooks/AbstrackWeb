@@ -2,6 +2,7 @@ import React from 'react';
 import FontAwesome from 'react-fontawesome';
 import Mousetrap from 'mousetrap';
 import { delay, } from '../../../functions';
+import ReactTooltip from 'react-tooltip'
 
 class NewNomFooter extends React.Component {
     constructor(props) {
@@ -67,21 +68,23 @@ class NewNomFooter extends React.Component {
     }
 
     render() {
-        let { nomEditor, ui } = this.props;
-        const editButton = (<span><FontAwesome name="pencil" /> Edit</span>);
-        const previewButton = (<span><FontAwesome name="eye" /> Preview</span>);
+        let { nomEditor, params, ui } = this.props;
+        const editButton = (<span><FontAwesome name="pencil" /></span>);
+        const previewButton = (<span><FontAwesome name="eye" /></span>);
 
         return (
             <div className="nom-editor-footer">
                 <div className="actions pull-left col-sm-2">
-                    <label className="toggle-label">
+                    <label className="toggle-label" data-tip="Inbox note">
                         <input className="toggle-button" ref="skipInbox" type="checkbox" onChange={this.handleInboxChange} checked={!nomEditor.skipInbox} /> Inbox
                     </label>
                 </div>
                 <div className="actions pull-right">
                     {ui.draft.savingStatus ? <button type="button" className="btn btn-sm btn-link">{ui.draft.savingStatus}</button> : undefined}
-                    <button type="button" className="btn btn-sm btn-info" onClick={this.handlePreviewClick}>{ui.nom.editor.previewMode ? editButton : previewButton}</button>
-                    <button type="button" className="btn btn-sm btn-success" onClick={this.handlePublishClick}><FontAwesome name="check" /> Publish</button>
+                    <button type="button" className="btn btn-sm btn-info" data-tip="Preview draft" onClick={this.handlePreviewClick}>{ui.nom.editor.previewMode ? editButton : previewButton}</button>
+                    {!!params.draftId ? <button type="button" className="btn btn-sm btn-info" data-tip="Trash draft" onClick={this.handleDeleteClick}><FontAwesome name="trash" /></button> : undefined}
+                    <button type="button" className="btn btn-sm btn-success" disabled={!nomEditor.body && !nomEditor.title ? true : false} onClick={this.handlePublishClick}><FontAwesome name="check" /> Publish</button>
+                    <ReactTooltip effect="solid" />
                 </div>
             </div>
         )

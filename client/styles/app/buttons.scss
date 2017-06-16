@@ -13,19 +13,33 @@ a.btn-circle {
 .btn-success {
     background-color: $nom-green-light;
     border: 1px solid $nom-green-light;
-    &:hover {
+    &:hover,
+    &:active,
+    &:focus {
         background-color: $nom-green;
         border: 1px solid $nom-green;
     }
 }
 
-.btn-toolbar {
-    color: #7f8c8d;
-    background-color: #FAFAFA;
+.btn-info {
+    background-color: $nom-header-blue;
+    border: 1px solid $nom-header-blue;
     &:hover,
     &:active,
     &:focus {
-        background-color: #eee;
+        background-color: $nom-dark-blue-active;
+        border: 1px solid $nom-dark-blue-active;
+    }
+}
+
+.btn-toolbar {
+    color: #7f8c8d;
+    background-color: $off-white;
+    border: 1px solid $nom-green-light;
+    &:hover,
+    &:active,
+    &:focus {
+        background-color: $nom-gray;
         outline: none !important;
     }
 }
