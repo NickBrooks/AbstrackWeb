@@ -10,6 +10,10 @@ body {
     line-height: 1.75em;
     color: $font-color;
     font-weight: $font-weight;
+    -webkit-font-smoothing: antialiased;
+    -moz-font-smoothing: antialiased;
+    font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
     @include scrollbars(.5em, slategray);
 }
 

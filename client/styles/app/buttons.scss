@@ -10,6 +10,12 @@ a.btn-circle {
     }
 }
 
+.btn-spacing {
+    .btn {
+        margin: 0 5px;
+    }
+}
+
 .btn-success {
     background-color: $nom-green-light;
     border: 1px solid $nom-green-light;
@@ -35,7 +41,7 @@ a.btn-circle {
 .btn-toolbar {
     color: #7f8c8d;
     background-color: $off-white;
-    border: 1px solid $nom-green-light;
+    border: 1px solid $off-white;
     &:hover,
     &:active,
     &:focus {
