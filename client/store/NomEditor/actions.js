@@ -1,11 +1,11 @@
-import { apiGetDraft, apiAddDraft, apiUpdateDraft } from '../../api';
-import { updateNomStore } from '../Nom/actions'
+import { apiGetDraft, apiAddDraft, apiDeleteDraft, apiUpdateDraft } from '../../api';
+import { removeNomFromStore, updateNomStore } from '../Nom/actions'
 import { push } from 'react-router-redux';
 
 // update draft fetching status
-export function updateDraftFetchingStatus(value) {
+export function updateDraftEditorStatus(value) {
     return {
-        type: 'UPDATE_DRAFT_FETCHING_STATUS',
+        type: 'UPDATE_DRAFT_EDITOR_STATUS',
         value
     }
 }
@@ -63,14 +63,14 @@ export function setDraftTrack(trackId) {
 
 export function handleGetDraft(draftId) {
     return (dispatch) => {
-        dispatch(updateDraftFetchingStatus(true));
+        dispatch(updateDraftEditorStatus("loading"));
         const request = apiGetDraft(draftId);
 
         request.then(response => {
             dispatch(setDraft(response.data));
-            dispatch(updateDraftFetchingStatus(false));
+            dispatch(updateDraftEditorStatus("editor"));
         }).catch(error => {
-            dispatch(updateDraftFetchingStatus(false));
+            dispatch(updateDraftEditorStatus("editor"));
             dispatch(push("/new/nom/"));
             console.log(error);
         });
@@ -106,6 +106,20 @@ export function handleSaveDraft(draftId, draft) {
             dispatch(updateDraftSavingStatus("Saved"));
         }).catch(error => {
             dispatch(updateDraftSavingStatus("Error..."));
+            console.log(error);
+        });
+    };
+}
+
+export function handleDeleteDraft(draftId) {
+    return (dispatch) => {
+        const request = apiDeleteDraft(draftId);
+
+        request.then(response => {
+            dispatch(removeNomFromStore(draftId));
+            dispatch(push('/drafts'));
+        }).catch(error => {
+            dispatch(push('/drafts'));
             console.log(error);
         });
     };

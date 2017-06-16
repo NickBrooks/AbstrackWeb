@@ -2,6 +2,8 @@ import React from 'react';
 import { conformHashtags, delay, extractNom, setDocumentTitle } from '../../functions';
 import RenderMarkdown from '../../components/RenderMarkdown/RenderMarkdown';
 import NomEditorFooter from './Components/NomEditorFooter';
+import NomEditorLoading from './Components/NomEditorLoading';
+import NomEditorConfirmDelete from './Components/NomEditorConfirmDelete';
 import NomTrackSelector from './Components/NomTrackSelector';
 
 class NomEditor extends React.Component {
@@ -105,7 +107,7 @@ class NomEditor extends React.Component {
         })
     }
 
-    renderLoaded() {
+    renderEditor() {
         let { ui, nomEditor } = this.props;
         setDocumentTitle(!nomEditor || !nomEditor.title ? "New Nom" : nomEditor.title);
 
@@ -138,9 +140,13 @@ class NomEditor extends React.Component {
     render() {
         let { ui } = this.props;
 
-        return (
-            (ui.draft.fetchingStatus ? <h3>Loading draft...</h3> : this.renderLoaded())
-        )
+        switch (ui.draft.editorStatus) {
+            case 'loading':
+                return <NomEditorLoading />;
+            case 'confirmDelete':
+                return <NomEditorConfirmDelete {...this.props} />;
+        }
+        return this.renderEditor();
     }
 }
 

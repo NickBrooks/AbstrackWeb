@@ -83,11 +83,13 @@ function addRemoveViewFromNom(nom, value, view) {
 
 function noms(state = [], action) {
     switch (action.type) {
-        case 'ADD_NOM':
-            action.nom.id = guid();
-            action.nom.createdTime = moment.utc().format();
-
-            return [...state, action.nom];
+        case 'REMOVE_NOM_FROM_STORE':
+            var i = state.findIndex((nom) => nom.data.id === action.nomId);
+            if (i >= 0) {
+                state.splice(i, 1);
+                return state;
+            }
+            return state;
         case 'REMOVE_VIEW_FROM_NOM_STORE':
             return removeViewFromNomStore(state, action);
         case 'UPDATE_NOM_STORE':

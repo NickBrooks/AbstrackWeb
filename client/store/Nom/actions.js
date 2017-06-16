@@ -2,11 +2,11 @@ import { apiAddNom, apiPinNom, apiGetNom } from '../../api';
 import moment from 'moment';
 import { push } from 'react-router-redux';
 
-//add a new nom
-export function addNom(nom) {
+// remove nom from store
+export function removeNomFromStore(nomId) {
     return {
-        type: 'ADD_NOM',
-        nom
+        type: 'REMOVE_NOM_FROM_STORE',
+        nomId
     }
 }
 

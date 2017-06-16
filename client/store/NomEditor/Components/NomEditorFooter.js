@@ -10,6 +10,7 @@ class NewNomFooter extends React.Component {
         this.handleInboxChange = this.handleInboxChange.bind(this);
         this.togglePreview = this.togglePreview.bind(this);
         this.handlePreviewClick = this.handlePreviewClick.bind(this);
+        this.handleDeleteClick = this.handleDeleteClick.bind(this);
         this.handlePublishClick = this.handlePublishClick.bind(this);
     }
 
@@ -25,6 +26,11 @@ class NewNomFooter extends React.Component {
     handlePublishClick(e) {
         e.preventDefault();
         this.props.handleAddNom(this.props.nomEditor);
+    }
+
+    handleDeleteClick(e) {
+        e.preventDefault();
+        this.props.updateDraftEditorStatus("confirmDelete");
     }
 
     handlePreviewClick(e) {

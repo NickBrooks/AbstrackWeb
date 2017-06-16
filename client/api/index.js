@@ -110,6 +110,10 @@ export function apiUpdateDraft(draftId, draft) {
     return Axios.put("drafts/" + draftId, draft, getAuthHeader());
 }
 
+export function apiDeleteDraft(draftId) {
+    return Axios.delete("drafts/" + draftId, getAuthHeader());
+}
+
 // tracks
 
 export function apiGetTracks() {

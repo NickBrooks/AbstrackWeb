@@ -49,9 +49,9 @@ function ui(state = [], action) {
             var newState = Object.assign({}, state);
             newState.nom.addingStatus = action.value;
             return newState;
-        case 'UPDATE_DRAFT_FETCHING_STATUS':
+        case 'UPDATE_DRAFT_EDITOR_STATUS':
             var newState = Object.assign({}, state);
-            newState.draft.fetchingStatus = action.value;
+            newState.draft.editorStatus = action.value;
             return newState;
         case 'UPDATE_DRAFT_SAVING_STATUS':
             var newState = Object.assign({}, state);
