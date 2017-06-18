@@ -1,6 +1,7 @@
 import React from 'react';
 import { conformHashtags, delay, extractNom, setDocumentTitle } from '../../functions';
 import RenderMarkdown from '../../components/RenderMarkdown/RenderMarkdown';
+import InitialNomEditorData from '../../data/NomEditor';
 import NomEditorFooter from './Components/NomEditorFooter';
 import NomEditorLoading from './Components/NomEditorLoading';
 import NomEditorConfirmDelete from './Components/NomEditorConfirmDelete';
@@ -23,16 +24,7 @@ class NomEditor extends React.Component {
         let { setDraft } = this.props;
 
         // set the default
-        setDraft({
-            id: undefined,
-            createdBy: undefined,
-            updatedTime: undefined,
-            title: undefined,
-            body: undefined,
-            track: undefined,
-            hashtags: [],
-            skipInbox: false
-        });
+        setDraft(InitialNomEditorData);
     }
 
     clearTimeouts() {

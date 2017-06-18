@@ -1,7 +1,11 @@
 function nomEditor(state = [], action) {
     switch (action.type) {
         case 'SET_DRAFT':
-            return action.payload;
+            return action.draft;
+        case 'SET_DRAFT_ID':
+            var newState = Object.assign({}, state);
+            newState.id = action.draftId;
+            return newState;
         case 'SET_DRAFT_TITLE':
             var newState = Object.assign({}, state);
             newState.title = action.title;

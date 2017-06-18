@@ -26,10 +26,17 @@ export function toggleSkipInbox(value) {
     }
 }
 
-export function setDraft(payload) {
+export function setDraft(draft) {
     return {
         type: 'SET_DRAFT',
-        payload
+        draft
+    }
+}
+
+export function setDraftId(draftId) {
+    return {
+        type: 'SET_DRAFT_ID',
+        draftId
     }
 }
 
@@ -77,9 +84,10 @@ export function handleGetDraft(draftId) {
     };
 }
 
-export function handleAddDraft(draft) {
+export function handleAddDraft(payload) {
     return (dispatch) => {
         dispatch(updateDraftSavingStatus("Saving"));
+        var draft = Object.assign({}, payload);
         delete draft.createdBy;
         delete draft.id;
         delete draft.updatedTime;
@@ -87,6 +95,7 @@ export function handleAddDraft(draft) {
 
         request.then(response => {
             dispatch(updateNomStore([response.data], "drafts"));
+            dispatch(setDraftId(response.data.id));
             dispatch(updateDraftSavingStatus("Saved"));
             dispatch(push("/new/nom/" + response.data.id));
         }).catch(error => {
