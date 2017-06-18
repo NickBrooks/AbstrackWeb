@@ -90,7 +90,9 @@ class AppView extends React.Component {
                             <SearchBar {...this.props} />
                         </div>
                         <div className="col-sm-12 body">
-                            {ui.appView.displayChildren ? React.cloneElement(this.props.children, this.props) : undefined}
+                            <div className={ui.appView.displayChildren ? undefined : "invisible"}>
+                                {React.cloneElement(this.props.children, this.props)}
+                            </div>
                         </div>
                     </div>
                 </div>
