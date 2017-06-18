@@ -1,5 +1,5 @@
 .header {
-    background: $nom-header-blue;
+    background: $note-header-blue;
     position: fixed;
     top: 0;
     left: 0;
@@ -10,81 +10,81 @@
         &:hover,
         &:active,
         &:focus {
-            color: $nom-header-blue-text;
+            color: $note-header-blue-text;
         }
     }
     &.searchBar-pinned {
-        background: $nom-orange-light;
+        background: $note-orange-light;
         input[type="text"]#search-bar {
             background: #fa8863;
         }
         input[type="text"]#search-bar::-webkit-input-placeholder {
-            color: $nom-orange-text;
+            color: $note-orange-text;
         }
         input[type="text"]#search-bar::-moz-placeholder {
-            color: $nom-orange-text;
+            color: $note-orange-text;
         }
         input[type="text"]#search-bar:-ms-input-placeholder {
-            color: $nom-orange-text;
+            color: $note-orange-text;
         }
         input[type="text"]#search-bar:-moz-placeholder {
-            color: $nom-orange-text;
+            color: $note-orange-text;
         }
         .sidebar-toggle {
             &:hover,
             &:active,
             &:focus {
-                color: $nom-orange-text;
+                color: $note-orange-text;
             }
         }
     }
     &.searchBar-track {
-        background: $nom-green;
+        background: $note-green;
         input[type="text"]#search-bar {
             background: #4cb578;
         }
         input[type="text"]#search-bar::-webkit-input-placeholder {
-            color: $nom-green-text;
+            color: $note-green-text;
         }
         input[type="text"]#search-bar::-moz-placeholder {
-            color: $nom-green-text;
+            color: $note-green-text;
         }
         input[type="text"]#search-bar:-ms-input-placeholder {
-            color: $nom-green-text;
+            color: $note-green-text;
         }
         input[type="text"]#search-bar:-moz-placeholder {
-            color: $nom-green-text;
+            color: $note-green-text;
         }
         .sidebar-toggle {
             &:hover,
             &:active,
             &:focus {
-                color: $nom-green-text;
+                color: $note-green-text;
             }
         }
     }
     &.searchBar-drafts {
-        background: $nom-purple;
+        background: $note-purple;
         input[type="text"]#search-bar {
             background: #c772d5;
         }
         input[type="text"]#search-bar::-webkit-input-placeholder {
-            color: $nom-purple-text;
+            color: $note-purple-text;
         }
         input[type="text"]#search-bar::-moz-placeholder {
-            color: $nom-purple-text;
+            color: $note-purple-text;
         }
         input[type="text"]#search-bar:-ms-input-placeholder {
-            color: $nom-purple-text;
+            color: $note-purple-text;
         }
         input[type="text"]#search-bar:-moz-placeholder {
-            color: $nom-purple-text;
+            color: $note-purple-text;
         }
         .sidebar-toggle {
             &:hover,
             &:active,
             &:focus {
-                color: $nom-purple-text;
+                color: $note-purple-text;
             }
         }
     }
@@ -106,17 +106,17 @@ input[type="text"]#search-bar {
 }
 
 input[type="text"]#search-bar::-webkit-input-placeholder {
-    color: $nom-header-blue-text;
+    color: $note-header-blue-text;
 }
 
 input[type="text"]#search-bar::-moz-placeholder {
-    color: $nom-header-blue-text;
+    color: $note-header-blue-text;
 }
 
 input[type="text"]#search-bar:-ms-input-placeholder {
-    color: $nom-header-blue-text;
+    color: $note-header-blue-text;
 }
 
 input[type="text"]#search-bar:-moz-placeholder {
-    color: $nom-header-blue-text;
+    color: $note-header-blue-text;
 }

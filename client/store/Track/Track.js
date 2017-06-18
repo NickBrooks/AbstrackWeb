@@ -1,7 +1,7 @@
 import React from 'react';
 import FontAwesome from 'react-fontawesome';
 import { setDocumentTitle } from '../../functions';
-import NomList from '../../components/NomList/NomList';
+import NoteList from '../../components/NoteList/NoteList';
 
 class Track extends React.Component {
   constructor(props) {
@@ -27,7 +27,7 @@ class Track extends React.Component {
 
   render() {
     const { trackId } = this.props.params;
-    const { handleSearchNoms, tracks, settings } = this.props;
+    const { handleSearchNotes, tracks, settings } = this.props;
     const i = tracks.findIndex((track) => track.id === trackId);
     const track = tracks[i];
     const view = 't:"' + trackId + '"';
@@ -37,9 +37,9 @@ class Track extends React.Component {
       trackIds: [trackId]
     }
 
-    //set empty noms
-    let emptyNoms = {
-      img: settings.emptyNoms.track.img,
+    //set empty notes
+    let emptyNotes = {
+      img: settings.emptyNotes.track.img,
       text: "Oh! " + track.name + " is empty!"
     }
 
@@ -48,7 +48,7 @@ class Track extends React.Component {
         <h3>{track.name}</h3>
         <h6>{track.description}</h6>
         <hr />
-        <NomList loadNomList={handleSearchNoms} query={query} viewName={view} emptyNoms={emptyNoms} {...this.props} />
+        <NoteList loadNoteList={handleSearchNotes} query={query} viewName={view} emptyNotes={emptyNotes} {...this.props} />
       </div>
     )
   }

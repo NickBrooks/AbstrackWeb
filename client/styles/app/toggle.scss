@@ -11,12 +11,12 @@ $base-size: 1.5rem;
     border-radius: $base-size;
     -webkit-appearance: initial;
     position: relative;
-    background-color: $nom-gray;
-    box-shadow: inset 0 0 0 0 $nom-gray-dark;
+    background-color: $note-gray;
+    box-shadow: inset 0 0 0 0 $note-gray-dark;
     line-height: 2.375rem;
     vertical-align: middle;
     margin-top: -4px; //the border size needs adjustment all the time
-    border: $base-size/20 solid $nom-gray-dark;
+    border: $base-size/20 solid $note-gray-dark;
     transition: box-shadow .28s ease-in-out, border-color .28s ease-in-out;
     cursor: pointer;
     &:before {
@@ -28,7 +28,7 @@ $base-size: 1.5rem;
         bottom: 0;
         border: $base-size / 80 solid rgba(0, 0, 0, .12);
         box-shadow: 0px $base-size * .1875 $base-size*.3125 0px rgba(0, 0, 0, 0.15);
-        background-color: $nom-gray;
+        background-color: $note-gray;
         display: block;
         border-radius: $base-size/2;
         background-clip: padding-box;
@@ -36,7 +36,7 @@ $base-size: 1.5rem;
         transition: left .3s ease-in-out, right .3s ease-in-out;
     }
     &:active {
-        box-shadow: inset 0 0 0 $base-size/2 $nom-gray-dark;
+        box-shadow: inset 0 0 0 $base-size/2 $note-gray-dark;
         &:before {
             right: 35%;
         }
@@ -48,8 +48,8 @@ $base-size: 1.5rem;
         outline: none!important;
     }
     &:checked {
-        box-shadow: inset 0 0 0 $base-size/2 $nom-green-light;
-        border-color: $nom-green-light;
+        box-shadow: inset 0 0 0 $base-size/2 $note-green-light;
+        border-color: $note-green-light;
         &:before {
             left: 45%;
             right: 0;

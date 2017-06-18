@@ -1,0 +1,24 @@
+.view-note {
+    margin-left: 60px;
+    border-top: solid 2px $note-faded-blue;
+}
+
+.note-header {
+    h3 {
+        font-size: 1.5em;
+        margin: 0;
+        padding: 0;
+    }
+    div.hashtags {
+        margin-top: 5px;
+        .fa {
+            font-size: 0.8em;
+            color: $note-green-light;
+        }
+    }
+}
+
+.btn-delete-hashtag {
+    font-size: 0.8em;
+    color: #BDBDBD;
+}

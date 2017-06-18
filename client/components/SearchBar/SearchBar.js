@@ -20,7 +20,7 @@ class Header extends React.Component {
                         <button className="btn btn-link sidebar-toggle" type="button" onClick={this.openSidebar.bind(this)}>
                             <FontAwesome name="bars" />
                         </button>
-                        <input id="search-bar" type="text" className="form-control" placeholder={(searchBar.defaultValue ? searchBar.defaultValue : "Search noms")} />
+                        <input id="search-bar" type="text" className="form-control" placeholder={(searchBar.defaultValue ? searchBar.defaultValue : "Search notes")} />
                     </div>
                 </div>
             </div>

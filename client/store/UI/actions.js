@@ -1,12 +1,12 @@
-// toggle the newNomModal
-export function toggleNomEditor(value) {
+// toggle the newNoteModal
+export function toggleNoteEditor(value) {
     return {
         type: 'TOGGLE_NOM_EDITOR',
         value
     }
 }
 
-export function toggleNewNomButton(value) {
+export function toggleNewNoteButton(value) {
     return {
         type: 'TOGGLE_NEW_NOM_BUTTON',
         value

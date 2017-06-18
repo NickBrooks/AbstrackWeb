@@ -3,15 +3,15 @@ function ui(state = [], action) {
     switch (action.type) {
         case 'TOGGLE_NOM_EDITOR':
             var newState = Object.assign({}, state);
-            newState.newNomModal.open = action.value;
+            newState.newNoteModal.open = action.value;
             return newState;
         case 'TOGGLE_NEW_NOM_BUTTON':
             var newState = Object.assign({}, state);
-            newState.newNomButton.show = action.value;
+            newState.newNoteButton.show = action.value;
             return newState;
         case 'TOGGLE_PREVIEW_MODE':
             var newState = Object.assign({}, state);
-            newState.nom.editor.previewMode = action.value;
+            newState.note.editor.previewMode = action.value;
             return newState;
         case 'TOGGLE_SIDEBAR':
             var newState = Object.assign({}, state);
@@ -39,15 +39,15 @@ function ui(state = [], action) {
             return newState;
         case 'NOM_VIEW_IS_LOADING':
             var newState = Object.assign({}, state);
-            newState.nomView.isLoading = action.value;
+            newState.noteView.isLoading = action.value;
             return newState;
         case 'UPDATE_NOM_FETCHING_STATUS':
             var newState = Object.assign({}, state);
-            newState.nom.fetchingStatus = action.value;
+            newState.note.fetchingStatus = action.value;
             return newState;
         case 'UPDATE_NOM_ADDING_STATUS':
             var newState = Object.assign({}, state);
-            newState.nom.addingStatus = action.value;
+            newState.note.addingStatus = action.value;
             return newState;
         case 'UPDATE_DRAFT_EDITOR_STATUS':
             var newState = Object.assign({}, state);

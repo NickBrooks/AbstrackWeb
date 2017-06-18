@@ -24,7 +24,7 @@ class Tracks extends React.Component {
         return (
             <li>
                 <div className="quick-info text-truncate">
-                    <span className="fa-stack nom-green-light"><FontAwesome name="circle" stack="2x" /><FontAwesome name="list-ul" inverse stack="1x" /></span> <span className="title">{track.name}</span> <span className="body">{track.description}</span>
+                    <span className="fa-stack note-green-light"><FontAwesome name="circle" stack="2x" /><FontAwesome name="list-ul" inverse stack="1x" /></span> <span className="title">{track.name}</span> <span className="body">{track.description}</span>
                     <TrackNodeToolbar trackId={track.id} />
                 </div>
             </li>
@@ -58,7 +58,7 @@ class Tracks extends React.Component {
 
         return (
             <div className="track-list">
-                <h4><Link to="/tracks"><span className="fa-stack nom-green-light"><FontAwesome name="circle" stack="2x" /><FontAwesome name="list-ul" inverse stack="1x" /></span></Link> Tracks ({tracks.length}) <Link to="/new/track"><FontAwesome name="plus" className="nom-green-light" /></Link></h4>
+                <h4><Link to="/tracks"><span className="fa-stack note-green-light"><FontAwesome name="circle" stack="2x" /><FontAwesome name="list-ul" inverse stack="1x" /></span></Link> Tracks ({tracks.length}) <Link to="/new/track"><FontAwesome name="plus" className="note-green-light" /></Link></h4>
                 <hr />
                 {tracks == null || tracks.length == 0 ? <EmptyContent emptyContent={emptyContent} /> : this.renderTracks()}
             </div>

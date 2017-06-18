@@ -28,20 +28,20 @@ const ui = {
     errorMsg: false,
     isAuthenticating: false
   },
-  newNomModal: {
+  newNoteModal: {
     open: false
   },
-  newNomButton: {
+  newNoteButton: {
     show: true
   },
-  nom: {
+  note: {
     fetchingStatus: false,
     addingStatus: false,
     editor: {
       previewMode: false
     }
   },
-  nomView: {
+  noteView: {
     isLoading: false
   },
   register: {
@@ -52,12 +52,12 @@ const ui = {
     open: false
   },
   searchBar: {
-    defaultValue: "Search noms",
+    defaultValue: "Search notes",
     class: "searchBar-inbox",
   },
   tracks: {
     updateStatus: false,
-    deleteTrackWarning: "Deleting this track will remove all track assignments from any Noms assigned to this track."
+    deleteTrackWarning: "Deleting this track will remove all track assignments from any Notes assigned to this track."
   }
 }
 

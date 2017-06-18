@@ -1,5 +1,5 @@
 const settings = {
-  emptyNoms: {
+  emptyNotes: {
     drafts: {
       img: "https://i.imgur.com/r2NAHyD.png",
       text: "No working drafts!"

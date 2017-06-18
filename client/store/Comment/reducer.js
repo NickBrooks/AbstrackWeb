@@ -18,7 +18,7 @@ function postComments(state = [], action) {
                 comment
             );
         case 'DELETE_COMMENT':
-            //only return if id is not nomId
+            //only return if id is not noteId
             function dontDelete(commentId, commentIdCompare) {
                 return commentId !== commentIdCompare.id;
             }
@@ -30,12 +30,12 @@ function postComments(state = [], action) {
 }
 
 function comments(state = [], action) {
-    if (typeof action.nomId !== 'undefined') {
+    if (typeof action.noteId !== 'undefined') {
         return {
             // take the current state
             ...state,
             // overwrite this post with a new one
-            [action.nomId]: postComments(state[action.nomId], action)
+            [action.noteId]: postComments(state[action.noteId], action)
         }
     }
     return state;

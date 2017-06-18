@@ -17,24 +17,24 @@ a.btn-circle {
 }
 
 .btn-success {
-    background-color: $nom-green-light;
-    border: 1px solid $nom-green-light;
+    background-color: $note-green-light;
+    border: 1px solid $note-green-light;
     &:hover,
     &:active,
     &:focus {
-        background-color: $nom-green;
-        border: 1px solid $nom-green;
+        background-color: $note-green;
+        border: 1px solid $note-green;
     }
 }
 
 .btn-info {
-    background-color: $nom-header-blue;
-    border: 1px solid $nom-header-blue;
+    background-color: $note-header-blue;
+    border: 1px solid $note-header-blue;
     &:hover,
     &:active,
     &:focus {
-        background-color: $nom-dark-blue-active;
-        border: 1px solid $nom-dark-blue-active;
+        background-color: $note-dark-blue-active;
+        border: 1px solid $note-dark-blue-active;
     }
 }
 
@@ -45,7 +45,7 @@ a.btn-circle {
     &:hover,
     &:active,
     &:focus {
-        background-color: $nom-gray;
+        background-color: $note-gray;
         outline: none !important;
     }
 }

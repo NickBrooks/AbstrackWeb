@@ -4,7 +4,7 @@ import moment from 'moment';
 import Sidebar from '../Sidebar/Sidebar';
 import LoadingScreen from '../LoadingScreen';
 import SearchBar from '../SearchBar/SearchBar';
-import NewNomButton from '../NewNomButton/NewNomButton';
+import NewNoteButton from '../NewNoteButton/NewNoteButton';
 import { loadLocalStorage } from '../../functions';
 
 class AppView extends React.Component {
@@ -29,8 +29,8 @@ class AppView extends React.Component {
         ui.sidebar.open ? toggleSidebar(false) : toggleSidebar(true);
     }
 
-    newNomShortcut() {
-        browserHistory.push('/new/nom');
+    newNoteShortcut() {
+        browserHistory.push('/new/note');
     }
 
     componentWillMount() {
@@ -51,10 +51,10 @@ class AppView extends React.Component {
     }
 
     componentDidMount() {
-        let { newNomShortcut, handleToggleSidebar } = this;
+        let { newNoteShortcut, handleToggleSidebar } = this;
 
         Mousetrap.bind(['ctrl+enter'], function () {
-            newNomShortcut();
+            newNoteShortcut();
             return false;
         });
 
@@ -65,10 +65,10 @@ class AppView extends React.Component {
     }
 
     componentWillUnmount() {
-        let { newNomShortcut, handleToggleSidebar } = this;
+        let { newNoteShortcut, handleToggleSidebar } = this;
 
         Mousetrap.unbind(['ctrl+enter'], function () {
-            newNomShortcut();
+            newNoteShortcut();
             return false;
         });
 
@@ -92,7 +92,7 @@ class AppView extends React.Component {
                         </div>
                     </div>
                 </div>
-                {this.props.ui.newNomButton.show ? (<NewNomButton {...this.props} />) : null}
+                {this.props.ui.newNoteButton.show ? (<NewNoteButton {...this.props} />) : null}
             </div>
         )
     }

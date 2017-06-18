@@ -5,7 +5,7 @@ module.exports = {
     devtool: 'source-map',
     entry: [
 
-        './client/nommer'
+        './client/abstrack'
     ],
     output: {
         path: path.join(__dirname, 'dist'),

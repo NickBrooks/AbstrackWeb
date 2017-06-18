@@ -10,11 +10,11 @@ class Account extends React.Component {
         super(props);
 
         this.props.handleGetAccount();
-        this.props.toggleNewNomButton(false);
+        this.props.toggleNewNoteButton(false);
     }
 
     componentWillUnmount() {
-        this.props.toggleNewNomButton(true);
+        this.props.toggleNewNoteButton(true);
         setDocumentTitle();
     }
 

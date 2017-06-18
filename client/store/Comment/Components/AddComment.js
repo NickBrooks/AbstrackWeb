@@ -13,7 +13,7 @@ class AddComment extends React.Component {
     handleCommentSubmit(e) {
         e.preventDefault();
         let {
-            nomId,
+            noteId,
             account,
             addComment,
             addCommentError
@@ -25,7 +25,7 @@ class AddComment extends React.Component {
             addCommentError('Write a comment yo!');
         } else {
             //post the comment
-            addComment(nomId, account, body);
+            addComment(noteId, account, body);
             addCommentError('');
             this.refs.addCommentForm.reset();
         }

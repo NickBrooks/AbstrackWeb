@@ -1,9 +1,9 @@
 import React from 'react';
 import Avatar from '../../components/Avatar/Avatar';
-import NomList from '../../components/NomList/NomList';
+import NoteList from '../../components/NoteList/NoteList';
 
-function filterUserNoms(userId, nom) {
-    return nom.createdBy.id == userId;
+function filterUserNotes(userId, note) {
+    return note.createdBy.id == userId;
 }
 
 class User extends React.Component {
@@ -13,8 +13,8 @@ class User extends React.Component {
 
     render() {
         let {userId } = this.props.params;
-        let { noms, users } = this.props;
-        let userNoms = noms.filter(filterUserNoms.bind(null, userId));
+        let { notes, users } = this.props;
+        let userNotes = notes.filter(filterUserNotes.bind(null, userId));
         const i = users.findIndex((user) => user.id === userId);
         const user = users[i];
 
@@ -32,7 +32,7 @@ class User extends React.Component {
                 </div>
                 <div class="row">
                     <div class="col-xs-12">
-                        <NomList noms={userNoms} />
+                        <NoteList notes={userNotes} />
                     </div>
                 </div>
             </div >

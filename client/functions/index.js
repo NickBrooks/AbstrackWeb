@@ -10,7 +10,7 @@ export function guid() {
 }
 
 export function setDocumentTitle(value) {
-    document.title = (value === undefined ? "Nommer" : value + " // Nommer");
+    document.title = (value === undefined ? "Abstrack" : value + " // Abstrack");
 }
 
 export function conformHashtags(hashtags) {
@@ -80,9 +80,9 @@ export const removeLocalStorage = (key) => {
     }
 }
 
-export const extractNom = (noms, nomId) => {
-    const i = noms.findIndex((nom) => nom.id === nomId);
-    return noms[i];
+export const extractNote = (notes, noteId) => {
+    const i = notes.findIndex((note) => note.id === noteId);
+    return notes[i];
 }
 
 export const extractTrack = (tracks, trackId) => {

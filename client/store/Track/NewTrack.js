@@ -66,7 +66,7 @@ class NewTrack extends React.Component {
 
         return (
             <div className="track-list">
-                <h4><Link to="/tracks"><span className="fa-stack nom-green-light"><FontAwesome name="circle" stack="2x" /><FontAwesome name="list-ul" inverse stack="1x" /></span></Link> Create a new track</h4>
+                <h4><Link to="/tracks"><span className="fa-stack note-green-light"><FontAwesome name="circle" stack="2x" /><FontAwesome name="list-ul" inverse stack="1x" /></span></Link> Create a new track</h4>
                 <hr />
                 <div className="ibox">
                     <form ref="addTrack" autoComplete="off" onSubmit={this.handleSubmitAddTrack}>

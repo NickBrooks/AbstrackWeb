@@ -1,28 +1,28 @@
 // add comment
-export function addComment(nomId, user, body) {
+export function addComment(noteId, user, body) {
     return {
         type: 'ADD_COMMENT',
-        nomId,
+        noteId,
         user,
         body
     }
 }
 
 // update comment
-export function updateComment(nomId, commentId, updatedBody) {
+export function updateComment(noteId, commentId, updatedBody) {
     return {
         type: 'UPDATE_COMMENT',
-        nomId,
+        noteId,
         commentId,
         updatedBody
     }
 }
 
 // delete comment
-export function deleteComment(nomId, commentId) {
+export function deleteComment(noteId, commentId) {
     return {
         type: 'DELETE_COMMENT',
-        nomId,
+        noteId,
         commentId
     }
 }

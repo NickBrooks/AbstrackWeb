@@ -14,7 +14,7 @@ class CommentNode extends React.Component {
   handleCommentSave(e) {
     e.preventDefault();
     let {
-      nomId,
+      noteId,
       commentId,
       updateComment,
       toggleEditCommentMode
@@ -26,7 +26,7 @@ class CommentNode extends React.Component {
       toggleEditCommentMode('');
     } else {
       //post the comment
-      updateComment(nomId, commentId, updatedBody);
+      updateComment(noteId, commentId, updatedBody);
       toggleEditCommentMode('');
     }
   }
@@ -34,12 +34,12 @@ class CommentNode extends React.Component {
   handleCommentDelete(e) {
     e.preventDefault();
     let {
-      nomId,
+      noteId,
       commentId,
       deleteComment
     } = this.props;
 
-    deleteComment(nomId, commentId);
+    deleteComment(noteId, commentId);
   }
 
   renderActionButtons() {

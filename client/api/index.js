@@ -8,7 +8,7 @@ function getApiUrl() {
 
     if (apiUrl) { return apiUrl; }
 
-    return "https://api.nommer.co/api/";
+    return "https://api.abstrack.co/api/";
 }
 
 function getAuthHeader() {
@@ -62,14 +62,14 @@ export function apiUpdatePassword(currentPassword, newPassword) {
     }, getAuthHeader());
 }
 
-// noms
+// notes
 
-export function apiGetNom(nomId) {
-    return Axios.get("noms/" + nomId, getAuthHeader());
+export function apiGetNote(noteId) {
+    return Axios.get("notes/" + noteId, getAuthHeader());
 }
 
-export function apiAddNom(newNomDTO) {
-    return Axios.post("noms", newNomDTO, getAuthHeader());
+export function apiAddNote(newNoteDTO) {
+    return Axios.post("notes", newNoteDTO, getAuthHeader());
 }
 
 export function apiGetInbox() {
@@ -80,15 +80,15 @@ export function apiGetPinned() {
     return Axios.get("pinned", getAuthHeader());
 }
 
-export function apiSearchNoms(query) {
-    return Axios.post("search/noms", query, getAuthHeader());
+export function apiSearchNotes(query) {
+    return Axios.post("search/notes", query, getAuthHeader());
 }
 
-export function apiPinNom(nomId, value) {
+export function apiPinNote(noteId, value) {
     if (value) {
-        return Axios.post("pinned/" + nomId, null, getAuthHeader());
+        return Axios.post("pinned/" + noteId, null, getAuthHeader());
     } else {
-        return Axios.delete("pinned/" + nomId, getAuthHeader());
+        return Axios.delete("pinned/" + noteId, getAuthHeader());
     }
 }
 

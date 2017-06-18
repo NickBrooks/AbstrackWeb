@@ -7,23 +7,23 @@ class Comments extends React.Component {
     super(props);
   }
 
-  renderComments(nomComments) {
-    let {nomId, ui} = this.props;
+  renderComments(noteComments) {
+    let {noteId, ui} = this.props;
     return (
-      nomComments.map((comment) => <CommentNode {...comment} currentUser={this.props.account} key={comment.id} nomId={nomId} commentId={comment.id} {...this.props} />)
+      noteComments.map((comment) => <CommentNode {...comment} currentUser={this.props.account} key={comment.id} noteId={noteId} commentId={comment.id} {...this.props} />)
     )
   }
 
   render() {
-    const { nomId, comments } = this.props;
-    const nomComments = comments[nomId];
+    const { noteId, comments } = this.props;
+    const noteComments = comments[noteId];
 
     return (
       <div className="comments">
         <ul>
-          {nomComments == null || nomComments.length == 0 ? null : this.renderComments(nomComments)}
+          {noteComments == null || noteComments.length == 0 ? null : this.renderComments(noteComments)}
         </ul>
-        <AddComment nomId={nomId} {...this.props} />
+        <AddComment noteId={noteId} {...this.props} />
       </div>
     )
   }
