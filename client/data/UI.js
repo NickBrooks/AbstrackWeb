@@ -15,6 +15,9 @@ const ui = {
       updateStatus: false
     }
   },
+  appView: {
+    displayChildren: true
+  },
   comments: {
     addCommentPlaceholder: "Add a reply",
     newCommentError: '',

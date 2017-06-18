@@ -10,6 +10,7 @@ import * as LoginActions from './Login/actions';
 import * as NoteActions from './Note/actions';
 import * as NoteEditorActions from './NoteEditor/actions';
 import * as NoteViewActions from './NoteView/actions';
+import * as SearchActions from './Search/actions';
 import * as SettingsActions from './Settings/actions';
 import * as TrackActions from './Track/actions';
 import * as UIActions from './UI/actions';
@@ -26,6 +27,7 @@ function mapStateToProps(state) {
         notes: state.notes,
         noteViews: state.noteViews,
         tracks: state.tracks,
+        search: state.search,
         settings: state.settings,
         ui: state.ui,
         account: state.account,
@@ -42,6 +44,7 @@ function mapDispatchToProps(dispatch) {
         ...NoteActions,
         ...NoteEditorActions,
         ...NoteViewActions,
+        ...SearchActions,
         ...SettingsActions,
         ...TrackActions,
         ...UIActions,

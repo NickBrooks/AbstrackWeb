@@ -3,7 +3,7 @@ import { browserHistory } from 'react-router';
 import moment from 'moment';
 import Sidebar from '../Sidebar/Sidebar';
 import LoadingScreen from '../LoadingScreen';
-import SearchBar from '../SearchBar/SearchBar';
+import SearchBar from '../../store/Search/SearchBar';
 import NewNoteButton from '../NewNoteButton/NewNoteButton';
 import { loadLocalStorage } from '../../functions';
 
@@ -11,7 +11,7 @@ class AppView extends React.Component {
     constructor(props) {
         super(props);
         this.handleToggleSidebar = this.handleToggleSidebar.bind(this);
-        
+
         this.checkValidToken();
     }
 
@@ -79,6 +79,8 @@ class AppView extends React.Component {
     }
 
     renderApp() {
+        let { ui } = this.props;
+
         return (
             <div className="app">
                 <Sidebar {...this.props} />
@@ -88,7 +90,7 @@ class AppView extends React.Component {
                             <SearchBar {...this.props} />
                         </div>
                         <div className="col-sm-12 body">
-                            {React.cloneElement(this.props.children, this.props)}
+                            {ui.appView.displayChildren ? React.cloneElement(this.props.children, this.props) : undefined}
                         </div>
                     </div>
                 </div>

@@ -13,21 +13,24 @@
             color: $note-header-blue-text;
         }
     }
+    .typeahead {
+        width: calc(100% - 60px);
+    }
     &.searchBar-pinned {
         background: $note-orange-light;
-        input[type="text"]#search-bar {
+        input[type="text"].search-input {
             background: #fa8863;
         }
-        input[type="text"]#search-bar::-webkit-input-placeholder {
+        input[type="text"].search-input::-webkit-input-placeholder {
             color: $note-orange-text;
         }
-        input[type="text"]#search-bar::-moz-placeholder {
+        input[type="text"].search-input::-moz-placeholder {
             color: $note-orange-text;
         }
-        input[type="text"]#search-bar:-ms-input-placeholder {
+        input[type="text"].search-input:-ms-input-placeholder {
             color: $note-orange-text;
         }
-        input[type="text"]#search-bar:-moz-placeholder {
+        input[type="text"].search-input:-moz-placeholder {
             color: $note-orange-text;
         }
         .sidebar-toggle {
@@ -40,19 +43,19 @@
     }
     &.searchBar-track {
         background: $note-green;
-        input[type="text"]#search-bar {
+        input[type="text"].search-input {
             background: #4cb578;
         }
-        input[type="text"]#search-bar::-webkit-input-placeholder {
+        input[type="text"].search-input::-webkit-input-placeholder {
             color: $note-green-text;
         }
-        input[type="text"]#search-bar::-moz-placeholder {
+        input[type="text"].search-input::-moz-placeholder {
             color: $note-green-text;
         }
-        input[type="text"]#search-bar:-ms-input-placeholder {
+        input[type="text"].search-input:-ms-input-placeholder {
             color: $note-green-text;
         }
-        input[type="text"]#search-bar:-moz-placeholder {
+        input[type="text"].search-input:-moz-placeholder {
             color: $note-green-text;
         }
         .sidebar-toggle {
@@ -65,19 +68,19 @@
     }
     &.searchBar-drafts {
         background: $note-purple;
-        input[type="text"]#search-bar {
+        input[type="text"].search-input {
             background: #c772d5;
         }
-        input[type="text"]#search-bar::-webkit-input-placeholder {
+        input[type="text"].search-input::-webkit-input-placeholder {
             color: $note-purple-text;
         }
-        input[type="text"]#search-bar::-moz-placeholder {
+        input[type="text"].search-input::-moz-placeholder {
             color: $note-purple-text;
         }
-        input[type="text"]#search-bar:-ms-input-placeholder {
+        input[type="text"].search-input:-ms-input-placeholder {
             color: $note-purple-text;
         }
-        input[type="text"]#search-bar:-moz-placeholder {
+        input[type="text"].search-input:-moz-placeholder {
             color: $note-purple-text;
         }
         .sidebar-toggle {
@@ -90,7 +93,7 @@
     }
 }
 
-input[type="text"]#search-bar {
+input[type="text"].search-input {
     background: #7795a4;
     border: none;
     outline: none;
@@ -105,18 +108,18 @@ input[type="text"]#search-bar {
     color: #fff;
 }
 
-input[type="text"]#search-bar::-webkit-input-placeholder {
+input[type="text"].search-input::-webkit-input-placeholder {
     color: $note-header-blue-text;
 }
 
-input[type="text"]#search-bar::-moz-placeholder {
+input[type="text"].search-input::-moz-placeholder {
     color: $note-header-blue-text;
 }
 
-input[type="text"]#search-bar:-ms-input-placeholder {
+input[type="text"].search-input:-ms-input-placeholder {
     color: $note-header-blue-text;
 }
 
-input[type="text"]#search-bar:-moz-placeholder {
+input[type="text"].search-input:-moz-placeholder {
     color: $note-header-blue-text;
 }

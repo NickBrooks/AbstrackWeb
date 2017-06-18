@@ -6,22 +6,22 @@ import Style from './styles/App.scss';
 
 // Import Components
 import { App, FullScreen } from './store/App';
-import NoteViewInbox from './store/NoteView/Inbox';
-import NoteViewPinned from './store/NoteView/Pinned';
-import NoteViewDrafts from './store/NoteView/Drafts';
-import Track from './store/Track/Track';
-import NoteViewTag from './store/NoteView/Tag';
+import Account from './store/Account/Account';
+import DeleteTrack from './store/Track/DeleteTrack';
+import EditTrack from './store/Track/EditTrack';
+import ForgotPasswordView from './store/Login/ForgotPasswordView';
+import LoginView from './store/Login/LoginView';
+import NewTrack from './store/Track/NewTrack';
 import Note from './store/Note/Note';
 import NoteEditor from './store/NoteEditor/NoteEditor';
-import LoginView from './store/Login/LoginView';
+import NoteViewDrafts from './store/NoteView/Drafts';
+import NoteViewInbox from './store/NoteView/Inbox';
+import NoteViewPinned from './store/NoteView/Pinned';
+import NoteViewTag from './store/NoteView/Tag';
 import RegisterView from './store/Login/RegisterView';
-import ForgotPasswordView from './store/Login/ForgotPasswordView';
-import User from './store/User/User';
-import Account from './store/Account/Account';
+import Track from './store/Track/Track';
 import Tracks from './store/Track/Tracks';
-import EditTrack from './store/Track/EditTrack';
-import DeleteTrack from './store/Track/DeleteTrack';
-import NewTrack from './store/Track/NewTrack';
+import User from './store/User/User';
 
 // Import Router
 import { Router, Route, IndexRoute, browserHistory } from 'react-router';

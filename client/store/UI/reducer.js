@@ -1,6 +1,10 @@
 // TODO: Tidy this whole area
 function ui(state = [], action) {
     switch (action.type) {
+        case 'TOGGLE_APP_VIEW_CHILDREN':
+            var newState = Object.assign({}, state);
+            newState.appView.displayChildren = action.value;
+            return newState;
         case 'TOGGLE_NOM_EDITOR':
             var newState = Object.assign({}, state);
             newState.newNoteModal.open = action.value;

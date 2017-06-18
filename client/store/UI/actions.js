@@ -6,6 +6,14 @@ export function toggleNoteEditor(value) {
     }
 }
 
+// toggle the appView children (used when search bar in focus)
+export function toggleAppViewChildren(value) {
+    return {
+        type: 'TOGGLE_APP_VIEW_CHILDREN',
+        value
+    }
+}
+
 export function toggleNewNoteButton(value) {
     return {
         type: 'TOGGLE_NEW_NOM_BUTTON',
