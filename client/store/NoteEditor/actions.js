@@ -33,10 +33,10 @@ export function setDraft(draft) {
     }
 }
 
-export function setDraftId(draftId) {
+export function setDraftServerValues(draft) {
     return {
-        type: 'SET_DRAFT_ID',
-        draftId
+        type: 'SET_DRAFT_SERVER_VALUES',
+        draft
     }
 }
 
@@ -95,7 +95,7 @@ export function handleAddDraft(payload) {
 
         request.then(response => {
             dispatch(updateNoteStore([response.data], "drafts"));
-            dispatch(setDraftId(response.data.id));
+            dispatch(setDraftServerValues(response.data));
             dispatch(updateDraftSavingStatus("Saved"));
             dispatch(push("/new/note/" + response.data.id));
         }).catch(error => {
@@ -112,6 +112,7 @@ export function handleSaveDraft(draftId, draft) {
 
         request.then(response => {
             dispatch(updateNoteStore([response.data], "drafts"));
+            dispatch(setDraftServerValues(response.data));
             dispatch(updateDraftSavingStatus("Saved"));
         }).catch(error => {
             dispatch(updateDraftSavingStatus("Error..."));

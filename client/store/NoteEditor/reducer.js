@@ -2,9 +2,11 @@ function noteEditor(state = [], action) {
     switch (action.type) {
         case 'SET_DRAFT':
             return action.draft;
-        case 'SET_DRAFT_ID':
+        case 'SET_DRAFT_SERVER_VALUES':
             var newState = Object.assign({}, state);
-            newState.id = action.draftId;
+            newState.id = action.draft.id;
+            newState.createdBy = action.draft.createdBy;
+            newState.updatedTime = action.draft.updatedTime;
             return newState;
         case 'SET_DRAFT_TITLE':
             var newState = Object.assign({}, state);
