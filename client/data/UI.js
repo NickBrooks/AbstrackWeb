@@ -28,9 +28,6 @@ const ui = {
     errorMsg: false,
     isAuthenticating: false
   },
-  newNoteModal: {
-    open: false
-  },
   newNoteButton: {
     show: true
   },

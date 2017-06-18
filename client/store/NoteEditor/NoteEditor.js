@@ -32,7 +32,7 @@ class NoteEditor extends React.Component {
     }
 
     componentWillMount() {
-        let { handleGetDraft, notes, setSearchBar, toggleNewNoteButton, togglePreviewMode } = this.props;
+        let { handleGetDraft, notes, setSearchBar, toggleNewNoteButton, togglePreviewMode, updateDraftEditorStatus } = this.props;
         let { draftId } = this.props.params;
 
         // set the timeouts
@@ -41,11 +41,15 @@ class NoteEditor extends React.Component {
         // set right UI
         toggleNewNoteButton(false);
         togglePreviewMode(false);
+
         this.setEmptyDraftInProps();
         setSearchBar({
             defaultValue: "New Note",
             class: "searchBar-drafts"
         });
+
+        // set editor mode to editor if required
+        updateDraftEditorStatus("editor");
 
         // check if draft specified
         if (draftId != null) {
