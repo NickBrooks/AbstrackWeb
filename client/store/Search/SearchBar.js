@@ -1,16 +1,30 @@
 import React from 'react';
 import FontAwesome from 'react-fontawesome';
-import { Typeahead } from 'react-typeahead';
+import { AsyncTypeahead } from 'react-bootstrap-typeahead';
 
 class SearchBar extends React.Component {
     constructor(props) {
         super(props);
         this.selectSearchResult = this.selectSearchResult.bind(this);
         this.displayOption = this.displayOption.bind(this);
+        this.handleSearch = this.handleSearch.bind(this);
+    }
+
+    getInitialState() {
+        return {
+            options: []
+        };
     }
 
     selectSearchResult(result) {
         console.log(result);
+    }
+
+    handleSearch(query) {
+        let { search } = this.props;
+        console.log(query);
+
+        this.setState({ options: search });
     }
 
     displayOption(option) {
@@ -27,18 +41,12 @@ class SearchBar extends React.Component {
 
         return (
             <div className="search-bar">
-                <Typeahead ref="searchBar"
-                    options={search}
-                    filterOption="searchText"
-                    displayOption={this.displayOption}
+                <AsyncTypeahead
+                    {...this.state}
+                    labelKey="display"
+                    onSearch={this.handleSearch}
                     placeholder={(ui.searchBar.defaultValue ? ui.searchBar.defaultValue : "Search notes")}
-                    onOptionSelected={this.selectSearchResult}
-                    customClasses={{
-                        input: "form-control search-input"
-                    }}
-                    maxVisible={5}
-                    tabIndex={2}
-                    showOptionsWhenEmpty={true}
+                    renderMenuItemChildren={this.displayOption}
                 />
             </div>
         )
