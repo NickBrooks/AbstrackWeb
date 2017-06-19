@@ -16,7 +16,7 @@ const Search = [
         objectId: "",
         userID: "",
         display: "The Music",
-        searchText: "This is a big giant nom",
+        searchText: "This is a big giant nom with some big giant text that needs truncating",
         hashtags: [],
         searchCount: "2",
         lastSearched: ""

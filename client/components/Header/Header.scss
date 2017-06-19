@@ -1,0 +1,16 @@
+.header {
+    background: $note-header-blue;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 999;
+    .sidebar-toggle {
+        color: #fff;
+        &:hover,
+        &:active,
+        &:focus {
+            color: $note-header-blue-text;
+        }
+    }
+}

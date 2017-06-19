@@ -1,20 +1,6 @@
 .header {
-    background: $note-header-blue;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 999;
-    .sidebar-toggle {
-        color: #fff;
-        &:hover,
-        &:active,
-        &:focus {
-            color: $note-header-blue-text;
-        }
-    }
-    .typeahead {
-        width: calc(100% - 60px);
+    .search-bar {
+        width: 100%;
     }
     &.searchBar-pinned {
         background: $note-orange-light;
@@ -88,6 +74,31 @@
             &:active,
             &:focus {
                 color: $note-purple-text;
+            }
+        }
+    }
+    .typeahead {
+        width: calc(100% - 10px);
+        ul.typeahead-selector {
+            position: absolute;
+            background: #fff;
+            left: 0;
+            box-sizing: border-box;
+            text-align: left;
+            list-style-type: none;
+            margin: 0 0 0 0;
+            padding: 0 67px;
+            right: 0;
+            box-shadow: 0 0px 11px 2px rgba(0, 0, 0, 0.04), 0 6px 20px 5px rgba(0, 0, 0, 0.02), 0 8px 7px -5px rgba(0, 0, 0, 0.1);
+            p {
+                margin: 0;
+            }
+            li {
+                padding: 7px 10px;
+                border-bottom: 1px solid $off-white;
+            }
+            li:hover {
+                background: $off-white
             }
         }
     }

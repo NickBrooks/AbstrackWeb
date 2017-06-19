@@ -3,7 +3,7 @@ import { browserHistory } from 'react-router';
 import moment from 'moment';
 import Sidebar from '../Sidebar/Sidebar';
 import LoadingScreen from '../LoadingScreen';
-import SearchBar from '../../store/Search/SearchBar';
+import Header from '../Header/Header';
 import NewNoteButton from '../NewNoteButton/NewNoteButton';
 import { loadLocalStorage } from '../../functions';
 
@@ -86,9 +86,7 @@ class AppView extends React.Component {
                 <Sidebar {...this.props} />
                 <div className="container main">
                     <div className="row">
-                        <div className="col-sm-12 header">
-                            <SearchBar {...this.props} />
-                        </div>
+                        <Header {...this.props} />
                         <div className="col-sm-12 body">
                             <div className={ui.appView.displayChildren ? undefined : "invisible"}>
                                 {React.cloneElement(this.props.children, this.props)}
