@@ -4,19 +4,19 @@
     }
     &.searchBar-pinned {
         background: $note-orange-light;
-        input[type="text"].search-input {
+        .search-input input[type="text"] {
             background: #fa8863;
         }
-        input[type="text"].search-input::-webkit-input-placeholder {
+        .search-input input[type="text"]::-webkit-input-placeholder {
             color: $note-orange-text;
         }
-        input[type="text"].search-input::-moz-placeholder {
+        .search-input input[type="text"]::-moz-placeholder {
             color: $note-orange-text;
         }
-        input[type="text"].search-input:-ms-input-placeholder {
+        .search-input input[type="text"]:-ms-input-placeholder {
             color: $note-orange-text;
         }
-        input[type="text"].search-input:-moz-placeholder {
+        .search-input input[type="text"]:-moz-placeholder {
             color: $note-orange-text;
         }
         .sidebar-toggle {
@@ -29,19 +29,19 @@
     }
     &.searchBar-track {
         background: $note-green;
-        input[type="text"].search-input {
+        .search-input input[type="text"] {
             background: #4cb578;
         }
-        input[type="text"].search-input::-webkit-input-placeholder {
+        .search-input input[type="text"]::-webkit-input-placeholder {
             color: $note-green-text;
         }
-        input[type="text"].search-input::-moz-placeholder {
+        .search-input input[type="text"]::-moz-placeholder {
             color: $note-green-text;
         }
-        input[type="text"].search-input:-ms-input-placeholder {
+        .search-input input[type="text"]:-ms-input-placeholder {
             color: $note-green-text;
         }
-        input[type="text"].search-input:-moz-placeholder {
+        .search-input input[type="text"]:-moz-placeholder {
             color: $note-green-text;
         }
         .sidebar-toggle {
@@ -54,19 +54,19 @@
     }
     &.searchBar-drafts {
         background: $note-purple;
-        input[type="text"].search-input {
+        .search-input input[type="text"] {
             background: #c772d5;
         }
-        input[type="text"].search-input::-webkit-input-placeholder {
+        .search-input input[type="text"]::-webkit-input-placeholder {
             color: $note-purple-text;
         }
-        input[type="text"].search-input::-moz-placeholder {
+        .search-input input[type="text"]::-moz-placeholder {
             color: $note-purple-text;
         }
-        input[type="text"].search-input:-ms-input-placeholder {
+        .search-input input[type="text"]:-ms-input-placeholder {
             color: $note-purple-text;
         }
-        input[type="text"].search-input:-moz-placeholder {
+        .search-input input[type="text"]:-moz-placeholder {
             color: $note-purple-text;
         }
         .sidebar-toggle {
@@ -77,9 +77,9 @@
             }
         }
     }
-    .typeahead {
+    .bootstrap-typeahead {
         width: calc(100% - 10px);
-        ul.typeahead-selector {
+        ul.dropdown-menu {
             position: absolute;
             background: #fff;
             left: 0;
@@ -97,21 +97,21 @@
                 padding: 7px 10px;
                 border-bottom: 1px solid $off-white;
             }
-            li:hover {
+            li:hover, li.active {
                 background: $off-white
             }
         }
     }
 }
 
-input[type="text"].search-input {
+.search-input input[type="text"] {
     background: #7795a4;
     border: none;
     outline: none;
     box-shadow: none;
     font-size: 1.3em;
     font-family: $font-family-fancy;
-    margin: 5px;
+    margin: 2px;
     padding: 10px 20px;
     width: 100%;
     max-width: 100%;
@@ -119,18 +119,18 @@ input[type="text"].search-input {
     color: #fff;
 }
 
-input[type="text"].search-input::-webkit-input-placeholder {
+.search-input input[type="text"]::-webkit-input-placeholder {
     color: $note-header-blue-text;
 }
 
-input[type="text"].search-input::-moz-placeholder {
+.search-input input[type="text"]::-moz-placeholder {
     color: $note-header-blue-text;
 }
 
-input[type="text"].search-input:-ms-input-placeholder {
+.search-input input[type="text"]:-ms-input-placeholder {
     color: $note-header-blue-text;
 }
 
-input[type="text"].search-input:-moz-placeholder {
+.search-input input[type="text"]:-moz-placeholder {
     color: $note-header-blue-text;
 }

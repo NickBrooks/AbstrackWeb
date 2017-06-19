@@ -7,6 +7,7 @@ class SearchBar extends React.Component {
         super(props);
         this.selectSearchResult = this.selectSearchResult.bind(this);
         this.displayOption = this.displayOption.bind(this);
+        this.filterBy = this.filterBy.bind(this);
         this.handleSearch = this.handleSearch.bind(this);
     }
 
@@ -27,6 +28,10 @@ class SearchBar extends React.Component {
         this.setState({ options: search });
     }
 
+    filterBy(option) {
+        return option.id != null;
+    }
+
     displayOption(option) {
         return (
             <div>
@@ -44,6 +49,9 @@ class SearchBar extends React.Component {
                 <AsyncTypeahead
                     {...this.state}
                     labelKey="display"
+                    className="search-input"
+                    minLength={0}
+                    filterBy={this.filterBy}
                     onSearch={this.handleSearch}
                     placeholder={(ui.searchBar.defaultValue ? ui.searchBar.defaultValue : "Search notes")}
                     renderMenuItemChildren={this.displayOption}
