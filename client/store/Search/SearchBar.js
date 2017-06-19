@@ -18,12 +18,13 @@ class SearchBar extends React.Component {
     }
 
     selectSearchResult(result) {
-        console.log(result);
+        if (!!result[0]) {
+            console.log(result[0].display);
+        }
     }
 
     handleSearch(query) {
         let { search } = this.props;
-        console.log(query);
 
         this.setState({ options: search });
     }
@@ -49,7 +50,9 @@ class SearchBar extends React.Component {
                 <AsyncTypeahead
                     {...this.state}
                     labelKey="display"
+                    maxHeight={1024}
                     className="search-input"
+                    onChange={this.selectSearchResult}
                     minLength={0}
                     filterBy={this.filterBy}
                     onSearch={this.handleSearch}
