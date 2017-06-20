@@ -1,34 +1,34 @@
 const Search = [
     {
         id: "alskdnaskjkdn",
-        type: "nom",
+        type: "note",
         objectId: "",
         userID: "",
         display: "Muse",
-        searchText: "Here's a nom",
-        hashtags: [],
+        searchText: "Here's a note",
+        searchParameters: {},
         searchCount: "2",
         lastSearched: ""
     },
     {
         id: "sdvfvfv",
-        type: "nom",
+        type: "note",
         objectId: "",
         userID: "",
         display: "The Music",
-        searchText: "This is a big giant nom with some big giant text that needs truncating",
-        hashtags: [],
+        searchText: "This is a big giant note with some big giant text that needs truncating",
+        searchParameters: {},
         searchCount: "2",
         lastSearched: ""
     },
     {
         id: "tbtrbfe",
-        type: "nom",
+        type: "note",
         objectId: "",
         userID: "",
-        display: "Linkin Park",
-        searchText: "The last nom",
-        hashtags: [],
+        display: "Chiang Mai",
+        searchText: "The last note",
+        searchParameters: {},
         searchCount: "2",
         lastSearched: ""
     },
@@ -39,7 +39,7 @@ const Search = [
         userID: "",
         display: "Music",
         searchText: "Here's a track about music",
-        hashtags: [],
+        searchParameters: {},
         searchCount: "2",
         lastSearched: ""
     },
@@ -50,8 +50,19 @@ const Search = [
         userID: "",
         display: "Travel",
         searchText: "Travael guide",
-        hashtags: [],
+        searchParameters: {},
         searchCount: "2",
+        lastSearched: ""
+    },
+    {
+        id: "ksjdnfur33",
+        type: "searchHistory",
+        objectId: "",
+        userID: "",
+        display: "#travel China 2017",
+        searchText: null,
+        searchParameters: {},
+        searchCount: "1",
         lastSearched: ""
     }
 ]

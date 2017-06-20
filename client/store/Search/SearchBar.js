@@ -9,10 +9,8 @@ class SearchBar extends React.Component {
         this.displayOption = this.displayOption.bind(this);
         this.filterBy = this.filterBy.bind(this);
         this.handleSearch = this.handleSearch.bind(this);
-    }
 
-    getInitialState() {
-        return {
+        this.state = {
             options: []
         };
     }
@@ -33,11 +31,49 @@ class SearchBar extends React.Component {
         return option.id != null;
     }
 
+    // selects the right icon, adds a description if none
+    prepareOption(option) {
+        switch (option.type) {
+            case 'note':
+                option.searchText = !!option.searchText ? option.searchText : "Empty note";
+                option.icon = (
+                    <span className="fa-stack note-header-blue">
+                        <FontAwesome name="circle" stack="2x" />
+                        <FontAwesome name="file-text-o" inverse stack="1x" />
+                    </span>
+                );
+                return option;
+            case 'track':
+                option.searchText = !!option.searchText ? option.searchText : "Empty note";
+                option.icon = (
+                    <span className="fa-stack note-green-light">
+                        <FontAwesome name="circle" stack="2x" />
+                        <FontAwesome name="file-text-o" inverse stack="1x" />
+                    </span>
+                );
+                return option;
+            case 'searchHistory':
+                option.searchText = !!option.searchText ? option.searchText : "Previous search";
+                option.icon = (
+                        <FontAwesome name="history" className="note-gray-active" />
+                );
+                return option;
+
+            default:
+                return option;
+        }
+    }
+
     displayOption(option) {
+        this.prepareOption(option);
+
         return (
-            <div>
-                <p>{option.display}</p>
-                <p><small>{option.searchText}</small></p>
+            <div className="search-result">
+                <div className="icon">
+                    {option.icon}
+                </div>
+                <p className="display">{option.display}</p>
+                <p className="description"><small><em>{option.searchText}</em></small></p>
             </div>
         );
     }

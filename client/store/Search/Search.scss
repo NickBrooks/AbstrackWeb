@@ -93,13 +93,33 @@
             box-shadow: 0 0px 11px 2px rgba(0, 0, 0, 0.04), 0 6px 20px 5px rgba(0, 0, 0, 0.02), 0 8px 7px -5px rgba(0, 0, 0, 0.1);
             p {
                 margin: 0;
+                line-height: 1.4;
+                font-size: 0.9em;
+            }
+            .display {
+                font-weight: bold;
+            }
+            .description {
+                color: $note-gray-active;
             }
             li {
-                padding: 7px 10px;
+                padding: 10px $box-padding;
                 border-bottom: 1px solid $off-white;
             }
-            li:hover, li.active {
+            li:hover,
+            li.active {
                 background: $off-white
+            }
+            .search-result .icon {
+                float: left;
+                padding-right: $box-padding;
+                margin-top: 5px;
+                .fa-stack-1x {
+                    font-size: 0.8em;
+                }
+                .fa-history {
+                    padding: 0 9px;
+                }
             }
         }
     }
