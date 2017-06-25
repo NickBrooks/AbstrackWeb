@@ -5,7 +5,7 @@ const Search = [
         objectId: "",
         userID: "",
         display: "Muse",
-        searchText: "Here's a note",
+        searchText: "Here's a note commit test",
         searchParameters: {},
         searchCount: "2",
         lastSearched: ""
