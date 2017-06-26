@@ -8,7 +8,6 @@ class SearchBar extends React.Component {
         this.selectSearchResult = this.selectSearchResult.bind(this);
         this.displayOption = this.displayOption.bind(this);
         this.filterBy = this.filterBy.bind(this);
-        this.handleSearch = this.handleSearch.bind(this);
 
         this.state = {
             options: []
@@ -21,14 +20,8 @@ class SearchBar extends React.Component {
         }
     }
 
-    handleSearch(query) {
-        let { search } = this.props;
-
-        this.setState({ options: search });
-    }
-
     filterBy(option) {
-        return option.id != null;
+        return option;
     }
 
     // selects the right icon, adds a description if none
@@ -44,7 +37,7 @@ class SearchBar extends React.Component {
                 );
                 return option;
             case 'track':
-                option.searchText = !!option.searchText ? option.searchText : "Empty note";
+                option.searchText = !!option.searchText ? option.searchText : "Empty track";
                 option.icon = (
                     <span className="fa-stack note-green-light">
                         <FontAwesome name="circle" stack="2x" />
@@ -55,7 +48,7 @@ class SearchBar extends React.Component {
             case 'searchHistory':
                 option.searchText = !!option.searchText ? option.searchText : "Previous search";
                 option.icon = (
-                        <FontAwesome name="history" className="note-gray-active" />
+                    <FontAwesome name="history" className="note-gray-active" />
                 );
                 return option;
 
@@ -68,14 +61,22 @@ class SearchBar extends React.Component {
         this.prepareOption(option);
 
         return (
-            <div className="search-result">
+            <div className="search-result text-truncate">
                 <div className="icon">
                     {option.icon}
                 </div>
-                <p className="display">{option.display}</p>
-                <p className="description"><small><em>{option.searchText}</em></small></p>
+                <p className="display">{option.title}</p>
+                <p className="description"><small><em>{option.description}...</em></small></p>
             </div>
         );
+    }
+
+    componentWillReceiveProps(nextProps) {
+        if (this.props.lazySearch != nextProps.lazySearch) {
+            this.setState({
+                options: nextProps.lazySearch
+            });
+        }
     }
 
     render() {
@@ -85,13 +86,13 @@ class SearchBar extends React.Component {
             <div className="search-bar">
                 <AsyncTypeahead
                     {...this.state}
-                    labelKey="display"
+                    labelKey="title"
                     maxHeight={1024}
                     className="search-input"
                     onChange={this.selectSearchResult}
                     minLength={0}
                     filterBy={this.filterBy}
-                    onSearch={this.handleSearch}
+                    onSearch={this.props.handleLazySearchQuery}
                     placeholder={(ui.searchBar.defaultValue ? ui.searchBar.defaultValue : "Search notes")}
                     renderMenuItemChildren={this.displayOption}
                 />

@@ -1,4 +1,4 @@
-const Search = [
+const LazySearch = [
     {
         id: "alskdnaskjkdn",
         type: "note",
@@ -67,4 +67,4 @@ const Search = [
     }
 ]
 
-export default Search;
+export default LazySearch;

@@ -1,6 +1,6 @@
 import React from 'react';
 import FontAwesome from 'react-fontawesome';
-import SearchBar from '../../store/Search/SearchBar';
+import SearchBar from '../../store/LazySearch/SearchBar';
 
 class Header extends React.Component {
     constructor(props) {
