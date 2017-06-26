@@ -133,6 +133,6 @@ export function apiDeleteTrack(trackId) {
 }
 
 // lazy search
-export function apiGetLazySearchResults(q){
-    return Axios.get("search?q=" + q, getAuthHeader());
+export function apiGetLazySearchResults(q) {
+    return Axios.get("search?q=" + encodeURIComponent(q), getAuthHeader());
 }

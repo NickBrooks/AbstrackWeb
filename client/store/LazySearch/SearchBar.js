@@ -1,6 +1,7 @@
 import React from 'react';
 import FontAwesome from 'react-fontawesome';
 import { AsyncTypeahead } from 'react-bootstrap-typeahead';
+import { browserHistory } from 'react-router';
 
 class SearchBar extends React.Component {
     constructor(props) {
@@ -14,9 +15,23 @@ class SearchBar extends React.Component {
         };
     }
 
-    selectSearchResult(result) {
-        if (!!result[0]) {
-            console.log(result[0].display);
+    generateLinkUrl(selected) {
+        switch (selected.type) {
+            case 0:
+                return "/n/" + selected.objectId;
+            case 1:
+                return "/t/" + selected.objectId;
+            case 2:
+                return "/s/" + selected.title;
+            default:
+                return;
+        }
+    }
+
+    selectSearchResult(selected) {
+        if (!!selected[0]) {
+            var url = this.generateLinkUrl(selected[0]);
+            browserHistory.push(url);
         }
     }
 
@@ -27,7 +42,7 @@ class SearchBar extends React.Component {
     // selects the right icon, adds a description if none
     prepareOption(option) {
         switch (option.type) {
-            case 'note':
+            case 0:
                 option.searchText = !!option.searchText ? option.searchText : "Empty note";
                 option.icon = (
                     <span className="fa-stack note-header-blue">
@@ -36,7 +51,7 @@ class SearchBar extends React.Component {
                     </span>
                 );
                 return option;
-            case 'track':
+            case 1:
                 option.searchText = !!option.searchText ? option.searchText : "Empty track";
                 option.icon = (
                     <span className="fa-stack note-green-light">
@@ -45,13 +60,12 @@ class SearchBar extends React.Component {
                     </span>
                 );
                 return option;
-            case 'searchHistory':
+            case 2:
                 option.searchText = !!option.searchText ? option.searchText : "Previous search";
                 option.icon = (
                     <FontAwesome name="history" className="note-gray-active" />
                 );
                 return option;
-
             default:
                 return option;
         }
