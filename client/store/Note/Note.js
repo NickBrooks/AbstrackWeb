@@ -14,19 +14,30 @@ class Note extends React.Component {
         super(props);
     }
 
-    componentWillMount() {
-        let { noteId } = this.props.params;
+    checkNoteExists(noteId) {
         const { notes } = this.props;
 
-        if (notes.length == 0) {
+        // check if nom exists in the store
+        const i = notes.findIndex((note) => note.id === noteId);
+        console.log(i);
+        if (i == -1) {
             this.props.handleGetNote(noteId);
         } else {
-            const i = notes.findIndex((note) => note.id === noteId);
             const note = notes[i].data;
 
             if (note === null || moment().subtract(60, 'seconds') > moment(note.timeFetched)) {
                 this.props.handleGetNote(noteId);
             }
+        }
+    }
+
+    componentWillMount() {
+        this.checkNoteExists(this.props.params.noteId);
+    }
+
+    componentWillReceiveProps(nextProps) {
+        if (this.props.params != nextProps.params) {
+            this.checkNoteExists(nextProps.params.noteId);
         }
     }
 
