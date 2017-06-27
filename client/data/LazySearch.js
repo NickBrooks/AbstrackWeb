@@ -1,27 +1,24 @@
 const LazySearch = [
     {
         id: "inbox",
-        type: 1000,
+        type: 1001,
         objectId: "",
         title: "Inbox",
-        description: "Latest notes",
-        iconId: "5vGxruh"
+        description: "Latest notes"
     },
     {
         id: "pinned",
-        type: 1000,
+        type: 1002,
         objectId: "pinned",
         title: "Pinned",
-        description: "Important notes",
-        iconId: "L0BGR25"
+        description: "Important notes"
     },
     {
         id: "drafts",
-        type: 1000,
+        type: 1003,
         objectId: "drafts",
         title: "Drafts",
-        description: "Work in progress",
-        iconId: "434R437"
+        description: "Work in progress"
     }
 ]
 

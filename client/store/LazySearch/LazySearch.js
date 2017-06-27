@@ -2,6 +2,7 @@ import React from 'react';
 import FontAwesome from 'react-fontawesome';
 import { AsyncTypeahead } from 'react-bootstrap-typeahead';
 import { browserHistory } from 'react-router';
+import icons from '../../data/Icons';
 
 class LazySearch extends React.Component {
     constructor(props) {
@@ -24,7 +25,9 @@ class LazySearch extends React.Component {
                 return "/t/" + selected.objectId;
             case 2:
                 return "/s/" + selected.title;
-            case 1000:
+            case 1001:
+            case 1002:
+            case 1003:
                 return "/" + selected.objectId;
             default:
                 return;
@@ -54,27 +57,36 @@ class LazySearch extends React.Component {
     prepareOption(option) {
         switch (option.type) {
             case 0:
-                option.searchText = !!option.searchText ? option.searchText : "Empty note";
+                option.description = !!option.description ? option.description : "Empty note";
                 option.icon = (
-                    <img src="http://i.imgur.com/jZH7aqa.png" alt="note" />
+                    <img src={icons.note} alt="note" />
                 );
                 return option;
             case 1:
-                option.searchText = !!option.searchText ? option.searchText : "Empty track";
+                option.description = !!option.description ? option.description : "Empty track";
                 option.icon = (
-                    <img src="http://i.imgur.com/KyJNNGg.png" alt="track" />
+                    <img src={icons.track} alt="track" />
                 );
                 return option;
             case 2:
-                option.searchText = !!option.searchText ? option.searchText : "Previous search";
+                option.description = !!option.description ? option.description : "Previous search";
                 option.icon = (
-                    <img src="http://i.imgur.com/KyJNNGg.png" alt="search" />
+                    <img src={icons.note} alt="search" />
                 );
                 return option;
-            case 1000:
-                option.searchText = !!option.searchText ? option.searchText : "Previous search";
+            case 1001:
                 option.icon = (
-                    <img src={"http://i.imgur.com/" + option.iconId + ".png"} alt="search" />
+                    <img src={icons.inbox} alt="inbox" />
+                );
+                return option;
+            case 1002:
+                option.icon = (
+                    <img src={icons.pinned} alt="pinned" />
+                );
+                return option;
+            case 1003:
+                option.icon = (
+                    <img src={icons.draft} alt="drafts" />
                 );
                 return option;
             default:
