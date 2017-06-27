@@ -11,7 +11,7 @@ class SearchBar extends React.Component {
         this.filterBy = this.filterBy.bind(this);
 
         this.state = {
-            options: []
+            options: this.props.lazySearch
         };
     }
 
@@ -23,6 +23,8 @@ class SearchBar extends React.Component {
                 return "/t/" + selected.objectId;
             case 2:
                 return "/s/" + selected.title;
+            case 1000:
+                return "/" + selected.objectId;
             default:
                 return;
         }
@@ -32,6 +34,8 @@ class SearchBar extends React.Component {
         if (!!selected[0]) {
             var url = this.generateLinkUrl(selected[0]);
             browserHistory.push(url);
+            setTimeout(() => this._typeahead.getInstance().blur(), 0);
+            setTimeout(() => this._typeahead.getInstance().clear(), 0);
         }
     }
 
@@ -93,6 +97,16 @@ class SearchBar extends React.Component {
         }
     }
 
+    componentDidMount() {
+        let { _typeahead} = this;
+
+        // add shift+? keyboard shortcut for quick searching
+        Mousetrap.bind(['?'], function () {
+            setTimeout(() => _typeahead.getInstance().focus(), 0);
+            return false;
+        });
+    }
+
     render() {
         let { search, ui } = this.props;
 
@@ -100,6 +114,7 @@ class SearchBar extends React.Component {
             <div className="search-bar">
                 <AsyncTypeahead
                     {...this.state}
+                    ref={ref => this._typeahead = ref}
                     labelKey="title"
                     maxHeight={1024}
                     className="search-input"

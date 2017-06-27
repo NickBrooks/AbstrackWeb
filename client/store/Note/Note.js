@@ -16,10 +16,9 @@ class Note extends React.Component {
 
     checkNoteExists(noteId) {
         const { notes } = this.props;
+        const i = notes.findIndex((note) => note.id === noteId);
 
         // check if nom exists in the store
-        const i = notes.findIndex((note) => note.id === noteId);
-        console.log(i);
         if (i == -1) {
             this.props.handleGetNote(noteId);
         } else {

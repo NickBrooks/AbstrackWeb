@@ -1,69 +1,24 @@
 const LazySearch = [
     {
-        id: "alskdnaskjkdn",
-        type: "note",
+        id: "inbox",
+        type: 1000,
         objectId: "",
-        userID: "",
-        display: "Muse",
-        searchText: "Here's a note commit test",
-        searchParameters: {},
-        searchCount: "2",
-        lastSearched: ""
+        title: "Inbox",
+        description: "Latest notes"
     },
     {
-        id: "sdvfvfv",
-        type: "note",
-        objectId: "",
-        userID: "",
-        display: "The Music",
-        searchText: "This is a big giant note with some big giant text that needs truncating",
-        searchParameters: {},
-        searchCount: "2",
-        lastSearched: ""
+        id: "pinned",
+        type: 1000,
+        objectId: "pinned",
+        title: "Pinned",
+        description: "Important notes"
     },
     {
-        id: "tbtrbfe",
-        type: "note",
-        objectId: "",
-        userID: "",
-        display: "Chiang Mai",
-        searchText: "The last note",
-        searchParameters: {},
-        searchCount: "2",
-        lastSearched: ""
-    },
-    {
-        id: "fsdbsdfbb",
-        type: "track",
-        objectId: "",
-        userID: "",
-        display: "Music",
-        searchText: "Here's a track about music",
-        searchParameters: {},
-        searchCount: "2",
-        lastSearched: ""
-    },
-    {
-        id: "umhgn",
-        type: "track",
-        objectId: "",
-        userID: "",
-        display: "Travel",
-        searchText: "Travael guide",
-        searchParameters: {},
-        searchCount: "2",
-        lastSearched: ""
-    },
-    {
-        id: "ksjdnfur33",
-        type: "searchHistory",
-        objectId: "",
-        userID: "",
-        display: "#travel China 2017",
-        searchText: null,
-        searchParameters: {},
-        searchCount: "1",
-        lastSearched: ""
+        id: "drafts",
+        type: 1000,
+        objectId: "drafts",
+        title: "Drafts",
+        description: "Work in progress"
     }
 ]
 
