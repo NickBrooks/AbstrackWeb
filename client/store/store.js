@@ -9,7 +9,7 @@ import { routerReducer } from 'react-router-redux';
 // import data
 import loginData from '../data/Login';
 import noteEditorData from '../data/NoteEditor';
-import searchData from '../data/Search';
+import lazySearchData from '../data/LazySearch';
 import settingsData from '../data/Settings';
 import uiData from '../data/UI';
 
@@ -22,7 +22,7 @@ const defaultState = {
   noteEditor: noteEditorData,
   notes: [],
   tracks: [],
-  search: searchData,
+  lazySearch: lazySearchData,
   settings: settingsData,
   ui: uiData,
   users: [],
@@ -38,7 +38,7 @@ import notes from './Note/reducer';
 import noteViews from './NoteView/reducer';
 import tracks from './Track/reducer';
 import settings from './Settings/reducer';
-import search from './Search/reducer';
+import lazySearch from './LazySearch/reducer';
 import ui from './UI/reducer';
 import account from './Account/reducer';
 import users from './User/reducer';
@@ -52,7 +52,7 @@ const appReducer = combineReducers({
   notes,
   noteViews,
   tracks,
-  search,
+  lazySearch,
   settings,
   ui,
   account,

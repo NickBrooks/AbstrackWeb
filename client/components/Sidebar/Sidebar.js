@@ -3,6 +3,7 @@ import { Link } from 'react-router';
 import FontAwesome from 'react-fontawesome';
 import Avatar from '../Avatar/Avatar';
 import SidebarMenu from './Components/SidebarMenu';
+import icons from '../../data/Icons';
 
 class Sidebar extends React.Component {
     constructor(props) {
@@ -59,9 +60,9 @@ class Sidebar extends React.Component {
                 <div className={className}>
                     {this.renderUserBadge()}
                     <ul className="nav nav-sidebar text-truncate">
-                        <li className="inbox"><Link to="/"><span className="fa-stack note-green-light"><FontAwesome name="circle" stack="2x" /><FontAwesome name="envelope-open" inverse stack="1x" /></span> Inbox</Link></li>
-                        <li className="pinned"><Link to="/pinned"><span className="fa-stack note-orange-light"><FontAwesome name="circle" stack="2x" /><FontAwesome name="thumb-tack" inverse stack="1x" /></span> Pinned</Link></li>
-                        <li className="drafts"><Link to="/drafts"><span className="fa-stack note-purple"><FontAwesome name="circle" stack="2x" /><FontAwesome name="pencil" inverse stack="1x" /></span> Drafts</Link></li>
+                        <li className="inbox"><Link to="/"><img src={icons.inbox} alt="Inbox" /> Inbox</Link></li>
+                        <li className="pinned"><Link to="/pinned"><img src={icons.pinned} alt="Pinned" /> Pinned</Link></li>
+                        <li className="drafts"><Link to="/drafts"><img src={icons.draft} alt="Drafts" /> Drafts</Link></li>
                     </ul>
                     {this.renderTracksMenu(tracks)}
                     <ul className="nav nav-sidebar text-truncate">

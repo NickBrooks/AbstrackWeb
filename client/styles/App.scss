@@ -2,6 +2,8 @@
 @import "app/Mixins.scss";
 @import "app/Colors.scss";
 @import "app/Variables.scss";
+//bootstrap TODO: CDN
+@import "app/bootstrap.scss";
 //browser hacks
 @import "app/Browser.scss";
 //abstrack base
@@ -33,7 +35,7 @@
 @import "../store/NoteEditor/NoteEditor.scss";
 @import "../store/NoteEditor/Components/NoteTrackSelector.scss";
 @import "../store/NoteView/NoteView.scss";
-@import "../store/Search/Search.scss";
+@import "../store/LazySearch/LazySearch.scss";
 @import "../store/Settings/Settings.scss";
 @import "../store/Track/Track.scss";
 @import "../store/UI/UI.scss";

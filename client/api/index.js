@@ -131,3 +131,8 @@ export function apiUpdateTrack(trackId, track) {
 export function apiDeleteTrack(trackId) {
     return Axios.delete("tracks/" + trackId, getAuthHeader());
 }
+
+// lazy search
+export function apiGetLazySearchResults(q) {
+    return Axios.get("search?q=" + encodeURIComponent(q), getAuthHeader());
+}

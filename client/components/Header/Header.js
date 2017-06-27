@@ -1,6 +1,6 @@
 import React from 'react';
 import FontAwesome from 'react-fontawesome';
-import SearchBar from '../../store/Search/SearchBar';
+import LazySearch from '../../store/LazySearch/LazySearch';
 
 class Header extends React.Component {
     constructor(props) {
@@ -21,7 +21,7 @@ class Header extends React.Component {
                         <button className="btn btn-link sidebar-toggle" type="button" onClick={this.openSidebar.bind(this)}>
                             <FontAwesome name="bars" />
                         </button>
-                        <SearchBar {...this.props} />
+                        <LazySearch {...this.props} />
                     </div>
                 </div>
             </div>
