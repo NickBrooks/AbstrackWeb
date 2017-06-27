@@ -12,10 +12,17 @@ const LazySearch = [
         objectId: "pinned",
         title: "Pinned",
         description: "Important notes"
+    },    
+    {
+        id: "tracks",
+        type: 1003,
+        objectId: "tracks",
+        title: "Tracks",
+        description: "Your track"
     },
     {
         id: "drafts",
-        type: 1003,
+        type: 1004,
         objectId: "drafts",
         title: "Drafts",
         description: "Work in progress"

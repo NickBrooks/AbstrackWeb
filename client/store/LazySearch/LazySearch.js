@@ -28,6 +28,7 @@ class LazySearch extends React.Component {
             case 1001:
             case 1002:
             case 1003:
+            case 1004:
                 return "/" + selected.objectId;
             default:
                 return;
@@ -85,6 +86,11 @@ class LazySearch extends React.Component {
                 );
                 return option;
             case 1003:
+                option.icon = (
+                    <img src={icons.track} alt="tracks" />
+                );
+                return option;
+            case 1004:
                 option.icon = (
                     <img src={icons.draft} alt="drafts" />
                 );
