@@ -12,7 +12,7 @@ class NoteNode extends React.Component {
         super(props);
 
         const note = extractNote(props.notes, props.id);
-        const body = (note.data.body ? removeMd(note.data.body) : "");
+        const body = (note.data.body ? note.data.body : "");
         const isInbox = (note.views.indexOf("inbox") >= 0 ? true : false);
         const isPinned = (note.views.indexOf("pinned") >= 0 ? true : false);
         const link = this.generateLink(note);
@@ -79,7 +79,7 @@ class NoteNode extends React.Component {
             <Link to={link}>
                 <li className={"note-node" + (isPinned ? " pinned" : "")}>
                     <div className="quick-info text-truncate">
-                        {isPinned ? <FontAwesome name="thumb-tack" /> : undefined} <span className="title">{note.title}</span> {note.commentCount > 0 ? <span className="comment-count">{note.commentCount}</span> : undefined} <span className="body">{body}</span>
+                        {isPinned ? <FontAwesome name="thumb-tack" /> : undefined} <span className="title">{note.title}</span> {note.commentCount > 0 ? <span className="comment-count">{note.commentCount}</span> : undefined} <span className="body">{removeMd(body)}</span>
                         <NoteNodeToolbar {...this.props} />
                     </div>
                     <div className="hashtags">
