@@ -16,8 +16,19 @@ function isThisView(view, note) {
 function isToday(n) {
   var noteTime = moment(n.data.updatedTime);
   var timeDiff = now.diff(noteTime, 'days');
+  console.log(now, noteTime);
+  
+  if(noteTime.isSame(new Date(), "day")) {
+    return noteTime;
+  }
+}
 
-  return timeDiff == 0;
+//filters notes actioned today
+function isYesterday(n) {
+  var noteTime = moment(n.data.updatedTime);
+  var timeDiff = now.diff(noteTime, 'days');
+
+  return timeDiff == 1;
 }
 
 //filters notes actioned this week
@@ -25,7 +36,7 @@ function isThisWeek(n) {
   var noteTime = moment(n.data.updatedTime);
   var timeDiff = now.diff(noteTime, 'days');
 
-  return (timeDiff > 0) && (timeDiff <= 7);
+  return (timeDiff > 1) && (timeDiff <= 7);
 }
 
 //filters notes actioned this month
@@ -89,6 +100,14 @@ class NoteList extends React.Component {
     return;
   }
 
+  renderYesterdaysNotes(notes) {
+    let filteredNotes = notes.filter(isYesterday);
+    if (filteredNotes.length > 0) {
+      return <TimeNode filteredNotes={filteredNotes} title="Yesterday" {...this.props} />
+    }
+    return;
+  }
+
   renderThisWeeksNotes(notes) {
     let filteredNotes = notes.filter(isThisWeek);
     if (filteredNotes.length > 0) {
@@ -135,6 +154,7 @@ class NoteList extends React.Component {
       return (
         <div className="note-list">
           {this.renderTodaysNotes(viewNotes)}
+          {this.renderYesterdaysNotes(viewNotes)}
           {this.renderThisWeeksNotes(viewNotes)}
           {this.renderThisMonthsNotes(viewNotes)}
           {this.renderAFewMonthsNotes(viewNotes)}
