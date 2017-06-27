@@ -30,7 +30,7 @@
     &.searchBar-track {
         background: $note-green;
         .search-input input[type="text"] {
-            background: #4cb578;
+            background: #4dd386;
         }
         .search-input input[type="text"]::-webkit-input-placeholder {
             color: $note-green-text;
@@ -114,11 +114,10 @@
                 float: left;
                 padding-right: $box-padding;
                 margin-top: 5px;
-                .fa-stack-1x {
-                    font-size: 0.8em;
-                }
-                .fa-history {
-                    padding: 0 9px;
+                
+                img {
+                    height: 30px;
+                    width: 30px;
                 }
             }
         }
@@ -126,7 +125,7 @@
 }
 
 .search-input input[type="text"] {
-    background: #7795a4;
+    background: #389ef0;
     border: none;
     outline: none;
     box-shadow: none;

@@ -56,25 +56,25 @@ class LazySearch extends React.Component {
             case 0:
                 option.searchText = !!option.searchText ? option.searchText : "Empty note";
                 option.icon = (
-                    <span className="fa-stack note-header-blue">
-                        <FontAwesome name="circle" stack="2x" />
-                        <FontAwesome name="file-text-o" inverse stack="1x" />
-                    </span>
+                    <img src="http://i.imgur.com/jZH7aqa.png" alt="note" />
                 );
                 return option;
             case 1:
                 option.searchText = !!option.searchText ? option.searchText : "Empty track";
                 option.icon = (
-                    <span className="fa-stack note-green-light">
-                        <FontAwesome name="circle" stack="2x" />
-                        <FontAwesome name="file-text-o" inverse stack="1x" />
-                    </span>
+                    <img src="http://i.imgur.com/KyJNNGg.png" alt="track" />
                 );
                 return option;
             case 2:
                 option.searchText = !!option.searchText ? option.searchText : "Previous search";
                 option.icon = (
-                    <FontAwesome name="history" className="note-gray-active" />
+                    <img src="http://i.imgur.com/KyJNNGg.png" alt="search" />
+                );
+                return option;
+            case 1000:
+                option.searchText = !!option.searchText ? option.searchText : "Previous search";
+                option.icon = (
+                    <img src={"http://i.imgur.com/" + option.iconId + ".png"} alt="search" />
                 );
                 return option;
             default:
