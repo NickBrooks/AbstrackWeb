@@ -5,12 +5,11 @@ $note-gray-medium: #ddd;
 $note-gray-dark: #ccc;
 $note-gray-active: #bbb;
 $new-note-footer: #d0d6da;
-$note-header-blue: #2491e8;
+$note-blue: #2491e8;
+$note-blue-light: #389ef0;
 $note-header-blue-text: #f2f9ff;
 $note-dark-blue: #2c3e50;
 $note-dark-blue-active: #34495e;
-$note-blue: #2980b9;
-$note-blue-light: #3498db;
 $note-faded-blue: #e0e8ec;
 $note-green: #2ecc71;
 $note-green-light: #00CC6A;
@@ -32,11 +31,11 @@ $note-purple-text: #E1BEE7;
 }
 
 .note-header-blue {
-    color: $note-header-blue;
+    color: $note-blue;
 }
 
 .bg-note-header-blue {
-    background: $note-header-blue;
+    background: $note-blue;
 }
 
 .note-gray-active {

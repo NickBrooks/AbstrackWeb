@@ -19,10 +19,10 @@ span.tag {
 }
 
 span.hashtag {
-	background: #a5b9bb;
+	background: $note-blue;
 
 	&:hover {
-		background: #7f8c8d;
+		background: $note-blue-light;
 	}
 }
 
