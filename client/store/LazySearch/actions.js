@@ -1,4 +1,5 @@
 import { apiGetLazySearchResults } from '../../api';
+import lazySearchResults from '../../data/LazySearch';
 
 // update the results in lazy search
 export function updateLazySearchResults(results) {
@@ -6,6 +7,13 @@ export function updateLazySearchResults(results) {
         type: 'UPDATE_LAZY_SEARCH_RESULTS',
         results
     }
+}
+
+// reset lazysearch
+export function resetLazySearchResults() {    
+    return (dispatch) => {
+        dispatch(updateLazySearchResults(lazySearchResults));
+    };
 }
 
 export function handleLazySearchQuery(q) {

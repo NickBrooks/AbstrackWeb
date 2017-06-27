@@ -3,12 +3,13 @@ import FontAwesome from 'react-fontawesome';
 import { AsyncTypeahead } from 'react-bootstrap-typeahead';
 import { browserHistory } from 'react-router';
 
-class SearchBar extends React.Component {
+class LazySearch extends React.Component {
     constructor(props) {
         super(props);
         this.selectSearchResult = this.selectSearchResult.bind(this);
         this.displayOption = this.displayOption.bind(this);
         this.filterBy = this.filterBy.bind(this);
+        this.onInputChange = this.onInputChange.bind(this);
 
         this.state = {
             options: this.props.lazySearch
@@ -27,6 +28,12 @@ class SearchBar extends React.Component {
                 return "/" + selected.objectId;
             default:
                 return;
+        }
+    }
+
+    onInputChange(i) {
+        if (i.length == 0) {
+            this.props.resetLazySearchResults();
         }
     }
 
@@ -98,7 +105,7 @@ class SearchBar extends React.Component {
     }
 
     componentDidMount() {
-        let { _typeahead} = this;
+        let { _typeahead } = this;
 
         // add shift+? keyboard shortcut for quick searching
         Mousetrap.bind(['?'], function () {
@@ -117,8 +124,10 @@ class SearchBar extends React.Component {
                     ref={ref => this._typeahead = ref}
                     labelKey="title"
                     maxHeight={1024}
+                    useCache={false}
                     className="search-input"
                     onChange={this.selectSearchResult}
+                    onInputChange={this.onInputChange}
                     minLength={0}
                     filterBy={this.filterBy}
                     onSearch={this.props.handleLazySearchQuery}
@@ -130,4 +139,4 @@ class SearchBar extends React.Component {
     }
 }
 
-export default SearchBar;
+export default LazySearch;
