@@ -53,12 +53,12 @@ class AppView extends React.Component {
     componentDidMount() {
         let { newNoteShortcut, handleToggleSidebar } = this;
 
-        Mousetrap.bind(['shift+enter'], function () {
+        Mousetrap.bind(['ctrl+enter'], function () {
             newNoteShortcut();
             return false;
         });
 
-        Mousetrap.bind(['/'], function () {
+        Mousetrap.bind(['ctrl+/'], function () {
             handleToggleSidebar();
             return false;
         });
@@ -67,12 +67,12 @@ class AppView extends React.Component {
     componentWillUnmount() {
         let { newNoteShortcut, handleToggleSidebar } = this;
 
-        Mousetrap.unbind(['shift+enter'], function () {
+        Mousetrap.unbind(['ctrl+enter'], function () {
             newNoteShortcut();
             return false;
         });
 
-        Mousetrap.unbind(['/'], function () {
+        Mousetrap.unbind(['ctrl+/'], function () {
             handleToggleSidebar();
             return false;
         });

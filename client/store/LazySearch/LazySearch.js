@@ -126,7 +126,7 @@ class LazySearch extends React.Component {
         let { _typeahead } = this;
 
         // add shift+? keyboard shortcut for quick searching
-        Mousetrap.bind(['?'], function () {
+        Mousetrap.bind(['/'], function () {
             setTimeout(() => _typeahead.getInstance().focus(), 0);
             return false;
         });
