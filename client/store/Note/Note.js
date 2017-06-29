@@ -67,7 +67,6 @@ class Note extends React.Component {
         return (
             <div className="row core-body">
                 <div className="col-sm-12">
-                    <Link to={accountLink}><Avatar user={note.createdBy} size="50" customClass="pull-left timeline" /></Link>
                     <div className="ibox view-note">
                         <NoteHeader note={note} {...this.props} />
                         <hr />

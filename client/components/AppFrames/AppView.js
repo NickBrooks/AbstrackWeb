@@ -18,7 +18,7 @@ class AppView extends React.Component {
     checkValidToken() {
         const auth = loadLocalStorage('auth');
 
-        if (auth == null || auth.token == "" || auth.token == null || auth.expiration < moment.utc().format()) {
+        if (!!auth.token == "" || auth.expiration < moment.utc().format()) {
             browserHistory.push('/login');
         }
     }
@@ -36,6 +36,7 @@ class AppView extends React.Component {
     componentWillMount() {
         this.props.handleGetAccount();
         this.props.handleGetTracks();
+        this.props.handleGetPinned("pinned");
     }
 
     componentWillReceiveProps(nextProps) {

@@ -53,7 +53,6 @@ class AddComment extends React.Component {
 
         return (
             <form ref="addCommentForm" className="add-comment" onSubmit={this.handleCommentSubmit}>
-                <Link to={accountLink}><Avatar user={account} size="50" customClass="pull-left timeline" /></Link>
                 <div className="ibox">
                     <textarea ref="body" placeholder={ui.comments.addCommentPlaceholder} />
                     <hr />

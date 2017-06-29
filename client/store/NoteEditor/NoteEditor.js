@@ -97,7 +97,8 @@ class NoteEditor extends React.Component {
     }
 
     handleBodyChange(e) {
-        this.props.setDraftBody(e.target.value);
+        let { value } = e.target;
+        this.props.setDraftBody(value);
         delay(500).then(() => {
             this.saveDraft();
         })
@@ -122,7 +123,7 @@ class NoteEditor extends React.Component {
                     {ui.note.editor.previewMode ?
                         <RenderMarkdown markdown={noteEditor.body} className="preview-mode" /> :
                         <div className="editor-body">
-                            <textarea ref="body" className="form-control mousetrap" defaultValue={(!noteEditor || !noteEditor.body ? null : noteEditor.body)} placeholder="Say something..." tabIndex={2} onChange={this.handleBodyChange} />
+                            <textarea ref="body" className="form-control mousetrap" defaultValue={(!noteEditor || !noteEditor.body ? null : noteEditor.body)} placeholder="Say something, Ctrl/Cmd+8 to preview..." tabIndex={2} onChange={this.handleBodyChange} />
                             <hr />
                             <input type="text" className="form-control editor-hashtags mousetrap" defaultValue={(!noteEditor || !noteEditor.hashtags ? null : noteEditor.hashtags)} placeholder="Hashtags" tabIndex={3} onChange={this.handleHashtagsChange} />
                         </div>

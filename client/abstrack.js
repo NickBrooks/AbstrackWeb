@@ -30,7 +30,7 @@ import store, { history } from './store/store';
 
 const router = (
     <Provider store={store}>
-        <Router history={history}>
+        <Router history={history} onUpdate={() => window.scrollTo(0, 0)}>
             <Route component={FullScreen}>
                 <Route path="/login" component={LoginView} />
                 <Route path="/register" component={RegisterView} />

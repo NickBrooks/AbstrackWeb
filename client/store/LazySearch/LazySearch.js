@@ -2,6 +2,7 @@ import React from 'react';
 import FontAwesome from 'react-fontawesome';
 import { AsyncTypeahead } from 'react-bootstrap-typeahead';
 import { browserHistory } from 'react-router';
+import removeMd from 'remove-markdown';
 import icons from '../../data/Icons';
 
 class LazySearch extends React.Component {
@@ -109,7 +110,7 @@ class LazySearch extends React.Component {
                     {option.icon}
                 </div>
                 <p className="display">{option.title}</p>
-                <p className="description"><small><em>{option.description}...</em></small></p>
+                <p className="description"><small><em>{removeMd(option.description)}...</em></small></p>
             </div>
         );
     }
