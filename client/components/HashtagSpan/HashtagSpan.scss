@@ -26,8 +26,8 @@ span.hashtag {
 	}
 }
 
-span.tracktag {
-	background: #61e499;
+span.track-tag {
+	background: $note-green;
 	max-width: 140px;
 
 	&:hover {

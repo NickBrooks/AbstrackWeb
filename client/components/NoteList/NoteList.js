@@ -16,7 +16,6 @@ function isThisView(view, note) {
 function isToday(n) {
   var noteTime = moment(n.data.updatedTime);
   var timeDiff = now.diff(noteTime, 'days');
-  console.log(now, noteTime);
   
   if(noteTime.isSame(new Date(), "day")) {
     return noteTime;
@@ -27,8 +26,12 @@ function isToday(n) {
 function isYesterday(n) {
   var noteTime = moment(n.data.updatedTime);
   var timeDiff = now.diff(noteTime, 'days');
+  var date = new Date();
+  date.setDate(date.getDate() - 1);
 
-  return timeDiff == 1;
+  if(noteTime.isSame(date, "day")) {
+    return noteTime;
+  }
 }
 
 //filters notes actioned this week

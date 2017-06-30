@@ -18,7 +18,7 @@ class AppView extends React.Component {
     checkValidToken() {
         const auth = loadLocalStorage('auth');
 
-        if (!!auth.token == "" || auth.expiration < moment.utc().format()) {
+        if (auth == undefined || auth.token == "" || auth.expiration < moment.utc().format()) {
             browserHistory.push('/login');
         }
     }
