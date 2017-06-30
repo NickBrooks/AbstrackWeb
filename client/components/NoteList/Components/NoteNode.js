@@ -10,24 +10,6 @@ import NoteNodeToolbar from './NoteNodeToolbar';
 class NoteNode extends React.Component {
     constructor(props) {
         super(props);
-
-        const note = extractNote(props.notes, props.id);
-        const body = (note.data.body ? note.data.body : "");
-        const isInbox = (note.views.indexOf("inbox") >= 0 ? true : false);
-        const isPinned = (note.views.indexOf("pinned") >= 0 ? true : false);
-        const link = this.generateLink(note);
-        const views = note.views;
-        const track = (note.data.track ? extractTrack(props.tracks, note.data.track.id) : null)
-
-        this.state = {
-            body,
-            isInbox,
-            isPinned,
-            link,
-            note: note.data,
-            track,
-            views,
-        }
     }
 
     generateLink(note) {
@@ -39,7 +21,8 @@ class NoteNode extends React.Component {
     }
 
     renderMediaPreviews() {
-        let { body } = this.state;
+        var note = extractNote(this.props.notes, this.props.id);
+        var body = (note.data.body ? note.data.body : "");
 
         var media = [];
 
@@ -65,25 +48,23 @@ class NoteNode extends React.Component {
     }
 
     render() {
-        let {
-            body,
-            isPinned,
-            isInbox,
-            link,
-            note,
-            track,
-            views
-        } = this.state;
+        var note = extractNote(this.props.notes, this.props.id);
+        var body = (note.data.body ? note.data.body : "");
+        var isInbox = (note.views.indexOf("inbox") >= 0 ? true : false);
+        var isPinned = (note.views.indexOf("pinned") >= 0 ? true : false);
+        var link = this.generateLink(note);
+        var views = note.views;
+        var track = (note.data.track ? extractTrack(this.props.tracks, note.data.track.id) : null)
 
         return (
             <Link to={link}>
                 <li className={"note-node" + (isPinned ? " pinned" : "")}>
                     <div className="quick-info text-truncate">
-                        {isPinned ? <FontAwesome name="thumb-tack" className="note-orange" /> : undefined} <span className="title">{note.title}</span> {note.commentCount > 0 ? <span className="comment-count">{note.commentCount}</span> : undefined} <span className="body">{removeMd(body)}</span>
+                        {isPinned ? <FontAwesome name="thumb-tack" className="note-orange" /> : undefined} <span className="title">{note.data.title}</span> {note.commentCount > 0 ? <span className="comment-count">{note.commentCount}</span> : undefined} <span className="body">{removeMd(body)}</span>
                         <NoteNodeToolbar {...this.props} />
                     </div>
                     <div className="hashtags">
-                        {track ? <span className="tag track-tag"><small><FontAwesome name="list-ul" /></small> {track.name}</span> : undefined}{note.hashtags ? note.hashtags.map((hashtag, i) => <HashtagSpan {...this.props} hashtag={hashtag} disableLink={true} customClass="default" key={i} i={i} />) : undefined}
+                        {track ? <span className="tag track-tag"><small><FontAwesome name="list-ul" /></small> {track.name}</span> : undefined}{note.data.hashtags ? note.data.hashtags.map((hashtag, i) => <HashtagSpan {...this.props} hashtag={hashtag} disableLink={true} customClass="default" key={i} i={i} />) : undefined}
                     </div>
                     {this.renderMediaPreviews()}
                 </li>

@@ -83,25 +83,25 @@ function addRemoveViewFromNote(note, value, view) {
 
 function notes(state = [], action) {
     switch (action.type) {
-        case 'REMOVE_NOM_FROM_STORE':
+        case 'REMOVE_NOTE_FROM_STORE':
             var i = state.findIndex((note) => note.data.id === action.noteId);
             if (i >= 0) {
                 state.splice(i, 1);
                 return state;
             }
             return state;
-        case 'REMOVE_VIEW_FROM_NOM_STORE':
+        case 'REMOVE_VIEW_FROM_NOTE_STORE':
             return removeViewFromNoteStore(state, action);
-        case 'UPDATE_NOM_STORE':
+        case 'UPDATE_NOTE_STORE':
             return mergeCurrentStateAndFetchedNotes(state, action);
-        case 'ADD_REMOVE_VIEW_FROM_NOM':
+        case 'ADD_REMOVE_VIEW_FROM_NOTE':
             return state.map(note => note.id === action.noteId ?
                 // update the note with a matching id
                 addRemoveViewFromNote(note, action.value, action.view) :
                 // otherwise return original note
                 note
             );
-        case 'ADD_HASHTAG_TO_NOM':
+        case 'ADD_HASHTAG_TO_NOTE':
             var hashtags = extractHashtags(state, action.noteId);
 
             for (let hashtag of action.hashtags) {
@@ -114,7 +114,7 @@ function notes(state = [], action) {
                 // otherwise return original note
                 note
             );
-        case 'REMOVE_HASHTAGS_FROM_NOM':
+        case 'REMOVE_HASHTAGS_FROM_NOTE':
             var hashtags = extractHashtags(state, action.noteId);
 
             if (hashtags == undefined) {

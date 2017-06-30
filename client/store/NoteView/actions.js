@@ -4,14 +4,14 @@ import moment from 'moment';
 
 export function noteViewIsLoading(value) {
     return {
-        type: 'NOM_VIEW_IS_LOADING',
+        type: 'NOTE_VIEW_IS_LOADING',
         value
     }
 }
 
 export function updateNoteViewList(view, timeFetched) {
     return {
-        type: 'UPDATE_NOM_VIEW_LIST',
+        type: 'UPDATE_NOTE_VIEW_LIST',
         view,
         timeFetched: moment.utc().format()
     }

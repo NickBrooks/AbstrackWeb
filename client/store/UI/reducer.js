@@ -5,11 +5,11 @@ function ui(state = [], action) {
             var newState = Object.assign({}, state);
             newState.appView.displayChildren = action.value;
             return newState;
-        case 'TOGGLE_NOM_EDITOR':
+        case 'TOGGLE_NOTE_EDITOR':
             var newState = Object.assign({}, state);
             newState.newNoteModal.open = action.value;
             return newState;
-        case 'TOGGLE_NEW_NOM_BUTTON':
+        case 'TOGGLE_NEW_NOTE_BUTTON':
             var newState = Object.assign({}, state);
             newState.newNoteButton.show = action.value;
             return newState;
@@ -41,15 +41,15 @@ function ui(state = [], action) {
             var newState = Object.assign({}, state);
             newState.login.isAuthenticating = action.value;
             return newState;
-        case 'NOM_VIEW_IS_LOADING':
+        case 'NOTE_VIEW_IS_LOADING':
             var newState = Object.assign({}, state);
             newState.noteView.isLoading = action.value;
             return newState;
-        case 'UPDATE_NOM_FETCHING_STATUS':
+        case 'UPDATE_NOTE_FETCHING_STATUS':
             var newState = Object.assign({}, state);
             newState.note.fetchingStatus = action.value;
             return newState;
-        case 'UPDATE_NOM_ADDING_STATUS':
+        case 'UPDATE_NOTE_ADDING_STATUS':
             var newState = Object.assign({}, state);
             newState.note.addingStatus = action.value;
             return newState;

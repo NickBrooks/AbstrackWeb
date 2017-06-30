@@ -26,7 +26,7 @@ class NoteNodeToolbar extends React.Component {
 
     renderPinnedButton() {
         return (
-            <object><button type="button" onClick={this.handleUnpinNoteClick} aria-label="Pin Note" className="btn btn-sm btn-secondary"><FontAwesome name="thumb-tack" /></button></object>
+            <object><button type="button" onClick={this.handleUnpinNoteClick} aria-label="Pin Note" className="btn btn-sm btn-secondary"><FontAwesome name="thumb-tack" className="note-orange" /></button></object>
         )
     }
 

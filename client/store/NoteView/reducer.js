@@ -1,6 +1,6 @@
 function noteViews(state = [], action) {
     switch (action.type) {
-        case 'UPDATE_NOM_VIEW_LIST':
+        case 'UPDATE_NOTE_VIEW_LIST':
             var newState = Object.assign({}, state);
             newState[action.view] = {
                 timeFetched: action.timeFetched

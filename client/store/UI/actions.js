@@ -1,7 +1,7 @@
 // toggle the newNoteModal
 export function toggleNoteEditor(value) {
     return {
-        type: 'TOGGLE_NOM_EDITOR',
+        type: 'TOGGLE_NOTE_EDITOR',
         value
     }
 }
@@ -16,7 +16,7 @@ export function toggleAppViewChildren(value) {
 
 export function toggleNewNoteButton(value) {
     return {
-        type: 'TOGGLE_NEW_NOM_BUTTON',
+        type: 'TOGGLE_NEW_NOTE_BUTTON',
         value
     }
 }

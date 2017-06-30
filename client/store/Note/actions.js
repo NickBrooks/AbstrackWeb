@@ -5,7 +5,7 @@ import { push } from 'react-router-redux';
 // remove note from store
 export function removeNoteFromStore(noteId) {
     return {
-        type: 'REMOVE_NOM_FROM_STORE',
+        type: 'REMOVE_NOTE_FROM_STORE',
         noteId
     }
 }
@@ -13,7 +13,7 @@ export function removeNoteFromStore(noteId) {
 // removes a particular view from the note store
 export function removeViewFromNoteStore(view) {
     return {
-        type: 'REMOVE_VIEW_FROM_NOM_STORE',
+        type: 'REMOVE_VIEW_FROM_NOTE_STORE',
         view
     }
 }
@@ -21,7 +21,7 @@ export function removeViewFromNoteStore(view) {
 // update the list of notes
 export function updateNoteStore(data, view) {
     return {
-        type: 'UPDATE_NOM_STORE',
+        type: 'UPDATE_NOTE_STORE',
         data,
         view,
         timeFetched: moment.utc().format()
@@ -31,7 +31,7 @@ export function updateNoteStore(data, view) {
 // pin or unpin a note
 export function addRemoveViewFromNote(noteId, value, view) {
     return {
-        type: 'ADD_REMOVE_VIEW_FROM_NOM',
+        type: 'ADD_REMOVE_VIEW_FROM_NOTE',
         noteId,
         value,
         view
@@ -41,7 +41,7 @@ export function addRemoveViewFromNote(noteId, value, view) {
 // add new hashtags to note
 export function addHashtagToNote(hashtags, noteId) {
     return {
-        type: 'ADD_HASHTAG_TO_NOM',
+        type: 'ADD_HASHTAG_TO_NOTE',
         hashtags,
         noteId
     }
@@ -50,7 +50,7 @@ export function addHashtagToNote(hashtags, noteId) {
 // remove hashtags from note
 export function removeHashtagsFromNote(hashtags, noteId) {
     return {
-        type: 'REMOVE_HASHTAGS_FROM_NOM',
+        type: 'REMOVE_HASHTAGS_FROM_NOTE',
         hashtags,
         noteId
     }
@@ -59,7 +59,7 @@ export function removeHashtagsFromNote(hashtags, noteId) {
 // update note fetching status
 export function updateNoteFetchingStatus(value) {
     return {
-        type: 'UPDATE_NOM_FETCHING_STATUS',
+        type: 'UPDATE_NOTE_FETCHING_STATUS',
         value
     }
 }
@@ -67,7 +67,7 @@ export function updateNoteFetchingStatus(value) {
 // update note adding status
 export function updateNoteAddingStatus(value) {
     return {
-        type: 'UPDATE_NOM_ADDING_STATUS',
+        type: 'UPDATE_NOTE_ADDING_STATUS',
         value
     }
 }
