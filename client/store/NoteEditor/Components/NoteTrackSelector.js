@@ -1,5 +1,4 @@
 import React from 'react';
-import { Typeahead } from 'react-typeahead';
 import FontAwesome from 'react-fontawesome';
 import { delay, } from '../../../functions';
 
@@ -36,18 +35,19 @@ class NoteTrackSelector extends React.Component {
         let { tracks } = this.props;
 
         return (
-            <Typeahead ref="noteTrackSelector"
-                options={tracks}
-                filterOption="name"
-                displayOption="name"
-                placeholder="Track"
-                onOptionSelected={this.selectTrack}
-                customClasses={{
-                    input: "form-control"
-                }}
-                maxVisible={5}
-                tabIndex={2}
-            />
+            <p>DO THIS</p>
+            // <Typeahead ref="noteTrackSelector"
+            //     options={tracks}
+            //     filterOption="name"
+            //     displayOption="name"
+            //     placeholder="Track"
+            //     onOptionSelected={this.selectTrack}
+            //     customClasses={{
+            //         input: "form-control"
+            //     }}
+            //     maxVisible={5}
+            //     tabIndex={2}
+            // />
         )
     }
 
