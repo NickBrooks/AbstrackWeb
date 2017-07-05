@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router';
 import FontAwesome from 'react-fontawesome';
 import removeMd from 'remove-markdown';
+import moment from 'moment';
 import { extractNote, extractTrack, extractImagesFromString, extractYoutubeFromString } from '../../../functions';
 import HashtagSpan from '../../HashtagSpan/HashtagSpan';
 import Avatar from '../../Avatar/Avatar';
@@ -56,6 +57,10 @@ class NoteNode extends React.Component {
         var views = note.views;
         var track = (note.data.track ? extractTrack(this.props.tracks, note.data.track.id) : null)
 
+        // the date
+        var offset = moment().utcOffset();
+        var noteTime = moment(note.data.updatedTime).add(offset, 'minutes').format("dddd, MMMM Do YYYY, h:mm:ss a");
+
         return (
             <Link to={link}>
                 <li className={"note-node" + (isPinned ? " pinned" : "")}>
@@ -67,6 +72,7 @@ class NoteNode extends React.Component {
                         {track ? <span className="tag track-tag"><small><FontAwesome name="list-ul" /></small> {track.name}</span> : undefined}{note.data.hashtags ? note.data.hashtags.map((hashtag, i) => <HashtagSpan {...this.props} hashtag={hashtag} disableLink={true} customClass="default" key={i} i={i} />) : undefined}
                     </div>
                     {this.renderMediaPreviews()}
+                    {noteTime}
                 </li>
             </Link>
         )

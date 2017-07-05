@@ -6,6 +6,7 @@ import FontAwesome from 'react-fontawesome';
 import delay from '../../functions';
 
 var now = moment();
+var offset = moment().utcOffset();
 
 //filters notes from this view
 function isThisView(view, note) {
@@ -14,7 +15,7 @@ function isThisView(view, note) {
 
 //filters notes actioned today
 function isToday(n) {
-  var noteTime = moment(n.data.updatedTime);
+  var noteTime = moment(n.data.updatedTime).add(offset, 'minutes');
   var timeDiff = now.diff(noteTime, 'days');
   
   if(noteTime.isSame(new Date(), "day")) {
@@ -24,7 +25,7 @@ function isToday(n) {
 
 //filters notes actioned today
 function isYesterday(n) {
-  var noteTime = moment(n.data.updatedTime);
+  var noteTime = moment(n.data.updatedTime).add(offset, 'minutes');
   var timeDiff = now.diff(noteTime, 'days');
   var date = new Date();
   date.setDate(date.getDate() - 1);
@@ -36,7 +37,7 @@ function isYesterday(n) {
 
 //filters notes actioned this week
 function isThisWeek(n) {
-  var noteTime = moment(n.data.updatedTime);
+  var noteTime = moment(n.data.updatedTime).add(offset, 'minutes');
   var timeDiff = now.diff(noteTime, 'days');
 
   return (timeDiff > 1) && (timeDiff <= 7);
@@ -44,7 +45,7 @@ function isThisWeek(n) {
 
 //filters notes actioned this month
 function isThisMonth(n) {
-  var noteTime = moment(n.data.updatedTime);
+  var noteTime = moment(n.data.updatedTime).add(offset, 'minutes');
   var timeDiff = now.diff(noteTime, 'days');
 
   return (timeDiff > 7) && (timeDiff <= 30);
@@ -52,7 +53,7 @@ function isThisMonth(n) {
 
 //filters notes actioned a few months ago
 function isAFewMonths(n) {
-  var noteTime = moment(n.data.updatedTime);
+  var noteTime = moment(n.data.updatedTime).add(offset, 'minutes');
   var timeDiff = now.diff(noteTime, 'days');
 
   return (timeDiff > 30) && (timeDiff <= 365);
@@ -60,7 +61,7 @@ function isAFewMonths(n) {
 
 //filters notes actioned over year ago
 function isAYear(n) {
-  var noteTime = moment(n.data.updatedTime);
+  var noteTime = moment(n.data.updatedTime).add(offset, 'minutes');
   var timeDiff = now.diff(noteTime, 'days');
 
   return (timeDiff > 365);
