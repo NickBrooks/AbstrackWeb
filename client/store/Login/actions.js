@@ -16,6 +16,13 @@ export function loginIsAuthenticating(value) {
     }
 }
 
+export function loginIsRefreshingToken(value) {
+    return {
+        type: 'LOGIN_IS_REFRESHING_TOKEN',
+        value
+    }
+}
+
 export function registerErrorMsg(message) {
     return {
         type: 'REGISTER_ERROR_MESSAGE',
@@ -67,17 +74,17 @@ export function handleRefreshTokenLogin(token, redirect) {
     const request = apiGetTokenFromRefreshToken(token);
 
     return dispatch => {
-        dispatch(loginIsAuthenticating(true));
+        dispatch(loginIsRefreshingToken(true));
         request.then(response => {
             saveLocalStorage("auth", response.data);
             delay(1000).then(() => {
-                dispatch(loginIsAuthenticating(false));
+                dispatch(loginIsRefreshingToken(false));
                 if (redirect) {
                     dispatch(push('/'));
                 }
             });
         }).catch(error => {
-            dispatch(loginIsAuthenticating(false));
+            dispatch(loginIsRefreshingToken(false));
             console.log(error);
         });
     };

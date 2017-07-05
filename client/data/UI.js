@@ -29,7 +29,8 @@ const ui = {
   },
   login: {
     errorMsg: false,
-    isAuthenticating: false
+    isAuthenticating: false,
+    isRefreshingToken: false,
   },
   newNoteButton: {
     show: true

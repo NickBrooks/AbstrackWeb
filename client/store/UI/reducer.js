@@ -41,6 +41,10 @@ function ui(state = [], action) {
             var newState = Object.assign({}, state);
             newState.login.isAuthenticating = action.value;
             return newState;
+        case 'LOGIN_IS_REFRESHING_TOKEN':
+            var newState = Object.assign({}, state);
+            newState.login.isRefreshingToken = action.value;
+            return newState;
         case 'NOTE_VIEW_IS_LOADING':
             var newState = Object.assign({}, state);
             newState.noteView.isLoading = action.value;

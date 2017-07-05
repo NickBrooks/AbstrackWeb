@@ -57,7 +57,7 @@ class AppView extends React.Component {
         let { location, toggleSidebar, ui } = this.props;
 
         // token check
-        this.checkValidToken();
+        if (!ui.login.isRefreshingToken) this.checkValidToken();
 
         // close sidebar on route change
         if (location != nextProps.location && ui.sidebar.open) {
