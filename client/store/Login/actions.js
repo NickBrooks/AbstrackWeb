@@ -2,13 +2,6 @@ import { apiGetToken, apiRegister, apiForgotPassword } from '../../api';
 import { delay, saveLocalStorage, removeLocalStorage } from '../../functions';
 import { push } from 'react-router-redux';
 
-function loginSuccess(data) {
-    return {
-        type: 'LOGIN_SUCCESS',
-        data
-    }
-}
-
 export function loginErrorMsg(message) {
     return {
         type: 'LOGIN_ERROR_MESSAGE',
@@ -59,7 +52,6 @@ export function handleLogin(userName, password) {
         dispatch(loginIsAuthenticating(true));
         request.then(response => {
             saveLocalStorage("auth", response.data);
-            dispatch(loginSuccess(response.data));
             delay(1000).then(() => {                
                 dispatch(loginIsAuthenticating(false));
                 dispatch(push('/'))

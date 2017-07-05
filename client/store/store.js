@@ -7,20 +7,20 @@ import { combineReducers } from 'redux';
 import { routerReducer } from 'react-router-redux';
 
 // import data
-import loginData from '../data/Login';
 import noteEditorData from '../data/NoteEditor';
 import lazySearchData from '../data/LazySearch';
 import settingsData from '../data/Settings';
 import uiData from '../data/UI';
 
 // create an object for the default state
+// NOTE: update the PURGE_STORE reducer as welll
 const defaultState = {
   account: {},
   comments: [],
   hashtags: [],
-  login: loginData,
-  noteEditor: noteEditorData,
   notes: [],
+  noteEditor: noteEditorData,
+  noteViews: [],
   tracks: [],
   lazySearch: lazySearchData,
   settings: settingsData,
@@ -63,7 +63,9 @@ const appReducer = combineReducers({
 
 const rootReducer = (state, action) => {
   if (action.type === 'PURGE_STORE') {
-    state = defaultState
+    const purgedState = Object.assign({}, defaultState);
+    purgedState.routing = Object.assign({}, state.routing);
+    return purgedState;
   }
 
   return appReducer(state, action);
