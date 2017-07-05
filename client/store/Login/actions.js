@@ -1,4 +1,4 @@
-import { apiGetToken, apiRegister, apiForgotPassword } from '../../api';
+import { apiGetToken, apiGetTokenFromRefreshToken, apiRegister, apiForgotPassword } from '../../api';
 import { delay, saveLocalStorage, removeLocalStorage } from '../../functions';
 import { push } from 'react-router-redux';
 
@@ -52,13 +52,33 @@ export function handleLogin(userName, password) {
         dispatch(loginIsAuthenticating(true));
         request.then(response => {
             saveLocalStorage("auth", response.data);
-            delay(1000).then(() => {                
+            delay(1000).then(() => {
                 dispatch(loginIsAuthenticating(false));
-                dispatch(push('/'))
+                dispatch(push('/'));
             });
         }).catch(error => {
             dispatch(loginIsAuthenticating(false));
             dispatch(loginErrorMsg("Incorrect username or password"));
+        });
+    };
+}
+
+export function handleRefreshTokenLogin(token, redirect) {
+    const request = apiGetTokenFromRefreshToken(token);
+
+    return dispatch => {
+        dispatch(loginIsAuthenticating(true));
+        request.then(response => {
+            saveLocalStorage("auth", response.data);
+            delay(1000).then(() => {
+                dispatch(loginIsAuthenticating(false));
+                if (redirect) {
+                    dispatch(push('/'));
+                }
+            });
+        }).catch(error => {
+            dispatch(loginIsAuthenticating(false));
+            console.log(error);
         });
     };
 }

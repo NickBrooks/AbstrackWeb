@@ -18,9 +18,23 @@ class AppView extends React.Component {
     checkValidToken() {
         const auth = loadLocalStorage('auth');
 
-        if (auth == undefined || auth.token == "" || auth.expiration < moment.utc().format()) {
+        // check auth token exists
+        if (!auth || !auth.token) {
             browserHistory.push('/login');
+            return;
         }
+
+        // check auth token is valid
+        if (auth.expiration > moment.utc().format()) return;
+
+        // not valid, so lets check if there is a refreshToken
+        if (!auth.refreshToken) {
+            browserHistory.push('/login');
+            return;
+        }
+
+        // refreshTokken exists, lets ge a new token
+        this.props.handleRefreshTokenLogin(auth.refreshToken);
     }
 
     handleToggleSidebar() {

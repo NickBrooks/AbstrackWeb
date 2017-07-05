@@ -33,6 +33,14 @@ export function apiGetToken(payload) {
     return Axios.post("auth/token", payload);
 }
 
+export function apiGetTokenFromRefreshToken(token) {
+    return Axios.post("auth/token", {}, {
+        headers: {
+            refreshtoken: token
+        }
+    });
+}
+
 export function apiForgotPassword(email) {
     return Axios.post("auth/forgot-password", {
         email
