@@ -11,8 +11,18 @@ class AppView extends React.Component {
     constructor(props) {
         super(props);
         this.handleToggleSidebar = this.handleToggleSidebar.bind(this);
+        let { handleGetAccount, handleGetPinned, handleGetTracks, ui } = this.props;
 
-        this.checkValidToken();
+        // close sidebar
+        if (ui.sidebar.open) {
+            toggleSidebar(false);
+        }
+
+        if (this.checkValidToken()) {
+            handleGetAccount();
+            handleGetTracks();
+            handleGetPinned("pinned")
+        };
     }
 
     checkValidToken() {
@@ -21,21 +31,24 @@ class AppView extends React.Component {
         // check auth token exists
         if (!auth || !auth.token) {
             browserHistory.push('/login');
-            return;
+            return false;
         }
 
         // check auth token is valid
-        if (auth.expiration > moment.utc().format()) return;
+        if (auth.expiration.add > moment.utc().format()) {
+            return true
+        }
 
         // not valid, so lets check if there is a refreshToken
         if (!auth.refreshToken) {
             browserHistory.push('/login');
-            return;
+            return false;
         }
 
-        // refreshTokken exists, lets ge a new token
+        // refreshToken exists, lets ge a new token
         this.props.handleRefreshTokenLogin(auth.refreshToken);
-    }
+        return true;
+    };
 
     handleToggleSidebar() {
         let { toggleSidebar, ui } = this.props;
@@ -45,12 +58,6 @@ class AppView extends React.Component {
 
     newNoteShortcut() {
         browserHistory.push('/new/note');
-    }
-
-    componentWillMount() {
-        this.props.handleGetAccount();
-        this.props.handleGetTracks();
-        this.props.handleGetPinned("pinned");
     }
 
     componentWillReceiveProps(nextProps) {

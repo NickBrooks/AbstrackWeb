@@ -80,12 +80,12 @@ export function handleRefreshTokenLogin(token, redirect) {
             delay(1000).then(() => {
                 dispatch(loginIsRefreshingToken(false));
                 if (redirect) {
-                    dispatch(push('/'));
+                    dispatch(push(redirect));
                 }
             });
         }).catch(error => {
+            dispatch(push("/login"));
             dispatch(loginIsRefreshingToken(false));
-            console.log(error);
         });
     };
 }
