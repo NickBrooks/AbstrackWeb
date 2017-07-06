@@ -1,5 +1,6 @@
 import React from 'react';
-import { conformHashtags, delay, extractNote, setDocumentTitle } from '../../functions';
+import { Typeahead } from 'react-bootstrap-typeahead';
+import { conformHashtag, delay, extractNote, setDocumentTitle } from '../../functions';
 import RenderMarkdown from '../../components/RenderMarkdown/RenderMarkdown';
 import InitialNoteEditorData from '../../data/NoteEditor';
 import NoteEditorFooter from './Components/NoteEditorFooter';
@@ -13,6 +14,7 @@ class NoteEditor extends React.Component {
         this.handleTitleChange = this.handleTitleChange.bind(this);
         this.handleBodyChange = this.handleBodyChange.bind(this);
         this.handleHashtagsChange = this.handleHashtagsChange.bind(this);
+        this.handleAddManualHashtag = this.handleAddManualHashtag.bind(this);
     }
 
     // https://stackoverflow.com/questions/29526739/stopping-a-timeout-in-reactjs
@@ -82,13 +84,6 @@ class NoteEditor extends React.Component {
         this.setTimeout(function () { (params.draftId ? handleSaveDraft(params.draftId, noteEditor) : handleAddDraft(noteEditor)) }, 2500);
     }
 
-    handleHashtagsChange(e) {
-        this.props.setDraftHashtags(conformHashtags(e.target.value));
-        delay(500).then(() => {
-            this.saveDraft();
-        })
-    }
-
     handleTitleChange(e) {
         this.props.setDraftTitle(e.target.value);
         delay(500).then(() => {
@@ -104,9 +99,35 @@ class NoteEditor extends React.Component {
         })
     }
 
+    handleAddManualHashtag(hashtag) {
+        // conform the bad boy
+        hashtag = conformHashtag(hashtag);
+
+        // if a hashtag exists, add to props and save draft
+        if (!!hashtag && hashtag.length >= 2) {
+            this.props.addDraftHashtag(hashtag);
+            delay(500).then(() => {
+                this.saveDraft();
+            })
+        }
+
+        //reset typeahead
+        this._typeahead.getInstance().state.text = "";
+    }
+
+    handleHashtagsChange(e) {
+        if (!e || e.length < 0) return;
+
+        this.props.setDraftHashtags(e);
+        delay(500).then(() => {
+            this.saveDraft();
+        })
+    }
+
     renderEditor() {
         let { ui, noteEditor } = this.props;
         setDocumentTitle(!noteEditor || !noteEditor.title ? "New Note" : noteEditor.title);
+        var options = ['afl', 'github', 'project'];
 
         return (
             <div>
@@ -125,7 +146,21 @@ class NoteEditor extends React.Component {
                         <div className="editor-body">
                             <textarea ref="body" className="form-control mousetrap" defaultValue={(!noteEditor || !noteEditor.body ? null : noteEditor.body)} placeholder="Say something, Ctrl/Cmd+8 to preview..." tabIndex={2} onChange={this.handleBodyChange} />
                             <hr />
-                            <input type="text" className="form-control editor-hashtags mousetrap" defaultValue={(!noteEditor || !noteEditor.hashtags ? null : noteEditor.hashtags)} placeholder="Hashtags" tabIndex={3} onChange={this.handleHashtagsChange} />
+                            <form onSubmit={(e) => { e.preventDefault(); this.handleAddManualHashtag(this._typeahead.getInstance().state.text); }}>
+                                <Typeahead
+                                    className="form-control editor-hashtags mousetrap"
+                                    ref={ref => this._typeahead = ref}
+                                    minLength={1}
+                                    multiple
+                                    dropup
+                                    options={options}
+                                    placeholder="Hashtags"
+                                    emptyLabel=""
+                                    selected={noteEditor.hashtags}
+                                    onChange={(e) => this.handleHashtagsChange(e)}
+                                    submitFormOnEnter={true}
+                                />
+                            </form>
                         </div>
                     }
                 </div>

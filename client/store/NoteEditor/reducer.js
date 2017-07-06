@@ -24,6 +24,10 @@ function noteEditor(state = [], action) {
             var newState = Object.assign({}, state);
             newState.hashtags = action.hashtags;
             return newState;
+        case 'ADD_DRAFT_HASHTAG':
+            var newState = Object.assign({}, state);
+            newState.hashtags = [...state.hashtags, action.hashtag];
+            return newState;
         case 'SET_DRAFT_TRACK':
             var newState = Object.assign({}, state);
             newState.track = { id: action.trackId };

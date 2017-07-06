@@ -1,7 +1,7 @@
 import React from 'react';
 import { setDocumentTitle } from '../../functions';
 import NoteList from '../../components/NoteList/NoteList';
-import { conformHashtags } from '../../functions';
+import { conformHashtagsFromString } from '../../functions';
 
 class NoteViewTag extends React.Component {
     constructor(props) {
@@ -27,7 +27,7 @@ class NoteViewTag extends React.Component {
             });
         }
 
-        const tagList = conformHashtags(tags);
+        const tagList = conformHashtagsFromString(tags);
         const tagString = this.generateHashtagString(tagList);
 
         this.props.setSearchBar({
@@ -49,7 +49,7 @@ class NoteViewTag extends React.Component {
         // just make sure some tags have been provided
         if (tags == undefined) return null;
 
-        const tagList = conformHashtags(tags);
+        const tagList = conformHashtagsFromString(tags);
         const tagString = this.generateHashtagString(tagList);
 
         // set empty notes

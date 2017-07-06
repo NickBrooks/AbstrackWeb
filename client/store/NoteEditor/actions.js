@@ -54,6 +54,13 @@ export function setDraftBody(body) {
     }
 }
 
+export function addDraftHashtag(hashtag) {
+    return {
+        type: 'ADD_DRAFT_HASHTAG',
+        hashtag
+    }
+}
+
 export function setDraftHashtags(hashtags) {
     return {
         type: 'SET_DRAFT_HASHTAGS',

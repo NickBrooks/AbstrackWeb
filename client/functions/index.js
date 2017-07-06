@@ -13,7 +13,12 @@ export function setDocumentTitle(value) {
     document.title = (value === undefined ? "Abstrack" : value + " // Abstrack");
 }
 
-export function conformHashtags(hashtags) {
+export function conformHashtag(hashtag) {
+    hashtag = hashtag.replace(/\s/g, '');
+    return hashtag.replace(/[^\w,]|_/g, '');
+}
+
+export function conformHashtagsFromString(hashtags) {
     hashtags = hashtags.replace(/\s/g, '');
     hashtags = hashtags.replace(/[^\w,]|_/g, '');
     return hashtags.split(',');

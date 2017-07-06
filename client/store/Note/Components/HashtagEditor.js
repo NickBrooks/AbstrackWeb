@@ -4,7 +4,7 @@ import FontAwesome from 'react-fontawesome';
 
 //components
 import HashtagSpan from '../../../components/HashtagSpan/HashtagSpan';
-import { conformHashtags } from '../../../functions';
+import { conformHashtagsFromString } from '../../../functions';
 
 // TODO: make hashtag editor w/o modal and with new typeahead
 class HashtagEditor extends React.Component {
@@ -20,7 +20,7 @@ class HashtagEditor extends React.Component {
 
     handleTypeaheadClick(value) {
         //conform hashtag
-        var hashtags = conformHashtags(value.hashtag);
+        var hashtags = conformHashtagsFromString(value.hashtag);
 
         //add it
         this.props.addHashtagToNote(hashtags, this.props.noteId);
@@ -37,7 +37,7 @@ class HashtagEditor extends React.Component {
         e.preventDefault();
 
         //conform hashtag
-        var hashtags = conformHashtags(this.refs.hashtagTypeahead.state.entryValue);
+        var hashtags = conformHashtagsFromString(this.refs.hashtagTypeahead.state.entryValue);
 
         //add it
         this.props.addHashtagToNote(hashtags, this.props.noteId);
