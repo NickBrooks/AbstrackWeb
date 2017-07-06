@@ -35,7 +35,7 @@ class AppView extends React.Component {
         }
 
         // check auth token is valid
-        if (auth.expiration.add > moment.utc().format()) {
+        if (auth.expiration > moment.utc().format()) {
             return true
         }
 

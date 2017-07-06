@@ -17,8 +17,8 @@ function isThisView(view, note) {
 function isToday(n) {
   var noteTime = moment(n.data.updatedTime).add(offset, 'minutes');
   var timeDiff = now.diff(noteTime, 'days');
-  
-  if(noteTime.isSame(new Date(), "day")) {
+
+  if (noteTime.isSame(new Date(), "day")) {
     return noteTime;
   }
 }
@@ -30,7 +30,7 @@ function isYesterday(n) {
   var date = new Date();
   date.setDate(date.getDate() - 1);
 
-  if(noteTime.isSame(date, "day")) {
+  if (noteTime.isSame(date, "day")) {
     return noteTime;
   }
 }
@@ -73,13 +73,12 @@ class NoteList extends React.Component {
     this.refreshNoteList = this.refreshNoteList.bind(this);
 
     this.state = {
-      viewName: props.viewName
-    }
+      notes: props.notes.filter(isThisView.bind(null, props.viewName))
+    };
   }
 
   loadNotes() {
-    let { viewName } = this.state
-    let { loadNoteList, query } = this.props;
+    let { loadNoteList, query, viewName } = this.props;
 
     if (query != undefined) {
       loadNoteList(viewName, query);
@@ -145,34 +144,29 @@ class NoteList extends React.Component {
   }
 
   renderNoteList() {
-    let { notes, emptyNotes, ui, viewName } = this.props;
-    let viewNotes = notes.filter(isThisView.bind(null, viewName));
+    let { emptyNotes, ui, viewName } = this.props;
+    let { notes } = this.state;
 
-    if (viewNotes.length < 1 && !ui.noteView.isLoading) {
+    if (notes.length <= 0) {
       return (
         <EmptyContent emptyContent={emptyNotes} />
       )
-    }
-
-    if (viewNotes.length >= 1) {
+    } else {
       return (
         <div className="note-list">
-          {this.renderTodaysNotes(viewNotes)}
-          {this.renderYesterdaysNotes(viewNotes)}
-          {this.renderThisWeeksNotes(viewNotes)}
-          {this.renderThisMonthsNotes(viewNotes)}
-          {this.renderAFewMonthsNotes(viewNotes)}
-          {this.renderAYearsNotes(viewNotes)}
+          {this.renderTodaysNotes(notes)}
+          {this.renderYesterdaysNotes(notes)}
+          {this.renderThisWeeksNotes(notes)}
+          {this.renderThisMonthsNotes(notes)}
+          {this.renderAFewMonthsNotes(notes)}
+          {this.renderAYearsNotes(notes)}
         </div>
       )
     }
-
-    return undefined;
   }
 
   checkIfViewNeedsUpdating() {
-    let { viewName } = this.state;
-    let { noteViews } = this.props;
+    let { noteViews, viewName } = this.props;
 
     // only load view again if older than 60 seconds
     if (noteViews === undefined ||
@@ -182,9 +176,26 @@ class NoteList extends React.Component {
     }
   }
 
-  componentWillReceiveProps(newProps) {
-    if (this.state.viewName != newProps.viewName) {
-      this.setState({ viewName: newProps.viewName });
+  isLoading() {
+    let { noteViews, viewName, ui } = this.props;
+    let { notes } = this.state;
+
+    if (ui.noteView.isLoading) {
+      return true;
+    }
+
+    if (!noteViews[viewName] || (noteViews[viewName].length > 0 && notes.length == 0)) {
+      return true;
+    }
+
+    return false;
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (this.props.notes != nextProps.notes) {
+      this.setState({
+        notes: nextProps.notes.filter(isThisView.bind(null, nextProps.viewName))
+      });
     }
   }
 
@@ -199,13 +210,10 @@ class NoteList extends React.Component {
   }
 
   render() {
-    const { ui } = this.props;
-
     return (
       <div>
-        <button onClick={this.refreshNoteList} className="pull-right btn btn-toolbar btn-sm">{ui.noteView.isLoading ? <FontAwesome name="refresh" spin /> : <FontAwesome name="refresh" />}</button>
-        {this.renderNoteList()}
-        {ui.noteView.isLoading ? <p className="text-center text-uppercase fancy light">Loading...</p> : undefined}
+        <button onClick={this.refreshNoteList} className="pull-right btn btn-toolbar btn-sm">{this.isLoading() ? <FontAwesome name="refresh" spin /> : <FontAwesome name="refresh" />}</button>
+        {this.isLoading() ? <p className="text-center text-uppercase fancy light">Loading...</p> : this.renderNoteList()}
       </div>
     )
   }

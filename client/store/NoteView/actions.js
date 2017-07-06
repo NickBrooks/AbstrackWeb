@@ -9,15 +9,17 @@ export function noteViewIsLoading(value) {
     }
 }
 
-export function updateNoteViewList(view, timeFetched) {
+export function updateNoteViewList(view, count) {
     return {
         type: 'UPDATE_NOTE_VIEW_LIST',
         view,
+        count,
         timeFetched: moment.utc().format()
     }
 }
 
 export function handleGetInbox(view) {
+    console.time("getinbox");
     return (dispatch) => {
         // denote loading
         dispatch(noteViewIsLoading(true));
@@ -25,10 +27,10 @@ export function handleGetInbox(view) {
         const request = apiGetInbox();
 
         request.then(response => {
-            dispatch(updateNoteViewList(view));
-            dispatch(noteViewIsLoading(false));
             dispatch(removeViewFromNoteStore(view));
             dispatch(updateNoteStore(response.data.data, view));
+            dispatch(updateNoteViewList(view, response.data.data.length));
+            dispatch(noteViewIsLoading(false));
         }).catch(error => {
             dispatch(noteViewIsLoading(false));
             console.log(error);
@@ -44,10 +46,10 @@ export function handleGetPinned(view) {
         const request = apiGetPinned();
 
         request.then(response => {
-            dispatch(updateNoteViewList(view));
-            dispatch(noteViewIsLoading(false));
             dispatch(removeViewFromNoteStore(view));
             dispatch(updateNoteStore(response.data.data, view));
+            dispatch(updateNoteViewList(view, response.data.data.length));
+            dispatch(noteViewIsLoading(false));
         }).catch(error => {
             dispatch(noteViewIsLoading(false));
             console.log(error);
@@ -62,10 +64,10 @@ export function handleSearchNotes(view, query) {
         const request = apiSearchNotes(query);
 
         request.then(response => {
-            dispatch(updateNoteViewList(view));
-            dispatch(noteViewIsLoading(false));
             dispatch(removeViewFromNoteStore(view));
             dispatch(updateNoteStore(response.data.data, view));
+            dispatch(updateNoteViewList(view, response.data.data.length));
+            dispatch(noteViewIsLoading(false));
         }).catch(error => {
             dispatch(noteViewIsLoading(false));
             console.log(error);
@@ -81,10 +83,10 @@ export function handleGetDrafts(view) {
         const request = apiGetDrafts();
 
         request.then(response => {
-            dispatch(updateNoteViewList(view))
-            dispatch(noteViewIsLoading(false));
             dispatch(removeViewFromNoteStore(view));
             dispatch(updateNoteStore(response.data.data, view));
+            dispatch(updateNoteViewList(view, response.data.data.length));
+            dispatch(noteViewIsLoading(false));
         }).catch(error => {
             dispatch(noteViewIsLoading(false));
             console.log(error);

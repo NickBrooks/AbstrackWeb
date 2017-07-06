@@ -3,7 +3,8 @@ function noteViews(state = [], action) {
         case 'UPDATE_NOTE_VIEW_LIST':
             var newState = Object.assign({}, state);
             newState[action.view] = {
-                timeFetched: action.timeFetched
+                timeFetched: action.timeFetched,
+                count: action.count
             }
             return newState;
         default:
