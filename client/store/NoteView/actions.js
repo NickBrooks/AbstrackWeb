@@ -1,4 +1,4 @@
-import { apiGetInbox, apiGetPinned, apiSearchNotes, apiGetDrafts } from '../../api';
+import { apiGetInbox, apiGetPinned, apiGetNotes, apiGetDrafts } from '../../api';
 import { updateNoteStore, removeViewFromNoteStore } from '../Note/actions';
 import moment from 'moment';
 
@@ -57,11 +57,11 @@ export function handleGetPinned(view) {
     };
 }
 
-export function handleSearchNotes(view, query) {
+export function handleGetNotes(view, query) {
     return (dispatch) => {
         // denote loading
         dispatch(noteViewIsLoading(true));
-        const request = apiSearchNotes(query);
+        const request = apiGetNotes(query);
 
         request.then(response => {
             dispatch(removeViewFromNoteStore(view));

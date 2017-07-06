@@ -27,7 +27,7 @@ class Track extends React.Component {
 
   render() {
     const { trackId } = this.props.params;
-    const { handleSearchNotes, tracks, settings } = this.props;
+    const { handleGetNotes, tracks, settings } = this.props;
     const i = tracks.findIndex((track) => track.id === trackId);
     const track = tracks[i];
     const view = 't:"' + trackId + '"';
@@ -48,7 +48,7 @@ class Track extends React.Component {
         <h3>{track.name}</h3>
         <h6>{track.description}</h6>
         <hr />
-        <NoteList loadNoteList={handleSearchNotes} query={query} viewName={view} emptyNotes={emptyNotes} {...this.props} />
+        <NoteList loadNoteList={handleGetNotes} query={query} viewName={view} emptyNotes={emptyNotes} {...this.props} />
       </div>
     )
   }

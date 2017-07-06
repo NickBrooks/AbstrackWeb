@@ -43,7 +43,7 @@ class NoteViewTag extends React.Component {
     }
 
     render() {
-        let { settings, handleSearchNotes } = this.props;
+        let { settings, handleGetNotes } = this.props;
         let { tags } = this.props.params;
 
         // just make sure some tags have been provided
@@ -64,7 +64,7 @@ class NoteViewTag extends React.Component {
 
         return (
             <div className="view-tag">
-                <NoteList loadNoteList={handleSearchNotes} query={query} viewName={tagString} emptyNotes={emptyNotes} {...this.props} />
+                <NoteList loadNoteList={handleGetNotes} query={query} viewName={tagString} emptyNotes={emptyNotes} {...this.props} />
             </div>
         )
     }

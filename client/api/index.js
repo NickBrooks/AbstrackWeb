@@ -88,8 +88,8 @@ export function apiGetPinned() {
     return Axios.get("pinned", getAuthHeader());
 }
 
-export function apiSearchNotes(query) {
-    return Axios.post("search/notes", query, getAuthHeader());
+export function apiGetNotes(query) {
+    return Axios.post("notes/search", query, getAuthHeader());
 }
 
 export function apiPinNote(noteId, value) {
