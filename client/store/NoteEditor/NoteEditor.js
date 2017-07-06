@@ -103,8 +103,11 @@ class NoteEditor extends React.Component {
         // conform the bad boy
         hashtag = conformHashtag(hashtag);
 
+        // exists index lookup
+        var exists = this.props.noteEditor.hashtags.findIndex((lookupTag) => lookupTag == hashtag);
+
         // if a hashtag exists, add to props and save draft
-        if (!!hashtag && hashtag.length >= 2) {
+        if (!!hashtag && hashtag.length >= 2 && exists == -1) {
             this.props.addDraftHashtag(hashtag);
             delay(500).then(() => {
                 this.saveDraft();
