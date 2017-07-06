@@ -1,6 +1,7 @@
 import React from 'react';
 import { browserHistory } from 'react-router';
 import moment from 'moment';
+import { ToastContainer } from 'react-toastify';
 import Sidebar from '../Sidebar/Sidebar';
 import LoadingScreen from '../LoadingScreen';
 import Header from '../Header/Header';
@@ -117,6 +118,7 @@ class AppView extends React.Component {
                     </div>
                 </div>
                 {this.props.ui.newNoteButton.show ? (<NewNoteButton {...this.props} />) : null}
+                <ToastContainer position="bottom-left" hideProgressBar={true} autoClose={5000} />
             </div>
         )
     }

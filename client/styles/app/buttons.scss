@@ -27,7 +27,14 @@ a.btn-circle {
     }
 }
 
+.btn-icon {
+    padding: 0.2rem 0.4rem;
+    font-size: .9em;
+    border-radius: .1rem;
+}
+
 .btn-info {
+    color: $white;
     background-color: $note-blue;
     border: 1px solid $note-blue;
     &:hover,
@@ -35,6 +42,18 @@ a.btn-circle {
     &:focus {
         background-color: $note-dark-blue-active;
         border: 1px solid $note-dark-blue-active;
+    }
+}
+
+.btn-pink {
+    color: #fff;
+    background-color: $note-pink;
+    border: 1px solid $note-pink;
+    &:hover,
+    &:active,
+    &:focus {
+        background-color: $note-purple;
+        border: 1px solid $note-purple;
     }
 }
 

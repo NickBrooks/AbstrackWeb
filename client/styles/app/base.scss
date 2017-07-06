@@ -39,7 +39,7 @@ a,
 a.active,
 a.focus,
 a:hover {
-    color: $link-color;
+    color: $note-pink;
 }
 
 pre {
@@ -107,4 +107,8 @@ textarea:active {
 
 .fancy {
     font-family: $font-family-fancy;
+}
+
+.uppercase {
+    text-transform: uppercase;
 }

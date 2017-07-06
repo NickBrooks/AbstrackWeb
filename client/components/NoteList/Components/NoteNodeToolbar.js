@@ -1,11 +1,21 @@
 import React from 'react';
 import FontAwesome from 'react-fontawesome';
+import { toast } from 'react-toastify';
+import { ToastifyAction } from '../../Toastify/Toastify';
 
 class NoteNodeToolbar extends React.Component {
     constructor(props) {
         super(props);
+        this.handleArchiveClick = this.handleArchiveClick.bind(this);
         this.handlePinNoteClick = this.handlePinNoteClick.bind(this);
         this.handleUnpinNoteClick = this.handleUnpinNoteClick.bind(this);
+    }
+
+    handleArchiveClick(e) {
+        e.preventDefault();
+        let { note } = this.props;
+
+        toast(<ToastifyAction text="Note archived" icon="undo" action=""/>);
     }
 
     handlePinNoteClick(e) {
@@ -32,27 +42,24 @@ class NoteNodeToolbar extends React.Component {
 
     renderInboxedButton() {
         return (
-            <object><button type="button" aria-label="Inbox Note" className="btn btn-sm btn-secondary"><FontAwesome name="check" /></button></object>
+            <object><button type="button" onClick={this.handleArchiveClick} aria-label="Inbox Note" className="btn btn-sm btn-secondary"><FontAwesome name="check" /></button></object>
         )
     }
 
     renderArchivedButton() {
         return (
-            <object><button type="button" aria-label="Inbox Note" className="btn btn-sm btn-secondary"><FontAwesome name="envelope-open" /></button></object>
+            <object><button type="button" onClick={this.handleArchiveClick} aria-label="Inbox Note" className="btn btn-sm btn-secondary"><FontAwesome name="envelope-open" /></button></object>
         )
     }
 
     render() {
-        let { notes, id } = this.props;
-        const i = notes.findIndex((note) => note.id === id);
-        const note = notes[i].data;
-        const views = notes[i].views;
+        let { note } = this.props;
 
         var isInbox = false;
         var isPinned = false;
-        if (views.indexOf("inbox") >= 0)
+        if (note.views.indexOf("inbox") >= 0)
             isInbox = true;
-        if (views.indexOf("pinned") >= 0)
+        if (note.views.indexOf("pinned") >= 0)
             isPinned = true;
 
         return (
