@@ -2,10 +2,26 @@ import React from 'react';
 import FontAwesome from 'react-fontawesome';
 import { setDocumentTitle } from '../../functions';
 import NoteList from '../../components/NoteList/NoteList';
+import moment from 'moment';
 
 class Track extends React.Component {
   constructor(props) {
     super(props);
+  }
+
+  checkTrackExists(trackId) {
+    const { handleGetTrack, tracks } = this.props;
+    const i = tracks.findIndex((track) => track.id === trackId);
+
+    // check if track exists in the store
+    if (i == -1) {
+      handleGetTrack(trackId);
+    } else {
+      const track = tracks[i].data;
+      if (track === null || moment().subtract(60, 'seconds') > moment(track.timeFetched)) {
+        handleGetTrack(trackId);
+      }
+    }
   }
 
   componentWillMount() {
@@ -13,7 +29,7 @@ class Track extends React.Component {
       defaultValue: "Track",
       class: "searchBar-track"
     });
-
+    this.checkTrackExists(this.props.params.trackId);
   }
 
   componentWillUnmount() {
@@ -25,7 +41,19 @@ class Track extends React.Component {
     setDocumentTitle();
   }
 
-  render() {
+  componentWillReceiveProps(nextProps) {
+    if (this.props.params != nextProps.params) {
+      this.checkTrackExists(nextProps.params.trackId);
+    }
+  }
+
+  renderLoading() {
+    return (
+      <h3>Loading...</h3>
+    )
+  }
+
+  renderLoaded() {
     const { trackId } = this.props.params;
     const { handleGetNotes, tracks, settings } = this.props;
     const i = tracks.findIndex((track) => track.id === trackId);
@@ -45,11 +73,19 @@ class Track extends React.Component {
 
     return (
       <div className="view-track">
-        <h3>{track.name}</h3>
-        <h6>{track.description}</h6>
+        <h3>{track.data.name}</h3>
+        <h6>{track.data.description}</h6>
         <hr />
         <NoteList loadNoteList={handleGetNotes} query={query} viewName={view} emptyNotes={emptyNotes} {...this.props} />
       </div>
+    )
+  }
+
+  render() {
+    let { ui } = this.props;
+
+    return (
+      (ui.tracks.fetchingStatus ? this.renderLoading() : this.renderLoaded())
     )
   }
 }

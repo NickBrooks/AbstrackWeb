@@ -89,9 +89,8 @@ class NoteList extends React.Component {
 
   refreshNoteList(e) {
     e.preventDefault();
-    let { ui, loadNoteList } = this.props;
-    if (ui.noteView.isLoading) { return null }
-
+    let { ui } = this.props;
+    if (ui.noteView.isLoading) return;
     this.loadNotes();
   }
 
@@ -192,7 +191,9 @@ class NoteList extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (this.props.notes != nextProps.notes) {
+    let { notes, viewName } = this.props;
+
+    if (notes != nextProps.notes || viewName != nextProps.viewName) {
       this.setState({
         notes: nextProps.notes.filter(isThisView.bind(null, nextProps.viewName))
       });
@@ -200,7 +201,7 @@ class NoteList extends React.Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    if (this.state.viewName != prevState.viewName) {
+    if (this.props.viewName != prevProps.viewName) {
       this.checkIfViewNeedsUpdating();
     }
   }

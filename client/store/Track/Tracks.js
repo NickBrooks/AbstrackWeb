@@ -24,7 +24,7 @@ class Tracks extends React.Component {
         return (
             <li>
                 <div className="quick-info text-truncate">
-                    <span className="fa-stack note-green-light"><FontAwesome name="circle" stack="2x" /><FontAwesome name="list-ul" inverse stack="1x" /></span> <span className="title">{track.name}</span> <span className="body">{track.description}</span>
+                    <span className="fa-stack note-green-light"><FontAwesome name="circle" stack="2x" /><FontAwesome name="list-ul" inverse stack="1x" /></span> <span className="title">{track.data.name}</span> <span className="body">{track.data.description}</span>
                     <TrackNodeToolbar trackId={track.id} />
                 </div>
             </li>

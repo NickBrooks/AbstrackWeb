@@ -128,6 +128,10 @@ export function apiGetTracks() {
     return Axios.get("tracks", getAuthHeader());
 }
 
+export function apiGetTrack(trackId) {
+    return Axios.get("tracks/" + trackId, getAuthHeader());
+}
+
 export function apiAddTrack(track) {
     return Axios.post("tracks", track, getAuthHeader());
 }

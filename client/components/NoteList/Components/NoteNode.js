@@ -69,7 +69,7 @@ class NoteNode extends React.Component {
                         <NoteNodeToolbar note={note} />
                     </div>
                     <div className="hashtags">
-                        {track ? <span className="tag track-tag"><small><FontAwesome name="list-ul" /></small> {track.name}</span> : undefined}{note.data.hashtags ? note.data.hashtags.map((hashtag, i) => <HashtagSpan {...this.props} hashtag={hashtag} disableLink={true} customClass="default" key={i} i={i} />) : undefined}
+                        {track ? <span className="tag track-tag"><small><FontAwesome name="list-ul" /></small> {track.data.name}</span> : undefined}{note.data.hashtags ? note.data.hashtags.map((hashtag, i) => <HashtagSpan {...this.props} hashtag={hashtag} disableLink={true} customClass="default" key={i} i={i} />) : undefined}
                     </div>
                     {this.renderMediaPreviews()}
                     {noteTime}

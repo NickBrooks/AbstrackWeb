@@ -89,6 +89,10 @@ function ui(state = [], action) {
             var newState = Object.assign({}, state);
             newState.tracks.updateStatus = action.value;
             return newState;
+        case 'UPDATE_TRACK_FETCHING_STATUS':
+            var newState = Object.assign({}, state);
+            newState.tracks.fetchingStatus = action.value;
+            return newState;
         default:
             return state;
     }

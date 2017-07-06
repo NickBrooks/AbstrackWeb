@@ -42,7 +42,7 @@ class Sidebar extends React.Component {
         for (let track of tracks) {
             links.push({
                 link: "/t/" + track.id,
-                title: track.name
+                title: track.data.name
             });
         }
 

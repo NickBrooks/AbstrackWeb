@@ -1,37 +1,40 @@
-import { apiGetTracks, apiAddTrack, apiUpdateTrack, apiDeleteTrack } from '../../api';
+import { apiGetTracks, apiGetTrack, apiAddTrack, apiUpdateTrack, apiDeleteTrack } from '../../api';
 import { push } from 'react-router-redux';
+import moment from 'moment';
 
-function setTracks(data) {
+// update the list of notes
+export function updateTrackStore(data) {
     return {
-        type: 'SET_TRACKS',
-        data
+        type: 'UPDATE_TRACK_STORE',
+        data,
+        timeFetched: moment.utc().format()
     }
 }
 
-function addTrack(track) {
-    return {
-        type: 'ADD_TRACK',
-        track
-    }
-}
-
-function updateTrack(track) {
+export function updateTrack(track) {
     return {
         type: 'UPDATE_TRACK',
         track
     }
 }
 
-function deleteTrack(trackId) {
+export function deleteTrack(trackId) {
     return {
         type: 'DELETE_TRACK',
         track
     }
 }
 
-function addTrackUpdateStatus(value) {
+export function addTrackUpdateStatus(value) {
     return {
         type: 'ADD_TRACK_UPDATE_STATUS',
+        value
+    }
+}
+
+export function updateTrackFetchingStatus(value) {
+    return {
+        type: 'UPDATE_TRACK_FETCHING_STATUS',
         value
     }
 }
@@ -41,8 +44,23 @@ export function handleGetTracks() {
         const request = apiGetTracks();
 
         request.then(response => {
-            dispatch(setTracks(response.data.data));
+            dispatch(updateTrackStore(response.data.data));
         }).catch(error => {
+            console.log(error);
+        });
+    };
+}
+
+export function handleGetTrack(trackId) {
+    return (dispatch) => {
+        dispatch(updateTrackFetchingStatus(true));
+        const request = apiGetTrack(trackId);
+
+        request.then(response => {
+            dispatch(updateTrackFetchingStatus(false));
+            dispatch(updateTrackStore([response.data]));
+        }).catch(error => {
+            dispatch(updateTrackFetchingStatus(false));
             console.log(error);
         });
     };
@@ -54,7 +72,7 @@ export function handleAddTrack(track) {
         const request = apiAddTrack(track);
 
         request.then(response => {
-            dispatch(addTrack(response.data));
+            dispatch(updateTrackStore([response.data]));
             dispatch(addTrackUpdateStatus(false));
             dispatch(push('/t/' + response.data.id));
         }).catch(error => {

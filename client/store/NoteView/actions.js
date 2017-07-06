@@ -32,6 +32,7 @@ export function handleGetInbox(view) {
             dispatch(updateNoteViewList(view, response.data.data.length));
             dispatch(noteViewIsLoading(false));
         }).catch(error => {
+            dispatch(updateNoteViewList(view, 0));
             dispatch(noteViewIsLoading(false));
             console.log(error);
         });
@@ -51,6 +52,7 @@ export function handleGetPinned(view) {
             dispatch(updateNoteViewList(view, response.data.data.length));
             dispatch(noteViewIsLoading(false));
         }).catch(error => {
+            dispatch(updateNoteViewList(view, 0));
             dispatch(noteViewIsLoading(false));
             console.log(error);
         });
@@ -69,6 +71,7 @@ export function handleGetNotes(view, query) {
             dispatch(updateNoteViewList(view, response.data.data.length));
             dispatch(noteViewIsLoading(false));
         }).catch(error => {
+            dispatch(updateNoteViewList(view, 0));
             dispatch(noteViewIsLoading(false));
             console.log(error);
         });
@@ -88,6 +91,7 @@ export function handleGetDrafts(view) {
             dispatch(updateNoteViewList(view, response.data.data.length));
             dispatch(noteViewIsLoading(false));
         }).catch(error => {
+            dispatch(updateNoteViewList(view, 0));
             dispatch(noteViewIsLoading(false));
             console.log(error);
         });

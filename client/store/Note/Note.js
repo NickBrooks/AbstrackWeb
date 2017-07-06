@@ -15,17 +15,17 @@ class Note extends React.Component {
     }
 
     checkNoteExists(noteId) {
-        const { notes } = this.props;
+        const { handleGetNote, notes } = this.props;
         const i = notes.findIndex((note) => note.id === noteId);
 
         // check if nom exists in the store
         if (i == -1) {
-            this.props.handleGetNote(noteId);
+            handleGetNote(noteId);
         } else {
             const note = notes[i].data;
 
             if (note === null || moment().subtract(60, 'seconds') > moment(note.timeFetched)) {
-                this.props.handleGetNote(noteId);
+                handleGetNote(noteId);
             }
         }
     }

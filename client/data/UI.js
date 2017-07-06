@@ -58,7 +58,8 @@ const ui = {
   },
   tracks: {
     updateStatus: false,
-    deleteTrackWarning: "Deleting this track will remove all track assignments from any Notes assigned to this track."
+    deleteTrackWarning: "Deleting this track will remove all track assignments from any Notes assigned to this track.",
+    fetchingStatus: false
   }
 }
 
