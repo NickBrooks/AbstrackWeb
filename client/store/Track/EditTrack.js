@@ -73,12 +73,12 @@ class EditTrack extends React.Component {
                     <form ref="addTrack" autoComplete="off" onSubmit={this.handleSubmitEditTrack}>
                         <div className="form-group">
                             <label htmlFor="nameInput"><FontAwesome name="list-ul" /> Track name</label>
-                            <input type="text" ref="name" className="form-control" placeholder="Enter a track name" defaultValue={track.name} disabled={ui.updateStatus ? true : false} maxLength={maxLength.name} onChange={this.handleKeyChange.bind(null, "nameCount")} />
+                            <input type="text" ref="name" className="form-control" placeholder="Enter a track name" defaultValue={track.data.name} disabled={ui.updateStatus ? true : false} maxLength={maxLength.name} onChange={this.handleKeyChange.bind(null, "nameCount")} />
                             {nameCount ? (<small id="nameHelp" className="form-text text-muted"><strong>{nameCount}</strong></small>) : null}
                         </div>
                         <div className="form-group">
                             <label htmlFor="description"><FontAwesome name="pencil" /> Description</label>
-                            <input type="text" ref="description" className="form-control" placeholder="Enter a description" defaultValue={track.description} disabled={ui.updateStatus ? true : false} maxLength={maxLength.description} onChange={this.handleKeyChange.bind(null, "descriptionCount")} />
+                            <input type="text" ref="description" className="form-control" placeholder="Enter a description" defaultValue={track.data.description} disabled={ui.updateStatus ? true : false} maxLength={maxLength.description} onChange={this.handleKeyChange.bind(null, "descriptionCount")} />
                             {descriptionCount ? (<small id="descriptionHelp" className="form-text text-muted"><strong>{descriptionCount}</strong></small>) : null}
                         </div>
                         <hr />

@@ -130,9 +130,8 @@ class NoteEditor extends React.Component {
         })
     }
 
-    renderEditor() {
-        let { ui, noteEditor } = this.props;
-        setDocumentTitle(!noteEditor || !noteEditor.title ? "New Note" : noteEditor.title);
+    renderHashtagTypeahead() {
+        let { noteEditor } = this.props;
         var options = ['afl', 'github', 'project', 'chicken', 'chick', 'chuck', 'hammer', 'hartlett'];
         options = options.filter(function (el) {
             return !noteEditor.hashtags.includes(el);
@@ -145,6 +144,31 @@ class NoteEditor extends React.Component {
                 (option.indexOf(conformHashtag(text)) !== -1)
             );
         };
+        
+        return (
+            <form onSubmit={(e) => { e.preventDefault(); this.handleAddManualHashtag(this._hashtagTypeahead.getInstance().state.text); }}>
+                <Typeahead
+                    className="form-control editor-hashtags mousetrap"
+                    ref={ref => this._hashtagTypeahead = ref}
+                    filterBy={filterHashtagsByCallback}
+                    multiple
+                    dropup
+                    maxResults={5}
+                    paginate={false}
+                    options={options}
+                    placeholder="Hashtags"
+                    emptyLabel=""
+                    selected={noteEditor.hashtags}
+                    onChange={(e) => this.handleHashtagsChange(e)}
+                    submitFormOnEnter={true}
+                />
+            </form>
+        )
+    }
+
+    renderEditor() {
+        let { ui, noteEditor } = this.props;
+        setDocumentTitle(!noteEditor || !noteEditor.title ? "New Note" : noteEditor.title);
 
         return (
             <div>
@@ -163,23 +187,7 @@ class NoteEditor extends React.Component {
                         <div className="editor-body">
                             <textarea ref="body" className="form-control mousetrap" defaultValue={(!noteEditor || !noteEditor.body ? null : noteEditor.body)} placeholder="Say something, Ctrl/Cmd+8 to preview..." tabIndex={2} onChange={this.handleBodyChange} />
                             <hr />
-                            <form onSubmit={(e) => { e.preventDefault(); this.handleAddManualHashtag(this._hashtagTypeahead.getInstance().state.text); }}>
-                                <Typeahead
-                                    className="form-control editor-hashtags mousetrap"
-                                    ref={ref => this._hashtagTypeahead = ref}
-                                    filterBy={filterHashtagsByCallback}
-                                    multiple
-                                    dropup
-                                    maxResults={5}
-                                    paginate={false}
-                                    options={options}
-                                    placeholder="Hashtags"
-                                    emptyLabel=""
-                                    selected={noteEditor.hashtags}
-                                    onChange={(e) => this.handleHashtagsChange(e)}
-                                    submitFormOnEnter={true}
-                                />
-                            </form>
+                            {this.renderHashtagTypeahead()}
                         </div>
                     }
                 </div>

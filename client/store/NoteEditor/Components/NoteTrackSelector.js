@@ -1,4 +1,5 @@
 import React from 'react';
+import { Typeahead } from 'react-bootstrap-typeahead';
 import FontAwesome from 'react-fontawesome';
 import { delay, } from '../../../functions';
 
@@ -24,8 +25,8 @@ class NoteTrackSelector extends React.Component {
         })
     }
 
-    selectTrack(track) {
-        this.props.setDraftTrack(track.id);
+    selectTrack(selected) {
+        this.props.setDraftTrack(selected[0].data.id);
         delay(500).then(() => {
             this.saveDraft();
         })
@@ -35,19 +36,17 @@ class NoteTrackSelector extends React.Component {
         let { tracks } = this.props;
 
         return (
-            <p>DO THIS</p>
-            // <Typeahead ref="noteTrackSelector"
-            //     options={tracks}
-            //     filterOption="name"
-            //     displayOption="name"
-            //     placeholder="Track"
-            //     onOptionSelected={this.selectTrack}
-            //     customClasses={{
-            //         input: "form-control"
-            //     }}
-            //     maxVisible={5}
-            //     tabIndex={2}
-            // />
+            <Typeahead
+                className="form-control editor-track mousetrap"
+                ref={ref => this._trackTypeahead = ref}
+                filterby={"data.name"}
+                labelKey={option => option.data.name}
+                onChange={selected => this.selectTrack(selected)}
+                maxResults={5}
+                options={tracks}
+                placeholder="Track"
+                emptyLabel=""
+            />
         )
     }
 
@@ -58,7 +57,7 @@ class NoteTrackSelector extends React.Component {
 
         return (
             <div className="selected-track text-truncate pull-right">
-                <span className="selected-tag bg-note-green-light"><button className="btn btn-link" onClick={() => this.clearTrack()}><FontAwesome name="close" /> </button> {track.name}</span>
+                <span className="selected-tag bg-note-green-light"><button className="btn btn-link" onClick={() => this.clearTrack()}><FontAwesome name="close" /> </button> {track.data.name}</span>
             </div>
         )
     }
@@ -68,7 +67,7 @@ class NoteTrackSelector extends React.Component {
 
         return (
             <div className="editor-track">
-                {(noteEditor == null || noteEditor.track == null || noteEditor.track.id == null) ? this.renderTypeahead() : this.renderSelectedTrack(noteEditor)}
+                {(noteEditor == null || noteEditor.track == null || noteEditor.track.id == null) ? this.renderTypeahead() : this.renderSelectedTrack()}
             </div>
         )
     }

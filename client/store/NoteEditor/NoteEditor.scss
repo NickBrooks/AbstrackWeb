@@ -16,14 +16,41 @@
         padding: $box-padding;
     }
     .editor-title,
-    .editor-track {
-        font-size: 1.3em;
+    .editor-track input {
         font-weight: 600;
+        padding: 0;
+        padding: 10px 20px;
+    }
+    .editor-track,
+    &.bootstrap-typeahead,
+    &.bootstrap-typeahead-input {
+        padding: 0;
+        border: none;
+        .selected-track {
+            padding: 7px 0;
+            font-family: $font-family-fancy;
+            span.selected-tag {
+                display: inline-block;
+                max-width: 200px;
+                font-weight: normal;
+                padding: 0 5px;
+                color: $white;
+                border-radius: $radius;
+                margin-right: 15px;
+            }
+            button {
+                margin: 0;
+                padding: 0;
+                color: #eee;
+                margin-top: -4px;
+                font-size: 0.8em;
+            }
+        }
     }
     .editor-body {
         textarea {
             resize: none;
-            height: calc(100vh - 260px);
+            height: calc(100vh - 240px);
         }
     }
     .editor-hashtags {
@@ -78,7 +105,8 @@
             padding: 0;
             li {
                 padding: 5px 20px;
-                &.active, &:hover {
+                &.active,
+                &:hover {
                     background-color: $note-blue;
                     color: $white;
                 }
@@ -89,7 +117,7 @@
         padding: 0;
     }
     .markdown {
-        height: calc(100vh - 220px);
+        height: calc(100vh - 200px);
         overflow-y: auto;
     }
 }
