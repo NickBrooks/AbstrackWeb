@@ -67,6 +67,23 @@
             color: $note-blue;
             width: 30px;
         }
+        ul.bootstrap-typeahead-menu a::before {
+            content: '#';
+        }
+        .dropdown-menu-justify {
+            width: 100%;
+            border: none;
+            background: #fafafa;
+            border-radius: 0;
+            padding: 0;
+            li {
+                padding: 5px 20px;
+                &.active {
+                    background-color: $note-blue;
+                    color: $white;
+                }
+            }
+        }
     }
     textarea {
         padding: 0;

@@ -87,7 +87,7 @@ class NewNoteFooter extends React.Component {
                 </div>
                 <div className="actions pull-right">
                     {ui.draft.savingStatus ? <button type="button" className="btn btn-sm btn-link">{ui.draft.savingStatus}</button> : undefined}
-                    <button type="button" className="btn btn-sm btn-info" data-tip="Preview draft" onClick={this.handlePreviewClick}>{ui.note.editor.previewMode ? editButton : previewButton}</button>
+                    <button type="button" className="btn btn-sm btn-info" data-tip="Preview draft (Ctrl/Cmd + 8)" onClick={this.handlePreviewClick}>{ui.note.editor.previewMode ? editButton : previewButton}</button>
                     {!!params.draftId ? <button type="button" className="btn btn-sm btn-info" data-tip="Trash draft" onClick={this.handleDeleteClick}><FontAwesome name="trash" /></button> : undefined}
                     <button type="button" className="btn btn-sm btn-success" disabled={!noteEditor.body && !noteEditor.title ? true : false} onClick={this.handlePublishClick}><FontAwesome name="check" /> Publish</button>
                     <ReactTooltip effect="solid" />

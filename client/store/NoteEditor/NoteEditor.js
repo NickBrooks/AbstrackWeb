@@ -80,6 +80,9 @@ class NoteEditor extends React.Component {
     saveDraft() {
         let { noteEditor, handleAddDraft, handleSaveDraft, params } = this.props;
 
+        // don't save empty drafts
+        if (!noteEditor.title && !noteEditor.body && !noteEditor.track && noteEditor.hashtags.length <= 1) return;
+
         this.clearTimeouts();
         this.setTimeout(function () { (params.draftId ? handleSaveDraft(params.draftId, noteEditor) : handleAddDraft(noteEditor)) }, 2500);
     }
@@ -130,7 +133,7 @@ class NoteEditor extends React.Component {
     renderEditor() {
         let { ui, noteEditor } = this.props;
         setDocumentTitle(!noteEditor || !noteEditor.title ? "New Note" : noteEditor.title);
-        var options = ['afl', 'github', 'project'];
+        var options = ['afl', 'github', 'project', 'chicken', 'chick', 'chuck'];
 
         return (
             <div>
