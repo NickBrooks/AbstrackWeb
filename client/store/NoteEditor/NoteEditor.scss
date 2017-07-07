@@ -78,7 +78,7 @@
             padding: 0;
             li {
                 padding: 5px 20px;
-                &.active {
+                &.active, &:hover {
                     background-color: $note-blue;
                     color: $white;
                 }

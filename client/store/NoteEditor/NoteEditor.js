@@ -134,6 +134,17 @@ class NoteEditor extends React.Component {
         let { ui, noteEditor } = this.props;
         setDocumentTitle(!noteEditor || !noteEditor.title ? "New Note" : noteEditor.title);
         var options = ['afl', 'github', 'project', 'chicken', 'chick', 'chuck'];
+        options = options.filter(function (el) {
+            return !noteEditor.hashtags.includes(el);
+        });
+
+        const filterHashtagsByCallback = (option, text) => {
+            if (!text) return option;
+
+            return (
+                (option.indexOf(conformHashtag(text)) !== -1)
+            );
+        };
 
         return (
             <div>
@@ -156,7 +167,7 @@ class NoteEditor extends React.Component {
                                 <Typeahead
                                     className="form-control editor-hashtags mousetrap"
                                     ref={ref => this._typeahead = ref}
-                                    minLength={1}
+                                    filterBy={filterHashtagsByCallback}
                                     multiple
                                     dropup
                                     options={options}

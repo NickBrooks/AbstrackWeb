@@ -14,6 +14,8 @@ export function setDocumentTitle(value) {
 }
 
 export function conformHashtag(hashtag) {
+    if (!hashtag) return;
+
     hashtag = hashtag.replace(/\s/g, '');
     return hashtag.replace(/[^\w,]|_/g, '');
 }
