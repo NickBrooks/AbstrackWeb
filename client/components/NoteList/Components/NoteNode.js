@@ -59,7 +59,7 @@ class NoteNode extends React.Component {
 
         // the date
         var offset = moment().utcOffset();
-        var noteTime = moment(note.data.updatedTime).add(offset, 'minutes').format("dddd, MMMM Do YYYY, h:mm:ss a");
+        var noteTime = moment(note.data.updatedTime).format('llll');
 
         return (
             <Link to={link}>
