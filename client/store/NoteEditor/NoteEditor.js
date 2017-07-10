@@ -78,10 +78,10 @@ class NoteEditor extends React.Component {
     }
 
     saveDraft() {
-        let { noteEditor, handleAddDraft, handleSaveDraft, params } = this.props;
+        let { noteEditor, handleAddDraft, handleSaveDraft, params, ui } = this.props;
 
         // don't save empty drafts
-        if (!noteEditor.title && !noteEditor.body && !noteEditor.track && noteEditor.hashtags.length <= 1) return;
+        if (!noteEditor.title && !noteEditor.body && !noteEditor.track && noteEditor.hashtags.length <= 1 && !ui.draft.savingStatus) return;
 
         this.clearTimeouts();
         this.setTimeout(function () { (params.draftId ? handleSaveDraft(params.draftId, noteEditor) : handleAddDraft(noteEditor)) }, 2500);
@@ -144,7 +144,7 @@ class NoteEditor extends React.Component {
                 (option.indexOf(conformHashtag(text)) !== -1)
             );
         };
-        
+
         return (
             <form onSubmit={(e) => { e.preventDefault(); this.handleAddManualHashtag(this._hashtagTypeahead.getInstance().state.text); }}>
                 <Typeahead

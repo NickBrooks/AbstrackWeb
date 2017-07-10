@@ -10,10 +10,10 @@ class NoteTrackSelector extends React.Component {
     }
 
     saveDraft() {
-        let { noteEditor, handleAddDraft, handleSaveDraft, params } = this.props;
+        let { noteEditor, handleAddDraft, handleSaveDraft, params, ui } = this.props;
 
         // do the save only if there's already a body and title 
-        if (noteEditor.body != null || noteEditor.title != null) {
+        if (noteEditor.body != null || noteEditor.title != null && !ui.draft.savingStatus) {
             (params.draftId ? handleSaveDraft(params.draftId, noteEditor) : handleAddDraft(noteEditor));
         }
     }
