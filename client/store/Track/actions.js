@@ -11,10 +11,11 @@ export function updateTrackStore(data) {
     }
 }
 
-export function updateTrack(track) {
+export function updateTrack(data) {
     return {
         type: 'UPDATE_TRACK',
-        track
+        data,
+        timeFetched: moment.utc().format()
     }
 }
 

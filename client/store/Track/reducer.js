@@ -32,9 +32,14 @@ function tracks(state = [], action) {
         case 'UPDATE_TRACK_STORE':
             return mergeCurrentStateAndFetchedTracks(state, action);
         case 'UPDATE_TRACK':
-            return state.map(track => track.id === action.track.id ?
+            var updatedTrack = {
+                id: action.data.id,
+                data: action.data,
+                timeFetched: action.timeFetched
+            }
+            return state.map(track => track.id === updatedTrack.id ?
                 // replace the track that matches
-                action.track :
+                updatedTrack :
                 // otherwise return track
                 track
             );
