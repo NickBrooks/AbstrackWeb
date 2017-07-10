@@ -30,7 +30,7 @@ function noteEditor(state = [], action) {
             return newState;
         case 'SET_DRAFT_TRACK':
             var newState = Object.assign({}, state);
-            newState.track = { id: action.trackId };
+            newState.track = action.trackId ? { id: action.trackId } : null;
             return newState;
     }
     return state;

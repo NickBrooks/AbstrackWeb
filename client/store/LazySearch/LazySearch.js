@@ -142,7 +142,8 @@ class LazySearch extends React.Component {
                     {...this.state}
                     ref={ref => this._typeahead = ref}
                     labelKey="title"
-                    maxHeight={1024}
+                    maxHeight={300}
+                    maxItems={5}
                     useCache={false}
                     className="search-input"
                     onChange={this.selectSearchResult}

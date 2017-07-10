@@ -21,6 +21,24 @@
         padding: 0;
         padding: 10px 20px;
     }
+    .editor-track .dropdown-menu {
+        left: inherit;
+        right: 0;
+        width: 15rem;
+        padding: 0;
+        font-size: 0.9  em;
+        color: $font-color;
+        background-color: $off-white;
+        border: 1px solid $note-gray;
+        border-radius: none;
+        li {
+            padding: 5px 10px;
+            &:hover, &.active {
+                background: $note-green;
+                color: #fff;
+            }
+        }
+    }
     .editor-track,
     &.bootstrap-typeahead,
     &.bootstrap-typeahead-input {

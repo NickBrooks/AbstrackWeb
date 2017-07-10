@@ -224,7 +224,7 @@ class NoteList extends React.Component {
     return (
       <div>
         <button onClick={this.refreshNoteList} className="pull-right btn btn-toolbar btn-sm">{this.isLoading() ? <FontAwesome name="refresh" spin /> : <FontAwesome name="refresh" />}</button>
-        {this.state.notes.length > 0 ? this.renderNoteList() : undefined}
+        {this.renderNoteList()}
         {this.isLoading() ? <p className="text-center text-uppercase fancy light">Loading...</p> : undefined}
       </div>
     )
