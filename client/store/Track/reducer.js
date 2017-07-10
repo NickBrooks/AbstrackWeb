@@ -44,12 +44,13 @@ function tracks(state = [], action) {
                 track
             );
         case 'DELETE_TRACK':
-            return state.map(track => track.id === action.trackId ?
-                // replace the track that matches
-                undefined :
-                // otherwise return track
-                track
-            );
+            // only want to remove if matches id
+            // TODO: turn this into one function
+            function dontDelete(trackId, trackIdCompare) {
+                return trackId !== trackIdCompare.id;
+            }
+
+            return state.filter(dontDelete.bind(null, action.trackId));
     }
     return state;
 }

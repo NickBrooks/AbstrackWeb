@@ -36,7 +36,8 @@ export function apiGetToken(payload) {
 export function apiGetTokenFromRefreshToken(token) {
     return Axios.post("auth/token", {}, {
         headers: {
-            refreshtoken: token
+            refreshtoken: token,
+            'Content-Type': 'application/json'
         }
     });
 }
@@ -141,7 +142,7 @@ export function apiUpdateTrack(trackId, track) {
 }
 
 export function apiDeleteTrack(trackId) {
-    return Axios.delete("tracks/" + trackId, getAuthHeader());
+    return Axios.delete("tracks/" + trackId, { ...getAuthHeader(), data: {} });
 }
 
 // lazy search

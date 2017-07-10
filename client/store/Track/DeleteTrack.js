@@ -16,7 +16,7 @@ class DeleteTrack extends React.Component {
         const track = tracks[i];
 
         this.state = {
-            name: track.name,
+            name: track.data.name,
             inputName: ""
         }
     }
