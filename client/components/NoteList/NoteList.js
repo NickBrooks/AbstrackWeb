@@ -146,6 +146,11 @@ class NoteList extends React.Component {
     let { emptyNotes, ui, viewName } = this.props;
     let { notes } = this.state;
 
+    // order the notes by updatedDate
+    notes.sort(function (left, right) {
+      return moment.utc(right.data.updatedTime).diff(moment.utc(left.data.updatedTime))
+    });
+
     if (notes.length <= 0) {
       return (
         <EmptyContent emptyContent={emptyNotes} />
