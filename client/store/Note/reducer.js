@@ -44,7 +44,7 @@ function mergeCurrentStateAndFetchedNotes(state, action) {
         if (key >= 0) {
             newState[key].data = note;
             newState[key].timeFetched = action.timeFetched;
-            if (action.view != undefined) {
+            if (action.view != undefined && newState[key].views.findIndex((view) => view === action.view == -1)) {
                 newState[key].views.push(action.view);
             }
         } else {

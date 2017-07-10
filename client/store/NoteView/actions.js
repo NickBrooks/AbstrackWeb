@@ -29,7 +29,7 @@ export function handleGetInbox(view) {
         request.then(response => {
             dispatch(removeViewFromNoteStore(view));
             dispatch(updateNoteStore(response.data.data, view));
-            dispatch(updateNoteViewList(view, response.data.data.length));
+            dispatch(updateNoteViewList(view, response.data.data ? response.data.data : 0));
             dispatch(noteViewIsLoading(false));
         }).catch(error => {
             dispatch(updateNoteViewList(view, 0));
@@ -49,7 +49,7 @@ export function handleGetPinned(view) {
         request.then(response => {
             dispatch(removeViewFromNoteStore(view));
             dispatch(updateNoteStore(response.data.data, view));
-            dispatch(updateNoteViewList(view, response.data.data.length));
+            dispatch(updateNoteViewList(view, response.data.data ? response.data.data :0));
             dispatch(noteViewIsLoading(false));
         }).catch(error => {
             dispatch(updateNoteViewList(view, 0));
@@ -68,7 +68,7 @@ export function handleGetNotes(view, query) {
         request.then(response => {
             dispatch(removeViewFromNoteStore(view));
             dispatch(updateNoteStore(response.data.data, view));
-            dispatch(updateNoteViewList(view, response.data.data.length));
+            dispatch(updateNoteViewList(view, response.data.data ? response.data.data : 0));
             dispatch(noteViewIsLoading(false));
         }).catch(error => {
             dispatch(updateNoteViewList(view, 0));
@@ -88,7 +88,7 @@ export function handleGetDrafts(view) {
         request.then(response => {
             dispatch(removeViewFromNoteStore(view));
             dispatch(updateNoteStore(response.data.data, view));
-            dispatch(updateNoteViewList(view, response.data.data.length));
+            dispatch(updateNoteViewList(view, response.data.data ? response.data.data : 0));
             dispatch(noteViewIsLoading(false));
         }).catch(error => {
             dispatch(updateNoteViewList(view, 0));

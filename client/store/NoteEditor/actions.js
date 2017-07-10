@@ -118,7 +118,7 @@ export function handleSaveDraft(draftId, draft) {
         const request = apiUpdateDraft(draftId, draft);
 
         request.then(response => {
-            dispatch(updateNoteStore([response.data], "drafts"));
+            dispatch(updateNoteStore([response.data]));
             dispatch(setDraftServerValues(response.data));
             dispatch(updateDraftSavingStatus("Saved"));
         }).catch(error => {
