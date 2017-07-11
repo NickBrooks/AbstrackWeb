@@ -1,7 +1,6 @@
 import React from 'react';
 import FontAwesome from 'react-fontawesome';
 import { toast } from 'react-toastify';
-import { ToastifyAction } from '../../Toastify/Toastify';
 
 class NoteNodeToolbar extends React.Component {
     constructor(props) {
@@ -15,12 +14,19 @@ class NoteNodeToolbar extends React.Component {
     handleArchiveClick(e) {
         e.preventDefault();
         this.props.handleInboxNote(this.props.id, false);
-        toast(<ToastifyAction text="Note archived" icon="undo" action="" />);
+
+        toast(
+            <div className="toastify-action">
+                <button className="btn btn-icon btn-pink" onClick={this.handleInboxClick}><FontAwesome name="undo" /></button>
+                <span>Note archived</span>
+            </div>
+        );
     }
 
     handleInboxClick(e) {
         e.preventDefault();
         this.props.handleInboxNote(this.props.id, true);
+        toast.dismiss();
     }
 
     handlePinNoteClick(e) {
