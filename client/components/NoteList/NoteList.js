@@ -6,10 +6,9 @@ import FontAwesome from 'react-fontawesome';
 import delay from '../../functions';
 
 // date consts
-const now = moment(new Date);
-const yesterday = new Date().setDate(new Date().getDate() - 1);
+const startOfToday = moment(new Date).startOf('day');
+const startOfYesterday = moment().subtract(1, 'days').startOf('day');
 const startOfThisWeek = moment().startOf('isoWeek');
-const midnightYesterday = moment().subtract(1, 'days').startOf('day');
 const startOfThisMonth = moment().startOf('month');
 const startOfLastMonth = moment().subtract(1, 'months').startOf('month');
 const aYearAgo = moment().subtract(1, 'years').startOf('day');
@@ -21,55 +20,38 @@ function isThisView(view, note) {
 
 // filters notes actioned today
 function isToday(n) {
-  var noteTime = moment(n.data.updatedTime);
-
-  if (noteTime.isSame(now, "day")) {
-    return noteTime;
-  }
+  return moment(n.data.updatedTime).isAfter(startOfToday);
 }
 
-// filters notes actioned today
+// filters notes actioned yesterday
 function isYesterday(n) {
-  var noteTime = moment(n.data.updatedTime);
-
-  if (noteTime.isSame(yesterday, "day")) {
-    return noteTime;
-  }
+  return moment(n.data.updatedTime).isBetween(startOfYesterday, startOfToday);
 }
 
 // filters notes actioned this week
 function isThisWeek(n) {
-  var noteTime = moment(n.data.updatedTime);
-
-  return noteTime.isBetween(startOfThisWeek, midnightYesterday);
+  return moment(n.data.updatedTime).isBetween(startOfThisWeek, startOfYesterday);
 }
 
 // filters notes actioned this month
 function isThisMonth(n) {
-  var noteTime = moment(n.data.updatedTime);
-
-  return noteTime.isBetween(startOfThisMonth, startOfThisWeek);
+  return moment(n.data.updatedTime).isBetween(startOfThisMonth, startOfThisWeek);
 }
 
 // filter notes from last month
 function isLastMonth(n) {
-  var noteTime = moment(n.data.updatedTime);
-
-  return (noteTime.isBetween(startOfLastMonth, startOfThisMonth) && noteTime.isBetween(startOfThisMonth, yesterday));
+  return (moment(n.data.updatedTime).isBetween(startOfLastMonth, startOfThisMonth)
+    && moment(n.data.updatedTime).isBetween(startOfThisMonth, yesterday));
 }
 
 // filters notes actioned a few months ago
 function isAFewMonths(n) {
-  var noteTime = moment(n.data.updatedTime);
-
-  return noteTime.isBetween(startOfLastMonth, startOfThisMonth);
+  return moment(n.data.updatedTime).isBetween(startOfLastMonth, startOfThisMonth);
 }
 
 // filters notes actioned over year ago
 function isAYear(n) {
-  var noteTime = moment(n.data.updatedTime);
-
-  return noteTime.isBefore(aYearAgo);
+  return moment(n.data.updatedTime).isBefore(aYearAgo);
 }
 
 class NoteList extends React.Component {
@@ -94,15 +76,14 @@ class NoteList extends React.Component {
 
   refreshNoteList(e) {
     e.preventDefault();
-    let { ui } = this.props;
-    if (ui.noteView.isLoading) return;
+    if (this.props.ui.noteView.isLoading) return;
     this.loadNotes();
   }
 
   renderTodaysNotes(notes) {
     let filteredNotes = notes.filter(isToday);
     if (filteredNotes.length > 0) {
-      return <TimeNode filteredNotes={notes} title="Today" {...this.props} />
+      return <TimeNode filteredNotes={filteredNotes} title="Today" {...this.props} />
     }
     return;
   }
