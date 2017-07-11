@@ -7,15 +7,20 @@ class NoteNodeToolbar extends React.Component {
     constructor(props) {
         super(props);
         this.handleArchiveClick = this.handleArchiveClick.bind(this);
+        this.handleInboxClick = this.handleInboxClick.bind(this);
         this.handlePinNoteClick = this.handlePinNoteClick.bind(this);
         this.handleUnpinNoteClick = this.handleUnpinNoteClick.bind(this);
     }
 
     handleArchiveClick(e) {
         e.preventDefault();
-        let { note } = this.props;
+        this.props.handleInboxNote(this.props.id, false);
+        toast(<ToastifyAction text="Note archived" icon="undo" action="" />);
+    }
 
-        toast(<ToastifyAction text="Note archived" icon="undo" action=""/>);
+    handleInboxClick(e) {
+        e.preventDefault();
+        this.props.handleInboxNote(this.props.id, true);
     }
 
     handlePinNoteClick(e) {
@@ -42,13 +47,13 @@ class NoteNodeToolbar extends React.Component {
 
     renderInboxedButton() {
         return (
-            <object><button type="button" onClick={this.handleArchiveClick} aria-label="Inbox Note" className="btn btn-sm btn-secondary"><FontAwesome name="check" /></button></object>
+            <object><button type="button" onClick={this.handleArchiveClick} aria-label="Archive Note" className="btn btn-sm btn-secondary"><FontAwesome name="check" /></button></object>
         )
     }
 
     renderArchivedButton() {
         return (
-            <object><button type="button" onClick={this.handleArchiveClick} aria-label="Inbox Note" className="btn btn-sm btn-secondary"><FontAwesome name="envelope-open" /></button></object>
+            <object><button type="button" onClick={this.handleInboxClick} aria-label="Inbox Note" className="btn btn-sm btn-secondary"><FontAwesome name="envelope-open" /></button></object>
         )
     }
 

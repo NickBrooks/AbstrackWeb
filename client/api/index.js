@@ -101,6 +101,14 @@ export function apiPinNote(noteId, value) {
     }
 }
 
+export function apiArchiveNote(noteId, value) {
+    if (value) {
+        return Axios.post("inbox/" + noteId, null, getAuthHeader());
+    } else {
+        return Axios.delete("inbox/" + noteId, getAuthHeader());
+    }
+}
+
 // drafts
 
 export function apiGetDrafts() {

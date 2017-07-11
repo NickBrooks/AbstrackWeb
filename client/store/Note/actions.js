@@ -1,4 +1,4 @@
-import { apiAddNote, apiPinNote, apiGetNote } from '../../api';
+import { apiAddNote, apiArchiveNote, apiPinNote, apiGetNote } from '../../api';
 import moment from 'moment';
 import { push } from 'react-router-redux';
 
@@ -112,6 +112,18 @@ export function handlePinNote(noteId, value) {
         request.catch(error => {
             console.log(error);
             dispatch(addRemoveViewFromNote(noteId, value ? false : true, "pinned"));
+        });
+    };
+}
+
+export function handleInboxNote(noteId, value) {
+    return (dispatch) => {
+        dispatch(addRemoveViewFromNote(noteId, value, "inbox"));
+        const request = apiArchiveNote(noteId, value);
+
+        request.catch(error => {
+            console.log(error);
+            dispatch(addRemoveViewFromNote(noteId, value ? false : true, "inbox"));
         });
     };
 }
