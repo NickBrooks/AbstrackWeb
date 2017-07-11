@@ -1,22 +1,22 @@
 //variables
-@import "app/Mixins";
-@import "app/Colors";
-@import "app/Variables";
+@import "./Mixins";
+@import "./Colors";
+@import "./Variables";
 //bootstrap TODO: CDN
-@import "app/bootstrap";
+@import "./bootstrap";
 //browser hacks
-@import "app/Browser";
+@import "./Browser";
 //abstrack base
-@import "app/Base";
+@import "./Base";
 //general
-@import "app/modal";
-@import "app/ListNode";
-@import "app/Forms";
-@import "app/Ibox";
-@import "app/Main";
-@import "app/Buttons";
-@import "app/Toggle";
-@import "app/Icons";
+@import "./modal";
+@import "./ListNode";
+@import "./Forms";
+@import "./Ibox";
+@import "./Main";
+@import "./Buttons";
+@import "./Toggle";
+@import "./Icons";
 //components
 @import "../components/Avatar/Avatar";
 @import "../components/ErrorSpan/ErrorSpan";
@@ -27,7 +27,6 @@
 @import "../components/NoteList/NoteList";
 @import "../components/Sidebar/Sidebar";
 @import "../components/Toastify/Toastify";
-@import "../components/Typeahead/Typeahead";
 //store
 @import "../store/Comment/Comments";
 @import "../store/Hashtag/Hashtag";
