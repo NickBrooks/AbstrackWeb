@@ -1,4 +1,37 @@
 .note-list {
+    ul {
+        a:active,
+        a:focus,
+        a:hover {
+            text-decoration: none;
+        }
+        li {
+            padding: 8px 13px;
+            position: relative;
+            margin-bottom: 10px;
+            background: white;
+            border: 1px solid $note-gray;
+            border-top: $border-top;
+            box-shadow: $box-shadow;
+            color: $font-color;
+            &:hover {
+                background: $off-white;
+                .quick-info {
+                    padding-right: 90px;
+                }
+                .node-toolbar {
+                    display: block;
+                }
+            }
+            .title {
+                font-weight: 600;
+                font-size: 1.1em;
+            }
+            .body {
+                color: #666;
+            }
+        }
+    }
     .time-node {
         margin-bottom: 25px;
         .note-node {
@@ -25,5 +58,33 @@
                 box-shadow: $box-shadow;
             }
         }
+    }
+}
+
+.empty-content {
+    text-align: center;
+    img {
+        max-width: 600px;
+        margin-bottom: $box-padding * 2;
+    }
+}
+
+.node-toolbar {
+    display: none;
+    position: absolute;
+    top: 8px;
+    right: 13px;
+    .btn-secondary {
+        color: #999;
+        background-color: transparent;
+        border-color: transparent;
+        .fa {
+            font-size: 1.1em;
+        }
+    }
+    .btn-secondary:hover {
+        color: #373a3c;
+        background-color: transparent;
+        border-color: transparent;
     }
 }

@@ -9,7 +9,7 @@ class TimeNode extends React.Component {
     render() {
         return (
             <div className="time-node">
-                <h5>{this.props.title}</h5>
+                <h4>{this.props.title}</h4>
                 <ul className="list-unstyled node-list">
                     {this.props.filteredNotes.map((note) => <NoteNode key={note.id} id={note.id} note={note} {...this.props} />)}
                 </ul>

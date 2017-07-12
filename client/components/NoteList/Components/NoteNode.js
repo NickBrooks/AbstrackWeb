@@ -74,14 +74,13 @@ class NoteNode extends React.Component {
             <Link to={link}>
                 <li className={"note-node" + (isPinned ? " pinned" : "")}>
                     <div className="quick-info text-truncate">
-                        {isPinned ? <FontAwesome name="thumb-tack" className="note-orange" /> : undefined} <span className="title">{note.data.title}</span> {note.commentCount > 0 ? <span className="comment-count">{note.commentCount}</span> : undefined} <span className="body">{removeMd(body)}</span>
+                        {isPinned ? <FontAwesome name="thumb-tack" className="note-orange" /> : undefined}<span className="title">{note.data.title}</span> {note.commentCount > 0 ? <span className="comment-count">{note.commentCount}</span> : undefined} <span className="body">{removeMd(body)}</span>
                         <NoteNodeToolbar note={note} type={this.state.noteType} {...this.props} />
                     </div>
                     <div className="hashtags text-truncate">
                         {track ? <span className="tag track-tag"><small><FontAwesome name="list-ul" /></small> {track.data.name}</span> : undefined}{note.data.hashtags ? note.data.hashtags.map((hashtag, i) => <HashtagSpan {...this.props} hashtag={hashtag} disableLink={true} customClass="default" key={i} i={i} />) : undefined}
                     </div>
                     {this.renderMediaPreviews()}
-                    {noteTime}
                 </li>
             </Link>
         )
