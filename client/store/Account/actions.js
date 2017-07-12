@@ -51,50 +51,60 @@ function updatePasswordErrorMsg(message) {
 
 export function handleGetAccount() {
     return (dispatch) => {
-        const request = apiGetAccount();
+        return new Promise((resolve, reject) => {
+            const request = apiGetAccount();
 
-        request.then(response => {
-            dispatch(setAccount(response.data));
-        }).catch(error => {
-            dispatch(setAccountFailure());
+            request.then(response => {
+                dispatch(setAccount(response.data));
+                resolve();
+            }).catch(error => {
+                dispatch(setAccountFailure());
+                reject();
+            });
         });
     };
 }
 
 export function handleUpdateProfileDetails(updatedDetails) {
     return (dispatch) => {
-        const request = apiUpdateProfileDetails(updatedDetails);
+        return new Promise((resolve, reject) => {
+            const request = apiUpdateProfileDetails(updatedDetails);
+            dispatch(updateProfileDetailsUpdateStatus("updating"));
 
-        dispatch(updateProfileDetailsUpdateStatus("updating"));
-
-        request.then(response => {
-            dispatch(setAccount(response.data));
-            dispatch(updateProfileDetailsErrorMsg(false));
-            dispatch(updateProfileDetailsUpdateStatus("saved"));
-            setTimeout(() => {
-                dispatch(updateProfileDetailsUpdateStatus(false))
-            }, 3000)
-        }).catch(error => {
-            dispatch(updateProfileDetailsErrorMsg("Something went wrong, try again"));
+            request.then(response => {
+                dispatch(setAccount(response.data));
+                dispatch(updateProfileDetailsErrorMsg(false));
+                dispatch(updateProfileDetailsUpdateStatus("saved"));
+                setTimeout(() => {
+                    dispatch(updateProfileDetailsUpdateStatus(false))
+                    resolve();
+                }, 3000);
+            }).catch(error => {
+                dispatch(updateProfileDetailsErrorMsg("Something went wrong, try again"));
+                reject();
+            });
         });
     };
 }
 
 export function handleUpdatePassword(currentPassword, newPassword) {
     return (dispatch) => {
-        const request = apiUpdatePassword(currentPassword, newPassword);
+        return new Promise((resolve, reject) => {
+            const request = apiUpdatePassword(currentPassword, newPassword);
+            dispatch(updatePasswordUpdateStatus("updating"));
 
-        dispatch(updatePasswordUpdateStatus("updating"));
-
-        request.then(response => {
-            dispatch(updatePasswordSuccess());
-            dispatch(updatePasswordErrorMsg(false));
-            dispatch(updatePasswordUpdateStatus("saved"));
-            setTimeout(() => {
-                dispatch(updatePasswordUpdateStatus(false))
-            }, 3000)
-        }).catch(error => {
-            dispatch(updatePasswordErrorMsg("Something went wrong, current password probably invalid"));
+            request.then(response => {
+                dispatch(updatePasswordSuccess());
+                dispatch(updatePasswordErrorMsg(false));
+                dispatch(updatePasswordUpdateStatus("saved"));
+                setTimeout(() => {
+                    dispatch(updatePasswordUpdateStatus(false));
+                    resolve();
+                }, 3000)
+            }).catch(error => {
+                dispatch(updatePasswordErrorMsg("Something went wrong, current password probably invalid"));
+                reject();
+            });
         });
     };
 }

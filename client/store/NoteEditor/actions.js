@@ -97,51 +97,63 @@ export function handleGetDraft(draftId) {
 
 export function handleAddDraft(payload) {
     return (dispatch) => {
-        dispatch(updateDraftSavingStatus("Saving"));
-        var draft = Object.assign({}, payload);
-        delete draft.createdBy;
-        delete draft.id;
-        delete draft.updatedTime;
-        const request = apiAddDraft(draft);
+        return new Promise((resolve, reject) => {
+            dispatch(updateDraftSavingStatus("Saving"));
+            var draft = Object.assign({}, payload);
+            delete draft.createdBy;
+            delete draft.id;
+            delete draft.updatedTime;
+            const request = apiAddDraft(draft);
 
-        request.then(response => {
-            dispatch(updateNoteStore([response.data], "drafts"));
-            dispatch(setDraftServerValues(response.data));
-            dispatch(updateDraftSavingStatus("Saved"));
-            dispatch(push("/new/note/" + response.data.id));
-        }).catch(error => {
-            dispatch(updateDraftSavingStatus("Error..."));
-            console.log(error);
+            request.then(response => {
+                dispatch(updateNoteStore([response.data], "drafts"));
+                dispatch(setDraftServerValues(response.data));
+                dispatch(updateDraftSavingStatus("Saved"));
+                dispatch(push("/new/note/" + response.data.id));
+                resolve();
+            }).catch(error => {
+                dispatch(updateDraftSavingStatus("Error..."));
+                console.log(error);
+                reject();
+            });
         });
     };
 }
 
 export function handleSaveDraft(draftId, draft) {
     return (dispatch) => {
-        dispatch(updateDraftSavingStatus("Saving"));
-        const request = apiUpdateDraft(draftId, draft);
+        return new Promise((resolve, reject) => {
+            dispatch(updateDraftSavingStatus("Saving"));
+            const request = apiUpdateDraft(draftId, draft);
 
-        request.then(response => {
-            dispatch(updateNoteStore([response.data]));
-            dispatch(setDraftServerValues(response.data));
-            dispatch(updateDraftSavingStatus("Saved"));
-        }).catch(error => {
-            dispatch(updateDraftSavingStatus("Error..."));
-            console.log(error);
+            request.then(response => {
+                dispatch(updateNoteStore([response.data]));
+                dispatch(setDraftServerValues(response.data));
+                dispatch(updateDraftSavingStatus("Saved"));
+                resolve();
+            }).catch(error => {
+                dispatch(updateDraftSavingStatus("Error..."));
+                console.log(error);
+                reject();
+            });
         });
     };
 }
 
 export function handleDeleteDraft(draftId) {
     return (dispatch) => {
-        const request = apiDeleteDraft(draftId);
+        return new Promise((resolve, reject) => {
+            const request = apiDeleteDraft(draftId);
 
-        request.then(response => {
-            dispatch(removeNoteFromStore(draftId));
-            dispatch(push('/drafts'));
-        }).catch(error => {
-            dispatch(push('/drafts'));
-            console.log(error);
+            request.then(response => {
+                dispatch(removeNoteFromStore(draftId));
+                dispatch(push('/drafts'));
+                resolve();
+            }).catch(error => {
+                dispatch(push('/drafts'));
+                console.log(error);
+                reject();
+            });
         });
     };
 }

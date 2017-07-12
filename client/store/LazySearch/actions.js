@@ -10,20 +10,27 @@ export function updateLazySearchResults(results) {
 }
 
 // reset lazysearch
-export function resetLazySearchResults() {    
+export function resetLazySearchResults() {
     return (dispatch) => {
-        dispatch(updateLazySearchResults(lazySearchResults));
+        return new Promise((resolve, reject) => {
+            dispatch(updateLazySearchResults(lazySearchResults));
+            resolve();
+        });
     };
 }
 
 export function handleLazySearchQuery(q) {
     return (dispatch) => {
-        const request = apiGetLazySearchResults(q);
+        return new Promise((resolve, reject) => {
+            const request = apiGetLazySearchResults(q);
 
-        request.then(response => {
-            dispatch(updateLazySearchResults(response.data));
-        }).catch(error => {
-            console.log(error);
+            request.then(response => {
+                dispatch(updateLazySearchResults(response.data));
+                resolve();
+            }).catch(error => {
+                console.log(error);
+                reject();
+            });
         });
     };
 }

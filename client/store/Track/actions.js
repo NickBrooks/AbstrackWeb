@@ -42,78 +42,98 @@ export function updateTrackFetchingStatus(value) {
 
 export function handleGetTracks() {
     return (dispatch) => {
-        const request = apiGetTracks();
+        return new Promise((resolve, reject) => {
+            const request = apiGetTracks();
 
-        request.then(response => {
-            dispatch(updateTrackStore(response.data.data));
-        }).catch(error => {
-            console.log(error);
+            request.then(response => {
+                dispatch(updateTrackStore(response.data.data));
+                resolve();
+            }).catch(error => {
+                console.log(error);
+                reject();
+            });
         });
     };
 }
 
 export function handleGetTrack(trackId) {
     return (dispatch) => {
-        dispatch(updateTrackFetchingStatus(true));
-        const request = apiGetTrack(trackId);
+        return new Promise((resolve, reject) => {
+            dispatch(updateTrackFetchingStatus(true));
+            const request = apiGetTrack(trackId);
 
-        request.then(response => {
-            dispatch(updateTrackFetchingStatus(false));
-            dispatch(updateTrackStore([response.data]));
-        }).catch(error => {
-            dispatch(updateTrackFetchingStatus(false));
-            console.log(error);
+            request.then(response => {
+                dispatch(updateTrackFetchingStatus(false));
+                dispatch(updateTrackStore([response.data]));
+                resolve();
+            }).catch(error => {
+                dispatch(updateTrackFetchingStatus(false));
+                console.log(error);
+                reject();
+            });
         });
     };
 }
 
 export function handleAddTrack(track) {
     return (dispatch) => {
-        dispatch(addTrackUpdateStatus("updating"));
-        const request = apiAddTrack(track);
+        return new Promise((resolve, reject) => {
+            dispatch(addTrackUpdateStatus("updating"));
+            const request = apiAddTrack(track);
 
-        request.then(response => {
-            dispatch(updateTrackStore([response.data]));
-            dispatch(addTrackUpdateStatus(false));
-            dispatch(push('/t/' + response.data.id));
-        }).catch(error => {
-            dispatch(addTrackUpdateStatus(false));
-            //TODO: handle error
-            console.log(error);
+            request.then(response => {
+                dispatch(updateTrackStore([response.data]));
+                dispatch(addTrackUpdateStatus(false));
+                dispatch(push('/t/' + response.data.id));
+                resolve();
+            }).catch(error => {
+                dispatch(addTrackUpdateStatus(false));
+                //TODO: handle error
+                console.log(error);
+                reject();
+            });
         });
     };
 }
 
 export function handleUpdateTrack(trackId, track) {
     return (dispatch) => {
-        dispatch(addTrackUpdateStatus("updating"));
-        const request = apiUpdateTrack(trackId, track);
+        return new Promise((resolve, reject) => {
+            dispatch(addTrackUpdateStatus("updating"));
+            const request = apiUpdateTrack(trackId, track);
 
-        request.then(response => {
-            dispatch(updateTrack(response.data));
-            dispatch(addTrackUpdateStatus(false));
-            dispatch(push('/t/' + trackId));
-        }).catch(error => {
-            dispatch(addTrackUpdateStatus(false));
-            //TODO: handle error
-            console.log(error);
+            request.then(response => {
+                dispatch(updateTrack(response.data));
+                dispatch(addTrackUpdateStatus(false));
+                dispatch(push('/t/' + trackId));
+                resolve();
+            }).catch(error => {
+                dispatch(addTrackUpdateStatus(false));
+                //TODO: handle error
+                console.log(error);
+                reject();
+            });
         });
     };
 }
 
 export function handleDeleteTrack(trackId) {
     return (dispatch) => {
-        dispatch(addTrackUpdateStatus("updating"));
-        const request = apiDeleteTrack(trackId);
+        return new Promise((resolve, reject) => {
+            dispatch(addTrackUpdateStatus("updating"));
+            const request = apiDeleteTrack(trackId);
 
-        request.then(response => {
-            dispatch(deleteTrack(trackId));
-            dispatch(addTrackUpdateStatus(false));
-            dispatch(push('/tracks'));
-        }).catch(error => {
-            dispatch(addTrackUpdateStatus(false));
-            //TODO: handle error
-            console.log(error);
+            request.then(response => {
+                dispatch(deleteTrack(trackId));
+                dispatch(addTrackUpdateStatus(false));
+                dispatch(push('/tracks'));
+                resolve();
+            }).catch(error => {
+                dispatch(addTrackUpdateStatus(false));
+                //TODO: handle error
+                console.log(error);
+                reject();
+            });
         });
     };
 }

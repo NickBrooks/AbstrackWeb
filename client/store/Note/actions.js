@@ -74,56 +74,74 @@ export function updateNoteAddingStatus(value) {
 
 export function handleGetNote(noteId) {
     return (dispatch) => {
-        dispatch(updateNoteFetchingStatus(true));
-        const request = apiGetNote(noteId);
+        return new Promise((resolve, reject) => {
+            dispatch(updateNoteFetchingStatus(true));
+            const request = apiGetNote(noteId);
 
-        request.then(response => {
-            dispatch(updateNoteStore([response.data]));
-            dispatch(updateNoteFetchingStatus(false));
-        }).catch(error => {
-            dispatch(updateNoteFetchingStatus(false));
-            console.log(error);
+            request.then(response => {
+                dispatch(updateNoteStore([response.data]));
+                dispatch(updateNoteFetchingStatus(false));
+                resolve();
+            }).catch(error => {
+                dispatch(updateNoteFetchingStatus(false));
+                console.log(error);
+                reject();
+            });
         });
     };
 }
 
 export function handleAddNote(newNoteDTO) {
     return (dispatch) => {
-        dispatch(updateNoteAddingStatus(true));
-        const request = apiAddNote(newNoteDTO);
+        return new Promise((resolve, reject) => {
+            dispatch(updateNoteAddingStatus(true));
+            const request = apiAddNote(newNoteDTO);
 
-        request.then(response => {
-            dispatch(updateNoteStore([response.data], newNoteDTO.skipInbox ? undefined : "inbox"));
-            dispatch(addRemoveViewFromNote(response.data.id, false, "drafts"));
-            dispatch(push("/n/" + response.data.id))
-            dispatch(updateNoteAddingStatus(false));
-        }).catch(error => {
-            dispatch(updateNoteAddingStatus(false));
-            console.log(error);
+            request.then(response => {
+                dispatch(updateNoteStore([response.data], newNoteDTO.skipInbox ? undefined : "inbox"));
+                dispatch(addRemoveViewFromNote(response.data.id, false, "drafts"));
+                dispatch(push("/n/" + response.data.id))
+                dispatch(updateNoteAddingStatus(false));
+                resolve();
+            }).catch(error => {
+                dispatch(updateNoteAddingStatus(false));
+                console.log(error);
+                reject();
+            });
         });
     };
 }
 
 export function handlePinNote(noteId, value) {
     return (dispatch) => {
-        dispatch(addRemoveViewFromNote(noteId, value, "pinned"));
-        const request = apiPinNote(noteId, value);
+        return new Promise((resolve, reject) => {
+            dispatch(addRemoveViewFromNote(noteId, value, "pinned"));
+            const request = apiPinNote(noteId, value);
 
-        request.catch(error => {
-            console.log(error);
-            dispatch(addRemoveViewFromNote(noteId, value ? false : true, "pinned"));
+            request.then(() => {
+                resolve();
+            }).catch(error => {
+                console.log(error);
+                dispatch(addRemoveViewFromNote(noteId, value ? false : true, "pinned"));
+                reject();
+            });
         });
     };
 }
 
 export function handleInboxNote(noteId, value) {
     return (dispatch) => {
-        dispatch(addRemoveViewFromNote(noteId, value, "inbox"));
-        const request = apiArchiveNote(noteId, value);
+        return new Promise((resolve, reject) => {
+            dispatch(addRemoveViewFromNote(noteId, value, "inbox"));
+            const request = apiArchiveNote(noteId, value);
 
-        request.catch(error => {
-            console.log(error);
-            dispatch(addRemoveViewFromNote(noteId, value ? false : true, "inbox"));
+            request.then(() => {
+                resolve();
+            }).catch(error => {
+                console.log(error);
+                dispatch(addRemoveViewFromNote(noteId, value ? false : true, "inbox"));
+                reject();
+            });
         });
     };
 }

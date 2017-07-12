@@ -50,22 +50,26 @@ export function purgeStore() {
 }
 
 export function handleLogin(userName, password) {
-    const request = apiGetToken({
-        userName,
-        password
-    });
-
     return dispatch => {
-        dispatch(loginIsAuthenticating(true));
-        request.then(response => {
-            saveLocalStorage("auth", response.data);
-            delay(1000).then(() => {
-                dispatch(loginIsAuthenticating(false));
-                dispatch(push('/'));
+        return new Promise((resolve, reject) => {
+            const request = apiGetToken({
+                userName,
+                password
             });
-        }).catch(error => {
-            dispatch(loginIsAuthenticating(false));
-            dispatch(loginErrorMsg("Incorrect username or password"));
+            dispatch(loginIsAuthenticating(true));
+
+            request.then(response => {
+                saveLocalStorage("auth", response.data);
+                delay(1000).then(() => {
+                    dispatch(loginIsAuthenticating(false));
+                    dispatch(push('/'));
+                });
+                resolve()
+            }).catch(error => {
+                dispatch(loginIsAuthenticating(false));
+                dispatch(loginErrorMsg("Incorrect username or password"));
+                reject();
+            });
         });
     };
 }
@@ -75,7 +79,7 @@ export function handleRefreshTokenLogin(token, redirect) {
         return new Promise((resolve, reject) => {
             const request = apiGetTokenFromRefreshToken(token);
             dispatch(loginIsRefreshingToken(true));
-            
+
             request.then(response => {
                 saveLocalStorage("auth", response.data);
                 delay(1000).then(() => {
@@ -95,25 +99,34 @@ export function handleRefreshTokenLogin(token, redirect) {
 }
 
 export function handleRegistration(payload) {
-    const request = apiRegister(payload);
-
     return dispatch => {
-        request.then(response => {
-            dispatch(registerIsRegistering(false));
-            dispatch(push('/login'));
-        }).catch(error => {
-            dispatch(registerIsRegistering(false));
-            dispatch(registerErrorMsg(error.response.data[0].description));
+        return new Promise((resolve, reject) => {
+            const request = apiRegister(payload);
+
+            request.then(response => {
+                dispatch(registerIsRegistering(false));
+                dispatch(push('/login'));
+                resolve();
+            }).catch(error => {
+                dispatch(registerIsRegistering(false));
+                dispatch(registerErrorMsg(error.response.data[0].description));
+                reject();
+            });
         });
     };
 }
 
 export function handleForgotPassword(email) {
-    const request = apiForgotPassword(email);
-
     return dispatch => {
-        request.then(response => { }).catch(error => {
-            console.log(error);
+        return new Promise((resolve, reject) => {
+            const request = apiForgotPassword(email);
+
+            request.then(response => {
+                resolve()
+            }).catch(error => {
+                console.log(error);
+                reject();
+            });
         });
     };
 }
