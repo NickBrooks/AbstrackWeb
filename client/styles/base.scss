@@ -112,3 +112,24 @@ textarea:active {
 .uppercase {
     text-transform: uppercase;
 }
+
+@media (max-width: 767px) {
+    h1 {
+        font-size: 2em;
+    }
+    h2 {
+        font-size: 1.75em;
+    }
+    h3 {
+        font-size: 1.35em
+    }
+    h4 {
+        font-size: 1.05em
+    }
+    h5 {
+        font-size: 1em
+    }
+    h6 {
+        font-size: 0.75em;
+    }
+}

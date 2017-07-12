@@ -360,3 +360,32 @@
         max-width: 560px;
     }
 }
+
+@media (max-width: 767px) {
+    .markdown {
+        h1 {
+            padding-bottom: 0.3em;
+            font-size: 2em;
+            border-bottom: 1px solid #eaecef
+        }
+        h2 {
+            padding-bottom: 0.3em;
+            font-size: 1.75em;
+            border-bottom: 1px solid #eaecef
+        }
+        h3 {
+            font-size: 1.15em
+        }
+        h4 {
+            font-size: 1em
+        }
+        h5 {
+            font-size: 0.75em
+        }
+        h6 {
+            font-style: italic;
+            font-size: 0.75em;
+            color: #6a737d
+        }
+    }
+}

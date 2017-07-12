@@ -73,6 +73,18 @@ class NewNoteFooter extends React.Component {
         });
     }
 
+    renderSavingStatus() {
+        let { draft } = this.props.ui;
+
+        switch (draft.savingStatus) {
+            case 'Saving':
+                return <FontAwesome name="circle-o-notch" spin />;
+            case 'Saved':
+                return <FontAwesome name="check" />
+        }
+        return undefined;
+    }
+
     render() {
         let { noteEditor, params, ui } = this.props;
         const editButton = (<span><FontAwesome name="pencil" /></span>);
@@ -80,13 +92,13 @@ class NewNoteFooter extends React.Component {
 
         return (
             <div className="note-editor-footer">
-                <div className="actions pull-left col-sm-2">
+                <div className="actions pull-left inbox">
                     <label className="toggle-label" data-tip="Inbox note">
                         <input className="toggle-button" ref="skipInbox" type="checkbox" onChange={this.handleInboxChange} checked={!noteEditor.skipInbox} /> Inbox
                     </label>
                 </div>
                 <div className="actions pull-right">
-                    {ui.draft.savingStatus ? <button type="button" className="btn btn-sm btn-link">{ui.draft.savingStatus}</button> : undefined}
+                    {ui.draft.savingStatus ? <button type="button" className="btn btn-sm btn-link hidden-xs-down">{this.renderSavingStatus()}</button> : undefined}
                     <button type="button" className="btn btn-sm btn-info" data-tip="Preview draft (Ctrl/Cmd + 8)" onClick={this.handlePreviewClick}>{ui.note.editor.previewMode ? editButton : previewButton}</button>
                     {!!params.draftId ? <button type="button" className="btn btn-sm btn-info" data-tip="Trash draft" onClick={this.handleDeleteClick}><FontAwesome name="trash" /></button> : undefined}
                     <button type="button" className="btn btn-sm btn-success" disabled={!noteEditor.body && !noteEditor.title ? true : false} onClick={this.handlePublishClick}><FontAwesome name="check" /> Publish</button>

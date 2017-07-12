@@ -151,6 +151,9 @@
         button {
             margin-left: 10px;
         }
+        &.inbox {
+            margin-top: 2px;
+        }
     }
     .btn-link {
         color: $note-dark-blue;
