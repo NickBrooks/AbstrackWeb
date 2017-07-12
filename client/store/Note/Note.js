@@ -67,12 +67,11 @@ class Note extends React.Component {
         return (
             <div className="row core-body">
                 <div className="col-sm-12">
+                    <NoteHeader note={note} {...this.props} />
                     <div className="ibox view-note">
-                        <NoteHeader note={note} {...this.props} />
-                        <hr />
                         <NoteBody body={note.body} />
                     </div>
-                    <Comments noteId={note.id} {...this.props} />
+                    {/* <Comments noteId={note.id} {...this.props} /> */}
                 </div>
             </div>
         )

@@ -3,6 +3,7 @@
 }
 
 .note-header {
+    padding: 0 $box-padding $box-padding $box-padding;
     h3 {
         font-size: 1.5em;
         margin: 0;
@@ -10,10 +11,6 @@
     }
     div.hashtags {
         margin-top: 5px;
-        .fa {
-            font-size: 0.8em;
-            color: $note-green-light;
-        }
     }
 }
 
