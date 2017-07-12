@@ -137,7 +137,7 @@ class NoteList extends React.Component {
       return moment.utc(right.data.updatedTime).diff(moment.utc(left.data.updatedTime))
     });
 
-    if (notes.length <= 0) {
+    if (notes.length <= 0 && !this.isLoading()) {
       return (
         <EmptyContent emptyContent={emptyNotes} />
       )
