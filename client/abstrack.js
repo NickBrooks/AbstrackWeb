@@ -46,7 +46,7 @@ const router = (
                 <Route path="/t/:trackId/delete" component={DeleteTrack}></Route>
                 <Route path="/new/track" component={NewTrack}></Route>
                 <Route path="/n/:noteId" component={Note}></Route>
-                <Route path="/new/note(/:draftId)" component={NoteEditor}></Route>
+                <Route path="/new/note(/:draftId)(/:action)" component={NoteEditor}></Route>
                 <Route path="/drafts" component={NoteViewDrafts}></Route>
                 <Route path="/tag/:tags" component={NoteViewTag}></Route>
                 <Route path="/u/:userId" component={User}></Route>

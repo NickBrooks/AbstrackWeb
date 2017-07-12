@@ -35,7 +35,7 @@ class NoteEditor extends React.Component {
 
     componentWillMount() {
         let { handleGetDraft, notes, setSearchBar, toggleNewNoteButton, togglePreviewMode, updateDraftEditorStatus } = this.props;
-        let { draftId } = this.props.params;
+        let { draftId, action } = this.props.params;
 
         // set the timeouts
         this.timeouts = [];
@@ -55,7 +55,11 @@ class NoteEditor extends React.Component {
 
         // check if draft specified
         if (draftId != null) {
-            handleGetDraft(draftId);
+            handleGetDraft(draftId).then(() => {
+                if (action === "delete") {
+                    updateDraftEditorStatus("confirmDelete");
+                }
+            });
         }
     }
 

@@ -77,16 +77,20 @@ export function setDraftTrack(trackId) {
 
 export function handleGetDraft(draftId) {
     return (dispatch) => {
-        dispatch(updateDraftEditorStatus("loading"));
-        const request = apiGetDraft(draftId);
+        return new Promise((resolve, reject) => {
+            dispatch(updateDraftEditorStatus("loading"));
+            const request = apiGetDraft(draftId);
 
-        request.then(response => {
-            dispatch(setDraft(response.data));
-            dispatch(updateDraftEditorStatus("editor"));
-        }).catch(error => {
-            dispatch(updateDraftEditorStatus("editor"));
-            dispatch(push("/new/note/"));
-            console.log(error);
+            request.then(response => {
+                dispatch(setDraft(response.data));
+                dispatch(updateDraftEditorStatus("editor"));
+                resolve();
+            }).catch(error => {
+                dispatch(updateDraftEditorStatus("editor"));
+                dispatch(push("/new/note/"));
+                console.log(error);
+                reject();
+            });
         });
     };
 }

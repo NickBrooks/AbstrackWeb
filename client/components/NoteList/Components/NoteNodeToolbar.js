@@ -1,4 +1,5 @@
 import React from 'react';
+import { browserHistory } from 'react-router';
 import FontAwesome from 'react-fontawesome';
 import { toast } from 'react-toastify';
 
@@ -9,6 +10,7 @@ class NoteNodeToolbar extends React.Component {
         this.handleInboxClick = this.handleInboxClick.bind(this);
         this.handlePinNoteClick = this.handlePinNoteClick.bind(this);
         this.handleUnpinNoteClick = this.handleUnpinNoteClick.bind(this);
+        this.handleDeleteDraftClick = this.handleDeleteDraftClick.bind(this);
     }
 
     handleArchiveClick(e) {
@@ -39,6 +41,11 @@ class NoteNodeToolbar extends React.Component {
         this.props.handlePinNote(this.props.id, false);
     }
 
+    handleDeleteDraftClick(e) {
+        e.preventDefault();
+        browserHistory.push('/new/note/' + this.props.id + '/delete');
+    }
+
     renderUnpinnedButton() {
         return (
             <object><button type="button" onClick={this.handlePinNoteClick} aria-label="Pin Note" className="btn btn-sm btn-secondary"><FontAwesome name="thumb-tack" rotate={270} /></button></object>
@@ -59,11 +66,17 @@ class NoteNodeToolbar extends React.Component {
 
     renderArchivedButton() {
         return (
-            <object><button type="button" onClick={this.handleInboxClick} aria-label="Inbox Note" className="btn btn-sm btn-secondary"><FontAwesome name="envelope-open" /></button></object>
+            <object><button type="button" onClick={this.handleInboxClick} aria-label="Inbox Note" className="btn btn-sm btn-secondary"><FontAwesome name="envelope" /></button></object>
         )
     }
 
-    render() {
+    renderTrashDraftButton() {
+        return (
+            <object><button type="button" onClick={this.handleDeleteDraftClick} aria-label="Delete Draft" className="btn btn-sm btn-secondary"><FontAwesome name="trash" /></button></object>
+        )
+    }
+
+    renderNoteToolbar() {
         let { note } = this.props;
 
         var isInbox = false;
@@ -77,9 +90,31 @@ class NoteNodeToolbar extends React.Component {
             <div className="btn-group toolbar node-toolbar" role="group">
                 {isPinned ? this.renderPinnedButton() : this.renderUnpinnedButton()}
                 {isInbox ? this.renderInboxedButton() : this.renderArchivedButton()}
-                <object><button type="button" aria-label="More options" className="btn btn-sm btn-secondary"><FontAwesome name="caret-down" /></button></object>
+                <object><button type="button" aria-label="More options" className="btn btn-sm btn-secondary"><FontAwesome name="trash" /></button></object>
             </div>
         )
+    }
+
+    renderDraftToolbar() {
+        let { note } = this.props;
+
+        return (
+            <div className="btn-group toolbar node-toolbar" role="group">
+                {this.renderTrashDraftButton()}
+            </div>
+        )
+    }
+
+    render() {
+        let { type } = this.props;
+
+        switch (type) {
+            case 'draft':
+                return this.renderDraftToolbar();
+            case 'note':
+                return this.renderNoteToolbar();
+        }
+        return this.renderNoteToolbar();
     }
 }
 

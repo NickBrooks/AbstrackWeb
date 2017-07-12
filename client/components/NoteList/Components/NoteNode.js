@@ -11,14 +11,23 @@ import NoteNodeToolbar from './NoteNodeToolbar';
 class NoteNode extends React.Component {
     constructor(props) {
         super(props);
+
+        var isDraft = props.note.views.findIndex((view) => view == "drafts");
+
+        this.state = {
+            noteType: isDraft >= 0 ? "draft" : "note"
+        }
     }
 
-    generateLink(note) {
-        if (note.views.findIndex((view) => view == "drafts") >= 0) {
-            return "/new/note/" + note.id;
-        }
+    generateLink() {
+        let { noteType } = this.state;
 
-        return "/n/" + note.id;
+        switch (noteType) {
+            case 'draft':
+                return "/new/note/" + this.props.id;
+            case 'note':
+                return "/n/" + this.props.id;
+        }
     }
 
     renderMediaPreviews() {
@@ -49,11 +58,11 @@ class NoteNode extends React.Component {
     }
 
     render() {
-        var note = extractNote(this.props.notes, this.props.id);
+        let { note } = this.props;
         var body = (note.data.body ? note.data.body : "");
         var isInbox = (note.views.indexOf("inbox") >= 0 ? true : false);
         var isPinned = (note.views.indexOf("pinned") >= 0 ? true : false);
-        var link = this.generateLink(note);
+        var link = this.generateLink();
         var views = note.views;
         var track = (note.data.track ? extractTrack(this.props.tracks, note.data.track.id) : null)
 
@@ -66,7 +75,7 @@ class NoteNode extends React.Component {
                 <li className={"note-node" + (isPinned ? " pinned" : "")}>
                     <div className="quick-info text-truncate">
                         {isPinned ? <FontAwesome name="thumb-tack" className="note-orange" /> : undefined} <span className="title">{note.data.title}</span> {note.commentCount > 0 ? <span className="comment-count">{note.commentCount}</span> : undefined} <span className="body">{removeMd(body)}</span>
-                        <NoteNodeToolbar note={note} {...this.props} />
+                        <NoteNodeToolbar note={note} type={this.state.noteType} {...this.props} />
                     </div>
                     <div className="hashtags">
                         {track ? <span className="tag track-tag"><small><FontAwesome name="list-ul" /></small> {track.data.name}</span> : undefined}{note.data.hashtags ? note.data.hashtags.map((hashtag, i) => <HashtagSpan {...this.props} hashtag={hashtag} disableLink={true} customClass="default" key={i} i={i} />) : undefined}

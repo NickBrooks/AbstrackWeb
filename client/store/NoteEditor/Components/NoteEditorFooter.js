@@ -1,7 +1,7 @@
 import React from 'react';
 import FontAwesome from 'react-fontawesome';
 import Mousetrap from 'mousetrap';
-import { delay, } from '../../../functions';
+import { delay } from '../../../functions';
 import ReactTooltip from 'react-tooltip'
 
 class NewNoteFooter extends React.Component {
