@@ -13,17 +13,18 @@ class AppView extends React.Component {
         super(props);
         this.handleToggleSidebar = this.handleToggleSidebar.bind(this);
         let { handleGetAccount, handleGetPinned, handleGetTracks, ui } = this.props;
+        const auth = loadLocalStorage('auth');
 
         // close sidebar
         if (ui.sidebar.open) {
             toggleSidebar(false);
         }
 
-        if (this.checkValidToken()) {
+        this.props.handleRefreshTokenLogin(auth.refreshToken).then(() => {
             handleGetAccount();
             handleGetTracks();
             handleGetPinned("pinned")
-        };
+        });
     }
 
     checkValidToken() {

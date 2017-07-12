@@ -71,21 +71,25 @@ export function handleLogin(userName, password) {
 }
 
 export function handleRefreshTokenLogin(token, redirect) {
-    const request = apiGetTokenFromRefreshToken(token);
-
     return dispatch => {
-        dispatch(loginIsRefreshingToken(true));
-        request.then(response => {
-            saveLocalStorage("auth", response.data);
-            delay(1000).then(() => {
+        return new Promise((resolve, reject) => {
+            const request = apiGetTokenFromRefreshToken(token);
+            dispatch(loginIsRefreshingToken(true));
+            
+            request.then(response => {
+                saveLocalStorage("auth", response.data);
+                delay(1000).then(() => {
+                    dispatch(loginIsRefreshingToken(false));
+                    if (redirect) {
+                        dispatch(push(redirect));
+                    }
+                });
+                resolve();
+            }).catch(error => {
+                dispatch(push("/login"));
                 dispatch(loginIsRefreshingToken(false));
-                if (redirect) {
-                    dispatch(push(redirect));
-                }
+                reject();
             });
-        }).catch(error => {
-            dispatch(push("/login"));
-            dispatch(loginIsRefreshingToken(false));
         });
     };
 }
