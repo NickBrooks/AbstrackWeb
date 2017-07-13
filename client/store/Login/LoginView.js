@@ -43,23 +43,19 @@ class LoginView extends React.Component {
                 <div className="login-background"></div>
                 <div className="container login-view">
                     <div className="row">
-                        <div className="col-md-6 offset-md-3">
-                            <div className="login-box">
-                                <form ref="loginForm" onSubmit={this.handleLoginSubmit}>
-                                    <div className="form-group">
-                                        <label><FontAwesome name="user" /> Username</label>
-                                        <input type="text" className="form-control" ref="userName" placeholder="Username" />
-                                    </div>
-                                    <div className="form-group">
-                                        <label><FontAwesome name="key" /> Password</label>
-                                        <input type="password" className="form-control" ref="password" placeholder="Password" />
-                                    </div>
-                                    <hr />
-                                    <button type="submit" className="btn btn-success"><FontAwesome name="paper-plane" /> Login {isAuthenticating ? <FontAwesome name="spinner" spin /> : undefined}</button>
-                                </form>
-                                <div className="login-links">
-                                    <small><Link to="/register"><FontAwesome name="plus" /> Register</Link> | <Link to="/login/forgot-password"><FontAwesome name="question-circle-o" /> Forgot Password</Link></small>
+                        <div className="col-md-8 offset-md-2">
+                            <form ref="loginForm" onSubmit={this.handleLoginSubmit} autoComplete="off">
+                                <div className="form-group">
+                                    <input type="text" className="form-control" ref="userName" placeholder="Username" />
                                 </div>
+                                <div className="form-group">
+                                    <input type="password" className="form-control" ref="password" placeholder="Password" />
+                                </div>
+                                <hr />
+                                <button type="submit" className="btn btn-success"><FontAwesome name="paper-plane" /> Login {isAuthenticating ? <FontAwesome name="spinner" spin /> : undefined}</button>
+                            </form>
+                            <div className="login-links">
+                                <small><Link to="/register"><FontAwesome name="plus" /> Register</Link> | <Link to="/login/forgot-password"><FontAwesome name="question-circle-o" /> Forgot Password</Link></small>
                             </div>
                             {errorMsg ?
                                 <div className="alert alert-danger" role="alert">
