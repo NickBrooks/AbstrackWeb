@@ -39,7 +39,8 @@ class LoginView extends React.Component {
         let { errorMsg, isAuthenticating } = this.props.ui.login;
 
         return (
-            <div className="login-background">
+            <div>
+                <div className="login-background"></div>
                 <div className="container login-view">
                     <div className="row">
                         <div className="col-md-6 offset-md-3">
