@@ -11,12 +11,23 @@ renderer.link = function (href, title, text) {
     if (youtube != null) {
         var link = "//www.youtube.com/embed/" + youtube[1] + "?rel=0";
 
-        return  '<div class="embed-youtube my-1"><div class="embed-responsive embed-responsive-16by9">' +
+        return '<div class="embed-youtube my-1"><div class="embed-responsive embed-responsive-16by9">' +
             '<iframe class="embed-responsive-item" src="' + link + '" allowfullscreen></iframe>' +
             '</div></div>';
     }
 
     return '<a href="' + href + '" title="' + title + '" target="_blank">' + text + '</a>';
+}
+
+renderer.heading = function (text, level) {
+    var escapedText = text.toLowerCase().replace(/[^\w]+/g, '-');
+
+    return '<h' + level + '>' +
+        text + '<a name="' +
+        escapedText +
+        '" class="anchor" href="#' +
+        escapedText +
+        '"><i class="fa fa-chain"></i></a></h' + level + '>';
 }
 
 marked.setOptions({
@@ -35,7 +46,7 @@ class RenderMarkdown extends React.Component {
         let { markdown } = this.props;
 
         return (
-            <div className="markdown" dangerouslySetInnerHTML={{ __html: marked((markdown? markdown : "")) }}></div>
+            <div className="markdown" dangerouslySetInnerHTML={{ __html: marked((markdown ? markdown : "")) }}></div>
         )
     }
 }

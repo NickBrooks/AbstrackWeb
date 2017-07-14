@@ -193,6 +193,20 @@
         display: block;
         overflow: hidden
     }
+    a.anchor {
+        color: $white;
+        font-size: 16px;
+        margin-left: 5px;
+    }
+    h1:hover a.anchor,
+    h2:hover a.anchor,
+    h3:hover a.anchor,
+    h4:hover a.anchor,
+    h5:hover a.anchor,
+    h6:hover a.anchor,
+    a.anchor:hover {
+        color: $note-gray-active;
+    }
     span.frame>span {
         display: block;
         float: left;
