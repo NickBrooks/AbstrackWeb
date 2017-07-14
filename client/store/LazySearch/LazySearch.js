@@ -3,7 +3,7 @@ import FontAwesome from 'react-fontawesome';
 import { AsyncTypeahead } from 'react-bootstrap-typeahead';
 import { browserHistory } from 'react-router';
 import removeMd from 'remove-markdown';
-import icons from '../../data/Icons';
+import { icons } from '../../data/Images';
 
 class LazySearch extends React.Component {
     constructor(props) {

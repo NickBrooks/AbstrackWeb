@@ -3,7 +3,7 @@ import { Link } from 'react-router';
 import FontAwesome from 'react-fontawesome';
 import Avatar from '../Avatar/Avatar';
 import SidebarMenu from './Components/SidebarMenu';
-import icons from '../../data/Icons';
+import { icons } from '../../data/Images';
 
 class Sidebar extends React.Component {
     constructor(props) {

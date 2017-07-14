@@ -47,8 +47,8 @@ class CommentNode extends React.Component {
 
     return (
       <div className="btn-group pull-right" role="group" aria-label="Basic example">
-        <button className="btn btn-toolbar btn-sm" onClick={() => toggleEditCommentMode(commentId)}><FontAwesome name="pencil" /></button>
-        <button className="btn btn-toolbar btn-sm" onClick={this.handleCommentDelete}><FontAwesome name="close" /></button>
+        <button className="btn btn-transparent btn-sm" onClick={() => toggleEditCommentMode(commentId)}><FontAwesome name="pencil" /></button>
+        <button className="btn btn-transparent btn-sm" onClick={this.handleCommentDelete}><FontAwesome name="close" /></button>
       </div>
     );
   }

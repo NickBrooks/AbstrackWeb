@@ -1,6 +1,7 @@
 import React from 'react';
 import FontAwesome from 'react-fontawesome';
 import { Link } from 'react-router';
+import { logo } from '../../data/Images';
 
 class LoginView extends React.Component {
     constructor(props) {
@@ -46,13 +47,14 @@ class LoginView extends React.Component {
                         <div className="col-md-8 offset-md-2">
                             <div className="login-container">
                                 <form ref="loginForm" onSubmit={this.handleLoginSubmit} autoComplete="off">
+                                    <div className="text-center"><img className="logo" src={logo.white} alt="Abstrack" /></div>
                                     <div className="form-group">
                                         <input type="text" className="form-control" ref="userName" placeholder="Username" />
                                     </div>
                                     <div className="form-group">
                                         <input type="password" className="form-control" ref="password" placeholder="Password" />
                                     </div>
-                                    <button type="submit" className="btn btn-success"><FontAwesome name="paper-plane" /> Login {isAuthenticating ? <FontAwesome name="spinner" spin /> : undefined}</button>
+                                    <button type="submit" className="btn btn-action"><FontAwesome name="paper-plane" /> Login {isAuthenticating ? <FontAwesome name="spinner" spin /> : undefined}</button>
                                 </form>
                             </div>
                             <div className="login-links">

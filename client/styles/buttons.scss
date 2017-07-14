@@ -57,10 +57,22 @@ a.btn-circle {
     }
 }
 
-.btn-toolbar {
+.btn-action {
+    color: #fff;
+    background-color: $note-dark-blue;
+    border: 1px solid $note-dark-blue;
+    &:hover,
+    &:active,
+    &:focus {
+        background-color: $note-dark-blue-active;
+        border: 1px solid $note-dark-blue-active;
+    }
+}
+
+.btn-transparent {
     color: #7f8c8d;
-    background-color: $off-white;
-    border: 1px solid $off-white;
+    background-color: transparent;
+    border: 1px solid transparent;
     &:hover,
     &:active,
     &:focus {

@@ -56,15 +56,19 @@
 
     .login-container {
         margin-top: $navbar-padding;
-        background-color: rgba(36, 145, 232, 0.5);
-        padding: $box-padding*2 $box-padding;
+        background-color: rgba(44, 62, 80, 0.5);
+        padding: $box-padding;
         border-radius: $radius;
+        img.logo {
+            max-width: 50%;
+            margin-bottom: $box-padding;
+        }
         .form-control,
         .form-control:focus,
         .form-control:hover,
         .form-control:active {
             background-color: $white;
-            font-size: 1.7em;
+            font-size: 1.5em;
             padding: 10px 20px;
             border: none;
         }
