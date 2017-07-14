@@ -54,11 +54,18 @@ class LoginView extends React.Component {
                                     <div className="form-group">
                                         <input type="password" className="form-control" ref="password" placeholder="Password" />
                                     </div>
-                                    <button type="submit" className="btn btn-action"><FontAwesome name="paper-plane" /> Login {isAuthenticating ? <FontAwesome name="spinner" spin /> : undefined}</button>
+                                    <div className="row">
+                                        <div className="col-xs-6">
+                                            <button type="submit" className="btn btn-action"><FontAwesome name="paper-plane" /> Login {isAuthenticating ? <FontAwesome name="spinner" spin /> : undefined}</button>
+                                        </div>
+                                        <div className="col-xs-6">
+                                            <Link to="/register" className="btn btn-success"><FontAwesome name="plus" /> Register</Link>
+                                        </div>
+                                    </div>
                                 </form>
                             </div>
                             <div className="login-links">
-                                <small><Link to="/register"><FontAwesome name="plus" /> Register</Link> <Link to="/login/forgot-password"><FontAwesome name="question-circle-o" /> Forgot Password</Link></small>
+                                <small><Link to="/login/forgot-password"><FontAwesome name="question-circle-o" /> Forgot Password</Link></small>
                             </div>
                             {errorMsg ?
                                 <div className="alert alert-info" role="alert">
