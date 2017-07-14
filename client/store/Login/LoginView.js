@@ -61,7 +61,7 @@ class LoginView extends React.Component {
                                 <small><Link to="/register"><FontAwesome name="plus" /> Register</Link> <Link to="/login/forgot-password"><FontAwesome name="question-circle-o" /> Forgot Password</Link></small>
                             </div>
                             {errorMsg ?
-                                <div className="alert alert-danger" role="alert">
+                                <div className="alert alert-info" role="alert">
                                     <FontAwesome name="exclamation-triangle" /> {errorMsg}
                                 </div>
                                 : undefined}
