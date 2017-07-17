@@ -2,10 +2,10 @@ import { apiGetLazySearchResults } from '../../api';
 import lazySearchResults from '../../data/LazySearch';
 
 // update the results in lazy search
-export function updateLazySearchResults(results) {
+export function updateLazySearchResults(data) {
     return {
         type: 'UPDATE_LAZY_SEARCH_RESULTS',
-        results
+        data
     }
 }
 

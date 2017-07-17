@@ -15,7 +15,7 @@
             box-shadow: $box-shadow;
             color: $font-color;
             &:hover {
-                background: $off-white;
+                box-shadow: 0 2px 8px 0px rgba(0, 0, 0, 0.07), 0 3px 3px 0px rgba(0, 0, 0, 0.07), 0 6px 2px -5px rgba(0, 0, 0, 0.05);
                 .quick-info {
                     padding-right: 90px;
                 }

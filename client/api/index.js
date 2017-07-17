@@ -157,3 +157,8 @@ export function apiDeleteTrack(trackId) {
 export function apiGetLazySearchResults(q) {
     return Axios.get("search?q=" + encodeURIComponent(q), getAuthHeader());
 }
+
+// hashtags
+export function apiGetHashtags() {
+    return Axios.get("hashtags", getAuthHeader());
+}

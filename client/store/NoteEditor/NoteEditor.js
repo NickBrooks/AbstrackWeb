@@ -34,7 +34,13 @@ class NoteEditor extends React.Component {
     }
 
     componentWillMount() {
-        let { handleGetDraft, notes, setSearchBar, toggleNewNoteButton, togglePreviewMode, updateDraftEditorStatus } = this.props;
+        let { handleGetDraft,
+            handleUpdateHashtagsStore,
+            notes,
+            setSearchBar,
+            toggleNewNoteButton,
+            togglePreviewMode,
+            updateDraftEditorStatus } = this.props;
         let { draftId, action } = this.props.params;
 
         // set the timeouts
@@ -61,6 +67,8 @@ class NoteEditor extends React.Component {
                 }
             });
         }
+
+        handleUpdateHashtagsStore();
     }
 
     componentWillUnmount() {
@@ -85,7 +93,7 @@ class NoteEditor extends React.Component {
         let { noteEditor, handleAddDraft, handleSaveDraft, params, ui } = this.props;
 
         // don't save empty drafts
-        if (!noteEditor.title && !noteEditor.body && !noteEditor.track && noteEditor.hashtags.length <= 1 && !ui.draft.savingStatus) return;
+        if (!noteEditor.title && !noteEditor.body && !noteEditor.track && !ui.draft.savingStatus) return;
 
         this.clearTimeouts();
         this.setTimeout(function () { (params.draftId ? handleSaveDraft(params.draftId, noteEditor) : handleAddDraft(noteEditor)) }, 2500);
@@ -127,17 +135,27 @@ class NoteEditor extends React.Component {
 
     handleHashtagsChange(e) {
         if (!e || e.length < 0) return;
+        let hashtags = []
+        for (var i = 0; i < e.length; i++) {
+            if (typeof e[i] === 'string') {
+                hashtags.push(e[i]);
+            }
+            else {
+                hashtags.push(e[i].name);
+            }
+        }
 
-        this.props.setDraftHashtags(e);
+        this.props.setDraftHashtags(hashtags);
         delay(500).then(() => {
             this.saveDraft();
         })
     }
 
     renderHashtagTypeahead() {
-        let { noteEditor } = this.props;
-        var options = ['afl', 'github', 'project', 'chicken', 'chick', 'chuck', 'hammer', 'hartlett'];
-        options = options.filter(function (el) {
+        let { noteEditor, hashtags } = this.props;
+
+        // filter the hashtags
+        hashtags = hashtags.filter(function (el) {
             return !noteEditor.hashtags.includes(el);
         });
 
@@ -145,7 +163,7 @@ class NoteEditor extends React.Component {
             if (!text) return option;
 
             return (
-                (option.indexOf(conformHashtag(text)) !== -1)
+                (option.name.indexOf(conformHashtag(text)) !== -1)
             );
         };
 
@@ -159,7 +177,8 @@ class NoteEditor extends React.Component {
                     dropup
                     maxResults={5}
                     paginate={false}
-                    options={options}
+                    options={hashtags}
+                    labelKey="name"
                     placeholder="Hashtags"
                     emptyLabel=""
                     selected={noteEditor.hashtags}
