@@ -156,7 +156,7 @@ class NoteEditor extends React.Component {
 
         // filter the hashtags
         hashtags = hashtags.filter(function (el) {
-            return !noteEditor.hashtags.includes(el);
+            return !noteEditor.hashtags.includes(el.name);
         });
 
         const filterHashtagsByCallback = (option, text) => {

@@ -8,5 +8,6 @@ export const icons = {
     track: require('!!file-loader!../images/icons/track.svg'),
     inbox: require('!!file-loader!../images/icons/inbox.svg'),
     draft: require('!!file-loader!../images/icons/draft.svg'),
-    pinned: require('!!file-loader!../images/icons/pinned.svg')
+    pinned: require('!!file-loader!../images/icons/pinned.svg'),
+    hashtag: require('!!file-loader!../images/icons/hashtag.svg')
 }

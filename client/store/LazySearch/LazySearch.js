@@ -26,6 +26,8 @@ class LazySearch extends React.Component {
                 return "/t/" + selected.objectId;
             case 2:
                 return "/s/" + selected.title;
+            case 3:
+                return "/tag/" + selected.title.replace(/\W/g, '');
             case 1001:
             case 1002:
             case 1003:
@@ -59,21 +61,28 @@ class LazySearch extends React.Component {
     prepareOption(option) {
         switch (option.type) {
             case 0:
-                option.description = !!option.description ? option.description : "Empty note";
+                option.description = !!option.description ? option.description + "..." : "Empty note";
                 option.icon = (
                     <img src={icons.note} alt="note" />
                 );
                 return option;
             case 1:
-                option.description = !!option.description ? option.description : "Empty track";
+                option.description = !!option.description ? option.description + "..." : "Empty track";
                 option.icon = (
                     <img src={icons.track} alt="track" />
                 );
                 return option;
             case 2:
-                option.description = !!option.description ? option.description : "Previous search";
+                option.description = !!option.description ? option.description : "Recent search";
                 option.icon = (
                     <img src={icons.note} alt="search" />
+                );
+                return option;
+            case 3:
+                option.title = option.title.charAt(0) == "#" ? option.title : "#" + option.title;
+                option.description = option.noteCount + (option.noteCount == 1 ? " note" : " notes");
+                option.icon = (
+                    <img src={icons.hashtag} alt="hashtags" />
                 );
                 return option;
             case 1001:
@@ -110,7 +119,7 @@ class LazySearch extends React.Component {
                     {option.icon}
                 </div>
                 <p className="display">{option.title}</p>
-                <p className="description"><small><em>{removeMd(option.description)}...</em></small></p>
+                <p className="description"><small><em>{removeMd(option.description)}</em></small></p>
             </div>
         );
     }
